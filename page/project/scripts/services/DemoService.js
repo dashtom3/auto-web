@@ -5,15 +5,15 @@ angular.module('auto-biz-user')
     this.userList={"data":"abc"};
     this.dataList = function(userName,password) {
         var deferred = $q.defer();
-        if(self.userList){
-            console.log("读取data本地数据");
-            deferred.resolve(self.userList);
-        }else{
+        // if(self.userList){
+        //     console.log("读取data本地数据");
+        //     deferred.resolve(self.userList);
+        // }else{
         console.log("读取data网络数据");
-        $http.get('http://139.224.59.3:8080/poker/api/user/login?username=15221399767&password=123123123')
+        $http.get('http://123.56.220.72:3300/user/login?name=aaa&password=123')
             .success(function(data, status, headers, config){
                 console.log(data);
-                if(data.callStatus == "SUCCEED"){
+                if(data.isSuccess == "1"){
                     deferred.resolve(data.data);
                     self.userList = data.data;
                 }else{
@@ -24,7 +24,7 @@ angular.module('auto-biz-user')
             .error(function(data, status, headers, config){
                 deferred.reject(data);
             });
-        };
+        // };
         return deferred.promise;
     }
 });
