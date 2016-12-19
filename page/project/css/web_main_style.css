@@ -1,0 +1,36 @@
+<style>
+	body{
+		font-family: "Hiragino Sans GB",Helvetica,Arial !important;
+	}
+	.navbar{
+		border-radius: 0px;
+		border-bottom: solid 4px #C0493A;
+	}
+	.navbar a{
+		text-align: center;
+	}
+	.navbar .navbar-header img{
+		margin-top: 8px;
+		height: 40px;
+	}
+	.navbar .navbar-right img{
+		margin-top: 18px;
+		margin-left: 20px;
+		height: 24px;
+	}
+	.navbar .navbar-collapse{
+		float: right;
+	}
+	.navbar .navbar-center{
+		margin-right: 180px;
+	}
+	.navbar .navbar-nav > .active > a,
+	.navbar .navbar-nav > .active > a:hover,
+	.navbar .navbar-nav > .active > a:focus{
+		border-bottom: solid 4px #C0493A;
+	}
+	.navbar li > a > p{
+		margin: 0px;
+		line-height: 16px;
+	}
+</style>

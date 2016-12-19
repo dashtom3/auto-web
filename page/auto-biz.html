@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en"  ng-app="auto-biz-user">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<!--jquery && bootstrap-->
+    <script src="page/common/jquery/jquery.js"></script>
+    <link href="page/common/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="data:text/css;charset=utf-8," data-href="page/common/bootstrap-3.3.5-dist/css/bootstrap-theme.min.css" rel="stylesheet" id="bs-theme-stylesheet">
+    <script src="page/common/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+<!--angular-->
+    <script src="page/common/angular/angular.js"></script>
+    <script src="page/common/angular/angular-route.js"></script>
+<!-- css -->
+    <link href="page/project/css/web_main_style.css" rel="stylesheet" />
+
+</head>
+<!--  <body ng-controller="MainController">
+
+    <div ng-include="'project/html/header.html'"></div>
+
+    <div ng-if="currentPage == 'partA'" ng-include="'project/html/partA.html'"></div>
+    
+    <div ng-if="currentPage == 'partB'" ng-include="'project/html/partB.html'"></div>
+
+    <div ng-include="'project/html/footer.html'"></div> -->
+<body>
+    <div ng-view></div>
+
+
+<!-- app.js -->
+    <script src="page/project/scripts/app.js"></script>
+<!-- controller.js -->
+    <script src="page/project/scripts/controllers/MainController.js"></script>
+    <script src="page/project/scripts/controllers/HeaderController.js"></script>
+    <script src="page/project/scripts/controllers/FooterController.js"></script>
+    <script src="page/project/scripts/controllers/PartAController.js"></script>
+    <script src="page/project/scripts/controllers/PartBController.js"></script>
+<!-- service.js -->
+    <script src="page/project/scripts/services/DemoService.js"></script>
+    <script src="page/project/scripts/services/HeaderService.js"></script>
+<!-- directive.js -->
+    <script src="page/project/scripts/directives/DemoDirectives.js"></script>
+<!-- filter.js -->
+    <script src="page/project/scripts/filters/DemoFilter.js"></script>
+</body>
+</html>
