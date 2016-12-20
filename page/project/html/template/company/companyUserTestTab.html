@@ -1,0 +1,179 @@
+<div ng-controller="CompanyUserTestTabController">
+	<div class="row">
+		<div class="col-md-2" >
+			<button  class="btn btn-block " ng-class="{true:'tab-select',false:'tab-unselect'}[currentTab == 'testedUser']" ng-click="toTab('testedUser')"> 已测评用户</button>
+		</div>
+		<div class="col-md-2" >
+			<button class="btn btn-block" ng-class="{true:'tab-select',false:'tab-unselect'}[currentTab == 'testingUser']" ng-click="toTab('testingUser')"> 测评中用户</button>
+		</div>
+		<div class="col-md-2" >
+			<button class="btn btn-block" ng-class="{true:'tab-select',false:'tab-unselect'}[currentTab == 'auditingUser']" ng-click="toTab('auditingUser')"> 报名审核中用户</button>
+		</div>
+		<div class="col-md-2" >
+			<button class="btn btn-block" ng-class="{true:'tab-select',false:'tab-unselect'}[currentTab == 'rejectedUser']" ng-click="toTab('rejectedUser')"> 已拒绝用户</button>
+		</div>
+		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">x</span></button>
+	</div>
+	<div class="row">
+		<div ng-show="currentTab == 'testedUser'">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th class="col-lg-2">用户名</th>
+						<th class="col-lg-2">评测时间</th>
+						<th class="col-lg-5">评测内容</th>
+						<th class="col-lg-3">打分</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in userList">
+						<td>
+							<span> {{item.userName}}</span>
+						</td>
+						<td>
+							<span> {{item.testTime}}</span>
+						</td>
+						<td>
+							<span> {{item.testContent}}</span>
+						</td>
+						<td>
+							<div class="row">
+								<div class="col-lg-5">
+									<span> 外观:</span>
+								</div>
+								<div class="col-lg-7">
+									<div star rating-value="item.outlookRate" max="max" on-hover="onHover" on-leave="onLeave" readonly="true">
+									</div>
+								</div>
+								<div class="col-lg-5">
+									<span> 颜色:</span>
+								</div>
+								<div class="col-lg-7">
+									<div star rating-value="item.colorRate" max="max" on-hover="onHover" on-leave="onLeave" readonly="true">
+									</div>
+								</div>
+								<div class="col-lg-5">
+									<span> 质感:</span>
+								</div>
+								<div class="col-lg-7">
+									<div star rating-value="item.quanlityRate" max="max" on-hover="onHover" on-leave="onLeave" readonly="true">
+									</div>
+								</div>
+								<div class="col-lg-5">
+									<span> 敏感度:</span>
+								</div>
+								<div class="col-lg-7">
+									<div star rating-value="item.sensityRate" max="max" on-hover="onHover" on-leave="onLeave" readonly="true">
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div ng-show="currentTab=='testingUser'">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th class="col-lg-2">用户名</th>
+						<th class="col-lg-2">报名时间</th>
+						<th class="col-lg-4">邮寄地址</th>
+						<th class="col-lg-2">评测内容</th>
+						<th class="col-lg-2">打分</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in userList">
+						<td>
+							<span> {{item.userName}}</span>
+						</td>
+						<td>
+							<span> {{item.registerTime}}</span>
+						</td>
+						<td>
+							<span> {{item.mailAddress}}</span>
+						</td>
+						<td>
+							<span> 暂无</span>
+						</td>
+						<td>
+							<span> 暂无</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div ng-show = "currentTab == 'auditingUser'">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th class="col-lg-2">用户名</th>
+						<th class="col-lg-2">报名时间</th>
+						<th class="col-lg-4">邮寄地址</th>
+						<th class="col-lg-2">评测内容</th>
+						<th class="col-lg-2">打分</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in userList">
+						<td>
+							<span> {{item.userName}}</span>
+						</td>
+						<td>
+							<span> {{item.registerTime}}</span>
+						</td>
+						<td>
+							<span> {{item.mailAddress}}</span>
+						</td>
+						<td>
+							<span> 暂无</span>
+						</td>
+						<td>
+							<span> 暂无</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div ng-show = "currentTab == 'rejectedUser'">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th class="col-lg-2">用户名</th>
+						<th class="col-lg-2">报名时间</th>
+						<th class="col-lg-4">邮寄地址</th>
+						<th class="col-lg-2">评测内容</th>
+						<th class="col-lg-2">打分</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in userList">
+						<td>
+							<span> {{item.userName}}</span>
+						</td>
+						<td>
+							<span> {{item.registerTime}}</span>
+						</td>
+						<td>
+							<span> {{item.mailAddress}}</span>
+						</td>
+						<td>
+							<span> 暂无</span>
+						</td>
+						<td>
+							<span> 暂无</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-4 col-lg-offset-4">
+			<button class="btn btn-block m-btn-loadMore" ng-click="loadMore()">
+				{{loadMoreText}}
+			</button>
+		</div>
+	</div>
+</div>

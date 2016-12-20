@@ -1,0 +1,277 @@
+<div class="col-lg-10 col-md-9 m-div-userTest" ng-controller="CompanyUserTestController" >
+	<div class="row first-row">
+		<div class="col-lg-4 col-lg-offset-2">
+			<input class="form-control form-control-lg search-input" type="text" ng-model="searchStr" >
+		</div>
+		<div class="col-lg-2">
+			<button class="btn btn-block m-btn">
+				<img src="imgs/search_product.png">
+				查找用户测评
+			</button>
+		</div>
+		<div class="col-lg-2">
+			<button class="btn btn-block m-btn" data-toggle="modal" data-target="#userTestModal" ng-click="setModalStatus('addModal')" >
+				<img src="imgs/add_product.jpg">
+				添加用户测评
+			</button>
+		</div>
+	</div>
+	<div class="row second-row">
+		<table class="table table-striped m-table" >
+			<thead >
+				<tr>
+					<th class="col-lg-1">测评编号</th>
+					<th class="col-lg-1">测评名称</th>
+					<th class="col-lg-2">测试产品名称</th>
+					<th class="col-lg-2">测评日期</th>
+					<th class="col-lg-1">测评类型</th>
+					<th class="col-lg-1">状态</th>
+					<th class="col-lg-2">人数信息</th>
+					<th class="col-lg-2">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in userTestList">
+					<td>
+						<span>{{item.userTestID}}</span>
+					</td>
+					<td>
+						<span>{{item.userTestName}}</span>
+					</td>
+					<td>
+						<span> {{item.userTestProduct}}</span>
+					</td>
+					<td>
+						<span> {{item.userTestDate}}</span>
+					</td>
+					<td>
+						<span> {{item.userTestType}}</span>
+					</td>
+					<td>
+						<span> {{item.userTestStatus}}</span>
+					</td>
+					<td>
+						<div class="row" style="padding: 10px 20px;">
+							<div class="col-lg-8 div-small-left">
+								<span class="span-small-left">人数上限：</span>
+							</div>
+							<div class="col-lg-4 div-small-right">
+								<span>{{item.numberLimit}}</span>
+							</div>
+							<div class="col-lg-8 div-small-left" class="span-small-left">
+								<span class="span-small-left">报名人数：</span>
+							</div>
+							<div class="col-lg-4 div-small-right">
+								<span>{{item.numberSign}}</span>
+							</div>
+							<div class="col-lg-8 div-small-left" >
+								<span >审核通过人数：</span>
+							</div>
+							<div class="col-lg-4 div-small-right">
+								<span>{{item.numberPass}}</span>
+							</div>
+						</div>
+					</td>
+					<td>
+						<div class="row">
+							<div class="col-lg-2 col-lg-offset-2">
+								<button class="m-img-btn" ng-click="btnLookUserTest(item)" data-toggle="modal" data-target="#userTestModal"> 
+									<img src="imgs/table_look.jpg">
+								</button>
+							</div>
+							<div class="col-lg-2">
+								<button class="m-img-btn" ng-click="btndeleteUserTest(item)" data-toggle="modal" data-target="#myDeleteModal"> 
+									<img src="imgs/table_delete.jpg">
+								</button>
+							</div>
+							<div class="col-lg-2">
+								<button class="m-img-btn" ng-click= "btnShowParticipant(item)" data-toggle="modal" data-target="#participantModal"> 
+									<img src="imgs/table_edit.jpg">
+								</button>
+							</div>
+						</div>
+					</td>
+
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+
+
+	<!-- 删除的弹出框 -->
+	<div class="modal fade" id="myDeleteModal" aria-hidden="true" role="dialog" >
+		<div class="modal-dialog moadl-sm" >
+			<div class="modal-content" >
+				<div class="modal-body" >
+					<div class="row m-row-delete"  id="m-row-delete">
+						<!-- <img src="imgs/add_thumb.jpg"> -->
+						<span>确定要删除吗</span>
+					</div>
+					<button class="btn m-btn-cancel" ng-click="cancelDelete()" id="m-btn-cancel" data-dismiss="modal" >
+						取消
+					</button>
+					<button class="btn " id="m-btn-sure" ng-click="confirmDelete()" data-dismiss="modal">
+						确认
+					</button>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	<!-- 删除的弹出框 -->
+
+	<!-- 查看参与的弹出框 -->
+	<div class="modal fade" id="participantModal">
+		<div class="modal-dialog modal-lg" >
+			<div class="modal-content" >
+				<div class="modal-body" >
+					<div ng-include="'page/project/html/template/company/companyUserTestTab.html'"></div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<!-- 查看参与的弹出框 -->
+
+	<!-- 添加、查看的弹出框 -->
+	<div class="modal fade" id="userTestModal">
+		<div class="modal-dialog modal-md" >
+			<div class="modal-content" >
+				<div class="modal-body user-test-modal" >
+					<div class="row row-head" >
+						<span ng-show="modalStatus == 'addModal'"> 发布用户测评</span>
+						<span ng-show="modalStatus == 'lookModal'"> 查看用户测评</span>
+					</div>
+					<div class="row" >
+						<form role="form" class="form-horizontal form-lg">
+							<div class="row">
+								<label class="col-lg-3 control-label" style="text-align: center;">测评产品:</label>
+								<div class="col-lg-9" ng-show="modalStatus == 'addModal'">
+									<select class="form-control" type="text" ng-model="addUserTestProductName" ng-options="productName for productName in userTestProductNameList"/>
+								</div>
+								<div class="col-lg-9" ng-show="lmodalStatus == 'lookModal'">
+									<span class="m-span"> {{tmpUserTest.userTestProductName}} </span>
+								</div>
+							</div>
+							<div class="row">
+								<label class="col-lg-3 control-label" style="text-align: center;">测评名称:</label>
+								<div class="col-lg-9" ng-show="modalStatus == 'addModal'">
+									<input class="form-control" type="text" ng-model="addUserTestName"/>
+								</div>
+								<div class="col-lg-9" ng-show="lmodalStatus == 'lookModal'">
+									<span class="m-span"> {{tmpUserTest.userTestName}} </span>
+								</div>
+							</div>
+							<div class="row">
+								<label class="col-lg-3 control-label" style="text-align: center;">测评时段:</label>
+								<div class="col-lg-9" ng-show="modalStatus == 'addModal'">
+									<input class="form-control" type="text" ng-model="addUserTestTime"/>
+								</div>
+								<div class="col-lg-9" ng-show="lmodalStatus == 'lookModal'">
+									<span class="m-span"> {{tmpUserTest.userTestTime}} </span>
+								</div>
+							</div>
+							<div class="row">
+								<label class="col-lg-3 control-label" style="text-align: center;">测评人数:</label>
+								<div class="col-lg-3" ng-show="modalStatus == 'addModal'">
+									<input class="form-control" type="text" ng-model="addUserTestPeople"/>
+								</div>
+								<div class="col-lg-3" ng-show="lmodalStatus == 'lookModal'">
+									<span class="m-span"> {{tmpUserTest.userTestPeople}} </span>
+								</div>
+							</div>
+							<div class="row" >
+								<label class="col-lg-3 control-label" style="text-align: center;" >简&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp介:</label>
+								<div class="col-lg-9" ng-show="modalStatus == 'addModal'">
+									<textarea class="form-control" rows="3" ng-model="addUserTestShortCut"></textarea>
+								</div>
+								<div class="col-lg-9" ng-show="lookModal">
+									<span class="m-span"> {{tmpUserTest.userTestShortCut}} </span>
+								</div>
+							</div>
+							<div class="row">
+								<label class="col-lg-3 control-label" style="text-align: center;" >测评类型:</label>
+								<div class="col-lg-3">
+									<label>
+										<input type="radio" ng-value="fieldVisit" ng-model="addState" name="selectState">实地
+									</label>
+								</div>
+								<div class="col-lg-3">
+									<label>
+										<input type="radio" ng-value="byMail" ng-model="addState" name="selectState">邮寄
+									</label>
+								</div>
+								<div class="col-lg-3" ng-show="lookModal">
+									<span class="m-span"> {{tmpUserTest.useTestState}} </span>
+								</div>
+							</div>
+							<div class="row" >
+								<label class="col-lg-3 control-label" style="text-align: center;" >测评地址:</label>
+								<div class="col-lg-9" ng-show="modalStatus == 'addModal'">
+									<textarea class="form-control" rows="3" ng-model="addUserTestAddress"></textarea>
+								</div>
+								<div class="col-lg-9" ng-show="lookModal">
+									<span class="m-span"> {{tmpUserTest.userTestAddress}} </span>
+								</div>
+							</div>
+							<div class="row">
+								<label class="col-lg-3 control-label" style="text-align: center;" >评分参数:</label>
+								<div class="col-lg-9" ng-show="modalStatus == 'addModal'">
+									<div class="m-div-tag" ng-repeat="tag in addTagList" >
+										<span>{{tag}}</span>
+										<button ng-click="deleteTag(tag)">x</button>
+									</div>
+									<div style="display: inline-block; vertical-align: middle;">
+										<button style="background:url(imgs/addTag.jpg); width: 33px;height: 31px; border: 0px; " ng-click="newTag()" data-toggle="modal" data-target="#newTagModal"></button>
+									</div>				
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="row" >
+						<div class="col-lg-2 col-lg-offset-4">
+							<button class="btn btn-block" id="btn-productModal-cancel" ng-click="cancel(addModal,lookModal,editModal)" data-dismiss="modal">
+								取消
+							</button>
+						</div>
+						<div class="col-lg-2">
+							<button class="btn btn-block" id="btn-productModal-sure" ng-click="confirm(addModal,lookModal,editModal)" data-dismiss="modal">
+								确定
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- 添加、查看的弹出框 -->
+
+	<!-- 新加标签的弹出框 -->
+	<div class="modal fade" id="newTagModal">
+		<div class="modal-dialog modal-sm" >
+			<div class="modal-content" >
+				<div class="modal-header">
+					<span>请输入你想要评分的参数</span>
+				</div>
+				<div class="modal-body" >
+					<input type="text" ng-model="tmpTagName">
+				</div>
+				<div class="modal-footer">
+					<button class="btn" ng-click="cancelNewTag()" data-dismiss="modal" >
+							取消
+						</button>
+						<button class="btn " ng-click="confirmNewTag()" data-dismiss="modal">
+							确认
+						</button>
+				</div>
+			</div>
+			
+		</div>	
+	</div>
+	<!-- 新加标签的弹出框 -->
+
+</div>

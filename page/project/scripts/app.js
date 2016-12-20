@@ -1,4 +1,5 @@
-var app = angular.module('auto-biz-user', ['ngRoute']);
+var app = angular.module('auto-biz-user', ['Company','ngRoute']);
+var company = angular.module('Company', ['textAngular','bw.paging','ngFileUpload']);
 app.config(function ($locationProvider,$httpProvider,$routeProvider) {
     console.log("载入angular config");
     $routeProvider
@@ -11,6 +12,13 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
         controller: 'MainController'
         //redirectTo: '/error'
       })
+      .when('/company',{
+        templateUrl: 'page/project/html/views/company/company.html',
+        controller: 'CompanyMainController'
+      });
+      // .otherwise({
+      //   redirectTo: '/'
+      // });
       
       $locationProvider.html5Mode(true);
   });

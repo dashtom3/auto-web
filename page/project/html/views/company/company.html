@@ -1,0 +1,16 @@
+<div>
+    <div ng-include="'page/project/html/template/company/companyHeader.html'"></div>
+    <div class="container-fluid" style="margin:90px 0px 0px 0px;">
+        <div class="row">
+            <div ng-include="'page/project/html/template/company/companySideBar.html'" style="margin-left: 0px;"></div>
+            <div ng-if="currentPage == 'companyBasicInfo'" ng-include="'page/project/html/template/company/companyBasicInfo.html'" style="margin-left: 0px;"></div>
+            <div ng-if="currentPage == 'companyFinanceMng'" ng-include="'page/project/html/template/company/companyFinanceMng.html'" style="margin-left: 0px;"></div>
+            <div ng-if="currentPage == 'companyNewsMng'" ng-include="'page/project/html/template/company/companyNewsMng.html'" style="margin-left: 0px;"></div>
+            <div ng-if="currentPage == 'companyProductMng'" ng-include="'page/project/html/template/company/companyProductMng.html'" style="margin-left: 0px;"></div>
+            <div ng-if="currentPage == 'companyUserTest'" ng-include="'page/project/html/template/company/companyUserTest.html'" style="margin-left: 0px;"></div>
+        </div>
+
+    </div>
+
+
+</div>
