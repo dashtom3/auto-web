@@ -1,4 +1,4 @@
-var app = angular.module('auto-biz-user', ['ngRoute']);
+var app = angular.module('auto-biz-user', ['ngRoute','Company']);
 var company = angular.module('Company', ['textAngular','bw.paging','ngFileUpload']);
 app.config(function ($locationProvider,$httpProvider,$routeProvider) {
     console.log("载入angular config");

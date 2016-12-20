@@ -36,4 +36,9 @@ function CompanyBasicInfoController($scope,fileReader) {
 			$scope.imageSrc = result;
 		});
 	};
+	$scope.upload = function(file){
+		console.log(file);
+		$scope.file = file;
+	}
+
 }

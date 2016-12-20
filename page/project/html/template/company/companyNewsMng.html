@@ -5,13 +5,13 @@
 		</div>
 		<div class="col-lg-2">
 			<button class="btn btn-block m-btn">
-				<img src="imgs/search_news.png">
+				<img class="img-sm-logo" src="page/project/images/company/search.png">
 				查找资讯
 			</button>
 		</div>
 		<div class="col-lg-2">
 			<button class="btn btn-block m-btn" data-toggle="modal" data-target="#newsModal" ng-click="btnAddNews()" >
-				<img src="imgs/add_news.jpg">
+				<img class="img-sm-logo" src="page/project/images/company/search.png">
 				添加资讯
 			</button>
 		</div>
@@ -53,22 +53,22 @@
 						<div class="row">
 							<div class="col-lg-2 col-lg-offset-2">
 								<button class="m-img-btn" ng-click="btnLookNews(item)" data-toggle="modal" data-target="#newsModal"> 
-									<img src="imgs/table_look.jpg">
+									<img class="img-md-logo" src="page/project/images/company/view.png">
 								</button>
 							</div>
 							<div class="col-lg-2">
 								<button class="m-img-btn" ng-click="deleteNews(item.newsID)" data-toggle="modal" data-target="#myDeleteModal"> 
-									<img src="imgs/table_delete.jpg">
+									<img class="img-md-logo" src="page/project/images/company/delete.png">
 								</button>
 							</div>
 							<div class="col-lg-2">
 								<button class="m-img-btn" ng-click= "btnEditNews(item)" data-toggle="modal" data-target="#newsModal"> 
-									<img src="imgs/table_edit.jpg">
+									<img class="img-md-logo" src="page/project/images/company/edit.png">
 								</button>
 							</div>
 							<div class="col-lg-2">
-								<button class="m-img-btn"> 
-									<img src="imgs/table_status.jpg" ng-click = "changeNewsStatus(item.newsID)">
+								<button class="m-img-btn" ng-click = "changeNewsStatus(item.newsID)"> 
+									<img class="img-md-logo" src="page/project/images/company/switch.png">
 								</button>
 							</div>
 						</div>
@@ -79,8 +79,8 @@
 							<div class="modal-content" >
 								<div class="modal-body" >
 									<div class="row m-row-delete"  id="m-row-delete">
-										<img src="">
-										<span>确定要删除吗</span>
+										<img src="page/project/images/company/warn.png" class="img-md-logo">
+										<span>确定要撤销吗</span>
 									</div>
 									<button class="btn m-btn-cancel" ng-click="cancelDelete()" id="m-btn-cancel" data-dismiss="modal" >
 										取消
@@ -180,7 +180,7 @@
 													</label>
 												</div>
 
-												<div class="col-lg-4 " ng-show="lookModal">
+												<div class="col-lg-4 m-div-noEdit" ng-show="lookModal">
 													<span>{{tmpNews.newsIsOriginal}}</span>
 												</div>
 
@@ -199,7 +199,7 @@
 
 											<div class="row" style="margin-top: 20px;">
 												<label class="col-lg-2 control-label"  >来源:</label>
-												<div class="col-lg-10">
+												<div class="col-lg-10 m-div-noEdit">
 													<span>{{companyName}}</span>
 												</div>
 											</div>

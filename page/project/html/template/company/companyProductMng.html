@@ -5,13 +5,13 @@
 		</div>
 		<div class="col-lg-2">
 			<button class="btn btn-block m-btn">
-				<img src="imgs/search_product.png">
+				<img class="img-sm-logo" src="page/project/images/company/search.png">
 				查找产品
 			</button>
 		</div>
 		<div class="col-lg-2">
 			<button class="btn btn-block m-btn" data-toggle="modal" data-target="#productModal" ng-click="btnAddProduct()" >
-				<img src="imgs/add_product.jpg">
+				<img class="img-sm-logo" src="page/project/images/company/search.png">
 				添加产品
 			</button>
 		</div>
@@ -49,22 +49,22 @@
 						<div class="row">
 							<div class="col-lg-2 col-lg-offset-2">
 								<button class="m-img-btn" ng-click="btnLookProduct(item)" data-toggle="modal" data-target="#productModal"> 
-									<img src="imgs/table_look.jpg">
+									<img class="img-md-logo" src="page/project/images/company/view.png">
 								</button>
 							</div>
 							<div class="col-lg-2">
 								<button class="m-img-btn" ng-click="deleteProduct(item.productID)" data-toggle="modal" data-target="#myDeleteModal"> 
-									<img src="imgs/table_delete.jpg">
+									<img class="img-md-logo" src="page/project/images/company/delete.png">
 								</button>
 							</div>
 							<div class="col-lg-2">
 								<button class="m-img-btn" ng-click= "btnEditProduct(item)" data-toggle="modal" data-target="#productModal"> 
-									<img src="imgs/table_edit.jpg">
+									<img class="img-md-logo" src="page/project/images/company/edit.png">
 								</button>
 							</div>
 							<div class="col-lg-2">
-								<button class="m-img-btn"> 
-									<img src="imgs/table_status.jpg" ng-click = "changeProductStatus(item.productID)">
+								<button class="m-img-btn" ng-click = "changeProductStatus(item.productID)"> 
+									<img class="img-md-logo" src="page/project/images/company/switch.png">
 								</button>
 							</div>
 						</div>
@@ -177,7 +177,7 @@
 							<button class="btn-delete-thumb" style="background:url(imgs/delete_thumb.jpg);" ng-click="delete_thumb(item)" > </button>
 						</div>
 						<div class="col-lg-3" ng-model="newThumb" ngf-resize="{width: 200, height: 200, quality: 0.9,centerCrop: true}" ngf-select="upload($file)" >
-							<img src="imgs/add_thumb.jpg" alt="点击添加图片" >
+							<img src="page/project/images/company/add_thumb.jpg" alt="点击添加图片" >
 						</div>
 					</div>
 					<div class="row m-thumb-row" ng-show="lookModal" >
@@ -191,7 +191,7 @@
 							<button class="btn-delete-thumb" style="background:url(imgs/delete_thumb.jpg);" ng-click="delete_thumb(item)" > </button>
 						</div>
 						<div class="col-lg-3" ng-model="editThumb" ngf-resize="{width: 200, height: 200, quality: 0.9,centerCrop: true}" ngf-select="uploadWhenEdit($file)" >
-							<img src="imgs/add_thumb.jpg" alt="点击添加图片" >
+							<img alt="点击添加图片" src="page/project/images/company/add_thumb.jpg">
 						</div>
 					</div>
 					

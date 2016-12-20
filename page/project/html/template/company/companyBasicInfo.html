@@ -39,11 +39,10 @@
 					<div class="col-md-2">
 						<div style="position: relative;border: 1px solid #888;height: 100px;width: 100px; overflow: hidden;text-align: center;">
 							<label >
-								<i class="glyphicon glyphicon-plus-sign" style="margin-top: 30px;"></i>
-								<input type="file" file-model="myFile"
-								style="display:none;">
+								<div class="button" ngf-select="upload($file)" ng-model="fileLogo" style="position: absolute; top:40px;left: 5px; z-index: 5;">点击上传logo</div>
 							</label>
-							<img src="{{imageSrc}}"/>	
+							<img ngf-src="fileLogo" ngf-resize="{width: 98, height: 98, quality: 0.9}" style="position: absolute; top:0px;left: 0px;" />	
+							
 						</div>
 
 					</div>
@@ -136,7 +135,10 @@
 						</div> 
 						<div class=" col-md-3" style="height: 100px;width: 100px; overflow: hidden;">
 							<img src="{{imageSrc2}}"/>	
-						</div>   
+						</div>
+						<div class=" col-md-3" style="height: 100px;width: 100px; overflow: hidden;">
+							<img src="{{imageSrc3}}"/>	
+						</div>    
 					</div>
 				</div>
 			</div>

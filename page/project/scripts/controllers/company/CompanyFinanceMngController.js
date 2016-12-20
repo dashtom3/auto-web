@@ -113,6 +113,7 @@ function validate_money(money){
 	if (money == ""){
 		return false;
 	}
+	return true;
 }
 function validate_year( newYear ){
 	for (i in $scope.financeList){

@@ -1,32 +1,32 @@
 <div class="sidebar col-md-3 col-lg-2" ng-controller="CompanySideBarController" style="padding-left: 0px; padding-right: 0px;">
 	<ul class="nav nav-sidebar" style="margin-top: 1px;border-right:2px solid #f7f7f5; " >
 		<li >	
-			<a ng-click="toPage('companyBasicInfo')"> <img src="imgs/basic_info.jpg"> <span>企业基本信息</span></a>
+			<a ng-click="toPage('companyBasicInfo')"> <img src="page/project/images/company/info.png"> <span>企业基本信息</span></a>
 		</li>	
 		<li >
-			<a ng-click="toPage('companyNewsMng')"> <img src="imgs/basic_info.jpg" > <span>企业资讯管理</span></a>
+			<a ng-click="toPage('companyNewsMng')"> <img src="page/project/images/company/news.png" > <span>企业资讯管理</span></a>
 
 		</li>
 		<li >	
-			<a ng-click="toPage('companyProductMng')"> <img src="imgs/basic_info.jpg" > <span>企业产品管理</span></a>
+			<a ng-click="toPage('companyProductMng')"> <img src="page/project/images/company/product.png" > <span>企业产品管理</span></a>
 		</li>	
 		<li>
-			<a ng-click="toPage('companyFinanceMng')"> <img src="imgs/basic_info.jpg" > <span>企业财务信息管理 </span></a>
+			<a ng-click="toPage('companyFinanceMng')"> <img src="page/project/images/company/money.png" > <span>企业财务信息管理 </span></a>
 		</li>	
 		<li>
-			<a ng-click="toggleTestList()"> <img src="imgs/basic_info.jpg" ><span> 企业测评管理</span>
-				<img ng-show="testShow" src="imgs/expand.png" style="margin-left: 60px;">
-				<img ng-hide="testShow" src="imgs/shrink.png" style="margin-left: 60px;">
+			<a ng-click="toggleTestList()"> <img src="page/project/images/company/test.png" ><span> 企业测评管理</span>
+				<!-- <img ng-show="testShow" src="page/project/images/company/test.png" style="margin-left: 60px;">
+				<img ng-hide="testShow" src="page/project/images/company/test.png" style="margin-left: 60px;"> -->
 			</a>
 		</li>
 		<li ng-show="testShow" class="m-toggle-item">
 			<a  ng-click="toPage('companyUserTest')" > <span> 专业测评</span></a>
 		</li>
 		<li ng-show="testShow" class="m-toggle-item">
-			<a style="">  <span>用户测评</span></a>
+			<a ng-click="toPage('companyUserTest')">  <span>用户测评</span></a>
 		</li>		
 		<li>
-			<a style=""> <img src="imgs/basic_info.jpg"><span> 企业投融资信息管理</span></a>
+			<a style=""> <img src="page/project/images/company/money.png"><span> 企业投融资信息管理</span></a>
 		</li>	
 	</ul>
 </div>

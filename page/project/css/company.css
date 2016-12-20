@@ -5,6 +5,18 @@
 	margin-right: 0px; 
 	margin-left: 0px;
 }
+.nav> li > a > img{
+	height: 22px;
+	width: 22px;
+}
+.img-sm-logo{
+	height: 15px;
+	width: 15px;
+}
+.img-md-logo{
+	height: 25px;
+	width: 25px;
+}
 .basic-first-row{
 	margin-top: 20px;
 }
@@ -159,6 +171,20 @@ select,input{
 	font-family: 等线;
 	border-radius: 5px;
 	color: #fff;
+}
+.m-btn-yes{
+	line-height: 22px;
+	background-color: #c74b36;
+	font-size: 15px;
+	font-family: 等线;
+	border-radius: 5px;
+}
+.m-btn.no{
+	line-height: 22px;
+	background-color: #f7f7f5;
+	font-size: 15px;
+	font-family: 等线;
+	border-radius: 5px;
 }
 .m-img-btn{
 	padding: 0px; 

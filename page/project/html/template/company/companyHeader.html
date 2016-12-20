@@ -1,17 +1,17 @@
 <div ng-controller="CompanyHeaderController">
 	 <nav class="navbar navbar-fixed-top" role = "navigation" style="height: 90px; background-color:#3f3835; border-bottom:4px solid #c74b36; margin-bottom: 0px">
 	 	<div class="navbar-header" style="vertical-align:middle;margin-top:20px;margin-left: 20px;">
-			<img src="imgs/car_logo.jpg">
+			<img src="page/project/images/company/logo.png">
 
 	 	</div>
 	 	<div class="navbar-header" style="vertical-align:middle;margin-top:30px;margin-left: 20px;">
 	 		<p style="font-size: 27px; font-family: 等线; color: #fff">企业后台管理系统</p>
 	 	</div>
 	 	<div class="nav navbar-right" style="vertical-align:middle;margin-top:34px;margin-right: 40px;">
-	 		<p style="font-size: 23px; font-family: 方正兰亭超细黑简体; color: #fff">上海小软酱软件科技有限公司</p>
+	 		<p style="font-size: 23px; font-family: 方正兰亭超细黑简体; color: #fff" >{{companyName}}</p>
 	 	</div>
 	 	<div class="nav navbar-right" style="vertical-align:middle;margin-top:28px;margin-right: 10px;">
-	 		<img src="imgs/company_logo.jpg">
+	 		<img src="{{companyLogo}}">
 	 	</div>
 	 </nav>
 </div>
