@@ -11,7 +11,11 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
         controller: 'MainController'
         //redirectTo: '/error'
       })
-      
+      .when('/companyCreate', {
+        templateUrl: 'page/project/html/views/user/companyCreate.html',
+        controller: 'MainController'
+        //redirectTo: '/error'
+      })
       $locationProvider.html5Mode(true);
   });
     // $routeProvider
