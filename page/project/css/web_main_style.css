@@ -1,6 +1,7 @@
 <style>
 	body{
 		font-family: "Hiragino Sans GB",Helvetica,Arial !important;
+		background-color: #F7F7F5;
 	}
 	.navbar{
 		border-radius: 0px;
@@ -28,9 +29,51 @@
 	.navbar .navbar-nav > .active > a:hover,
 	.navbar .navbar-nav > .active > a:focus{
 		border-bottom: solid 4px #C0493A;
+		color: #9d9d9d;
 	}
 	.navbar li > a > p{
 		margin: 0px;
 		line-height: 16px;
+	}
+	.auto-footer{
+		background-color: #2A2624;
+		height:120px;
+	}
+	.auto-footer .container{
+		padding-top: 25px;
+		padding-left: 50px;
+		color: #9d9d9d;
+		font-size: 12px;
+	}
+	.auto-footer .container img{
+		height: 45px;
+		width: 45px;
+	}
+	.auto-footer >img {
+		height: 100%;
+		opacity: 0.5;
+		float: left;
+	}
+	.auto-footer-weixin{
+		float: left;
+		margin-left: 20px;
+		text-align: center;
+	}
+	.auto-footer-weixin p{
+		margin-top: 5px;
+	}
+	.auto-footer-connect{
+		float: left;
+		/*margin-left: px;*/
+		
+		margin-left: 100px;
+	}
+	.auto-footer-connect a{
+		color: #9d9d9d;
+		margin: 15px;
+	}
+	.auto-footer-connect p{
+		margin-top: 15px;
+		margin-left: 15px;
 	}
 </style>
