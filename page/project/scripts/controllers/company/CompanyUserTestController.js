@@ -65,4 +65,8 @@ function CompanyUserTestController($scope,fileReader,Upload) {
 			}
 		}
 	}
+
+	$scope.pageCount = 5;
+	$scope.pageSize = 4;
+	$scope.total = 50;
 }

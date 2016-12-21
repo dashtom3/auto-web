@@ -1,4 +1,4 @@
-angular.module('Company')
+angular.module('auto-biz-user')
 .directive('fileModel', ['$parse', function ($parse) {
 	return {
 		restrict: 'A',
