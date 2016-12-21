@@ -6,15 +6,18 @@
 <!--jquery && bootstrap-->
     <script src="page/common/jquery/jquery.js"></script>
     <link href="page/common/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="page/common/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet">
     <link href="data:text/css;charset=utf-8," data-href="page/common/bootstrap-3.3.5-dist/css/bootstrap-theme.min.css" rel="stylesheet" id="bs-theme-stylesheet">
     <script src="page/common/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+<!-- Custom styles for this template -->
+    <link href="page/common/bootstrap-3.3.5-dist/css/dashboard.css" rel="stylesheet">
 <!--angular-->
     <script src="page/common/angular/angular.js"></script>
     <script src="page/common/angular/angular-route.js"></script>
+    <script src="page/common/angular/paging.js"></script>
 <!-- css -->
     <link href="page/project/css/web_main_style.css" rel="stylesheet" />
     <link href="page/project/css/company.css" rel="stylesheet" />
-        <!-- pagination -->
     <script src='page/common/angular/pagination/dist/paging.min.js'></script>
     <!-- ng-fileupload -->
     <script src='page/common/angular/fileupload/ng-file-upload.min.js'></script>
@@ -43,15 +46,20 @@
     <div ng-include="'project/html/footer.html'"></div> -->
 <body>
     <div ng-view></div>
-
-
 <!-- app.js -->
     <script src="page/project/scripts/app.js"></script>
+    
 <!-- controller.js -->
     <script src="page/project/scripts/controllers/MainController.js"></script>
     <script src="page/project/scripts/controllers/HeaderController.js"></script>
     <script src="page/project/scripts/controllers/FooterController.js"></script>
     <!-- compantController.js -->
+
+<!--AdminController-->
+    <script src="page/project/scripts/controllers/admin/AdminController.js"></script>
+    <script src="page/project/scripts/controllers/admin/userListController.js"></script>
+    <script src="page/project/scripts/controllers/admin/companyListController.js"></script>
+<!-- compantController.js -->
     <script src="page/project/scripts/controllers/company/CompanyMainController.js"></script>
     <script src="page/project/scripts/controllers/company/CompanyHeaderController.js"></script>
     <script src="page/project/scripts/controllers/company/CompanySideBarController.js"></script>
@@ -66,6 +74,7 @@
 <!-- service.js -->
     <script src="page/project/scripts/services/DemoService.js"></script>
     <script src="page/project/scripts/services/HeaderService.js"></script>
+    <script src="page/project/scripts/services/adminService.js"></script>
     <!-- company.services -->
     <script src="page/project/scripts/services/company/fileReaderService.js"></script>
 

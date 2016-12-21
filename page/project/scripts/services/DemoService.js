@@ -10,7 +10,7 @@ angular.module('auto-biz-user')
         //     deferred.resolve(self.userList);
         // }else{
         console.log("读取data网络数据");
-        $http.get('http://123.56.220.72:3300/user/login?name=aaa&password=123')
+        $http.get('http://127.0.0.1:3300/user/login?name=aaa&password=123')
             .success(function(data, status, headers, config){
                 console.log(data);
                 if(data.isSuccess == "1"){

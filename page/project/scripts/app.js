@@ -19,6 +19,11 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
       .when('/company',{
         templateUrl: 'page/project/html/views/company/company.html',
         controller: 'CompanyMainController'
+      })
+      .when('/admin', {
+        templateUrl: 'page/project/html/views/admin/admin.html',
+        controller: 'AdminController'
+        //redirectTo: '/error'
       });
       $locationProvider.html5Mode(true);
   });
