@@ -1,0 +1,36 @@
+<div ng-controller="AdminController">
+
+<!-- <div ng-include="'project/html/header.html'"></div> -->
+<!-- 导航栏 -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">管理平台</a>
+        </div>
+</nav>
+
+<!--侧边栏-->
+<div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a ng-click="setPage('userList')">用户列表</a></li>
+            <li><a ng-click="setPage('companyList')">企业列表</a></li>
+            <li><a ng-click="setPage('companyProduct')">企业产品</a></li>
+            <li><a ng-click="setPage('companyNews')">企业资讯</a></li>
+            <li><a ng-click="setPage('companyPriReport')">企业用户测评</a></li>
+            <li><a ng-click="setPage('companyPubReport')">企业专业测评</a></li>
+          </ul>
+</div>
+  
+<!-- 展示栏 -->
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div ng-if="currentPage == 'userList'" ng-include="'page/project/html/views/admin/userList.html'"></div>
+    <div ng-if="currentPage == 'companyList'" ng-include="'page/project/html/views/admin/companyList.html'"></div>
+    <div ng-if="currentPage == 'companyProduct'" ng-include="'page/project/html/views/admin/companyProduct.html'"></div>
+    <div ng-if="currentPage == 'companyNews'" ng-include="'page/project/html/views/admin/companyNews.html'"></div>
+    <div ng-if="currentPage == 'companyPriReport'" ng-include="'page/project/html/views/admin/companyPriReport.html'"></div>
+    <div ng-if="currentPage == 'companyPubReport'" ng-include="'page/project/html/views/admin/companyPubReport.html'"></div>
+</div>
+
+
+
+
+</div>

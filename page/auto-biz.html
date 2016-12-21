@@ -6,11 +6,17 @@
 <!--jquery && bootstrap-->
     <script src="page/common/jquery/jquery.js"></script>
     <link href="page/common/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="page/common/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet">
     <link href="data:text/css;charset=utf-8," data-href="page/common/bootstrap-3.3.5-dist/css/bootstrap-theme.min.css" rel="stylesheet" id="bs-theme-stylesheet">
     <script src="page/common/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+<!-- Custom styles for this template -->
+    <link href="page/common/bootstrap-3.3.5-dist/css/dashboard.css" rel="stylesheet">
+    <!--<script src="page/common/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>-->
+    <!--<script src="page/common/bootstrap-3.3.5-dist/js/bootstrap-modal.js"></script>-->
 <!--angular-->
     <script src="page/common/angular/angular.js"></script>
     <script src="page/common/angular/angular-route.js"></script>
+    <script src="page/common/angular/paging.js"></script>
 <!-- css -->
     <link href="page/project/css/web_main_style.css" rel="stylesheet" />
 
@@ -27,7 +33,6 @@
 <body>
     <div ng-view></div>
 
-
 <!-- app.js -->
     <script src="page/project/scripts/app.js"></script>
 <!-- controller.js -->
@@ -36,9 +41,15 @@
     <script src="page/project/scripts/controllers/FooterController.js"></script>
     <script src="page/project/scripts/controllers/PartAController.js"></script>
     <script src="page/project/scripts/controllers/PartBController.js"></script>
+<!--AdminController-->
+    <script src="page/project/scripts/controllers/admin/AdminController.js"></script>
+    <script src="page/project/scripts/controllers/admin/userListController.js"></script>
+    <script src="page/project/scripts/controllers/admin/companyListController.js"></script>
+    
 <!-- service.js -->
     <script src="page/project/scripts/services/DemoService.js"></script>
     <script src="page/project/scripts/services/HeaderService.js"></script>
+    <script src="page/project/scripts/services/adminService.js"></script>
 <!-- directive.js -->
     <script src="page/project/scripts/directives/DemoDirectives.js"></script>
 <!-- filter.js -->

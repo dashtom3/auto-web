@@ -6,9 +6,9 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
         templateUrl: 'page/project/html/views/user/news.html',
         controller: 'MainController'
       })
-      .when('/home', {
-        templateUrl: 'page/project/html/views/user/news.html',
-        controller: 'MainController'
+      .when('/admin', {
+        templateUrl: 'page/project/html/views/admin/admin.html',
+        controller: 'AdminController'
         //redirectTo: '/error'
       })
       
