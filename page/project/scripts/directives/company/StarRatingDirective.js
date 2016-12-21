@@ -1,3 +1,4 @@
+
 angular.module('auto-biz-user').directive('star', function () {
   return {
     template: '<ul class="rating" ng-mouseleave="leave()">' +

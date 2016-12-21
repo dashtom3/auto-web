@@ -1,19 +1,72 @@
-<style>
+
 .cmp-create{
+	margin: auto;
 	margin-bottom:24px; 
-	width: 660px;
-	background-color: white;
+	width: 960px;
+}
+.cmp-create .row{
+	margin: 0px;
 }
 .cmp-create-fir{
-	height: 170px;
+	height: 250px;
 	margin-top: 16px;
+	background-color: white;
+	text-align: center;
+	box-shadow: 0 0 7px rgba(0, 0, 0, .15);
+	padding-left: 150px;
+	padding-right:150px;
+}
+.cmp-create-fir h4{
+	color: #830000;
+}
+.cmp-create-fir p{
+	font-size: 13px;
+	margin: 0px 0px 5px 0px;
+	color: #B68E84;
+}
+.cmp-create label{
+	font-size: 12px;
+	font-weight: normal;
+}
+.cmp-create-fir .form-group{
+	margin: 10px;
 }
 .cmp-create-sec{
-	height: 260px;
+	height: 374px;
 	margin-top: 8px;
+	background-color: white;
+    box-shadow: 0 0 7px rgba(0, 0, 0, .15);
+    padding:32px 150px 20px 150px;
+    text-align: left;
 }
 .cmp-create-thi{
-	height: 360px;
+	height: 526px;
 	margin-top: 8px;
+	background-color: white;
+    box-shadow: 0 0 7px rgba(0, 0, 0, .15);
+    padding-left: 150px;
+	padding-right:150px;
 }
-</style>
+.cmp-create-register{
+	float: left;
+	text-align: left;
+	width: 50%;
+}
+.cmp-create-register input{
+	margin: 5px 0px 0px 0px;
+	padding: 0px;
+}
+.cmp-create-register label{
+	margin: 4px 0px 0px 0px ;
+	padding: 10px 0px 0px 0px;
+}
+.cmp-create-sec input{
+	margin: 5px 0px 0px 0px;
+	padding: 0px;
+}
+.cmp-create-sec label{
+	margin: 4px 0px 0px 0px ;
+	padding: 10px 0px 0px 0px;
+
+}
+

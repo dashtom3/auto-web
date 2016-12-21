@@ -1,3 +1,4 @@
+
 angular.module('auto-biz-user')
 .directive('fileModel', ['$parse', function ($parse) {
 	return {
@@ -19,4 +20,5 @@ angular.module('auto-biz-user')
 			});
 		}
 	};
+
 }]);

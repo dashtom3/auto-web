@@ -29,4 +29,5 @@ angular.module('auto-biz-user')
   return {
     readAsDataUrl: readAsDataURL  
   };
+
 }])
