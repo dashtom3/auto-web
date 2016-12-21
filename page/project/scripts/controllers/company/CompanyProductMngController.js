@@ -180,14 +180,15 @@ function CompanyProductMngController($scope,fileReader,Upload) {
 
 		}  
 		console.log(file);
-		// Upload.upload({
-		// 	url: 'upload/url',
-		// 	data: {file: file, 'fileName': item.fileName}
-		// }).then(function (resp) {
-		// 	console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-		// }, function (resp) {
-		// 	console.log('Error status: ' + resp.status);
-		// });
+		Upload.upload({
+			url: 'upload',
+			data: {'fileName': item.fileName},
+			file: file
+		}).then(function (resp) {
+			console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+		}, function (resp) {
+			console.log('Error status: ' + resp.status);
+		});
 	};
 	// $scope.upload = function(file){
 	// 	console.log(file);

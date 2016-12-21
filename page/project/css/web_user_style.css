@@ -1,19 +1,58 @@
-<style>
+
 .cmp-create{
+	margin: auto;
 	margin-bottom:24px; 
-	width: 660px;
-	background-color: white;
+	width: 65%;
+	min-width: 680px;
 }
 .cmp-create-fir{
-	height: 170px;
+	height: 180px;
 	margin-top: 16px;
+	background-color: white;
+	text-align: center;
+	box-shadow: 0 0 7px rgba(0, 0, 0, .15);
+	padding-left: 15%;
+	padding-right:15%;
+}
+.cmp-create-fir h5{
+	color: #830000;
+}
+.cmp-create-fir p{
+	font-size: 10px;
+	margin: 0px;
+	color: #B68E84;
+}
+.cmp-create-fir label{
+	font-size: 12px;
+	font-weight: normal;
+}
+.cmp-create-fir .form-group{
+	margin: 5px;
 }
 .cmp-create-sec{
 	height: 260px;
 	margin-top: 8px;
+	background-color: white;
+    box-shadow: 0 0 7px rgba(0, 0, 0, .15);
 }
 .cmp-create-thi{
 	height: 360px;
 	margin-top: 8px;
+	background-color: white;
+    box-shadow: 0 0 7px rgba(0, 0, 0, .15);
 }
-</style>
+.cmp-create-register{
+	float: left;
+	text-align: left;
+	width: 50%;
+}
+.cmp-create-register input{
+	margin: 5px 0px 0px 0px;
+	padding: 0px;
+}
+.cmp-create-register label{
+	margin: 5px 0px 0px 0px ;
+	padding: 10px 0px 0px 0px;
+
+}
+

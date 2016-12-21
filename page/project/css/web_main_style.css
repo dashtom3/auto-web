@@ -1,7 +1,7 @@
-<style>
+
 	body{
-		font-family: "Hiragino Sans GB",Helvetica,Arial !important;
-		background-color: #F7F7F5;
+		/*font-family: "Hiragino Sans GB",Helvetica,Arial !important;*/
+		background-color: #F7F7F5 ;
 	}
 	.navbar{
 		border-radius: 0px;
@@ -76,4 +76,4 @@
 		margin-top: 15px;
 		margin-left: 15px;
 	}
-</style>
+

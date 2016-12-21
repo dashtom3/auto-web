@@ -17,6 +17,7 @@
     <script src="page/common/angular/paging.js"></script>
 <!-- css -->
     <link href="page/project/css/web_main_style.css" rel="stylesheet" />
+    <link href="page/project/css/web_user_style.css" rel="stylesheet" />
     <link href="page/project/css/company.css" rel="stylesheet" />
     <script src='page/common/angular/pagination/dist/paging.min.js'></script>
     <!-- ng-fileupload -->
@@ -35,25 +36,17 @@
     <script src='page/common/angular/textAngular/dist/textAngular.min.js'></script>
 
 </head>
-<!--  <body ng-controller="MainController">
-
-    <div ng-include="'project/html/header.html'"></div>
-
-    <div ng-if="currentPage == 'partA'" ng-include="'project/html/partA.html'"></div>
-    
-    <div ng-if="currentPage == 'partB'" ng-include="'project/html/partB.html'"></div>
-
-    <div ng-include="'project/html/footer.html'"></div> -->
 <body>
     <div ng-view></div>
 <!-- app.js -->
     <script src="page/project/scripts/app.js"></script>
     
 <!-- controller.js -->
-    <script src="page/project/scripts/controllers/MainController.js"></script>
-    <script src="page/project/scripts/controllers/HeaderController.js"></script>
-    <script src="page/project/scripts/controllers/FooterController.js"></script>
-    <!-- compantController.js -->
+<!-- userController.js -->
+    <script src="page/project/scripts/controllers/user/MainController.js"></script>
+    <script src="page/project/scripts/controllers/user/HeaderController.js"></script>
+    <script src="page/project/scripts/controllers/user/FooterController.js"></script>
+    <script src="page/project/scripts/controllers/user/CompanyCreateController.js"></script>
 
 <!--AdminController-->
     <script src="page/project/scripts/controllers/admin/AdminController.js"></script>
@@ -72,9 +65,12 @@
     <script src="page/project/scripts/controllers/company/companyUserTestTabController.js"></script>
 
 <!-- service.js -->
-    <script src="page/project/scripts/services/DemoService.js"></script>
-    <script src="page/project/scripts/services/HeaderService.js"></script>
-    <script src="page/project/scripts/services/adminService.js"></script>
+    <!-- commonService -->
+    <script src="page/project/scripts/services/common/GlobalService.js"></script>
+    <script src="page/project/scripts/services/common/AuthService.js"></script>
+    <!-- userService -->
+    <script src="page/project/scripts/services/user/DemoService.js"></script>
+    <script src="page/project/scripts/services/user/HeaderService.js"></script>
     <!-- company.services -->
     <script src="page/project/scripts/services/company/fileReaderService.js"></script>
 
