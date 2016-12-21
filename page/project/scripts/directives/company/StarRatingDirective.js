@@ -1,4 +1,4 @@
-angular.module('Company').directive('star', function () {
+angular.module('auto-biz-user').directive('star', function () {
   return {
     template: '<ul class="rating" ng-mouseleave="leave()">' +
         '<li ng-repeat="star in stars" ng-class="star" ng-click="click($index + 1)" ng-mouseover="over($index + 1)">' +

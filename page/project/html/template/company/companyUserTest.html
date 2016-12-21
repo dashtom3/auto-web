@@ -96,6 +96,18 @@
 				</tr>
 			</tbody>
 		</table>
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-6">
+				<paging
+				  page="currentPage" 
+				  page-size="pageSize" 
+				  total="total"
+				  show-prev-next="true"
+				  show-first-last="true"
+				  >
+				</paging> 
+			</div>
+		</div>
 	</div>
 
 
@@ -179,7 +191,7 @@
 								<div class="col-lg-3" ng-show="modalStatus == 'addModal'">
 									<input class="form-control" type="text" ng-model="addUserTestPeople"/>
 								</div>
-								<div class="col-lg-3" ng-show="lmodalStatus == 'lookModal'">
+								<div class="col-lg-3" ng-show="modalStatus == 'lookModal'">
 									<span class="m-span"> {{tmpUserTest.userTestPeople}} </span>
 								</div>
 							</div>
@@ -188,7 +200,7 @@
 								<div class="col-lg-9" ng-show="modalStatus == 'addModal'">
 									<textarea class="form-control" rows="3" ng-model="addUserTestShortCut"></textarea>
 								</div>
-								<div class="col-lg-9" ng-show="lookModal">
+								<div class="col-lg-9" ng-show="modalStatus == 'lookModal'">
 									<span class="m-span"> {{tmpUserTest.userTestShortCut}} </span>
 								</div>
 							</div>
@@ -204,7 +216,7 @@
 										<input type="radio" ng-value="byMail" ng-model="addState" name="selectState">邮寄
 									</label>
 								</div>
-								<div class="col-lg-3" ng-show="lookModal">
+								<div class="col-lg-3" ng-show="modalStatus == 'lookModal'">
 									<span class="m-span"> {{tmpUserTest.useTestState}} </span>
 								</div>
 							</div>
@@ -213,7 +225,7 @@
 								<div class="col-lg-9" ng-show="modalStatus == 'addModal'">
 									<textarea class="form-control" rows="3" ng-model="addUserTestAddress"></textarea>
 								</div>
-								<div class="col-lg-9" ng-show="lookModal">
+								<div class="col-lg-9" ng-show="modalStatus == 'lookModal'">
 									<span class="m-span"> {{tmpUserTest.userTestAddress}} </span>
 								</div>
 							</div>
@@ -225,9 +237,28 @@
 										<button ng-click="deleteTag(tag)">x</button>
 									</div>
 									<div style="display: inline-block; vertical-align: middle;">
-										<button style="background:url(imgs/addTag.jpg); width: 33px;height: 31px; border: 0px; " ng-click="newTag()" data-toggle="modal" data-target="#newTagModal"></button>
+										<button style="background:url(page/project/images/company/addTag.jpg); width: 33px;height: 31px; border: 0px; " ng-click="newTag()" data-toggle="modal" data-target="#newTagModal"></button>
 									</div>				
 								</div>
+							</div>
+							<div class="row" >
+								<div class="row">
+									<label class="col-lg-3 control-label" style="text-align: center;" >相关图片:</label>
+								</div>
+								<div class="row m-thumb-row" ng-show="modalStatus == 'addModal'" >
+									<div class="col-lg-4" ng-repeat = "item in thumbList" >
+										<img src="{{item.file}}">
+										<button class="btn-delete-thumb" style="background:url(page/project/images/company/delete_thumb.jpg);" ng-click="delete_thumb(item)" > </button>
+									</div>
+									<div class="col-lg-4" ng-model="newThumb" ngf-resize="{width: 200, height: 200, quality: 0.9,centerCrop: true}" ngf-select="upload($file)" >
+										<img src="page/project/images/company/add_thumb.jpg" alt="点击添加图片" >
+									</div>
+								</div>
+								<div class="row m-thumb-row" ng-show="modalStatus == 'lookModal'" >
+									<div class="col-lg-4" ng-repeat = "item in tmpProduct.productThumbList" >
+										<img src="{{item.file}}">
+									</div>
+								</div>							
 							</div>
 						</form>
 					</div>

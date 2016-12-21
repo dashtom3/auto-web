@@ -1,4 +1,4 @@
-angular.module('Company')
+angular.module('auto-biz-user')
 .factory('fileReader', ["$q", "$log", function($q, $log){
   var onLoad = function(reader, deferred, scope) {
     return function () {
