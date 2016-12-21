@@ -1,0 +1,19 @@
+<style>
+.cmp-create{
+	margin-bottom:24px; 
+	width: 660px;
+	background-color: white;
+}
+.cmp-create-fir{
+	height: 170px;
+	margin-top: 16px;
+}
+.cmp-create-sec{
+	height: 260px;
+	margin-top: 8px;
+}
+.cmp-create-thi{
+	height: 360px;
+	margin-top: 8px;
+}
+</style>

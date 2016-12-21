@@ -1,0 +1,217 @@
+<div class="col-lg-10 col-md-9 m-div-product" ng-controller="CompanyProductMngController" >
+	<div class="row first-row">
+		<div class="col-lg-4 col-lg-offset-2">
+			<input class="form-control form-control-lg search-input" type="text" ng-model="searchStr" >
+		</div>
+		<div class="col-lg-2">
+			<button class="btn btn-block m-btn">
+				<img class="img-sm-logo" src="page/project/images/company/search.png">
+				查找产品
+			</button>
+		</div>
+		<div class="col-lg-2">
+			<button class="btn btn-block m-btn" data-toggle="modal" data-target="#productModal" ng-click="btnAddProduct()" >
+				<img class="img-sm-logo" src="page/project/images/company/search.png">
+				添加产品
+			</button>
+		</div>
+	</div>
+	<div class="row second-row">
+		<table class="table table-striped m-table" >
+			<thead >
+				<tr>
+					<th class="col-lg-2">缩略图</th>
+					<th class="col-lg-1">序号</th>
+					<th class="col-lg-2">发布日期</th>
+					<th class="col-lg-3">产品名称</th>
+					<th class="col-lg-2">状态</th>
+					<th class="col-lg-2">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in productList">
+					<td>
+						<img src="{{item.productThumb}}" style="height: 100px; max-width: 170px; overflow: hidden;">
+					</td>
+					<td>
+						<span>{{item.productID}}</span>
+					</td>
+					<td>
+						<span> {{item.productDate}}</span>
+					</td>
+					<td>
+						<span> {{item.productName}}</span>
+					</td>
+					<td>
+						<span> {{item.productStatus}}</span>
+					</td>
+					<td>
+						<div class="row">
+							<div class="col-lg-2 col-lg-offset-2">
+								<button class="m-img-btn" ng-click="btnLookProduct(item)" data-toggle="modal" data-target="#productModal"> 
+									<img class="img-md-logo" src="page/project/images/company/view.png">
+								</button>
+							</div>
+							<div class="col-lg-2">
+								<button class="m-img-btn" ng-click="deleteProduct(item.productID)" data-toggle="modal" data-target="#myDeleteModal"> 
+									<img class="img-md-logo" src="page/project/images/company/delete.png">
+								</button>
+							</div>
+							<div class="col-lg-2">
+								<button class="m-img-btn" ng-click= "btnEditProduct(item)" data-toggle="modal" data-target="#productModal"> 
+									<img class="img-md-logo" src="page/project/images/company/edit.png">
+								</button>
+							</div>
+							<div class="col-lg-2">
+								<button class="m-img-btn" ng-click = "changeProductStatus(item.productID)"> 
+									<img class="img-md-logo" src="page/project/images/company/switch.png">
+								</button>
+							</div>
+						</div>
+					</td>
+					<!-- 删除弹出框 -->
+					<div class="modal fade" id="myDeleteModal" aria-hidden="true" role="dialog" >
+						<div class="modal-dialog moadl-sm" >
+							<div class="modal-content" >
+								<div class="modal-body" >
+									<div class="row m-row-delete"  id="m-row-delete">
+										<!-- <img src="imgs/add_thumb.jpg"> -->
+										<span>确定要删除吗</span>
+									</div>
+									<button class="btn m-btn-cancel" ng-click="cancelDelete()" id="m-btn-cancel" data-dismiss="modal" >
+										取消
+									</button>
+									<button class="btn " id="m-btn-sure" ng-click="confirmDelete()" data-dismiss="modal">
+										确认
+									</button>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="row">
+		<div class="col-lg-6 col-lg-offset-6">
+			<paging
+			page="currentPage" 
+			page-size="pageSize" 
+			total="total"
+			show-prev-next="true"
+			show-first-last="true"
+			>
+		</paging> 
+	</div>
+</div>
+<div class="modal fade" id="productModal" aria-hidden="true">
+	<div class="modal-dialog modal-lg" >
+		<div class="modal-content">
+			<div class="modal-head">
+				<h4  ng-show = "addModal"> 添加产品</h4>
+				<h4 ng-show = "lookModal"> 查看产品</h4>
+				<h4  ng-show = "editModal"> 编辑产品</h4>
+			</div>
+			<div class="modal-body modal-roll-product">
+				<div class="row">
+					<form role="form" class="form-horizontal form-lg">
+						<div class="row" style="margin-right: 30px;">
+							<label class="col-lg-2 control-label" style="text-align: center;">名称:</label>
+							<div class="col-lg-5" ng-show="addModal">
+								<input class="form-control" type="text" ng-model="addProductName"/>
+							</div>
+							<div class="col-lg-5" ng-show="lookModal">
+								<span class="m-span"> {{tmpProduct.productName}} </span>
+							</div>
+							<div class="col-lg-5" ng-show="editModal">
+								<input class="form-control" type="text" ng-model="tmpProduct.productName"/>
+							</div>
+						</div>
+						<div class="row" style="margin-right: 30px;margin-top: 10px;">
+							<label class="col-lg-2 control-label" style="text-align: center;">标签:</label>
+							<div class="col-lg-5" ng-show="addModal">
+								<select class="form-control" ng-model="addSelectedTags" ng-options="x for x in tagOptions" ></select>
+							</div>
+							<div class="col-lg-5" ng-show="lookModal">
+								<span class="m-span"> {{tmpProduct.selectedTags}} </span>
+							</div>
+							<div class="col-lg-5" ng-show="editModal">
+								<select class="form-control" ng-model="tmpProduct.selectedTags" ng-options="x for x in tagOptions" ></select>
+							</div>
+						</div>
+						<div class="row" style="margin-right: 30px;margin-top: 10px;">
+							<label class="col-lg-2 control-label" style="text-align: center;">参数:</label>
+							<div class="col-lg-10" ng-show="addModal">
+								<input class="form-control" type="text" ng-model="addProductConf"/>
+							</div>
+							<div class="col-lg-10" ng-show="lookModal">
+								<span class="m-span"> {{tmpProduct.productConf}} </span>
+							</div>
+							<div class="col-lg-10" ng-show="editModal">
+								<input class="form-control" type="text" ng-model="tmpProduct.productConf"/>
+							</div>
+						</div>
+						<div class="row" style="margin-right: 30px; margin-top: 10px;">
+							<label class="col-lg-2 control-label" style="text-align: center;" >介绍:</label>
+							<div class="col-lg-10" ng-show="addModal">
+								<textarea class="form-control" rows="3" ng-model="addProductShortCut"></textarea>
+							</div>
+							<div class="col-lg-10" ng-show="lookModal">
+								<span class="m-span"> {{tmpProduct.productShortCut}} </span>
+							</div>
+							<div class="col-lg-10" ng-show="editModal">
+								<textarea class="form-control" rows="3" ng-model="tmpProduct.productShortCut"></textarea>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="row" style="margin-top: 20px;">
+					<div class="row">
+						<label class="col-lg-2 control-label" style="text-align: center;" >产品图片:</label>
+					</div>
+					<div class="row m-thumb-row" ng-show="addModal" >
+						<div class="col-lg-3" ng-repeat = "item in thumb" >
+							<img src="{{item.file}}">
+							<button class="btn-delete-thumb" style="background:url(imgs/delete_thumb.jpg);" ng-click="delete_thumb(item)" > </button>
+						</div>
+						<div class="col-lg-3" ng-model="newThumb" ngf-resize="{width: 200, height: 200, quality: 0.9,centerCrop: true}" ngf-select="upload($file)" >
+							<img src="page/project/images/company/add_thumb.jpg" alt="点击添加图片" >
+						</div>
+					</div>
+					<div class="row m-thumb-row" ng-show="lookModal" >
+						<div class="col-lg-3" ng-repeat = "item in tmpProduct.productThumbList" >
+							<img src="{{item.file}}">
+						</div>
+					</div>
+					<div class="row m-thumb-row" ng-show="editModal" >
+						<div class="col-lg-3" ng-repeat = "item in tmpProduct.productThumbList" >
+							<img src="{{item.file}}">
+							<button class="btn-delete-thumb" style="background:url(imgs/delete_thumb.jpg);" ng-click="delete_thumb(item)" > </button>
+						</div>
+						<div class="col-lg-3" ng-model="editThumb" ngf-resize="{width: 200, height: 200, quality: 0.9,centerCrop: true}" ngf-select="uploadWhenEdit($file)" >
+							<img alt="点击添加图片" src="page/project/images/company/add_thumb.jpg">
+						</div>
+					</div>
+					
+
+				</div>
+				<div class="row" style="margin-top: 10px;">
+					<div class="col-lg-2 col-lg-offset-4">
+						<button class="btn btn-block" id="btn-productModal-cancel" ng-click="cancel(addModal,lookModal,editModal)" data-dismiss="modal">
+							取消
+						</button>
+					</div>
+					<div class="col-lg-2">
+						<button class="btn btn-block" id="btn-productModal-sure" ng-click="confirm(addModal,lookModal,editModal)" data-dismiss="modal">
+							确定
+						</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+</div>

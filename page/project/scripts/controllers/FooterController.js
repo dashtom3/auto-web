@@ -1,4 +1,4 @@
 function FooterController($scope,DataService,HeaderService,$filter) {
-  console.log("载入FooterController");
+  console.log("载入FooterControllerss");
     
 }
