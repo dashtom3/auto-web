@@ -9,7 +9,7 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
         controller: 'MainController'
       })
       .when('/innovation/news', {
-        templateUrl: 'page/project/html/views/user/news.html',
+        templateUrl: '../page/project/html/views/user/news.html',
         controller: 'MainController'
         //redirectTo: '/error'
       })
