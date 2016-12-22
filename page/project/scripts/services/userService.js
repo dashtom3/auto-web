@@ -1,6 +1,26 @@
 angular.module('auto-biz-user')
-  .service('userService', function userService($http, $q) {
-
+  .service('UserService', function UserService($http, $q,GlobalService) {
+    //注册用户
+    this.registerUser = function(user) {
+        var deferred = $q.defer();
+        $http.post(GlobalService.baseUrl+'user/signup',{
+          user:user
+      }).success(function(data, status, headers, config){
+                console.log("注册用户");
+                if(data.isSuccess=='0'){
+                    alert(data.data)
+                    deferred.resolve("");
+                }
+                else{
+                    deferred.resolve(data.data);
+                }
+            })
+            .error(function(data, status, headers, config){
+                console.log(data);
+                deferred.reject(data);
+            });
+        return deferred.promise;
+    }
     //获取用户列表
     this.getUserList = function() {
         var deferred = $q.defer();

@@ -29,23 +29,7 @@
 	font-weight: normal;
 }
 .cmp-create-fir .form-group{
-	margin: 10px;
-}
-.cmp-create-sec{
-	height: 374px;
-	margin-top: 8px;
-	background-color: white;
-    box-shadow: 0 0 7px rgba(0, 0, 0, .15);
-    padding:32px 150px 20px 150px;
-    text-align: left;
-}
-.cmp-create-thi{
-	height: 526px;
-	margin-top: 8px;
-	background-color: white;
-    box-shadow: 0 0 7px rgba(0, 0, 0, .15);
-    padding-left: 150px;
-	padding-right:150px;
+	margin: 10px 0px 10px 0px;
 }
 .cmp-create-register{
 	float: left;
@@ -60,13 +44,57 @@
 	margin: 4px 0px 0px 0px ;
 	padding: 10px 0px 0px 0px;
 }
+.cmp-create-sec{
+	height: 374px;
+	margin-top: 8px;
+	background-color: white;
+    box-shadow: 0 0 7px rgba(0, 0, 0, .15);
+    padding:22px 150px 20px 150px;
+    text-align: left;
+}
+.cmp-create-sec .form-group{
+	margin: 5px 0px 5px 0px;
+}
 .cmp-create-sec input{
 	margin: 5px 0px 0px 0px;
 	padding: 0px;
 }
 .cmp-create-sec label{
-	margin: 4px 0px 0px 0px ;
+	margin: 2px 0px 0px 0px ;
 	padding: 10px 0px 0px 0px;
+}
+.cmp-create-intro{
+	width: 504px;
+	float: left;
+}
+.cmp-create-logo{
+	width: 110px;
+	height: 110px;
+	border: solid 1px #CCC;
+	border-radius:4px;
+	float: left;
+}
+.cmp-create-thi{
+	height: 526px;
+	margin-top: 8px;
+	background-color: white;
+    box-shadow: 0 0 7px rgba(0, 0, 0, .15);
+    padding: 32px 150px 48px 150px;
+}
+.cmp-create-thi .form-group{
+	margin: 10px 0px 10px 0px;
+}
+.cmp-create-thi .row{
 
 }
-
+.cmp-create-thi textarea{
+	margin: 5px 0px 0px 0px;
+	padding: 0px;
+}
+.cmp-create-thi label{
+	margin: 0px 0px 0px 0px ;
+	padding: 10px 0px 0px 0px;
+}
+.cmp-create-commit button{
+	margin-top: 20px; 
+}
