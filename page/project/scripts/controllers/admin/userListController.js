@@ -1,6 +1,6 @@
 function userListController($scope,userService) {
   console.log("载入userListController");
-  userService.getgetUserList().then(function(result){
+  userService.getUserList().then(function(result){
       console.log(result);
       $scope.userList = result;
       $scope.passFlag = '';
