@@ -121,8 +121,8 @@
 		</div>
 
 		</div>
-		<div class="cmp-create-logo">
-			<p>点击上传logo</p>
+		<div class="cmp-create-logo" ngf-select="upload($file)" ng-model="cmpLogo">
+			<img ngf-src="cmpLogo" ngf-resize="{width: 110, height: 110, quality: 0.9,centerCrop: true}" alt="点击添加图片" >
 		</div>
 	</div>
 	<div class="cmp-create-thi">
