@@ -1,0 +1,9 @@
+.admin-main-sidebar{
+    width: 200px;
+    float: left;
+}
+.admin-main-content{
+    width: 1000px;
+    float:left;
+    margin-left: 20px;
+}

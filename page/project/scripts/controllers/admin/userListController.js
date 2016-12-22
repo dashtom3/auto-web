@@ -1,6 +1,6 @@
-function userListController($scope,adminService) {
+function userListController($scope,userService) {
   console.log("载入userListController");
-  adminService.getUserList().then(function(result){
+  userService.getUserList().then(function(result){
       console.log(result);
       $scope.userList = result;
       $scope.passFlag = '';
@@ -16,8 +16,17 @@ function userListController($scope,adminService) {
   	//alert('newType:' + newType + '!');
     $scope.type = newType;
   }
-  //用户审核
-  $scope.setIsPass = function(isPass) {
-    $scope.passFlag = isPass;
+  //设置当前选择的审核分类
+  $scope.setcurrentPassFlag = function(passFlag) {
+    $scope.currentPassFlag = passFlag;
   }
+  //通过/否决审核
+  $scope.passUser = function(passFlag) {
+    userService.passUser(passFlag);
+  }
+  //用户权限更改
+  $scope.updateUserType = function(newType) {
+    userService.updateUserType(newType);
+  }
+
 }

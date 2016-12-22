@@ -9,7 +9,7 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
         controller: 'MainController'
       })
       .when('/innovation/news', {
-        templateUrl: 'page/project/html/views/user/news.html',
+        templateUrl: '/page/project/html/views/user/news.html',
         controller: 'MainController'
         //redirectTo: '/error'
       })
@@ -39,8 +39,8 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
     // $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
     //$locationProvider.html5Mode(true);
 // app.run(function(AuthService,$rootScope) {
-//   AuthService.login("aaa","123").then(function(result) {
-//     console.log("广播用户登录数据");
+//   AuthService.userLogin("aaa","123").then(function(result) {
+//     console.log("广播用户登录数据"+result.name);
 //     $rootScope.$broadcast('UserLogin');
 //   });
 // });

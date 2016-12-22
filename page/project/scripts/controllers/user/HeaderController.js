@@ -1,6 +1,6 @@
-function HeaderController($scope,DataService,HeaderService,$filter) {
+function HeaderController($scope,UserHeaderService,$filter) {
   console.log("载入HeaderController");
-  $scope.headerItems = HeaderService.headerList;
+  $scope.headerItems = UserHeaderService.headerList;
   $scope.currentPage = "innovation";
 
 }
