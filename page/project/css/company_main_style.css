@@ -1,0 +1,51 @@
+.company-main-div{
+	background-color: #fff;
+	height: 100%;
+	position: relative;
+}
+.company-sidebar{
+	width: 240px;
+	height: 100%;
+	border-right:1px solid #f7f7f5;
+	background-color: #fff;
+	position: absolute;
+	top:0;
+	left:0;
+}
+.company-sidebar-ul{
+	margin-top: 1px;
+}
+.company-sidebar > ul > li{
+	height: 45px;
+	line-height: 43px;
+	border-bottom: 2px solid #f7f7f5;
+}
+.company-sidebar > ul > li >a{
+	padding: 0px 0px 0px 17px;
+	font-size: 16px;
+	font-family: 等线;
+	color: #3f3835;
+	background-color: #fff;
+}
+.company-sidebar > ul > li >a >img{
+	width: 14px;
+	height: 14px;
+}
+
+
+
+.company-finance-div,
+.company-news-div,
+.company-product-div,
+.company-test-div,
+.company-userTest-div,
+.company-basicInfo-div{
+	margin-left: 240px;
+	;
+	background-color: #F7F7F5;
+	min-height: 800px;
+}
+.cmp-first-row{
+	margin-top: 20px;
+	margin-bottom: 10px;
+}

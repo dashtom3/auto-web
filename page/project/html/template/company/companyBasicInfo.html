@@ -1,202 +1,197 @@
-<div class="col-lg-10 col-md-9" ng-controller="CompanyBasicInfoController" ng-init = "isEdit=false" style="padding: 0px;">
-	<div class="container-fluid" style="background-color: #f7f7f5;border-left: 2px solid #f7f7f5;margin-right: 0px; margin-left: 0px;">
-		<div class="panel panel-default" >
-			<div class="panel-body" ">
+<div class="company-basicInfo-div container-fluid" ng-controller="CompanyBasicInfoController" ng-init = "isEdit=false" >
+	<div class="panel panel-default" >
+		<div class="panel-body" ">
 
-				<div class="row" style="margin-top: 20px">
-					<label class="col-md-2 col-md-offset-1" style="font-weight: bold;">
-						基本信息
-					</label>
-				</div>
-				<div class="row" style="margin-top: 5px">				 	
-					<div class="col-md-7 col-md-offset-1">
-						<div class="row" >
-							<label class="col-md-3 " style="font-weight: normal; font-size: 13px; margin-top:10px;">
-								公司全称：
-							</label>
-							<label  ng-if="isEdit == false" class="col-md-9" style="margin-top:10px;">{{infoList.companyFullName}}</label>
-							<input  ng-if="isEdit == true" class="col-md-9" type="text" style="margin-top:10px;" ng-model="infoList.companyFullName">
-
-							<label class="col-md-3 " style="font-weight: normal; font-size: 13px; margin-top:10px;">
-								公司简称：
-							</label>
-							<label  ng-if="isEdit == false" class="col-md-9" style="margin-top:10px;">{{infoList.companyShortName}}</label>
-							<input  ng-if="isEdit == true" class="col-md-9" type="text"  style="margin-top:10px;" ng-model="infoList.companyShortName">
-
-							<label class="col-md-3 " style="font-weight: normal; font-size: 13px; margin-top:10px;">
-								公司地址：
-							</label>
-							<label  ng-if="isEdit == false" class="col-md-3" style="margin-top:10px;">{{infoList.companyLocation}}</label>
-							<input class="col-md-3" ng-if="isEdit == true" type="text"  style="margin-top:10px;" ng-model="infoList.companyLocation">
-
-							<label class="col-md-3 " style="font-weight: normal; font-size: 13px; margin-top:12px; padding-left: 45px;">
-								所属领域：
-							</label>
-							<label  ng-if="isEdit == false" class="col-md-3" style="margin-top:10px;">{{infoList.companyArea}}</label>
-							<input class="col-md-3" ng-if="isEdit == true" type="text" style="margin-top:10px;" ng-model="infoList.companyArea">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div style="position: relative;border: 1px solid #888;height: 100px;width: 100px; overflow: hidden;text-align: center;">
-							<label >
-								<div class="button" ngf-select="upload($file)" ng-model="fileLogo" style="position: absolute; top:40px;left: 5px; z-index: 5;">点击上传logo</div>
-							</label>
-							<img ngf-src="fileLogo" ngf-resize="{width: 98, height: 98, quality: 0.9}" style="position: absolute; top:0px;left: 0px;" />	
-							
-						</div>
-
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-7 col-md-offset-1">
-						<div class="row">
-							<label class="col-md-3 " style="font-weight: normal; font-size: 13px; margin-top:10px;">
-								成立时间：
-							</label>
-
-							<span ng-if="isEdit==false" class="col-md-2" style="margin-top:12px;">{{infoList.startYear}}</span>
-							<input ng-if="isEdit==true" type="text" class="col-md-2 " style="margin-top:10px;" ng-model="infoList.startYear">
-							<span class="col-md-1" style="margin-top:12px;">年</span>
-
-							<span ng-if="isEdit==false" class="col-md-1" style="margin-top:12px;">{{infoList.startMonth}}</span>
-							<input ng-if="isEdit==true" type="text" class="col-md-1" style="margin-top:10px;" ng-model="infoList.startMonth">
-							<span class="col-md-1" style="margin-top:12px;">月</span>
-
-							<span ng-if="isEdit==false" class="col-md-1" style="margin-top:12px;">{{infoList.startDay}}</span>
-							<input ng-if="isEdit==true" type="text" class="col-md-1" style="margin-top:10px;" ng-model="infoList.startDay">
-							<span class="col-md-1" style="margin-top:12px;">日</span>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-7 col-md-offset-1">
-						<div class="row">
-
-							<label class="col-md-3 " style="font-weight: normal; font-size: 13px; margin-top:10px;">
-								法人代表：
-							</label>
-							<label  ng-if="isEdit == false" class="col-md-3" style="margin-top:10px;">{{infoList.lawPerson}}</label>
-							<input  ng-if="isEdit==true" type="text" class="col-md-3 " style="margin-top:10px;" ng-model="infoList.lawPerson">
-
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-7 col-md-offset-1">
-						<div class="row">
-							<label class="col-md-3 " style="font-weight: normal; font-size: 13px; margin-top:10px;">
-								注册资本：
-							</label>
-							<input ng-if="isEdit==true" type="text" class="col-md-3 " style="margin-top:10px;" ng-model="infoList.companyProperty">
-							<span ng-if="isEdit==false" class="col-md-3" style="margin-top:12px;">{{infoList.companyProperty}}</span>
-							<span  class="col-md-1" style="margin-top:12px;">万</span>
-						</div>
-					</div>
-				</div>	
-				<div class="row">
-					<div class="col-md-7 col-md-offset-1">
-						<div class="row">
-							<label class="col-md-3 " style="font-weight: normal; font-size: 13px; margin-top:10px;">
-								注册地址：
-							</label>
-							<label  ng-if="isEdit == false" class="col-md-9" style="margin-top:10px;">{{infoList.companyAdress}}</label>
-							<input ng-if="isEdit==true" type="text" class="col-md-9 " style="margin-top:10px;" ng-model="infoList.companyAdress">
-						</div>
-					</div>
-				</div>	
-				<br>
+			<div class="row cmp-first-row" >
+				<label class="col-md-2 col-md-offset-1 cmp-title-label" >
+					基本信息
+				</label>
 			</div>
+			<div class="row" >				 	
+				<div class="col-md-7 col-md-offset-1">
+					<div class="row cmp-input-row" >
+						<label class="col-md-3 " >
+							公司全称：
+						</label>
+						<span  ng-if="isEdit == false" class="col-md-9" >{{infoList.name}}</span>
+						<input  ng-if="isEdit == true" class="col-md-9" type="text" " ng-model="infoList.name">
+					</div>
+					<div class="row cmp-input-row">
+						<label class="col-md-3 " >
+							公司简称：
+						</label>
+						<span  ng-if="isEdit == false" class="col-md-9" >{{infoList.shortName}}</span>
+						<input  ng-if="isEdit == true" class="col-md-9" type="text"   ng-model="infoList.shortName">
+					</div>
+					<div class="row cmp-input-row">
+						<label class="col-md-3 " >
+							公司地址：
+						</label>
+						<span  ng-if="isEdit == false" class="col-md-3" >{{infoList.address}}</span>
+						<input class="col-md-3" ng-if="isEdit == true" type="text"  " ng-model="infoList.address">
+						<label class="col-md-3 " >
+							所属领域：
+						</label>
+						<span  ng-if="isEdit == false" class="col-md-3" >{{infoList.field}}</span>
+						<input class="col-md-3" ng-if="isEdit == true" type="text" ng-model="infoList.field">
+					</div>	
+
+				</div>
+				<div class="col-md-2">
+					<div  class="cmp-logo-thumb">
+						<label >
+							<div  ngf-select="upload($file)" ng-model="fileLogo">点击上传logo</div>
+						</label>
+						<img ngf-src="fileLogo" ngf-resize="{width: 98, height: 98, quality: 0.9}"  />	
+
+					</div>
+
+				</div>
+			</div>
+			<div class="row ">
+				<div class="col-md-7 col-md-offset-1">
+					<div class="row cmp-input-row">
+						<label class="col-md-3 " >
+							成立时间：
+						</label>
+						
+						<span  ng-if="isEdit == false" class="col-md-6" >{{infoList.regTime}}</span>
+						<div class='input-group input-group-sm date col-md-6 ' ng-if="isEdit==true"  datetimepicker  id='datetimepicker1'>  
+							<input type='text' class="form-control"  ng-model="dateOne"/>  
+							<span class="input-group-addon">  
+								<span class="glyphicon glyphicon-calendar"></span>  
+							</span>  
+						</div>   
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-7 col-md-offset-1">
+					<div class="row cmp-input-row">
+
+						<label class="col-md-3 " >
+							法人代表：
+						</label>
+						<span  ng-if="isEdit == false" class="col-md-3" >{{infoList.legalEntity}}</span>
+						<input  ng-if="isEdit==true" type="text" class="col-md-3" ng-model="infoList.legalEntity">
+
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-7 col-md-offset-1">
+					<div class="row cmp-input-row" >
+						<label class="col-md-3 ">
+							注册资本：
+						</label>
+						<input ng-if="isEdit==true" type="text" class="col-md-3 " ng-model="infoList.regCapital">
+						<span ng-if="isEdit==false" class="col-md-3" >{{infoList.regCapital}}</span>
+						<span  class="col-md-1" >万</span>
+					</div>
+				</div>
+			</div>	
+			<div class="row">
+				<div class="col-md-7 col-md-offset-1">
+					<div class="row cmp-input-row">
+						<label class="col-md-3 ">
+							注册地址：
+						</label>
+						<span  ng-if="isEdit == false" class="col-md-9">{{infoList.companyAdress}}</span>
+						<input ng-if="isEdit==true" type="text" class="col-md-9 " ng-model="infoList.companyAdress">
+					</div>
+				</div>
+			</div>	
+			<br>
 		</div>
-		<div class="panel panel-default" >
-			<div class="panel-body">
-				<div class="row" style="margin-top: 20px">
-					<label class="col-md-2 col-md-offset-1" style="font-weight: bold;">
-						认证信息
-					</label>
+	</div>
+	<div class="panel panel-default" >
+		<div class="panel-body">
+			<div class="row cmp-first-row" >
+				<label class="col-md-2 col-md-offset-1 cmp-title-label">
+					认证信息
+				</label>
+			</div>
+			<div class="row">
+				<div class="col-md-7 col-md-offset-1">
+					<div class="row cmp-input-row">
+						<label class="col-md-3 ">
+							注册人职位：
+						</label>
+						<span class="col-md-3 ">
+							企业法人
+						</span>
+					</div>    
 				</div>
-				<div class="row">
-					<div class="col-md-7 col-md-offset-1">
-						<div class="row">
-							<label class="col-md-3 " style="font-weight: normal; font-size: 13px; margin-top:10px;">
-								注册人职位：
-							</label>
-							<label class="col-md-3 " style=" margin-top:10px;">
-								企业法人
-							</label>
-						</div>    
+			</div>
+			<div class="row">
+				<div class="col-md-9 col-md-offset-1">
+					<div class="row cmp-input-row">
+						<label class="col-md-2 ">
+							审核认证信息：
+						</label>
+					</div> 
+					<div class=" col-md-3 cmp-reg-thumb" >
+						<img src="{{imageSrc2}}"/>	
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-9 col-md-offset-1">
-						<div class="row">
-							<label class="col-md-2 " style="font-weight: normal; font-size: 13px; margin-top:10px;">
-								审核认证信息：
-							</label>
-						</div> 
-						<div class=" col-md-3" style="height: 100px;width: 100px; overflow: hidden;">
-							<img src="{{imageSrc2}}"/>	
-						</div>
-						<div class=" col-md-3" style="height: 100px;width: 100px; overflow: hidden;">
-							<img src="{{imageSrc3}}"/>	
-						</div>    
-					</div>
+					<div class=" col-md-3 cmp-reg-thumb" >
+						<img src="{{imageSrc3}}"/>	
+					</div>    
 				</div>
 			</div>
 		</div>
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<div class="row" style="margin-top: 20px">
-					
-					<label class="col-md-2 col-md-offset-1" style="font-weight: bold;">
-						认证信息
-					</label>
-				</div>
-				<div class="row">
-					<div class="form-group form-group-sm " style="margin-top: 10px;">
-						<label class="col-md-2 control-label col-md-offset-1" style="font-weight: normal; font-size: 13px;margin-top: 10px; ">公司简介:</label>
-						<p  ng-if="isEdit==false" class="col-md-7" style="margin-top: 10px;" > {{infoList.companyShortCut}}</p>
-						<div ng-if="isEdit==true" class="col-md-7" style="margin-top: 10px;">
-							<textarea class="form-control" rows="3" ng-model="infoList.companyShortCut"> </textarea>
-						</div>
-					</div>
-				</div>		
-				<div class="row">
-					<div class="form-group form-group-sm " ">
-						<label class="col-md-2 control-label col-md-offset-1" style="font-weight: normal;font-size: 13px; margin-top: 10px; margin">产品与优势:</label>
-						<p  ng-if="isEdit==false" class="col-md-7" style="margin-top: 10px;" > {{infoList.companyProduct}}</p>
-						<div ng-if="isEdit==true" class="col-md-7" style="margin-top: 10px;">
-							<textarea class="form-control" rows="3" ng-model="infoList.companyProduct"></textarea>
-						</div>
-					</div>
-				</div>	
-				<div class="row">		
-					<div class="form-group form-group-sm" >
-						<label class="col-md-2  col-md-offset-1 control-label" style="font-weight: normal; font-size: 13px;margin-top: 10px; ">目标与用户:</label>
-						<p  ng-if="isEdit==false" class="col-md-7" style="margin-top: 10px;" > {{infoList.companyGoalUser}}</p>
-						<div ng-if="isEdit==true" class="col-md-7" style="margin-top: 10px;">
-							<textarea class="form-control" rows="3" ng-model="infoList.companyGoalUser" ></textarea>
-						</div>
-					</div>
-				</div>		
-
-				<div class="row" style="margin-top: 50px;margin-bottom:30px; color: white;" >
-					<div ng-if="isEdit==false" class="col-md-9 col-md-offset-1">
-						<button class="btn btn-block" style="background-color:#d00;" ng-click="startEdit(true)">
-							编辑
-						</button>
-					</div>
-					<div ng-if="isEdit==true" class="col-md-4 col-md-offset-1">
-						<button class="btn btn-block" style="background-color:#d00;" ng-click="saveEdit(false)">
-							保存
-						</button>
-					</div>
-					<div ng-if="isEdit==true" class="col-md-4 col-md-offset-1">
-						<button class="btn btn-block" style="background-color:#d00;" ng-click="cancelEdit(false)">
-							取消
-						</button>
-					</div>
-				</div> 
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="row cmp-first-row cmp-intro-row">
+				<label class="col-md-2 col-md-offset-1 cmp-title-label">
+					公司介绍
+				</label>
 			</div>
+			<div class="row cmp-form-row">
+				<div class="form-group form-group-sm " >
+					<label class="col-md-2 control-label col-md-offset-1" >公司简介:</label>
+					<p  ng-if="isEdit==false" class="col-md-7" > {{infoList.companyDesc}}</p>
+					<div ng-if="isEdit==true" class="col-md-7" >
+						<textarea class="form-control" rows="3" ng-model="infoList.companyDesc"> </textarea>
+					</div>
+				</div>
+			</div>		
+			<div class="row cmp-form-row">
+				<div class="form-group form-group-sm " ">
+					<label class="col-md-2 control-label col-md-offset-1" >产品与优势:</label>
+					<p  ng-if="isEdit==false" class="col-md-7" > {{infoList.productDesc}}</p>
+					<div ng-if="isEdit==true" class="col-md-7" >
+						<textarea class="form-control" rows="3" ng-model="infoList.productDesc"></textarea>
+					</div>
+				</div>
+			</div>	
+			<div class="row cmp-form-row">		
+				<div class="form-group form-group-sm" >
+					<label class="col-md-2  col-md-offset-1 control-label">目标与用户:</label>
+					<p  ng-if="isEdit==false" class="col-md-7"  > {{infoList.userDesc}}</p>
+					<div ng-if="isEdit==true" class="col-md-7" >
+						<textarea class="form-control" rows="3" ng-model="infoList.userDesc" ></textarea>
+					</div>
+				</div>
+			</div>		
+
+			<div class="row cmp-info-btn-row" >
+				<div ng-if="isEdit==false" class="col-md-9 col-md-offset-1">
+					<button class="btn btn-block"  ng-click="startEdit(true)">
+						编辑
+					</button>
+				</div>
+				<div ng-if="isEdit==true" class="col-md-4 col-md-offset-1">
+					<button class="btn btn-block"  ng-click="saveEdit(false)">
+						保存
+					</button>
+				</div>
+				<div ng-if="isEdit==true" class="col-md-4 col-md-offset-1">
+					<button class="btn btn-block"  ng-click="cancelEdit(false)">
+						取消
+					</button>
+				</div>
+			</div> 
 		</div>
 	</div>
 </div>

@@ -7,16 +7,9 @@ angular.module("auto-biz-user")
         console.log("获取用户数据");
         if(res.isSuccess == "1"){
           self.user = res.data;
+          console.log(self.user);
         }
         return res;
       });
-  };
-  this.logout=function (username,password) {
-    return $http.get(GlobalService.baseUrl+'user/logout')
-        .then(function (res) {
-          console.log("登出");
-          window.location.href="home";
-          return res;
-        });
   };
 })

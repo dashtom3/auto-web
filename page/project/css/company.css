@@ -37,16 +37,16 @@
 	border-bottom: 2px solid #f7f7f5;
 	color: #3f3835;
 	background-color: #fff;
-	padding: 0px 0px 0px 20px; 
-	width: inherit;
+/*	padding: 0px 0px 0px 20px; 
+	width: inherit;*/
 }
 .nav-sidebar > li > a > span{
 	vertical-align: middle;
 }
 
-.nav-sidebar > li {
+/*.nav-sidebar > li {
 	line-height: 50px;
-}
+}*/
 .m-toggle-item > a:active,
 .m-toggle-item > a:hover,
 .m-toggle-item > a:focus,
@@ -190,7 +190,7 @@ select,input{
 	padding: 0px; 
 	border: 0px;
 }
-/*th{
+th{
 	text-align: center;
 }
 tbody > tr{
@@ -205,7 +205,7 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{
 	-webkit-appearance: none !important;
 	margin: 0; 
-}*/
+}
 .pagination>li>a{
 	color: #c74b36;
 	border: 0px;
@@ -218,6 +218,10 @@ input::-webkit-inner-spin-button{
 	background-color: #c74b36;
 	border: 0px;
 }
+
+.m-div-basicInfo,
+.m-div-finance,
+.m-div-test,
 .m-div-userTest,
 .m-div-page,
 .m-div-news{
