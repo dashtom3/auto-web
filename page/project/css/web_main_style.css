@@ -76,4 +76,11 @@
 		margin-top: 15px;
 		margin-left: 15px;
 	}
+	.isloading-overlay {
+  	background-color: transparent!important;
+  	background-size: 120px 120px!important;
+  	background-image: url("../images/web_header_user.png")!important;
+  	background-repeat: no-repeat!important;
+  	background-position: center!important
+	}
 

@@ -53,7 +53,7 @@
     text-align: left;
 }
 .cmp-create-sec .form-group{
-	margin: 5px 0px 5px 0px;
+	margin: 6px 0px 6px 0px;
 }
 .cmp-create-sec input{
 	margin: 5px 0px 0px 0px;
@@ -62,6 +62,32 @@
 .cmp-create-sec label{
 	margin: 2px 0px 0px 0px ;
 	padding: 10px 0px 0px 0px;
+}
+.cmp-create-sec .checkbox input{
+	margin-left: 0px;
+}
+.cmp-create-sec .form_datetime{
+	height: 30px;
+	width: 100%;
+	border-radius: 3px;
+}
+.cmp-create-prov .col-xs-4{
+	padding: 0px;
+}
+.cmp-create-prov select{
+	margin: 6px 0px 6px 0px;
+}
+.cmp-create-prov label{
+	padding-left: 5px;
+}
+.cmp-create-pres .col-xs-4{
+	padding: 0px;
+}
+.cmp-create-start .col-xs-4{
+	padding: 0px;
+}
+.cmp-create-pres label{
+	padding-left: 5px;
 }
 .cmp-create-intro{
 	width: 504px;
@@ -72,7 +98,18 @@
 	height: 110px;
 	border: solid 1px #CCC;
 	border-radius:4px;
+	text-align: center;
 	float: left;
+}
+.cmp-create-logo p{
+	font-size: 10px;
+	color: #ccc;
+	margin: 50px auto;
+}
+.cmp-create-logo img{
+	width: 108px;
+	height: 108px;
+	border-radius:4px;
 }
 .cmp-create-thi{
 	height: 526px;
