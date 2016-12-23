@@ -1,7 +1,7 @@
 <div class="company-userTest-div container-fluid" ng-controller="CompanyUserTestController" >
 	<div class="row first-row">
 		<div class="col-lg-4 col-lg-offset-2">
-			<input class="form-control form-control-lg search-input" type="text" ng-model="searchStr" >
+			<input class="form-control form-control-lg cmp-search-input" type="text" ng-model="searchStr" >
 		</div>
 		<div class="col-lg-2">
 			<button class="btn btn-block m-btn">
@@ -11,13 +11,12 @@
 		</div>
 		<div class="col-lg-2">
 			<button class="btn btn-block m-btn" data-toggle="modal" data-target="#userTestModal" ng-click="setModalStatus('addModal')" >
-				<img class="img-sm-logo" src="page/project/images/company/search.png">
-				添加用户测评
+				<span class="cmp-add-icon">+</span>添加用户测评
 			</button>
 		</div>
 	</div>
-	<div class="row second-row">
-		<table class="table table-striped m-table">
+	<div class="row cmp-tableContain-row">
+		<table class="table table-striped cmp-table">
 			<thead >
 				<tr>
 					<th class="col-lg-1">测评编号</th>
@@ -51,7 +50,7 @@
 						<span> {{item.userTestStatus}}</span>
 					</td>
 					<td>
-						<div class="row" style="padding: 10px 20px;">
+						<div class="row cmp-test-peopleConf">
 							<div class="col-lg-8 div-small-left">
 								<span class="span-small-left">人数上限：</span>
 							</div>
@@ -160,7 +159,7 @@
 					<div class="row" >
 						<form role="form" class="form-horizontal form-lg">
 							<div class="row">
-								<label class="col-lg-3 control-label" style="text-align: center;">测评产品:</label>
+								<label class="col-lg-3 control-label" >测评产品:</label>
 								<div class="col-lg-9" ng-show="modalStatus == 'addModal'">
 									<select class="form-control" type="text" ng-model="addUserTestProductName" ng-options="productName for productName in userTestProductNameList"/>
 								</div>
@@ -169,7 +168,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<label class="col-lg-3 control-label" style="text-align: center;">测评名称:</label>
+								<label class="col-lg-3 control-label" >测评名称:</label>
 								<div class="col-lg-9" ng-show="modalStatus == 'addModal'">
 									<input class="form-control" type="text" ng-model="addUserTestName"/>
 								</div>
@@ -178,7 +177,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<label class="col-lg-3 control-label" style="text-align: center;">测评时段:</label>
+								<label class="col-lg-3 control-label" >测评时段:</label>
 								<div class="col-lg-9" ng-show="modalStatus == 'addModal'">
 									<input class="form-control" type="text" ng-model="addUserTestTime"/>
 								</div>
@@ -187,7 +186,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<label class="col-lg-3 control-label" style="text-align: center;">测评人数:</label>
+								<label class="col-lg-3 control-label" >测评人数:</label>
 								<div class="col-lg-3" ng-show="modalStatus == 'addModal'">
 									<input class="form-control" type="text" ng-model="addUserTestPeople"/>
 								</div>
@@ -196,7 +195,7 @@
 								</div>
 							</div>
 							<div class="row" >
-								<label class="col-lg-3 control-label" style="text-align: center;" >简&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp介:</label>
+								<label class="col-lg-3 control-label"  >简&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp介:</label>
 								<div class="col-lg-9" ng-show="modalStatus == 'addModal'">
 									<textarea class="form-control" rows="3" ng-model="addUserTestShortCut"></textarea>
 								</div>
@@ -205,7 +204,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<label class="col-lg-3 control-label" style="text-align: center;" >测评类型:</label>
+								<label class="col-lg-3 control-label"  >测评类型:</label>
 								<div class="col-lg-3">
 									<label>
 										<input type="radio" ng-value="fieldVisit" ng-model="addState" name="selectState">实地
@@ -221,7 +220,7 @@
 								</div>
 							</div>
 							<div class="row" >
-								<label class="col-lg-3 control-label" style="text-align: center;" >测评地址:</label>
+								<label class="col-lg-3 control-label"  >测评地址:</label>
 								<div class="col-lg-9" ng-show="modalStatus == 'addModal'">
 									<textarea class="form-control" rows="3" ng-model="addUserTestAddress"></textarea>
 								</div>
@@ -230,20 +229,20 @@
 								</div>
 							</div>
 							<div class="row">
-								<label class="col-lg-3 control-label" style="text-align: center;" >评分参数:</label>
+								<label class="col-lg-3 control-label"  >评分参数:</label>
 								<div class="col-lg-9" ng-show="modalStatus == 'addModal'">
 									<div class="m-div-tag" ng-repeat="tag in addTagList" >
 										<span>{{tag}}</span>
 										<button ng-click="deleteTag(tag)">x</button>
 									</div>
-									<div style="display: inline-block; vertical-align: middle;">
-										<button style="background:url(page/project/images/company/addTag.jpg); width: 33px;height: 31px; border: 0px; " ng-click="newTag()" data-toggle="modal" data-target="#newTagModal"></button>
+									<div class="cmp-test-tag-div">
+										<button style="background:url(page/project/images/company/addTag.jpg);  " ng-click="newTag()" data-toggle="modal" data-target="#newTagModal"></button>
 									</div>				
 								</div>
 							</div>
-							<div class="row" >
-								<div class="row">
-									<label class="col-lg-3 control-label" style="text-align: center;" >相关图片:</label>
+							<div class="row " >
+								<div class="row cmp-usertest-img-row">
+									<label class="col-lg-3 control-label"  >相关图片:</label>
 								</div>
 								<div class="row m-thumb-row" ng-show="modalStatus == 'addModal'" >
 									<div class="col-lg-4" ng-repeat = "item in thumbList" >

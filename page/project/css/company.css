@@ -16,6 +16,7 @@
 .img-md-logo{
 	height: 25px;
 	width: 25px;
+
 }
 .basic-first-row{
 	margin-top: 20px;
@@ -186,10 +187,7 @@ select,input{
 	font-family: 等线;
 	border-radius: 5px;
 }
-.m-img-btn{
-	padding: 0px; 
-	border: 0px;
-}
+
 th{
 	text-align: center;
 }
@@ -230,22 +228,9 @@ input::-webkit-inner-spin-button{
 .first-row{
 	margin-top: 20px;
 }
-.second-row{
-	margin-top: 20px;
-	margin-left: 30px;
-	margin-right: 30px;
-}
-.search-input{
-	height: 38px ;
-}
-.m-table{
-	border: 1px solid rgb(221,221,221);
-	border-radius: 5px; 
-	border-collapse: separate;
-}
-.m-table > thead{
-	background-color: rgb(221,221,221); 
-}
+
+
+
 .modal-roll{
 	overflow-y: scroll;
 	height: 600px; 

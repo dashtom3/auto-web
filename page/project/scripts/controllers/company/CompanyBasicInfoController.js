@@ -1,4 +1,4 @@
-function CompanyBasicInfoController($scope,BasicInfoService) {
+function CompanyBasicInfoController($scope) {
 	console.log("CompanyBasicInfoController");
 	$scope.companyName = "XJ";
 
@@ -7,11 +7,11 @@ function CompanyBasicInfoController($scope,BasicInfoService) {
 
 
 
-	BasicInfoService.getBasicInfo($scope.companyName)
-	.then(function(result){
-		$scope.infoList = result;
-		console.log($scope.infoList);	
-	});
+	// BasicInfoService.getBasicInfo($scope.companyName)
+	// .then(function(result){
+	// 	$scope.infoList = result;
+	// 	console.log($scope.infoList);	
+	// });
 
 	$scope.isEdit = false;
 	// $scope.infoList = {"companyFullName":"小酱软件有限公司","companyShortName":"小软酱","companyLocation":"上海","companyArea":"底盘","startYear":"1998",
@@ -50,7 +50,11 @@ function CompanyBasicInfoController($scope,BasicInfoService) {
 		});
 	};
 	$scope.upload = function(file){
-		console.log(file);
+		if (file != null){
+			$scope.fileLogo = file;
+			console.log(file);
+		}
+		
 		//$scope.file = file;
 	}
 

@@ -40,9 +40,9 @@
 				<div class="col-md-2">
 					<div  class="cmp-logo-thumb">
 						<label >
-							<div  ngf-select="upload($file)" ng-model="fileLogo">点击上传logo</div>
+							<div  ngf-select="upload($file)" >点击上传logo</div>
 						</label>
-						<img ngf-src="fileLogo" ngf-resize="{width: 98, height: 98, quality: 0.9}"  />	
+						<img ngf-src="fileLogo" class="cmp-img-logo"/>	
 
 					</div>
 
@@ -56,12 +56,12 @@
 						</label>
 						
 						<span  ng-if="isEdit == false" class="col-md-6" >{{infoList.regTime}}</span>
-						<div class='input-group input-group-sm date col-md-6 ' ng-if="isEdit==true"  datetimepicker  id='datetimepicker1'>  
-							<input type='text' class="form-control"  ng-model="dateOne"/>  
+						<div class='input-group input-group-sm date col-md-6 '  datetimepicker  id='datetimepicker1' ng-show="isEdit == true">  
+							<input type='text' class="form-control"  ng-model="infoList.regTime"/>  
 							<span class="input-group-addon">  
 								<span class="glyphicon glyphicon-calendar"></span>  
 							</span>  
-						</div>   
+						</div>    
 					</div>
 				</div>
 			</div>

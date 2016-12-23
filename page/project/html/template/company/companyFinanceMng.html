@@ -1,10 +1,10 @@
 <div class="company-finance-div container-fluid" ng-controller="CompanyFinanceMngController" ng-init="showAddPanel=false;financeItem.hideEdit=true;" >
 	<div class="panel panel-default" >
-		<button class="btn btn-block " id="m-btn-add-finance" ng-click = "addNewFinance()"><img src="imgs/financeAdd.jpg" ">添加财务数据</button>
+		<button class="btn btn-block " id="m-btn-add-finance" ng-click = "addNewFinance()">添加财务数据</button>
 	</div>
 	<div class="panel panel-default" ng-show = "showAddPanel==true" ng-init="invalidYear=false;invalidWinMoney=false;">
 		<form role="form-lg" class="form-horizontal" name="myForm">
-			<div class="row" style=" margin-top: 20px;">
+			<div class="row cmp-finance-first-row">
 				<div class="col-lg-1"></div>
 				<div class="col-lg-5  form-group">
 					<label class="col-lg-4 control-label" >年度 :</label>
@@ -21,7 +21,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" style=" margin-top: 10px;">
+			<div class="row cmp-finance-row" >
 				<div class="col-lg-1"></div>
 				<div class="col-lg-5  form-group">
 					<label class="col-lg-4 control-label"  >营业收入:</label>
@@ -40,7 +40,7 @@
 					</div>
 				</div>
 			</div>	
-			<div class="row" style=" margin-top: 10px;">
+			<div class="row cmp-finance-row" >
 				<div class="col-lg-1"></div>
 				<div class="col-lg-5  form-group">
 					<label class="col-lg-4 control-label"  >总资产:</label>
@@ -57,7 +57,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" style=" margin-top: 10px;">
+			<div class="row cmp-finance-row" >
 				<div class="col-lg-1"></div>
 				<div class="col-lg-5  form-group">
 					<label class="col-lg-4 control-label"  >毛利率:</label>
@@ -74,7 +74,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" style=" margin-top: 10px;">
+			<div class="row cmp-finance-row" >
 				<div class="col-lg-1"></div>
 				<div class="col-lg-5  form-group">
 					<label class="col-lg-4 control-label"  >资产负债率:</label>
@@ -91,11 +91,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" style=" margin-top: 10px; margin-bottom: 20px;">
+			<div class="row cmp-finance-last-row">
 				<div class="col-lg-4 col-lg-offset-1">
-					<button class="btn btn-block" style="background-color: #c74b36;" type="submit" ng-click ="addFinance()" >确认</button>
+					<button class="btn btn-block cmp-finance-btn-yes" type="submit" ng-click ="addFinance()" >确认</button>
 				</div>
-				<div class="col-lg-4 col-lg-offset-1" style="">
+				<div class="col-lg-4 col-lg-offset-1">
 					<button class="btn btn-block" data-toggle="modal" data-target="#myModal">取消</button>
 				</div>
 			</div>
@@ -129,9 +129,9 @@
 	<!-- 过往财务信息 -->
 	<div class="panel panel-default"  ng-repeat="financeItem in financeList">
 		<form role="form-lg" class="form-horizontal">
-			<div class="row" style="margin-top: 10px;">
-				<div class="col-lg-2 " style="margin-left: 8px; height: 40px;">
-					<a class="ui red ribbon label" style="font-size: 15px; left: -1.6em;">{{financeItem.year}}</a>
+			<div class="row cmp-finance-row" >
+				<div class="col-lg-2 cmp-ribbon-div">
+					<a class="ui red ribbon label">{{financeItem.year}}</a>
 				</div>
 				<div class="col-lg-1 col-lg-offset-8">
 					<div class="row">
@@ -146,7 +146,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" style=" margin-top: 10px;">
+			<div class="row cmp-finance-row">
 				<div class="col-lg-1"></div>
 				<div class="col-lg-5  form-group " >
 					<label class="col-lg-4 control-label"  >市盈率:</label>
@@ -171,7 +171,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" style=" margin-top: 10px;">
+			<div class="row cmp-finance-row" >
 				<div class="col-lg-1"></div>
 				<div class="col-lg-5  form-group " >
 					<label class="col-lg-4 control-label"  >营业收入:</label>
@@ -199,7 +199,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" style=" margin-top: 10px;">
+			<div class="row cmp-finance-row" >
 				<div class="col-lg-1"></div>
 				<div class="col-lg-5  form-group " >
 					<label class="col-lg-4 control-label " >总资产:</label>
@@ -224,7 +224,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" style=" margin-top: 10px;">
+			<div class="row cmp-finance-row" >
 				<div class="col-lg-1"></div>
 				<div class="col-lg-5  form-group " >
 					<label class="col-lg-4 control-label"  >毛利率:</label>
@@ -249,7 +249,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" style=" margin-top: 10px; margin-bottom: 20px;">
+			<div class="row cmp-finance-last-row">
 				<div class="col-lg-1"></div>
 				<div class="col-lg-5  form-group " >
 					<label class="col-lg-4 control-label"  >资产负债率:</label>

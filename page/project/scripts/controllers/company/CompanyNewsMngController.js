@@ -1,4 +1,4 @@
-function CompanyNewsMngController($scope,fileReader) {
+function CompanyNewsMngController($scope) {
 	console.log("CompanyNewsMngController");
 	$scope.tmpNews={};
 	$scope.companyName="小软酱有限公司";

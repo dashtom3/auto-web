@@ -1,4 +1,4 @@
-function CompanyUserTestController($scope,fileReader,Upload) {
+function CompanyUserTestController($scope,Upload) {
 	console.log("CompanyUserTestController");
 	$scope.tmpProduct={};
 	$scope.companyName="小软酱有限公司";

@@ -1,7 +1,7 @@
 <div class="company-product-div container-fluid" ng-controller="CompanyProductMngController" >
 	<div class="row first-row">
 		<div class="col-lg-4 col-lg-offset-2">
-			<input class="form-control form-control-lg search-input" type="text" ng-model="searchStr" >
+			<input class="form-control form-control-lg cmp-search-input" type="text" ng-model="searchStr" >
 		</div>
 		<div class="col-lg-2">
 			<button class="btn btn-block m-btn">
@@ -11,13 +11,12 @@
 		</div>
 		<div class="col-lg-2">
 			<button class="btn btn-block m-btn" data-toggle="modal" data-target="#productModal" ng-click="btnAddProduct()" >
-				<img class="img-sm-logo" src="page/project/images/company/search.png">
-				添加产品
+				<span class="cmp-add-icon">+</span>添加产品
 			</button>
 		</div>
 	</div>
-	<div class="row second-row">
-		<table class="table table-striped m-table" >
+	<div class="row cmp-tableContain-row">
+		<table class="table table-striped cmp-table" >
 			<thead >
 				<tr>
 					<th class="col-lg-2">缩略图</th>
@@ -31,7 +30,7 @@
 			<tbody>
 				<tr ng-repeat="item in productList">
 					<td>
-						<img src="{{item.productThumb}}" style="height: 100px; max-width: 170px; overflow: hidden;">
+						<img src="{{item.productThumb}} cmp-product-thumb">
 					</td>
 					<td>
 						<span>{{item.productID}}</span>
@@ -115,10 +114,10 @@
 				<h4  ng-show = "editModal"> 编辑产品</h4>
 			</div>
 			<div class="modal-body modal-roll-product">
-				<div class="row">
+				<div class="row cmp-productModal-row">
 					<form role="form" class="form-horizontal form-lg">
-						<div class="row" style="margin-right: 30px;">
-							<label class="col-lg-2 control-label" style="text-align: center;">名称:</label>
+						<div class="row" >
+							<label class="col-lg-2 control-label">名称:</label>
 							<div class="col-lg-5" ng-show="addModal">
 								<input class="form-control" type="text" ng-model="addProductName"/>
 							</div>
@@ -129,8 +128,8 @@
 								<input class="form-control" type="text" ng-model="tmpProduct.productName"/>
 							</div>
 						</div>
-						<div class="row" style="margin-right: 30px;margin-top: 10px;">
-							<label class="col-lg-2 control-label" style="text-align: center;">标签:</label>
+						<div class="row cmp-product-middle-row" >
+							<label class="col-lg-2 control-label" >标签:</label>
 							<div class="col-lg-5" ng-show="addModal">
 								<select class="form-control" ng-model="addSelectedTags" ng-options="x for x in tagOptions" ></select>
 							</div>
@@ -141,8 +140,8 @@
 								<select class="form-control" ng-model="tmpProduct.selectedTags" ng-options="x for x in tagOptions" ></select>
 							</div>
 						</div>
-						<div class="row" style="margin-right: 30px;margin-top: 10px;">
-							<label class="col-lg-2 control-label" style="text-align: center;">参数:</label>
+						<div class="row cmp-product-middle-row" >
+							<label class="col-lg-2 control-label" >参数:</label>
 							<div class="col-lg-10" ng-show="addModal">
 								<input class="form-control" type="text" ng-model="addProductConf"/>
 							</div>
@@ -153,8 +152,8 @@
 								<input class="form-control" type="text" ng-model="tmpProduct.productConf"/>
 							</div>
 						</div>
-						<div class="row" style="margin-right: 30px; margin-top: 10px;">
-							<label class="col-lg-2 control-label" style="text-align: center;" >介绍:</label>
+						<div class="row cmp-product-middle-row" >
+							<label class="col-lg-2 control-label"  >介绍:</label>
 							<div class="col-lg-10" ng-show="addModal">
 								<textarea class="form-control" rows="3" ng-model="addProductShortCut"></textarea>
 							</div>
@@ -167,9 +166,9 @@
 						</div>
 					</form>
 				</div>
-				<div class="row" style="margin-top: 20px;">
+				<div class="row cmp-productThumb-row" >
 					<div class="row">
-						<label class="col-lg-2 control-label" style="text-align: center;" >产品图片:</label>
+						<label class="col-lg-2 control-label"  >产品图片:</label>
 					</div>
 					<div class="row m-thumb-row" ng-show="addModal" >
 						<div class="col-lg-3" ng-repeat = "item in thumb" >
@@ -196,7 +195,7 @@
 					</div>
 					
 				</div>
-				<div class="row" style="margin-top: 10px;">
+				<div class="row cmp-product-middle-row" >
 					<div class="col-lg-2 col-lg-offset-4">
 						<button class="btn btn-block" id="btn-productModal-cancel" ng-click="cancel(addModal,lookModal,editModal)" data-dismiss="modal">
 							取消
