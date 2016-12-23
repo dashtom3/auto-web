@@ -79,4 +79,12 @@ angular.module("auto-biz-user")
         deferred.resolve();
       });
   }
+  this.setUserInfo = function(user){
+    self.user = user;
+    self.token = user.token;
+  }
+  this.setCompanyInfo = function(company){
+    self.company = company;
+    self.token = company.token;
+  }
 })

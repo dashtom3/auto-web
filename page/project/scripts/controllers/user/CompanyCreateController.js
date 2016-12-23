@@ -3,7 +3,12 @@ function CompanyCreateController($scope,FileService,CompanyService,GlobalService
   //初始化
   $scope.ctypeList = GlobalService.companyType;
   $scope.cmptype = $scope.ctypeList[0];
-  $(".form_datetime").datetimepicker({format:'YYYY/MM/DD'});
+  $scope.company = {
+    regTime:"",
+    type:"CM"
+  };
+  $scope.company.type = $scope.ctypeList[0].id;
+  $("#form_datetime").datetimepicker({format:'YYYY/MM/DD',locale: moment.locale('zh-cn') });
   //交互
   $scope.uploadLogo = function(file){
   	if(file){
@@ -21,12 +26,11 @@ function CompanyCreateController($scope,FileService,CompanyService,GlobalService
   	}
   }
   $scope.registerCompany  = function(){
-  		//console.log($scope.cmptype);
   		$scope.company.type = $scope.cmptype.id;
-  		console.log($scope.company);
+      $scope.company.regTime=document.getElementById("form_datetime").value;
   		$scope.company.address="";
   		CompanyService.registerCompany($scope.company).then(function(result){
-  			alert("注册成功");
+  			
   		});
   }
 }

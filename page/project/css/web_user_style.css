@@ -135,3 +135,9 @@
 .cmp-create-commit button{
 	margin-top: 20px; 
 }
+.cmp-innovation{
+	margin-top: 24px;
+	margin-bottom: 60px;
+	box-shadow: 0 0 7px rgba(0, 0, 0, .15);
+	padding: 28px 38px 22px 38px;
+}
