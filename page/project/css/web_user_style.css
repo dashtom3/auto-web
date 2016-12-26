@@ -144,14 +144,15 @@
 }
 .innnews td{
 	padding:20px 30px 20px 30px !important;
-	text-align: left !important;  
+	text-align: left !important; 
+	border-top: 0px !important; 
 }
 .innnews-pic{
 	float: left;
 }
 .innnews-pic img{
-	height: 220px;
-	width: 340px;
+	height: 150px;
+	width: 240px;
 }
 .cmp-innovation-top p{
 	float: left;
@@ -159,26 +160,54 @@
 	margin-right: 30px;
 }
 .innnews-content{
-	width: 464px;
+	width: 564px;
 	float: left;
 	margin-left: 20px;
 }
 .innews-title{
-	font-size: 14px;
+	font-size: 20px;
 	color: #271701;
 }
 .innews-date{
-	font-size: 12px;
+	float: left;
+	font-size: 14px;
 	color:#C0493A;
 }
 .innews-company{
-	font-size: 12px;
+	float: left;
+	font-size: 14px;
 	color:#271701;
+	margin-left: 20px;
 }
 .innews-content{
-	font-size: 12px;
+	font-size: 14px;
 	color:#271701;
 }
-.innews .table-striped > tbody > tr:nth-of-type(odd) {
-    background-color: #F1F3F5;
+.innnews-commit{
+	text-align: center;
+}
+.innnews-commit button{
+	margin: auto;
+	width: 220px;
+	height: 40px;
+	border-radius: 22px;
+}
+.innews-copy {
+	color:#C0493A;
+	text-align:right;
+}
+.cmp-innovation .table-striped > tbody > tr:nth-of-type(1) {
+    background-color: #F1F3F5 ;
   }
+ .cmp-innovation-title{
+ 	margin-bottom: 16px !important;
+ }
+ .cmp-innovation-title a{
+ 	float: left;
+ 	margin-right: 32px;
+ 	color:#271701;
+ 	padding: 3px 6px 3px 6px;
+ }
+ .cmp-innovation-title .active{
+ 	border-bottom: solid 4px #C44A3A;  
+ }
