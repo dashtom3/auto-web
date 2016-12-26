@@ -18,6 +18,21 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
         //controller: 'MainController'
         //redirectTo: '/error'
       })
+      .when('/registerUser', {
+        templateUrl: '/page/project/html/views/user/userRegister.html',
+        //controller: 'MainController'
+        //redirectTo: '/error'
+      })
+      .when('/loginUser', {
+        templateUrl: '/page/project/html/views/user/userRegister.html',
+        //controller: 'MainController'
+        //redirectTo: '/error'
+      })
+      .when('/loginCompany', {
+        templateUrl: '/page/project/html/views/user/userRegister.html',
+        //controller: 'MainController'
+        //redirectTo: '/error'
+      })
       .when('/company',{
         templateUrl: 'page/project/html/views/company/company.html',
         controller: 'CompanyMainController'

@@ -2,24 +2,24 @@
 <table class="innnews table table-striped" >
 	<tr ng-repeat = "cmpNews in cmpNewsList">
 	<td class="innnews-td">
-	<div class="innnews-pic"><img src="http://www.auto-biz.cn/imgStore/newImgs/img148248196321317.jpg"></div>
+	<div class="innnews-pic"><img src="{{cmpNews.pic}}"></div>
 	<div class="innnews-content">
-		<div class="row" ><a class="innews-title" href="{{cmpNews.id}}">{{cmpNews.title}}</a></div>
+		<div class="row" ><a class="innews-title" href="#{{cmpNews.id}}">{{cmpNews.title}}</a></div>
 		<div class="row">
-			<p class="innews-date">2016年12月23日 15:38</p><p class="innews-company">上海小酱软件科技有限公司</p>
+			<p class="innews-date">{{cmpNews.timestamp}}</p><p class="innews-company">{{cmpNews.company}}</p>
 		</div>
 		<div class="row">
-			<p class="innews-intro">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;汽车财经网12月13日讯，12月22日，工信部表示将进一步健全新能源汽车安全监管体系，同时会同相关部门完善新能源汽车标准体系，加快提高企业及产品准入门槛，落实新能源汽车财税政策，</p>
+			<p class="innews-intro">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{cmpNews.desc}}</p>
 		</div>
 		<div class="row innews-copy">
-			<p>[原创]</p>
+			<p ng-if="cmpNews.isFirst == '1'">[原创]</p>
+			<p ng-if="cmpNews.isFirst != '1'">[摘抄]</p>
 		</div>
 	</div>
 	</td>
 	</tr>
 </table>
 <div class="innnews-commit">
-
 	<button class="btn btn-danger btn-block btn-sm" ng-click="loadMore()" ng-if="cmpNews.currentPage != cmpNews.totalPage">点击加载更多</button>
 	<p ng-if="cmpNews.currentPage == cmpNews.totalPage">没有更多内容了</p>
 </div>
