@@ -1,6 +1,6 @@
-function userListController($scope,userService) {
+function userListController($scope,UserService) {
   console.log("载入userListController");
-  userService.getUserList().then(function(result){
+  UserService.getUserList().then(function(result){
       console.log(result);
       $scope.userList = result;
       $scope.passFlag = '';
@@ -22,11 +22,11 @@ function userListController($scope,userService) {
   }
   //通过/否决审核
   $scope.passUser = function(passFlag) {
-    userService.passUser(passFlag);
+    UserService.passUser(passFlag);
   }
   //用户权限更改
   $scope.updateUserType = function(newType) {
-    userService.updateUserType(newType);
+    UserService.updateUserType(newType);
   }
 
 }

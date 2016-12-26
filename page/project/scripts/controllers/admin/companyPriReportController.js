@@ -1,4 +1,4 @@
-function companyPriReportController($scope,companyService) {
+function companyPriReportController($scope,CompanyService) {
   console.log("载入companyPriReportController");
 //   companyService.getPriReportList().then(function(result){
 //       console.log(result);
@@ -10,7 +10,47 @@ function companyPriReportController($scope,companyService) {
 //       $scope.contentList = '';
 //   })
 
-  $scope.priReportList = '';
+  $scope.priReportList = [
+{
+    "_id":"111",
+    "title":"ts1",
+    "companyName":"xj",
+    "product":"aaa",
+    "desc":"aaa",
+    "date":"xxx",
+    "type":"1",
+    "state":"1",
+    "maxUserNum":"20",
+    "signUserNum":"13",
+    "passUserNum":"5"
+},
+{
+    "_id":"111",
+    "title":"ts1",
+    "companyName":"xj",
+    "product":"aaa",
+    "desc":"aaa",
+    "date":"xxx",
+    "type":"1",
+    "state":"1",
+    "maxUserNum":"20",
+    "signUserNum":"13",
+    "passUserNum":"5"
+},
+{
+    "_id":"111",
+    "title":"ts1",
+    "companyName":"xj",
+    "product":"aaa",
+    "desc":"aaa",
+    "date":"xxx",
+    "type":"1",
+    "state":"1",
+    "maxUserNum":"20",
+    "signUserNum":"13",
+    "passUserNum":"5"
+}
+];
       $scope.pageCount = 5;
 	  $scope.pageSize = 4;
 	  $scope.total = 50;
@@ -42,8 +82,8 @@ function companyPriReportController($scope,companyService) {
         $scope.contentFilter = '-1';
     }
   }
-  //搜索
-  $scope.getPriReportByName = function(name) {
-    companyService.getPriReportByName(name);
-  }
+//   //搜索
+//   $scope.getPriReportByName = function(name) {
+//     CompanyService.getPriReportByName(name);
+//   }
 }
