@@ -1,24 +1,25 @@
-<div class="col-lg-10 col-md-9 m-div-news" ng-controller="CompanyNewsMngController" >
-	<div class="row" style="margin-top: 20px;">
+<div class="company-news-div container-fluid cmp-box-shadow" ng-controller="CompanyNewsMngController" >
+	<div class="row cmp-news-frist-row" >
 		<div class="col-lg-4 col-lg-offset-2">
-			<input class="form-control form-control-lg" type="text" ng-model="searchStr" style="height: 38px;">
+			<input class="form-control form-control-lg cmp-search-input" type="text" ng-model="searchStr">
 		</div>
 		<div class="col-lg-2">
-			<button class="btn btn-block m-btn">
+			<button class="btn btn-block btn-default cmp-confirm-btn cmp-find-btn">
 				<img class="img-sm-logo" src="page/project/images/company/search.png">
-				查找资讯
+				<span>查找资讯</span>
 			</button>
 		</div>
 		<div class="col-lg-2">
-			<button class="btn btn-block m-btn" data-toggle="modal" data-target="#newsModal" ng-click="btnAddNews()" >
-				<img class="img-sm-logo" src="page/project/images/company/search.png">
-				添加资讯
+			<button class="btn btn-block btn-default cmp-confirm-btn cmp-add-css-btn" data-toggle="modal" data-target="#newsModal" ng-click="btnAddNews()" >
+				<span class="cmp-add-icon">+</span>
+				<span>添加资讯</span>
 			</button>
 		</div>
 	</div>
-	<div class="row" style="margin-top: 20px;margin-left: 30px; margin-right: 30px; ">
-		<table class="table table-striped" style="border: 1px solid rgb(221,221,221); border-radius: 5px; border-collapse: separate;">
-			<thead style="background-color: rgb(221,221,221); ">
+	<!-- 表格 -->
+	<div class="row cmp-tableContain-row cmp-box-shadow">
+		<table class="table table-striped cmp-table">
+			<thead >
 				<tr>
 					<th class="col-lg-2">缩略图</th>
 					<th class="col-lg-1">序号</th>
@@ -53,84 +54,62 @@
 						<div class="row">
 							<div class="col-lg-2 col-lg-offset-2">
 								<button class="m-img-btn" ng-click="btnLookNews(item)" data-toggle="modal" data-target="#newsModal"> 
-									<img class="img-md-logo" src="page/project/images/company/view.png">
+									<img class="cmp-md-logo" src="page/project/images/company/view.png">
 								</button>
 							</div>
 							<div class="col-lg-2">
 								<button class="m-img-btn" ng-click="deleteNews(item.newsID)" data-toggle="modal" data-target="#myDeleteModal"> 
-									<img class="img-md-logo" src="page/project/images/company/delete.png">
+									<img class="cmp-md-logo" src="page/project/images/company/delete.png">
 								</button>
 							</div>
 							<div class="col-lg-2">
 								<button class="m-img-btn" ng-click= "btnEditNews(item)" data-toggle="modal" data-target="#newsModal"> 
-									<img class="img-md-logo" src="page/project/images/company/edit.png">
+									<img class="cmp-md-logo" src="page/project/images/company/edit.png">
 								</button>
 							</div>
 							<div class="col-lg-2">
 								<button class="m-img-btn" ng-click = "changeNewsStatus(item.newsID)"> 
-									<img class="img-md-logo" src="page/project/images/company/switch.png">
+									<img class="cmp-md-logo" src="page/project/images/company/switch.png">
 								</button>
 							</div>
 						</div>
 					</td>
-					<!-- 删除弹出框 -->
-					<div class="modal fade" id="myDeleteModal" aria-hidden="true" role="dialog" >
-						<div class="modal-dialog moadl-sm" >
-							<div class="modal-content" >
-								<div class="modal-body" >
-									<div class="row m-row-delete"  id="m-row-delete">
-										<img src="page/project/images/company/warn.png" class="img-md-logo">
-										<span>确定要撤销吗</span>
-									</div>
-									<button class="btn m-btn-cancel" ng-click="cancelDelete()" id="m-btn-cancel" data-dismiss="modal" >
-										取消
-									</button>
-									<button class="btn " id="m-btn-sure" ng-click="confirmDelete()" data-dismiss="modal">
-										确认
-									</button>
-								</div>
 
-
-							</div>
-						</div>
-					</div>
 				</tr>
 			</tbody>
 		</table>
-	</div>
-	<div class="row">
-		<div class="col-lg-6 col-lg-offset-6">
+		<div class="cmp-paging">
 			<paging
-			  page="currentPage" 
-			  page-size="pageSize" 
-			  total="total"
-			  show-prev-next="true"
-			  show-first-last="true"
-			  >
-			</paging> 
+			page="currentPage" 
+			page-size="pageSize" 
+			total="total"
+			show-prev-next="true"
+			show-first-last="true"
+			>
+		</paging> 
 		</div>
 	</div>
-	
 
-	<!-- 弹出框 -->
+
+<!-- 弹出框 -->
 	<div class="modal fade" id="newsModal" aria-hidden="true">
-		<div class="modal-dialog modal-lg" >
+		<div class="modal-dialog modal-lg cmp-box-shadow" >
 			<div class="modal-content">
 				<div class="modal-head">
-					<h4 style="text-align: left;" ng-show = "addModal"> 添加资讯</h4>
-					<h4 style="text-align: left;" ng-show = "lookModal"> 查看资讯</h4>
-					<h4 style="text-align: left;" ng-show = "editModal"> 编辑资讯</h4>
+					<h4 ng-show = "addModal"> 添加资讯</h4>
+					<h4 ng-show = "lookModal"> 查看资讯</h4>
+					<h4 ng-show = "editModal"> 编辑资讯</h4>
 				</div>
-				<div class="modal-body" style="overflow-y: scroll;height: 600px; ">
+				<div class="modal-body" >
 					<div class="row">
-						<div class="col-lg-5" style="height: 280px; width: 340px;" >
-							<img src="{{imgSrc}}" style="overflow: hidden; height: 280px; width: 340px;">
-							<label style="position: absolute; top: 130px; left: 150px; z-index: 5;"> 
+						<div class="col-lg-5 cmp-newsModal-thumb" >
+							<img src="{{imgSrc}}" >
+							<label> 
 								点击上传缩略图
-								<input type="file" file-model="myThumb" style="display:none;">
+								<input type="file" file-model="myThumb">
 							</label>
-							
-							<p style="position: absolute; bottom: -20px; width: 100%; z-index: 5; background-color:rgb(126,127,131); color: #fff ;text-align: right;">
+
+							<p >
 								大小:xxx*xxx
 							</p>
 						</div>
@@ -139,35 +118,35 @@
 								<form role="form" class="form-horizontal form-lg">
 									<div class="row ">
 										<div class="col-lg-1"></div>
-										<div class="col-lg-11  form-group">
+										<div class="col-lg-11  form-group cmp-form-group">
 											<div class="row">
 												<label class="col-lg-2 control-label"  >标题:</label>
 												<div class="col-lg-10" ng-show="addModal">
 													<input class="form-control" type="text" ng-model="addNewsTheme"/>
 												</div>
-												<div class="col-lg-10 m-div-noEdit" ng-show="lookModal">
-													<span class="m-span"> {{tmpNews.newsTheme}} </span>
+												<div class="col-lg-10" ng-show="lookModal">
+													<label class="control-label"> {{tmpNews.newsTheme}} </label>
 												</div>
 												<div class="col-lg-10" ng-show="editModal">
 													<input class="form-control" type="text" ng-model="tmpNews.newsTheme"/>
 												</div>
 											</div>
 
-											<div class="row" style="margin-top: 20px;">
+											<div class="row cmp-newsModal-row" >
 												<label class="col-lg-2 control-label" >作者:</label>
 												<div class="col-lg-3" ng-show="addModal">
 													<input class="form-control" type="text" ng-model="addNewsAuthor" />
 												</div>
 
-												<div class="col-lg-3 m-div-noEdit" ng-show="lookModal">
-													<span class="m-span"> {{tmpNews.newsAuthor}} </span>
+												<div class="col-lg-3 " ng-show="lookModal">
+													<label class="control-label"> {{tmpNews.newsAuthor}} </label>
 												</div>
 
 												<div class="col-lg-3" ng-show="editModal">
 													<input class="form-control" type="text" ng-model="tmpNews.newsAuthor" />
 												</div>
 
-												<label class="col-lg-3 control-label" style="margin-top: " >是否原创:</label>
+												<label class="col-lg-3 control-label"  >是否原创:</label>
 
 												<div class="col-lg-4 " ng-show="addModal">
 													<label class="checkbox-inline">
@@ -180,8 +159,8 @@
 													</label>
 												</div>
 
-												<div class="col-lg-4 m-div-noEdit" ng-show="lookModal">
-													<span>{{tmpNews.newsIsOriginal}}</span>
+												<div class="col-lg-4 " ng-show="lookModal">
+													<label class="control-label">{{tmpNews.newsIsOriginal}}</label>
 												</div>
 
 												<div class="col-lg-4 " ng-show="editModal">
@@ -197,27 +176,27 @@
 
 											</div>
 
-											<div class="row" style="margin-top: 20px;">
+											<div class="row cmp-newsModal-row" >
 												<label class="col-lg-2 control-label"  >来源:</label>
-												<div class="col-lg-10 m-div-noEdit">
-													<span>{{companyName}}</span>
+												<div class="col-lg-10 ">
+													<label class="control-label">{{companyName}}</label>
 												</div>
 											</div>
 
-											<div class="row" style="margin-top: 20px;">
+											<div class="row cmp-newsModal-row" >
 												<label class="col-lg-2 control-label"  >标签:</label>
 												<div class="col-lg-10" ng-show="addModal">
 													<input class="form-control" type="text"  ng-model="addNewsLabel" />
 												</div>
-												<div class="col-lg-10 m-div-noEdit" ng-show="lookModal">
-													<span class="m-span"> {{tmpNews.newsLabel}} </span>
+												<div class="col-lg-10 " ng-show="lookModal">
+													<label class="control-label"> {{tmpNews.newsLabel}} </label>
 												</div>
 												<div class="col-lg-10" ng-show="editModal">
 													<input class="form-control" type="text"  ng-model="tmpNews.newsLabel" />
 												</div>
 											</div>
 
-											<div class="row" style="margin-top: 20px;">
+											<div class="row cmp-newsModal-row" >
 												<label class="col-lg-2 control-label"  >简介:</label>
 												<div class="col-lg-10" ng-show="addModal">
 													<textarea class="form-control" rows="3" ng-model="addNewsShortCut"></textarea>
@@ -236,26 +215,50 @@
 						</div>
 					</div>
 
-					<div class="row" style="margin-top: 10px;">
+					<div class="row cmp-newsModal-row" >
 						<div class="col-lg-12">
 							<div text-angular ng-model="addNewshtmlVariable"></div>
 						</div>
 					</div>
 
-					<div class="row" style="margin-top: 10px;">
-						<div class="col-lg-2 col-lg-offset-4">
-							<button class="btn btn-block" id="btn-newsModal-cancel" ng-click="cancel(addModal,lookModal,editModal)" data-dismiss="modal">
+					<div class="row cmp-newsModal-row" >
+						<div class="col-lg-3 col-lg-offset-2">
+							<button class="btn btn-default btn-block cmp-cancel-btn" ng-click="cancel(addModal,lookModal,editModal)" data-dismiss="modal">
 								取消
 							</button>
 						</div>
-						<div class="col-lg-2">
-							<button class="btn btn-block" id="btn-newsModal-sure" ng-click="confirm(addModal,lookModal,editModal)" data-dismiss="modal">
+						<div class="col-lg-3 col-lg-offset-1">
+							<button class="btn btn-default btn-block cmp-confirm-btn" ng-click="confirm(addModal,lookModal,editModal)" data-dismiss="modal">
 								确定
 							</button>
 						</div>
 					</div>
 
 				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 删除弹出框 -->
+	<div class="modal fade " id="myDeleteModal" aria-hidden="true" role="dialog" >
+		<div class="modal-dialog moadl-sm cmp-box-shadow cmp-sm-modal" >
+			<div class="modal-content" >
+				<div class="modal-body" >
+					<div class="row cmp-modal-row-delete" >
+						<img class="cmp-warn-img" src="page/project/images/company/warn.png">
+						<span>确定要删除吗?</span>
+					</div>
+					<div class="row cmp-modal-row-control">
+						<button class="col-lg-3 col-lg-offset-2 btn btn-default cmp-cancel-btn" ng-click="cancelDelete()"  data-dismiss="modal" >
+							取消
+						</button>
+						<button <button class="col-lg-3 col-lg-offset-2 btn btn-default cmp-confirm-btn" ng-click="confirmDelete()" data-dismiss="modal">
+							确认
+						</button>
+					</div>
+						
+				</div>
+
+
 			</div>
 		</div>
 	</div>

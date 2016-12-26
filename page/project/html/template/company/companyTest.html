@@ -1,23 +1,25 @@
-<div class="col-lg-10 col-md-9 m-div-Test" ng-controller="CompanyTestController" >
+<div class="company-test-div container-fluid cmp-box-shadow" ng-controller="CompanyTestController" >
 	<div class="row first-row">
 		<div class="col-lg-4 col-lg-offset-2">
-			<input class="form-control form-control-lg search-input" type="text" ng-model="searchStr" >
+			<input class="form-control form-control-lg cmp-search-input" type="text" ng-model="searchStr" >
 		</div>
 		<div class="col-lg-2">
-			<button class="btn btn-block m-btn">
+			<button class="btn btn-block btn-default cmp-confirm-btn cmp-find-btn">
 				<img class="img-sm-logo" src="page/project/images/company/search.png">
-				查找专业测评
+				<span>查找专业测评</span>
 			</button>
 		</div>
 		<div class="col-lg-2">
-			<button class="btn btn-block m-btn" data-toggle="modal" data-target="#TestModal" ng-click="setModalStatus('addModal')" >
-				<img class="img-sm-logo" src="page/project/images/company/search.png">
-				添加专业测评
+			<button class="btn btn-block btn-default cmp-confirm-btn cmp-add-css-btn" data-toggle="modal" data-target="#testModal" ng-click="setModalStatus('addModal')" >
+				<span class="cmp-add-icon">+</span>
+				<span>添加专业测评</span>
 			</button>
 		</div>
+		
+		
 	</div>
-	<div class="row second-row">
-		<table class="table table-striped m-table">
+	<div class="row cmp-tableContain-row">
+		<table class="table table-striped cmp-table">
 			<thead >
 				<tr>
 					<th class="col-lg-1">产品编号</th>
@@ -48,18 +50,18 @@
 					<td>
 						<div class="row">
 							<div class="col-lg-2 col-lg-offset-2">
-								<button class="m-img-btn" ng-click="btnLookTest(item)" data-toggle="modal" data-target="#TestModal"> 
-									<img class="img-md-logo" src="page/project/images/company/view.png">
+								<button class="m-img-btn" ng-click="btnLookTest(item)" data-toggle="modal" data-target="#testModal"> 
+									<img class="cmp-md-logo" src="page/project/images/company/view.png">
 								</button>
 							</div>
 							<div class="col-lg-2">
 								<button class="m-img-btn" ng-click="btnDeleteTest(item)" data-toggle="modal" data-target="#myDeleteModal"> 
-									<img class="img-md-logo" src="page/project/images/company/delete.png">
+									<img class="cmp-md-logo" src="page/project/images/company/delete.png">
 								</button>
 							</div>
 							<div class="col-lg-2">
 								<button class="m-img-btn" ng-click= "btnEditTest(item)" data-toggle="modal" data-target="#participantModal"> 
-									<img class="img-md-logo" src="page/project/images/company/edit.png">
+									<img class="cmp-md-logo" src="page/project/images/company/edit.png">
 								</button>
 							</div>
 						</div>
@@ -69,17 +71,15 @@
 				</tr>
 			</tbody>
 		</table>
-		<div class="row">
-			<div class="col-lg-6 col-lg-offset-6">
-				<paging
-				  page="currentPage" 
-				  page-size="pageSize" 
-				  total="total"
-				  show-prev-next="true"
-				  show-first-last="true"
-				  >
-				</paging> 
-			</div>
+		<div class="cmp-paging">
+			<paging
+			  page="currentPage" 
+			  page-size="pageSize" 
+			  total="total"
+			  show-prev-next="true"
+			  show-first-last="true"
+			  >
+			</paging> 
 		</div>
 	</div>
 
@@ -88,22 +88,22 @@
 
 	<!-- 删除的弹出框 -->
 	<div class="modal fade" id="myDeleteModal" aria-hidden="true" role="dialog" >
-		<div class="modal-dialog moadl-sm" >
+		<div class="modal-dialog moadl-sm cmp-box-shadow cmp-sm-modal" >
 			<div class="modal-content" >
 				<div class="modal-body" >
-					<div class="row m-row-delete"  id="m-row-delete">
-						<!-- <img src="imgs/add_thumb.jpg"> -->
-						<span>确定要删除吗</span>
+					<div class="row cmp-modal-row-delete" >
+						<img class="cmp-warn-img" src="page/project/images/company/warn.png">
+						<span>确定要删除吗?</span>
 					</div>
-					<button class="btn m-btn-cancel" ng-click="cancelDelete()" id="m-btn-cancel" data-dismiss="modal" >
-						取消
-					</button>
-					<button class="btn " id="m-btn-sure" ng-click="confirmDelete()" data-dismiss="modal">
-						确认
-					</button>
+					<div class="row cmp-modal-row-control">
+						<button class="col-lg-3 col-lg-offset-2 btn btn-default cmp-cancel-btn" ng-click="cancelDelete()" data-dismiss="modal" >
+							取消
+						</button>
+						<button class="col-lg-3 col-lg-offset-2 btn btn-default cmp-confirm-btn" ng-click="confirmDelete()" data-dismiss="modal">
+							确认
+						</button>
+					</div>
 				</div>
-
-
 			</div>
 		</div>
 	</div>
@@ -111,74 +111,74 @@
 
 
 	<!-- 添加、查看、编辑的弹出框 -->
-	<div class="modal fade" id="TestModal">
+	<div class="modal fade" id="testModal">
 		<div class="modal-dialog modal-md" >
 			<div class="modal-content" >
-				<div class="modal-body user-test-modal" >
-					<div class="row row-head" >
-						<span ng-show="modalStatus == 'addModal'"> 发布用户测评</span>
-						<span ng-show="modalStatus == 'lookModal'"> 查看用户测评</span>
-					</div>
+				<div class="modal-head">
+					<h4 ng-show = "modalStatus == 'addModal'"> 发布专业测评</h4>
+					<h4 ng-show = "modalStatus == 'lookModal'"> 查看专业测评</h4>
+				</div>
+				<div class="modal-body cmp-test-modal" >
 					<div class="row" >
-						<form role="form" class="form-horizontal form-lg">
+						<form role="form" class="form-horizontal form-group cmp-form-group">
 							<div class="row">
-								<label class="col-lg-3 control-label" style="text-align: center;">测评产品:</label>
-								<div class="col-lg-9" ng-show="modalStatus == 'addModal'">
+								<label class="col-lg-2 control-label " >测评产品:</label>
+								<div class="col-lg-10" ng-show="modalStatus == 'addModal'">
 									<select class="form-control" type="text" ng-model="addTestProductName" ng-options="productName for productName in testProductNameList"/>
 								</div>
-								<div class="col-lg-9" ng-show="lmodalStatus == 'lookModal'">
-									<span class="m-span"> {{tmpTest.testProductName}} </span>
+								<div class="col-lg-10" ng-show="modalStatus == 'lookModal'">
+									<label class="control-label"> {{tmpTest.testProductName}} </label>
 								</div>
 							</div>
 							<div class="row">
-								<label class="col-lg-3 control-label" style="text-align: center;">测评团队:</label>
-								<div class="col-lg-9" ng-show="modalStatus == 'addModal'">
+								<label class="col-lg-2 control-label " >测评团队:</label>
+								<div class="col-lg-10" ng-show="modalStatus == 'addModal'">
 									<input class="form-control" type="text" ng-model="addTestTeam"/>
 								</div>
-								<div class="col-lg-9" ng-show="lmodalStatus == 'lookModal'">
-									<span class="m-span"> {{tmpTest.testName}} </span>
+								<div class="col-lg-10" ng-show="lmodalStatus == 'lookModal'">
+									<label class="control-label"> {{tmpTest.testName}} </label>
 								</div>
 							</div>
 							<div class="row" >
-								<label class="col-lg-3 control-label" style="text-align: center;" >测评地址:</label>
-								<div class="col-lg-9" ng-show="modalStatus == 'addModal'">
+								<label class="col-lg-2 control-label " >测评地址:</label>
+								<div class="col-lg-10" ng-show="modalStatus == 'addModal'">
 									<textarea class="form-control" rows="3" ng-model="addTestAddress"></textarea>
 								</div>
-								<div class="col-lg-9" ng-show="modalStatus == 'lookModal'">
-									<span class="m-span"> {{tmpTest.testAddress}} </span>
+								<div class="col-lg-10" ng-show="modalStatus == 'lookModal'">
+									<label class="control-label"> {{tmpTest.testAddress}} </label>
 								</div>
 							</div>
 							<div class="row" >
-								<label class="col-lg-3 control-label" style="text-align: center;" >测评时间:</label>
-								<div class="col-lg-9" ng-show="modalStatus == 'addModal'">
+								<label class="col-lg-2 control-label "  >测评时间:</label>
+								<div class="col-lg-10" ng-show="modalStatus == 'addModal'">
 									<input class="form-control" type="text" ng-model="addTestDate"/>
 								</div>
-								<div class="col-lg-9" ng-show="lmodalStatus == 'lookModal'">
-									<span class="m-span"> {{tmpTest.testDate}} </span>
+								<div class="col-lg-10" ng-show="lmodalStatus == 'lookModal'">
+									<label class="control-label"> {{tmpTest.testDate}} </label>
 								</div>
 							</div>
 							<div class="row" >
-								<label class="col-lg-3 control-label" style="text-align: center;" >测评报告:</label>
-								<div class="col-lg-6" ng-show="modalStatus == 'addModal'">
+								<label class="col-lg-2 control-label"  >测评报告:</label>
+								<div class="col-lg-7" ng-show="modalStatus == 'addModal'">
 									<input class="form-control" type="text" ng-model="addTestReportName"/>
 								</div>
 								<div class="col-lg-3" ng-show="modalStatus == 'addModal'">
-									<button class="btn btn-block">点击上传报告</button>
+									<button class="btn btn-block">点击上传</button>
 								</div>
-								<div class="col-lg-9" ng-show="modalStatus == 'lookModal'">		
-									<span class="m-span"> {{tmpTest.testReportName}} </span>
+								<div class="col-lg-10" ng-show="modalStatus == 'lookModal'">		
+									<label class="control-label"> {{tmpTest.testReportName}} </label>
 								</div>
 							</div>
 						</form>
 					</div>
 					<div class="row" >
-						<div class="col-lg-2 col-lg-offset-4">
-							<button class="btn btn-block" id="btn-productModal-cancel" ng-click="cancel(addModal,lookModal,editModal)" data-dismiss="modal">
+						<div class="col-lg-3 col-lg-offset-2">
+							<button class="btn btn-default btn-block cmp-cancel-btn" id="btn-productModal-cancel" ng-click="cancel(addModal,lookModal,editModal)" data-dismiss="modal">
 								取消
 							</button>
 						</div>
-						<div class="col-lg-2">
-							<button class="btn btn-block" id="btn-productModal-sure" ng-click="confirm(addModal,lookModal,editModal)" data-dismiss="modal">
+						<div class="col-lg-3 col-lg-offset-1">
+							<button class="btn btn-default btn-block cmp-confirm-btn" id="btn-productModal-sure" ng-click="confirm(addModal,lookModal,editModal)" data-dismiss="modal">
 								确定
 							</button>
 						</div>

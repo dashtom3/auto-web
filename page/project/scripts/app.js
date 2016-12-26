@@ -5,11 +5,11 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
     console.log("载入angular config");
     $routeProvider
       .when('/', {
-        templateUrl: '/page/project/html/views/user/news.html',
+        templateUrl: '/page/project/html/views/user/innovation.html',
         controller: 'MainController'
       })
-      .when('/innovation/news', {
-        templateUrl: '/page/project/html/views/user/news.html',
+      .when('/innovation', {
+        templateUrl: '/page/project/html/views/user/innovation.html',
         controller: 'MainController'
         //redirectTo: '/error'
       })
@@ -28,6 +28,7 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
         //redirectTo: '/error'
       });
       $locationProvider.html5Mode(true);
+      $httpProvider.interceptors.push('loadingHttpInterceptor');
   });
     // $routeProvider
     // .when('/PARisk/EnterpriseRisk', {

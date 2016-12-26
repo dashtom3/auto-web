@@ -1,4 +1,4 @@
-function CompanyTestController($scope,fileReader,Upload) {
+function CompanyTestController($scope,Upload) {
 	console.log("CompanyTestController");
 	$scope.tmpProduct={};
 	$scope.companyName="小软酱有限公司";
@@ -31,6 +31,7 @@ function CompanyTestController($scope,fileReader,Upload) {
 	$scope.pageCount = 5;
 	$scope.pageSize = 4;
 	$scope.total = 50;
+
 
 
 }

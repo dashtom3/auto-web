@@ -1,4 +1,4 @@
-function CompanyUserTestTabController($scope,fileReader,Upload) {
+function CompanyUserTestTabController($scope,Upload) {
 	$scope.currentTab = "testedUser";
 	$scope.toTab = function(tabName){
 		$scope.currentTab=tabName;

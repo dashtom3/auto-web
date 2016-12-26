@@ -1,4 +1,4 @@
-function CompanyProductMngController($scope,fileReader,Upload) {
+function CompanyProductMngController($scope,Upload) {
 	console.log("CompanyProductMngController");
 	$scope.tmpProduct={};
 	$scope.companyName="小软酱有限公司";
@@ -130,6 +130,7 @@ function CompanyProductMngController($scope,fileReader,Upload) {
 		}
 	};
 	$scope.btnAddProduct =function(){
+		console.log("dasd");
 		$scope.addModal = true;
 		$scope.lookModal = false;
 		$scope.editModal = false;
