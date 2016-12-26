@@ -1,110 +1,132 @@
-<div class="company-basicInfo-div container-fluid" ng-controller="CompanyBasicInfoController" ng-init = "isEdit=false" >
-	<div class="panel panel-default" >
-		<div class="panel-body" ">
-
+<div class="company-basicInfo-div container-fluid cmp-box-shadow" ng-controller="CompanyBasicInfoController" ng-init = "isEdit=false" >
+	<div class="panel panel-default cmp-box-shadow">
+		<div class="panel-body ">
 			<div class="row cmp-first-row" >
 				<label class="col-md-2 col-md-offset-1 cmp-title-label" >
 					基本信息
 				</label>
 			</div>
-			<div class="row" >				 	
-				<div class="col-md-7 col-md-offset-1">
-					<div class="row cmp-input-row" >
-						<label class="col-md-3 " >
-							公司全称：
-						</label>
-						<span  ng-if="isEdit == false" class="col-md-9" >{{infoList.name}}</span>
-						<input  ng-if="isEdit == true" class="col-md-9" type="text" " ng-model="infoList.name">
-					</div>
-					<div class="row cmp-input-row">
-						<label class="col-md-3 " >
-							公司简称：
-						</label>
-						<span  ng-if="isEdit == false" class="col-md-9" >{{infoList.shortName}}</span>
-						<input  ng-if="isEdit == true" class="col-md-9" type="text"   ng-model="infoList.shortName">
-					</div>
-					<div class="row cmp-input-row">
-						<label class="col-md-3 " >
-							公司地址：
-						</label>
-						<span  ng-if="isEdit == false" class="col-md-3" >{{infoList.address}}</span>
-						<input class="col-md-3" ng-if="isEdit == true" type="text"  " ng-model="infoList.address">
-						<label class="col-md-3 " >
-							所属领域：
-						</label>
-						<span  ng-if="isEdit == false" class="col-md-3" >{{infoList.field}}</span>
-						<input class="col-md-3" ng-if="isEdit == true" type="text" ng-model="infoList.field">
-					</div>	
-
+			<div class="row cmp-form-row">
+				<div class="col-md-7 col-md-offset-1 form-group">
+					<form role="form" class="form-horizontal">
+						<div class="row cmp-input-row">
+							<label  class="control-label col-md-2">
+								公司全称：
+							</label>
+							<label  class="control-label col-md-10 cmp-show-label" ng-show="isEdit == false" >
+								{{infoList.name}}
+							</label>
+							<div class="col-md-10" ng-show="isEdit == true">
+								<input type="text" class="form-control" ng-model="infoList.name">
+							</div>
+						</div>
+						<div class="row cmp-input-row">
+							<label  class="control-label col-md-2">
+								公司简称：
+							</label>
+							<label  class="control-label col-md-10 cmp-show-label" ng-show="isEdit == false">
+								{{infoList.shortName}}
+							</label>
+							<div class="col-md-10" ng-show="isEdit == true">
+								<input type="text" class="form-control" ng-model="infoList.shortName" >
+							</div>
+						</div>
+						<div class="row cmp-input-row">
+							<label  class="control-label col-md-2">
+								公司地址：
+							</label>
+							<label  class="control-label col-md-4 cmp-show-label" ng-show="isEdit == false" >
+								{{infoList.province}}
+							</label>
+							<div class="col-md-4" ng-show="isEdit == true">
+								<select class="form-control" type="text" ng-model="infoList.province" ng-options="province.name for ctype in provinceList"/>
+							</div>
+							<label  class="control-label cmp-after-label col-md-1">
+								省
+							</label>
+							<label  class="control-label col-md-4 cmp-show-label" ng-show="isEdit == false" >
+								{{infoList.city}}
+							</label>
+							<div class="col-md-4" ng-show="isEdit == true">
+								<select class="form-control" type="text" ng-model="infoList.city" ng-options="city.name for ctype in cityList"/>
+							</div>
+							<label  class="control-label cmp-after-label col-md-1">
+								市
+							</label>
+						</div>
+						<div class="row cmp-input-row">
+							<label  class="control-label col-md-2">
+								所属领域：
+							</label>
+							<label  class="control-label col-md-4 cmp-show-label" ng-show="isEdit == false" >
+								{{infoList.ctype}}
+							</label>
+							<div class="col-md-4" ng-show="isEdit == true">
+								<select class="form-control" type="text" ng-model="infoList.ctype" ng-options="ctype.name for ctype in ctypeList"/>
+							</div>
+						</div>
+						<div class="row cmp-input-row">
+							<label  class="control-label col-md-2">
+								成立时间：
+							</label>
+							<label  class="control-label col-md-4 cmp-show-label" ng-show="isEdit == false" >
+								{{form_datetime}}
+							</label>
+							<div class="col-md-4" ng-show="isEdit == true">
+								<input type="text" class="form-control" ng-model="form_datetime" id="form_datetime">
+							</div>
+						</div>
+						<div class="row cmp-input-row">
+							<label  class="control-label col-md-2">
+								法人代表：
+							</label>
+							<label  class="control-label col-md-4 cmp-show-label" ng-show="isEdit == false" >
+								{{infoList.legalEntity}}
+							</label>
+							<div class="col-md-4" ng-show="isEdit == true">
+								<input type="text" class="form-control" ng-model="infoList.legalEntity" >
+							</div>
+						</div>
+						<div class="row cmp-input-row">
+							<label  class="control-label col-md-2">
+								注册资本：
+							</label>
+							<label  class="control-label col-md-4 cmp-show-label" ng-show="isEdit == false" >
+								{{infoList.regCapital}}
+							</label>
+							<div class="col-md-4" ng-show="isEdit == true">
+								<input type="text" class="form-control" ng-model="infoList.regCapital" >
+							</div>
+							<label  class="control-label cmp-after-label col-md-1">
+								万
+							</label>
+						</div>
+						<div class="row cmp-input-row">
+							<label  class="control-label col-md-2">
+								注册地址：
+							</label>
+							<label  class="control-label col-md-10 cmp-show-label" ng-show="isEdit == false" >
+								{{infoList.companyAdress}}
+							</label>
+							<div class="col-md-10" ng-show="isEdit == true">
+								<input type="text" class="form-control" ng-model="infoList.companyAdress" >
+							</div>
+						</div>
+					</form>
 				</div>
-				<div class="col-md-2">
-					<div  class="cmp-logo-thumb">
+				<div class="col-md-2 cmp-basic-logo-div">
+					<div  class="cmp-logo-thumb cmp-box-shadow">
 						<label >
 							<div  ngf-select="upload($file)" >点击上传logo</div>
 						</label>
 						<img ngf-src="fileLogo" class="cmp-img-logo"/>	
-
 					</div>
-
 				</div>
+
 			</div>
-			<div class="row ">
-				<div class="col-md-7 col-md-offset-1">
-					<div class="row cmp-input-row">
-						<label class="col-md-3 " >
-							成立时间：
-						</label>
-						
-						<span  ng-if="isEdit == false" class="col-md-6" >{{infoList.regTime}}</span>
-						<div class='input-group input-group-sm date col-md-6 '  datetimepicker  id='datetimepicker1' ng-show="isEdit == true">  
-							<input type='text' class="form-control"  ng-model="infoList.regTime"/>  
-							<span class="input-group-addon">  
-								<span class="glyphicon glyphicon-calendar"></span>  
-							</span>  
-						</div>    
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-7 col-md-offset-1">
-					<div class="row cmp-input-row">
-
-						<label class="col-md-3 " >
-							法人代表：
-						</label>
-						<span  ng-if="isEdit == false" class="col-md-3" >{{infoList.legalEntity}}</span>
-						<input  ng-if="isEdit==true" type="text" class="col-md-3" ng-model="infoList.legalEntity">
-
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-7 col-md-offset-1">
-					<div class="row cmp-input-row" >
-						<label class="col-md-3 ">
-							注册资本：
-						</label>
-						<input ng-if="isEdit==true" type="text" class="col-md-3 " ng-model="infoList.regCapital">
-						<span ng-if="isEdit==false" class="col-md-3" >{{infoList.regCapital}}</span>
-						<span  class="col-md-1" >万</span>
-					</div>
-				</div>
-			</div>	
-			<div class="row">
-				<div class="col-md-7 col-md-offset-1">
-					<div class="row cmp-input-row">
-						<label class="col-md-3 ">
-							注册地址：
-						</label>
-						<span  ng-if="isEdit == false" class="col-md-9">{{infoList.companyAdress}}</span>
-						<input ng-if="isEdit==true" type="text" class="col-md-9 " ng-model="infoList.companyAdress">
-					</div>
-				</div>
-			</div>	
-			<br>
 		</div>
 	</div>
-	<div class="panel panel-default" >
+	<div class="panel panel-default cmp-box-shadow" >
 		<div class="panel-body">
 			<div class="row cmp-first-row" >
 				<label class="col-md-2 col-md-offset-1 cmp-title-label">
@@ -113,34 +135,38 @@
 			</div>
 			<div class="row">
 				<div class="col-md-7 col-md-offset-1">
-					<div class="row cmp-input-row">
-						<label class="col-md-3 ">
-							注册人职位：
-						</label>
-						<span class="col-md-3 ">
-							企业法人
-						</span>
-					</div>    
+					<form role="form" class="form-horizontal">
+						<div class="row cmp-input-row">
+							<label class="col-md-3 ">
+								注册人职位：
+							</label>
+							<label class="col-md-3 cmp-show-label">
+								{{infoList.position}}
+							</label>
+						</div>   
+					</form> 
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-9 col-md-offset-1">
-					<div class="row cmp-input-row">
-						<label class="col-md-2 ">
-							审核认证信息：
-						</label>
-					</div> 
-					<div class=" col-md-3 cmp-reg-thumb" >
-						<img src="{{imageSrc2}}"/>	
-					</div>
-					<div class=" col-md-3 cmp-reg-thumb" >
-						<img src="{{imageSrc3}}"/>	
-					</div>    
+					<form role="form" class="form-horizontal">
+						<div class="row cmp-input-row">
+							<label class="col-md-2 ">
+								审核认证信息：
+							</label>
+						</div> 
+						<div class=" col-md-3 cmp-reg-thumb" >
+							<img src="{{imageSrc2}}"/>	
+						</div>
+						<div class=" col-md-3 cmp-reg-thumb" >
+							<img src="{{imageSrc3}}"/>	
+						</div> 
+					</form>	   
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="panel panel-default">
+	<div class="panel panel-default cmp-box-shadow">
 		<div class="panel-body">
 			<div class="row cmp-first-row cmp-intro-row">
 				<label class="col-md-2 col-md-offset-1 cmp-title-label">
@@ -148,46 +174,46 @@
 				</label>
 			</div>
 			<div class="row cmp-form-row">
-				<div class="form-group form-group-sm " >
+				<div class="form-group" >
 					<label class="col-md-2 control-label col-md-offset-1" >公司简介:</label>
-					<p  ng-if="isEdit==false" class="col-md-7" > {{infoList.companyDesc}}</p>
+					<label  ng-if="isEdit==false" class="col-md-7" > {{infoList.companyDesc}}</label>
 					<div ng-if="isEdit==true" class="col-md-7" >
 						<textarea class="form-control" rows="3" ng-model="infoList.companyDesc"> </textarea>
 					</div>
 				</div>
 			</div>		
 			<div class="row cmp-form-row">
-				<div class="form-group form-group-sm " ">
+				<div class="form-group">
 					<label class="col-md-2 control-label col-md-offset-1" >产品与优势:</label>
-					<p  ng-if="isEdit==false" class="col-md-7" > {{infoList.productDesc}}</p>
+					<label  ng-if="isEdit==false" class="col-md-7" > {{infoList.productDesc}}</label>
 					<div ng-if="isEdit==true" class="col-md-7" >
 						<textarea class="form-control" rows="3" ng-model="infoList.productDesc"></textarea>
 					</div>
 				</div>
 			</div>	
 			<div class="row cmp-form-row">		
-				<div class="form-group form-group-sm" >
+				<div class="form-group" >
 					<label class="col-md-2  col-md-offset-1 control-label">目标与用户:</label>
-					<p  ng-if="isEdit==false" class="col-md-7"  > {{infoList.userDesc}}</p>
+					<label  ng-if="isEdit==false" class="col-md-7"  > {{infoList.userDesc}}</label>
 					<div ng-if="isEdit==true" class="col-md-7" >
 						<textarea class="form-control" rows="3" ng-model="infoList.userDesc" ></textarea>
 					</div>
 				</div>
 			</div>		
 
-			<div class="row cmp-info-btn-row" >
+			<div class="row cmp-info-btn-row">
 				<div ng-if="isEdit==false" class="col-md-9 col-md-offset-1">
-					<button class="btn btn-block"  ng-click="startEdit(true)">
+					<button class="btn btn-default btn-block cmp-confirm-btn"  ng-click="startEdit(true)">
 						编辑
 					</button>
 				</div>
 				<div ng-if="isEdit==true" class="col-md-4 col-md-offset-1">
-					<button class="btn btn-block"  ng-click="saveEdit(false)">
+					<button class="btn btn-default btn-block cmp-confirm-btn"  ng-click="saveEdit(false)">
 						保存
 					</button>
 				</div>
 				<div ng-if="isEdit==true" class="col-md-4 col-md-offset-1">
-					<button class="btn btn-block"  ng-click="cancelEdit(false)">
+					<button class="btn btn-default btn-block cmp-cancel-btn"  ng-click="cancelEdit(false)">
 						取消
 					</button>
 				</div>

@@ -40,10 +40,13 @@
 .company-test-div,
 .company-userTest-div,
 .company-basicInfo-div{
-	margin-left: 240px;
+	margin-left: 242px;
 	;
 	background-color: #F7F7F5;
 	min-height: 800px;
+}
+.cmp-box-shadow{
+	box-shadow: 0 0 7px rgba(0, 0, 0, .15);
 }
 .cmp-first-row{
 	margin-top: 20px;
@@ -76,8 +79,78 @@
 }
 .cmp-table > thead{
 	background-color: rgb(221,221,221); 
+}
+.cmp-table>tbody>tr:nth-child(odd)>td{
+	background-color: #fff;
 }	
+.cmp-table>tbody>tr:nth-child(even)>td{
+	background-color: rgb(248,250,251);
+}
+.cmp-paging{
+	text-align: right;
+}
+.cmp-paging ul{
+	margin :0px;
+}
 
+.cmp-input-row > .control-label{
+	text-align: left;
+	font-weight: normal;
+	font-size: 16px;
+}
+.cmp-input-row > .cmp-show-label{
+	text-align: center;
+}
+.cmp-input-row > .cmp-after-label{
+	padding-left: 0;
+}
+.cmp-input-row > div >.form-control{
+	text-align: left;
+	font-weight: normal;
+	font-size: 16px;
+	height: 36px;
+}
+.cmp-md-logo{
+	height: 17px;
+	width: 17px;
+}
+.cmp-add-css-btn{
+	height: 33.6px;
+	padding: 0;
+}
+.cmp-add-css-btn > .cmp-add-icon{
+	margin-right: 0px;
+}
+.cmp-add-css-btn > span,
+.cmp-find-btn > span{
+	vertical-align: middle;
+}
+.cmp-find-btn>img{
+	width: 15px;
+	height: 15px;
+}
+.cmp-productThumb-row .row.control-label,
+.cmp-form-group > .row > .control-label{ 
+	font-weight: normal;
+	font-size: 16px;
+}
+.cmp-form-group > .row > div > .control-label{ 
+	font-weight: normal;
+	font-size: 16px;
+	text-align: left;
+}
+.cmp-form-group > .row > div > .checkbox-inline{ 
+	font-weight: normal;
+	font-size: 16px;
+}
+.cmp-form-group > .row > div >.form-control{ 
+	text-align: left;
+	font-weight: normal;
+	font-size: 16px;
+}
+.cmp-form-group > .row > div >input{
+	height: 36px;
+}
 
 /*basicInfo*/
 .cmp-input-row{
@@ -109,15 +182,19 @@
 }
 .cmp-title-label{
 	font-weight: bold;
+	font-size: 16px;
 }
 .cmp-reg-thumb{
 	height: 100px;
 	width: 100px;
 	overflow: hidden;
 }
+.cmp-basic-logo-div{
+	margin-top: 20px;
+}
 .cmp-logo-thumb{
 	position: relative;
-	border: 1px solid #888;
+	color: #ccc;
 	height: 100px;
 	width: 100px;
 	overflow: hidden;
@@ -138,17 +215,85 @@
 	margin-top: 50px;
 	margin-bottom:30px;
 }
-.cmp-info-btn-row > div > button{
-	background-color: #c74b36;
-	color: #fff;
-}
+
 .cmp-img-logo{
 	height: 98px;
 	width: 98px;
 }
+.cmp-confirm-btn{
+	color: #fff ;
+	background-color: #c74b36;
+}
+.cmp-cancel-btn{
+	color: #000 ;
+	background-color: rgb(221,221,221);
+}
 
 
 /*finance*/
+.cmp-add-finance-btn:active,
+.cmp-add-finance-btn:hover,
+.cmp-add-finance-btn:focus{
+	color: #fff ;
+	background-color: #c74b36;
+}
+.cmp-add-finance-btn > span{
+	font-weight: bold;
+	font-size: 16px;
+}
+.cmp-add-finance-btn > .cmp-add-icon:active,
+.cmp-add-finance-btn > .cmp-add-icon:hover,
+.cmp-add-finance-btn > .cmp-add-icon:focus{
+	color: #fff;
+}
+.cmp-add-finance-btn > .cmp-add-icon{
+	border-radius: 50%;
+	border: 1px solid #ccc;
+	color: inherit;
+	font-size: 25px;
+	padding-left: 6px;
+	font-weight: normal;
+}
+.company-finance-div .form-group > .control-label{
+	font-size: 16px;
+	font-weight: normal;
+}
+.company-finance-div .form-group > div >.form-control{
+	font-size: 16px;
+	font-weight: normal;
+}
+.cmp-finance-span-after{
+	position: absolute;
+	right:  30px; 
+	top:8px;
+	z-index: 5;
+}
+.cmp-finance-span-required{
+	position: absolute; right:  25px;
+	top:8px;
+	z-index: 5;
+	color: red;
+}
+.cmp-sm-modal{
+	margin-top: 15%;
+}
+.cmp-warn-img{
+	width: 30px;
+	height: 30px;
+}
+.cmp-modal-row-delete{
+	margin-top: 30px;
+	margin-bottom: 30px; 
+	text-align: center; 
+	font-size: 20px;
+	font-family: 等线;
+}
+.cmp-modal-row-control{
+	margin-bottom: 15px;
+}
+.cmp-modal-row-delete >span{
+	vertical-align: middle;
+}
 .cmp-finance-first-row{
 	margin-top: 20px;
 }
@@ -173,11 +318,9 @@
 
 
 /*news*/
+
 .cmp-news-frist-row{
 	margin-top: 20px;
-}
-#newsModal .modal-head > h4{
-	text-align: left;
 }
 #newsModal .modal-body > h4{
 	overflow-y: scroll;
@@ -211,7 +354,27 @@
 	text-align: right;
 }
 .cmp-newsModal-row{
-	margin-top: 20px;
+	margin-top: 19px;
+}
+
+#newTagModal .modal-head,
+#productModal .modal-head,
+#testModal .modal-head,
+#userTestModal .modal-head,
+#newsModal .modal-head{
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	background-color: rgb(248,250,251);
+	padding: 10px 20px;
+}
+#newTagModal .modal-head>h4,
+#productModal .modal-head > h4,
+#testModal .modal-head > h4,
+#userTestModal .modal-head > h4,
+#newsModal .modal-head > h4{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	text-align: left;
 }
 
 
@@ -235,8 +398,9 @@
 }
 .cmp-productThumb-row > .row > label{
 	text-align: center;
+	font-size: 16px;
+	font-weight: normal;
 }
-
 
 
 /*test*/
@@ -248,14 +412,60 @@
 	padding: 10px 20px;	
 }
 .cmp-usertest-img-row > label{
-	text-align: center;
+	text-align: center !important;
 }
 .cmp-test-tag-div{
 	display: inline-block; 
 	vertical-align: middle;
 }
-.cmp-test-tag-div > button{
-	width: 33px;
-	height: 31px; 
-	border: 0px;
+.cmp-test-modal > .row >form > .row,
+.cmp-test-modal > .row{
+	margin: 10px 5px 0px 5px;
+
+}
+.cmp-test-modal > .row > .cmp-form-group > .row > .cmp-usertest-img-row > .control-label,
+.cmp-test-modal > .row > .cmp-form-group > .row > .control-label{
+	padding: 0;
+}
+.cmp-test-modal > .row > .cmp-form-group > .row .cmp-radio{
+	font-size: 16px;
+	font-weight: normal;
+}
+.cmp-test-add-btn{
+	border-radius: 50%;
+	border: 1px solid #ccc;
+	outline: none;
+	height: 19px;
+	width: 19px;
+	padding: 0;
+}
+.cmp-modal-roll-test{
+	overflow-y: scroll;
+	overflow-x:hidden;
+	height: 500px; 
+}
+.m-thumb-row{
+	margin-left: 20px;
+	margin-right:20px; 
+	background-color: rgb(248,250,251);
+}
+.m-thumb-row > div{
+	height: 160px;
+	border: 1px solid rgb(248,250,251);
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.m-thumb-row > div >img{
+	width: 100%;height: 100%;
+	border-radius: 5px;
+}
+.cmp-test-delete-thumb{
+	
+	width:20px;
+	height:20px;
+	border:0;
+	position:absolute;
+	top:0;
+	right: 20px;
 }

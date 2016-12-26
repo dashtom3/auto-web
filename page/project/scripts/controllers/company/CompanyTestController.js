@@ -33,4 +33,5 @@ function CompanyTestController($scope,Upload) {
 	$scope.total = 50;
 
 
+
 }

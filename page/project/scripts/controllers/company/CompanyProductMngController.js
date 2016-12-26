@@ -130,6 +130,7 @@ function CompanyProductMngController($scope,Upload) {
 		}
 	};
 	$scope.btnAddProduct =function(){
+		console.log("dasd");
 		$scope.addModal = true;
 		$scope.lookModal = false;
 		$scope.editModal = false;
