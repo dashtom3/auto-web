@@ -14,7 +14,6 @@
 	.header-container{
 		width: 960px;
 		margin: 0 auto;
-
 	}
 	.header-user-button{
 		background-image: url('../images/web_header_user.png');
@@ -66,6 +65,7 @@
 	.auto-footer{
 		background-color: #2A2624;
 		height:120px;
+
 	}
 	.auto-footer .container{
 		padding-top: 25px;

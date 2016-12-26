@@ -1,8 +1,20 @@
 
-<div class="" ng-repeat>
-	
-</div>
-	<div class="">
-		<button>点击加载更多</button>
+<table class="innnews table table-striped" >
+	<tr ng-repeat = "cmpNews in cmpNewsList">
+	<td class="innnews-td">
+	<div class="innnews-pic"><img src="http://www.auto-biz.cn/imgStore/newImgs/img148248196321317.jpg"></div>
+	<div class="innnews-content">
+		<div class="row" ><p class="innews-title">{{cmpNews.title}}</p></div>
+		<div class="row">
+			<p class="innews-date">2016年12月23日 15:38</p><p class="innews-company">上海小酱软件科技有限公司</p>
+		</div>
+		<div class="row">
+			<p class="innews-intro">汽车财经网12月13日讯，12月22日，工信部表示将进一步健全新能源汽车安全监管体系，同时会同相关部门完善新能源汽车标准体系，加快提高企业及产品准入门槛，落实新能源汽车财税政策，</p>
+		</div>
 	</div>
+	</td>
+	</tr>
+</table>
+<div class="">
+	<button>点击加载更多</button>
 </div>
