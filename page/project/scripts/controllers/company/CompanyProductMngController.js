@@ -162,9 +162,20 @@ function CompanyProductMngController($scope,Upload) {
 		return newObj;  
 	};
 
+	$scope.currentPage=1;
 	$scope.pageCount = 5;
 	$scope.pageSize = 4;
 	$scope.total = 50;
+	$scope.changePage = function(page){
+		console.log(page);
+	}
+	// $scope.$watch(
+	// 	'currentPage',function(newValue,oldValue,scope){
+	// 		console.log(newValue);
+
+	// 		console.log(oldValue);
+	// 	}
+	// 	);
 
 	$scope.thumb=[];
 	$scope.reader = new FileReader();

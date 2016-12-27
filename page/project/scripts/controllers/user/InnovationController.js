@@ -19,5 +19,8 @@ function InnovationController($scope,GlobalService,CompanyNewsService) {
 	}
 	$scope.loadMore=function(){
 
-	}
+	};
+
+
+
 }
