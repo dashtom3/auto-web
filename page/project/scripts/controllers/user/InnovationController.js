@@ -12,7 +12,7 @@ function InnovationController($scope,GlobalService,CompanyNewsService) {
 	}
 	loadCompanyNewsData($scope.cmpNews.pagePerNum,$scope.cmpNews.currentPage);
 	function loadCompanyNewsData(pagePerNum,currentPage){
-		CompanyNewsService.getCompanyNewsList("","","","","",pagePerNum,currentPage).then(function(result){
+		CompanyNewsService.getCompanyNewsList("","","","","","","","",pagePerNum,currentPage).then(function(result){
 		if($scope.cmpNewsList){
 			$scope.cmpNewsList = $scope.cmpNewsList.concat(result.list);
 		}else{
