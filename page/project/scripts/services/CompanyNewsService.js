@@ -4,9 +4,9 @@ angular.module("auto-biz-user")
   //注册公司
   this.getCompanyNewsList = function (title,author,isFirst,tag,isOnline,numPerPage,pageNumber) {
     var deferred = $q.defer();
-    var urlStr = GlobalService.getURLStr([["title",title],["author",author],["isFirst",isFirst],["tag",tag],["isOnline",isOnline],["numPerPage",numPerPage],["pageNumber",pageNumber]]);
+    var urlStr = GlobalService.getURLStr([["title",title],["author",author],["isFirst",isFirst],["tag",tag],["isOnline",isOnline]]);
     //var urlStr = GlobalService.getURLStr([["title",title],["author",author],["isFirst",isFirst],["tag",tag],["isOnline",isOnline]]);
-    $http.get(GlobalService.baseUrl+'news/list?'+urlStr).success(function (res) {
+    $http.get(GlobalService.baseUrl+'news/list/'+numPerPage+'/'+pageNumber+'/'+urlStr).success(function (res) {
         console.log("获取企业新闻列表");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
