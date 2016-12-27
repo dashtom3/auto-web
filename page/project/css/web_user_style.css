@@ -3,7 +3,7 @@
 	margin: auto;
 	margin-bottom:24px; 
 	width: 960px;
-	min-height: 760px;
+	min-height: 600px;
 }
 .cmp-create .row{
 	margin: 0px;
@@ -208,6 +208,334 @@
  	color:#271701;
  	padding: 3px 6px 3px 6px;
  }
+  .cmp-innovation-title a,
+   .cmp-innovation-title a:hover,
+    .cmp-innovation-title a:focus{
+    	text-decoration: none;
+    }
  .cmp-innovation-title .active{
  	border-bottom: solid 4px #C44A3A;  
  }
+.cmp-reg-blocks{
+    display: block;
+    width: 960px;
+    height: auto;
+    margin: 10px auto;
+    padding: 20px 40px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    box-sizing: content-box;
+}
+
+.cmp-reg-narrowBlocks{
+    display: block;
+    width: 400px;
+    height: 300px;
+    margin: 0px auto;
+    padding: 20px 40px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    box-sizing: content-box;
+    font-family: "DengXian";
+}
+.cmp-reg-userBlocks{
+    display: block;
+    width: 500px;
+    height: 700px;
+    margin: 0px auto;
+    padding: 20px 40px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    box-sizing: content-box;
+    font-family: "DengXian";
+}
+.cmp-reg-top{
+	height: 100px;
+}
+.cmp-reg-loginTitle{
+    color: #c74b36;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px auto;
+}
+
+.cmp-reg-loginInputBar{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.3);
+    border: 1px;
+    margin: 0 ;
+}
+.cmp-create-loginpic{
+    width: 110px;
+    height: 110px;
+    border: solid 1px #CCC;
+    border-radius:4px;
+    text-align: center;
+    float: left;
+}
+.cmp-create-loginpic p{
+    font-size: 10px;
+    color: #ccc;
+    margin: 50px auto;
+}
+.cmp-create-loginpic img{
+    width: 108px;
+    height: 108px;
+    border-radius:4px;
+}
+.cmp-reg-thirdPartyLogin{
+    font-size: 3em;
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+}
+
+
+.cmp-reg-label{
+    display: inline-block;
+    color: #65676b;
+    margin: 10px 0;
+    font-weight: 600;
+    font-size: 16px;
+    font-family: DengXian;
+}
+
+.cmp-reg-timeStamp{
+    display: inline-block;
+    color: #c74b36;
+    margin: 10px 0;
+    font-weight: 200;
+    font-size: 16px;
+    font-family: DengXian;
+}
+
+.cmp-reg-headerImage{
+    display: block;
+    background: url("header.png");
+    width: 100%;
+    height: 100px;
+    top: 0;
+    background-repeat: no-repeat;
+    margin: 0;
+
+}
+
+.cmp-reg-contentArea{
+    text-align: left;
+}
+
+.cmp-reg-newsContent{
+    color: black;
+    line-height: 40px;
+    margin-top: 10px;
+    font-family: DengXian;
+}
+
+.cmp-reg-newsImage{
+    width: 100%;
+    height:500px;
+    margin: 10px auto;
+    background: url("400.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.cmp-reg-cardBlock{
+    display: inline-block;
+    width: 265px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 10px 7px;
+    vertical-align: top;
+    text-align: left;
+}
+
+.cmp-reg-cardImageContainer{
+    width: 100%;
+    position: relative;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+}
+
+
+.cmp-reg-cardBlockImageCover{
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    width: 265px;
+    height: 50px;
+    background:-webkit-gradient(linear, 50% 0%, 50% 100%,from(rgba(0,0,0,.4)), to(rgba(0,0,0,0)));
+    border-radius: 5px 5px 0 0;
+}
+
+
+.cmp-reg-cardBlockImage{
+    z-index: 1;
+    position: absolute;
+    width: 265px;
+    height: 200px;
+    background: url("400.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px 5px 0 0;
+}
+
+.cmp-reg-cardCompany{
+    z-index: 2;
+    position: absolute;
+    top: 10px;
+    width: 280px;
+    color: white;
+    font-family: DengXian;
+
+}
+
+.cmp-reg-cardCompanyIcon{
+    position: absolute;
+    z-index: 2;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-left: 70px;
+    background: url("icon.png");
+    background-size: cover;
+}
+
+.cmp-reg-cardContent{
+    font-family: "DengXian";
+    margin: 200px 20px 15px;
+    overflow: hidden;
+}
+
+.cmp-reg-cardTitle{
+    margin: 10px 0;
+    height: 50px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    font-family: "DengXian";
+    font-weight: bold;
+    font-size:17px;
+    line-height: 25px;
+}
+
+.cmp-reg-cardLabel{
+    width: 70px;
+    font-family: "DengXian";
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 25px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.cmp-reg-cardValue{
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    width: 135px;
+    display: inline-block;
+    font-family: "DengXian";
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 25px;
+    vertical-align: top;
+    margin-left: 10px;
+}
+
+.cmp-reg-cardDate{
+    width: 40px;
+    font-family:"DengXian";
+    color: #c74b36;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.cmp-reg-cardDate .cmp-reg-LargeDate{
+    font-size: 50px;
+    line-height: 50px;
+    font-weight:600;
+}
+
+.cmp-reg-cardDate .cmp-reg-SmallDate{
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.cmp-reg-cardTextBesideDate{
+    margin-left: 20px;
+    width: 155px;
+    height: 80px;
+    display: inline-block;
+    line-height: 25px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    color: #65676b;
+    vertical-align: top;
+    font-size: 13px;
+}
+
+.cmp-reg-cardUserTest{
+    margin-top: 5px;
+    margin-bottom: 20px;
+    display: inline-block;
+    vertical-align: top;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    color: #65676b;
+}
+
+.cmp-reg-cardProfessionalTest{
+    margin-top: 5px;
+    display: inline-block;
+    vertical-align: top;
+    float: right;
+    font-size: 14px;
+    font-weight: bold;
+    color: #65676b;
+}
+
+.cmp-reg-fullWidthRedButton{
+    margin: 20px 0 ;
+    background-color: #c74b36;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    line-height: 28px;
+    padding: 3px 0;
+    text-align: center;
+    font-family: "Microsoft YaHei UI";
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+}
+
+.cmp-reg-fullWidthRedButton:hover{
+    box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+    transition: box-shadow 0.2s;
+}
+
+.cmp-reg-loadMoreButton{
+    display: block;
+    margin: 10px auto;
+    font-family: "Microsoft YaHei UI";
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    width: 300px;
+    line-height: 30px;
+    padding: 3px 0;
+    background-color: #c74b36;
+    border-radius: 50px;
+    border: none;
+}

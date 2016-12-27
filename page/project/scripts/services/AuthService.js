@@ -11,13 +11,11 @@ angular.module("auto-biz-user")
           console.log("用户登录");
           deferred.resolve(res.data);
         }else{
-          alert("您好，您访问的内容出错");
-          deferred.resolve();
+          alert("用户名密码错误");
         }
       })
       .error(function (res) {
         alert("您好，您访问的内容出错");
-        deferred.resolve();
       });
     return deferred.promise;
   };
@@ -32,13 +30,11 @@ angular.module("auto-biz-user")
             deferred.resolve();
 
           }else{
-          alert("您好，您访问的内容出错");
           deferred.resolve();
         }
       })
       .error(function (res) {
         alert("您好，您访问的内容出错");
-        deferred.resolve();
       });
       return deferred.promise;
   };
@@ -52,13 +48,11 @@ angular.module("auto-biz-user")
             self.company = res.data;
             deferred.resolve(res.data);
           }else{
-            alert("您好，您访问的内容出错");
-            deferred.resolve();
+            alert("用户名密码错误");
         }
       })
       .error(function (res) {
         alert("您好，您访问的内容出错");
-        deferred.resolve();
       });
       return deferred.promise;
   }
@@ -76,7 +70,6 @@ angular.module("auto-biz-user")
       })
       .error(function (res) {
         alert("您好，您访问的内容出错");
-        deferred.resolve();
       });
   }
   this.setUserInfo = function(user){
@@ -86,5 +79,13 @@ angular.module("auto-biz-user")
   this.setCompanyInfo = function(company){
     self.company = company;
     self.token = company.token;
+  }
+  this.getToken = function(){
+      if(self.user){
+        return user.token;
+      }else if(self.company){
+        return company.token;
+      }
+      return null;
   }
 })

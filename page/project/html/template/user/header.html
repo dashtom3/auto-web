@@ -6,7 +6,7 @@
         <div class="navbar-collapse collapse ">
             <ul class="nav navbar-nav navbar-center">
                 <li ng-repeat="headerItem in headerItems" ng-class="{'active':currentPage == (headerItem.title | lowercase) }">
-                    <a href="javascript:void(0)"><p style="font-size:11px;">{{headerItem.name}}</p><p style="font-size: 9px;">{{headerItem.title}}</p></a>
+                    <a ng-href="{{headerItem.url}}"><p style="font-size:11px;">{{headerItem.name}}</p><p style="font-size: 9px;">{{headerItem.title}}</p></a>
                 </li>
             </ul>
            
@@ -18,11 +18,11 @@
                     用户 <span class="caret"></span>
                   </button> -->
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">个人登录</a></li>
+                    <li><a href="/loginUser">个人登录</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">个人注册</a></li>
+                    <li><a href="/registerUser">个人注册</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">企业登录</a></li>
+                    <li><a href="/loginCompany">企业登录</a></li>
                     <li class="divider"></li>
                     <li><a href="/registerCompany">企业入驻</a></li>
                   </ul>

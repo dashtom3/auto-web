@@ -1,0 +1,141 @@
+<div class="cmp-detail-body" ng-controller="CompanyDetailController">
+	<div class="row cmp-outline-row">
+		<div class="cmp-detail-outline">
+			<div class="cmp-outline-logo">
+				<img src="{{companyDetail.logo}}" alt="tupian">
+			</div>
+			<div class="cmp-outline-content">
+				<div class="row outline-fir-row">
+					<div class="col-md-3">
+						<label class="detail-short-name">{{companyDetail.shortName}}</label>
+					</div>
+					<div class="col-md-2 detail-area-class" ng-repeat="item in companyDetail.areaList">
+						<label class="detail-area-label" >{{item.areaName}}</label>
+					</div>
+				</div>
+				<div class="row outline-sec-row">
+					<div class="col-md-12">
+						<label>
+							{{companyDetail.shortCut}}
+						</label>
+					</div>
+				</div>
+				<div class="row outline-tri-row">
+					<div class="col-md-3">
+						<label>
+							<img src="page/project/images/location.jpg">
+							<span>
+								{{companyDetail.city}}
+							</span>
+						</label>
+					</div>
+					<div class="col-md-3 detail-regTime">
+						<label>
+							成立于{{companyDetail.regTime}}
+						</label>
+					</div>
+					<div class="col-md-3">
+						<label>
+							{{isNeedInvestContent}}
+						</label>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="detail-container" id="top">
+		<div class="cmp-detail">
+			<div class="row cmp-detail-title">
+				<div ng-repeat="invItem in cmpDetailList">
+					<a href="javascript:void(0)" ng-click="selectItem(invItem[0])"  ng-class="{'active':currentPage == invItem[0] }">{{invItem[0]}}</a>
+				</div>
+			</div>
+			<div class="row" ng-repeat="invItem in cmpDetailList">
+				<div ng-if="currentPage == invItem[0]" ng-include="'page/project/html/template/user/'+invItem[1]+'.html'"></div>
+			</div>
+		</div>
+	</div>
+	<div class="detail-container">
+		<div class="cmp-detail">
+			<div class="detail-container-header">
+				<label>最新资讯</label>
+				<a class="detail-right-a" href="#top" target="_self" ng-click="selectItem('最新资讯')"> 更多</a>
+			</div>
+			<div class="detail-table-container">
+
+			</div>
+		</div>
+	</div>
+	<div class="detail-container">
+		<div class="cmp-detail">
+			<div class="detail-container-header">
+				<label>最新产品</label>
+				<a class="detail-right-a" href="#top" target="_self" ng-click="selectItem('最新产品')"> 更多</a>
+			</div>
+			<div class="detail-product-container">
+				<div class="cmp-reg-cardBlock" ng-repeat="product in productList | limitTo:3">
+					<div class="cmp-reg-cardImageContainer">
+						<div class="cmp-reg-cardBlockImage"></div>
+						<div class="cmp-reg-cardBlockImageCover"></div>
+						<div class="cmp-reg-cardCompanyIcon">   </div>
+						<div class="cmp-reg-cardCompany">小酱软件公司</div>
+					</div>
+
+					<div class="cmp-reg-cardContent">
+						<div class="cmp-reg-cardTitle">大黄蜂—科迈罗的发哦或爹法萨戴菲菲纷纷为 </div>
+
+						<div class="cmp-reg-cardDate">
+							<div class="cmp-reg-LargeDate">21</div>
+							<div class="cmp-reg-cardSmallDate">2016/8</div>
+						</div>
+						<div class="cmp-reg-cardTextBesideDate">
+							动画是使元素从一种样式逐渐变化为另一种样式的效果。您可以改变任意多的样式任意多的次数。请用百分比来规定变化发生的时间，或用关键词 "from" 和 "to"，等同于 0% 和 100%。0% 是动画的开始，100% 是动画的完成。a为了得到最佳的浏览器支持，您应该始终定义 0% 和 100% 选择器。
+						</div>
+						<div class="cmp-reg-cardUserTest">用户测评
+							<i class="star yellow icon" style="margin: 0 0 0 5px;width: auto"></i>
+							<i class="star yellow icon" style="margin: 0;width: auto"></i>
+							<i class="star yellow icon" style="margin: 0;width: auto"></i>
+							<i class="star yellow half icon"style="margin: 0;width: auto"></i>
+
+						</div>
+						<div class="cmp-reg-cardProfessionalTest">专业测评<i class="file text outline icon" style="margin-left: 5px"></i></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="detail-container">
+		<div class="cmp-detail">
+			<div class="detail-container-header">
+				<label>热门测评</label>
+				<a class="detail-right-a" href="#top" target="_self" ng-click="selectItem('热门测评')"> 更多</a>
+			</div>
+			<div class="detail-test-container">
+				<div class="cmp-reg-cardBlock" ng-repeat="test in testList | limitTo:3">
+				    <div class="cmp-reg-cardImageContainer">
+				        <div class="cmp-reg-cardBlockImage"></div>
+				        <div class="cmp-reg-cardBlockImageCover"></div>
+				        <div class="cmp-reg-cardCompanyIcon">   </div>
+				        <div class="cmp-reg-cardCompany">小酱软件公司</div>
+				    </div>
+
+				    <div class="cmp-reg-cardContent">
+				        <div class="cmp-reg-cardTitle">大黄蜂—科迈罗的发哦或爹法萨 </div>
+				        <label class="cmp-reg-cardLabel">参与人数</label>
+				        <div class="cmp-reg-cardValue">53/66</div>
+				        <label class="cmp-reg-cardLabel">测评类型</label>
+				        <div class="cmp-reg-cardValue">实地测评</div>
+				        <label class="cmp-reg-cardLabel">测评时段</label>
+				        <div class="cmp-reg-cardValue">2016/11/5-2017/1/31</div>
+				        <label class="cmp-reg-cardLabel">地点</label>
+				        <div class="cmp-reg-cardValue">上海市杨浦区四平路1239号同济大学四平校区</div>
+				        <button class="cmp-reg-fullWidthRedButton">立即参与</button>
+				    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+</div>

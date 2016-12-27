@@ -1,0 +1,38 @@
+<div class ="cmp-create" ng-controller="AuthController">
+<div class="cmp-reg-userBlocks">
+        <div class="cmp-reg-loginTitle">用户注册</div>
+        <div class="row">
+        <div class="col-xs-6">
+        <div class="cmp-reg-label">用户名</div>
+        <input type="text" class="cmp-reg-loginInputBar" ng-model="user.name">
+        <div class="cmp-reg-label">密码</div>
+        <input type="password" class="cmp-reg-loginInputBar" ng-model="user.password">
+        <div class="cmp-reg-label">重复密码</div>
+        <input type="password" class="cmp-reg-loginInputBar" ng-model="user.repass">
+        <div class="cmp-reg-label">身份</div>
+        <input type="text" class="cmp-reg-loginInputBar" ng-model="user.password">
+        <div class="cmp-reg-label">昵称</div>
+        <input type="text" class="cmp-reg-loginInputBar" ng-model="user.nickname">
+        <div class="cmp-reg-label">邮箱</div>
+        <input type="text" class="cmp-reg-loginInputBar" ng-model="user.mail">
+        <div class="cmp-reg-label">手机号</div>
+        <input type="text" class="cmp-reg-loginInputBar" ng-model="user.phone">
+        </div>
+        <div class="col-xs-6">
+        <div class="cmp-reg-label">认证信息</div>
+        <div class="cmp-reg-label">身份证正反面照片</div>
+        <div class="cmp-reg-loginpic" ngf-select="uploadFirPic($file)" ng-model="firpic">
+            <img ngf-src="firpic" alt="点击添加图片">
+            <p ng-hide="firpic">点击添加图片</p>
+        </div>
+        <div class="cmp-reg-loginInputBar" ngf-select="uploadSecPic($file)" ng-model="secpic">
+            <img ngf-src="secpic" alt="点击添加图片">
+            <p ng-hide="secpic">点击添加图片</p>
+        </div>
+        </div>
+        </div>
+        <button class="cmp-reg-fullWidthRedButton" ng-click="clickRegisterUser()">登录</button>
+        <div class="cmp-reg-cardUserTest" style="float: left;width: 49%;text-align: left" ><a href="javascript:void(0)">忘记密码？</a></div>
+        <div class="cmp-reg-cardProfessionalTest"  style="float: right;width: 49%;text-align: right"><a href="/loginUser">用户登录</a></div>
+</div>
+</div>
