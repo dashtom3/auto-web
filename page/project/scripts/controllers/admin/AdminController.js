@@ -1,9 +1,16 @@
-function AdminController($scope) {
+function AdminController($scope,AuthService,$location) {
   console.log("载入AdminController");
-  $scope.currentPage = "userList";
+  if(AuthService.user){
+  	if(AuthService.user.userType == "admin"){
+  		$scope.currentPage = "userList";
+  	}else{
+  		$location.path("loginAdmin");
+  	}
+  }else{
+  	$location.path("loginAdmin");
+  }
 
   $scope.setPage = function(page) {
-  	// alert('Hello ' + (page || 'world') + '!');
     $scope.currentPage = page;
   }
 }

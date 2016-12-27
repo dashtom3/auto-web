@@ -1,0 +1,18 @@
+<!-- 导航栏 -->
+<nav class="navbar navbar-inverse " role="navigation">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">管理平台</a>
+        </div>
+</nav>
+<!--用户登录-->
+<div class ="cmp-create" ng-controller="AuthController">
+	<div class = "cmp-reg-top"></div>
+<div class="cmp-reg-narrowBlocks">
+        <div class="cmp-reg-loginTitle">管理员登录</div>
+        <div class="cmp-reg-label">用户名</div>
+        <input type="text" class="cmp-reg-loginInputBar" ng-model="user.name">
+        <div class="cmp-reg-label">密码</div>
+        <input type="password" class="cmp-reg-loginInputBar" ng-model="user.password">
+        <button class="cmp-reg-fullWidthRedButton" ng-click="clickLoginAdmin()">登录</button>
+</div>
+</div>
