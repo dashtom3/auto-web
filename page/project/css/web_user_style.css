@@ -273,20 +273,21 @@
     border: 1px;
     margin: 0 ;
 }
-.cmp-create-loginpic{
-    width: 110px;
+.cmp-reg-loginpic{
+    width: 100%;
     height: 110px;
     border: solid 1px #CCC;
     border-radius:4px;
     text-align: center;
     float: left;
+    margin-bottom: 20px;
 }
-.cmp-create-loginpic p{
+.cmp-reg-loginpic p{
     font-size: 10px;
     color: #ccc;
     margin: 50px auto;
 }
-.cmp-create-loginpic img{
+.cmp-reg-loginpic img{
     width: 108px;
     height: 108px;
     border-radius:4px;
@@ -507,17 +508,17 @@
 }
 
 .cmp-reg-fullWidthRedButton{
-    margin: 20px 0 ;
+    margin: 20px auto;
     background-color: #c74b36;
     border-radius: 5px;
     border: none;
-    width: 100%;
+   /* width: 80%;
     line-height: 28px;
     padding: 3px 0;
     text-align: center;
     font-family: "Microsoft YaHei UI";
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 700;*/
     color: white;
 }
 

@@ -1,9 +1,9 @@
 <div ng-controller="userListController">
 	<p></p>
-	<button type="button" ng-click="setType('')" class="btn btn-primary">全部</button>
-	<button type="button" ng-click="setType('1')" class="btn btn-success">已审核</button>	
-	<button type="button" ng-click="setType('0')" class="btn btn-warning">待审核</button>	
-	<button type="button" ng-click="setType('-1')" class="btn btn-danger">未通过</button>
+	<button type="button" ng-click="getlist('')" class="btn btn-primary">全部</button>
+	<button type="button" ng-click="getlist('1')" class="btn btn-success">已审核</button>	
+	<button type="button" ng-click="getlist('0')" class="btn btn-warning">待审核</button>	
+	<button type="button" ng-click="getlist('-1')" class="btn btn-danger">未通过</button>
 	<div style="float: right">
 		<form class="navbar-form">
             <input type="search" ng-model="passFlag" class="form-control" placeholder="Search...">
@@ -23,18 +23,82 @@
     <th>身份证正面</th>
 	<th>身份证反面</th>
 	<th>审核状态</th>
+	<th>操作</th> 
   		</tr>
-  		<tr ng-repeat="user in userList | filter: passFlag | filter : {userType : type}">
-    <td><a href="#" ng-click="setCurrentUser(user)" data-toggle="modal" data-target="#myModal">{{user.name}}</a></td>
+  		<tr ng-repeat="user in userList | filter: passFlag">
+    <td>{{user.name}}</td>
     <td>{{user.nikeName}}</td>
-    <td>{{user.userType}}</td>
+    <td>{{user.userType | typeFilter}}</td>
     <td>{{user.phone}}</td>
     <td>{{user.mail}}</td>
-	<td>{{user.timestamp}}</td>
-    <td><img ng-src="{{user.idImg1}}"/></td>
-    <td><img ng-src="{{user.idImg2}}"/></td>
-	<td>{{user.isPassed}}</td>
-    <!-- 模态框（Modal） -->
+	<td>{{user.timestamp | dateFilter}}</td>
+	<td>
+						<div class="row">	
+								<button class="m-img-btn" ng-click="setCurrentUser(user)" data-toggle="modal" data-target="#idModal1"> 
+									<img ng-src="{{user.idImg1 | imageFilter}}"/>
+								</button>
+						</div>
+	</td>
+	<td>
+						<div class="row">
+								<button class="m-img-btn" ng-click="setCurrentUser(user)" data-toggle="modal" data-target="#idModal2"> 
+									<img ng-src="{{user.idImg2 | imageFilter}}"/>
+								</button>
+						</div>
+	</td>
+	<td>{{user.isPassed | statusFilter}}</td>
+	<td>
+						<div class="row">
+							<div class="col-lg-2 col-lg-offset-2">
+								<button class="m-img-btn" ng-click="setCurrentUser(user)" data-toggle="modal" data-target="#myModal"> 
+									<img class="img-md-logo" src="page/project/images/company/view.png">
+								</button>
+							</div>
+						</div>
+	</td>
+  		</tr>
+	</table>
+	</div>
+
+	<!-- 图片模态框（Modal） -->
+    <div class="modal fade" id="idModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					{{currentUser.name}}
+				</h4>
+			</div>
+			<div class="modal-body">
+				<img ng-src="{{currentUser.idImg1 | imageFilter}}"/>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+	</div>
+
+	<!-- 图片模态框（Modal） -->
+    <div class="modal fade" id="idModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					{{currentUser.name}}
+				</h4>
+			</div>
+			<div class="modal-body">
+				<img ng-src="{{currentUser.idImg2 | imageFilter}}"/>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+	</div>
+
+	<!-- 操作模态框（Modal） -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -49,10 +113,10 @@
 			<div class="modal-body">
 				<div>
 					审核：
-				<button ng-click="setCurrentUser(user)" type="button" class="btn btn-success" data-dismiss="modal">
+				<button ng-click="passUser(currentUser._id,'1')" type="button" class="btn btn-success" data-dismiss="modal">
 					通过
 				</button>
-				<button type="button" class="btn btn-danger" data-dismiss="modal">
+				<button ng-click="passUser(currentUser._id,'-1')" type="button" class="btn btn-danger" data-dismiss="modal">
 					否决
 				</button>
 				</div>
@@ -60,13 +124,13 @@
 				</br>
 				<div>
 					更改权限：
-				<button type="button" class="btn btn-primary" data-dismiss="modal">
+				<button ng-click="updateUserType(currentUser._id,'vc')" type="button" class="btn btn-primary" data-dismiss="modal">
 					投资人
 				</button>
-				<button type="button" class="btn btn-primary" data-dismiss="modal">
+				<button ng-click="updateUserType(currentUser._id,'wr')" type="button" class="btn btn-primary" data-dismiss="modal">
 					专栏作家
 				</button>
-				<button type="button" class="btn btn-danger" data-dismiss="modal">
+				<button ng-click="updateUserType(currentUser._id,'no')" type="button" class="btn btn-danger" data-dismiss="modal">
 					黑名单
 				</button>
 				</div>
@@ -77,7 +141,21 @@
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
 	</div>
-  		</tr>
-	</table>
+
+	<!--分页-->
+	<div class="row">
+		<div class="col-lg-6 col-lg-offset-6">
+			<paging
+			  page="currentPage" 
+			  page-size="pageSize" 
+			  total="total"
+			  paging-action="changePage(page)"
+			  show-prev-next="true"
+			  show-first-last="true"
+			  >
+			</paging> 
+		</div>
 	</div>
+
+
 </div>

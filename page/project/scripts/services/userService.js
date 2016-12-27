@@ -1,5 +1,5 @@
 angular.module('auto-biz-user')
-  .service('UserService', function UserService($http, $q,GlobalService) {
+  .service('UserService', function UserService($http, $q,GlobalService,AuthService) {
     //注册用户
     this.registerUser = function(user) {
         var deferred = $q.defer();
@@ -22,19 +22,22 @@ angular.module('auto-biz-user')
         return deferred.promise;
     }
     //获取用户列表
-    this.getUserList = function() {
+    this.getUserList = function(numPerPage,pageNum,isPassed) {
         var deferred = $q.defer();
         console.log("读取getUserListService网络数据");
-        // $http.get('http://123.56.220.72:3300/user/getUserList')
-        $http.get('http://localhost:3300/user/getUserList')
+        var url='http://123.56.220.72:3300/user/list/'+numPerPage+'/'+pageNum;
+        if(isPassed!==''){
+            url=url+'?isPassed='+isPassed;
+        }
+        $http.get(url)
             .success(function(data, status, headers, config){
-                console.log(data);
-                if(data.isSuccess=='0'){
-                    alert(data.data)
-                    deferred.resolve("");
+                //console.log(data);
+                if(data.callStatus=='SUCCEED'){
+                    deferred.resolve(data.data);
                 }
                 else{
-                    deferred.resolve(data.data);
+                    alert(data.errCode)
+                    deferred.resolve("");
                 }
             })
             .error(function(data, status, headers, config){
@@ -44,20 +47,21 @@ angular.module('auto-biz-user')
         return deferred.promise;
     }
     //用户认证通过/否决
-    this.passUser = function(ispassed) {
-        var url='xxx'+ispassed;
+    this.passUser = function(id,passFlag) {
+        // var token=AuthService.user.token;
+        var token='111';
+        var url='http://123.56.220.72:3300/user/modify/approval?token='+token+'&userId='+id+'&approvalStatus='+passFlag;
         var deferred = $q.defer();
         $http.get(url)
             .success(function(data, status, headers, config){
-                if(data.isSuccess=='0'){
-                    alert('认证失败');
-                    deferred.resolve('');
-                }
-                else{
+                if(data.callStatus=='SUCCEED'){
                     alert('认证成功!');
                     deferred.resolve('');
                 }
-
+                else{
+                    alert('认证失败'+data.errCode)
+                    deferred.resolve('');
+                }
             })
             .error(function(data, status, headers, config){
                 deferred.reject(data);
@@ -66,19 +70,20 @@ angular.module('auto-biz-user')
     }
     //用户权限更改
     this.updateUserType = function(newType) {
-        var url='xxx'+newType;
+        // var token=AuthService.user.token;
+        var token='111';
+        var url='http://123.56.220.72:3300/user/modify/type?token='+token+'&newType='+newType;
         var deferred = $q.defer();
         $http.get(url)
             .success(function(data, status, headers, config){
-                if(data.isSuccess=='0'){
-                    alert('操作失败');
+                if(data.callStatus=='SUCCEED'){
+                    alert('更改成功!');
                     deferred.resolve('');
                 }
                 else{
-                    alert('操作成功!');
+                    alert('更改失败'+data.errCode)
                     deferred.resolve('');
                 }
-
             })
             .error(function(data, status, headers, config){
                 deferred.reject(data);
