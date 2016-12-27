@@ -1,0 +1,40 @@
+<div class="cmp-discover-panel" ng-controller="CompanyDiscoverController">
+	<div class="row discover-table-row">
+		<table class="table table-striped  cmp-discover-table">
+			<thead>
+				<tr>
+					<th class="discover-cmp-th">公司</th>
+					<th>负责人</th>
+					<th>领域</th>
+					<th>产品数</th>
+					<th>所在地</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="company in companyList">
+					<td class="discover-cmp-td" ng-click="toPage(company.id)">
+						<img class="discover-cmp-logo" src="{{company.logo}}">
+						<label>{{company.fullName}}</label>
+					</td>
+					<td>
+						<label> {{company.legalEntity}}</label>
+					</td>
+					<td>
+						<p ng-repeat="area in company.areaList"> {{area.areaName}} </p>
+					</td>
+					<td>
+						<label> {{company.numOfProduct}}</label>
+					</td>
+					<td>
+						<label> {{company.location}}</label>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<button class="cmp-discover-loadMoreButton" ng-click="loadMore()">点击加载更多</button>
+	</div>
+	
+
+
+	
+</div>
