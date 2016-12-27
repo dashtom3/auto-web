@@ -30,9 +30,8 @@ angular.module('auto-biz-user')
             url=url+'?isPassed='+isPassed;
         }
         $http.get(url)
-        // $http.get('http://localhost:3300/user/getUserList')
             .success(function(data, status, headers, config){
-                console.log(data);
+                //console.log(data);
                 if(data.callStatus=='SUCCEED'){
                     deferred.resolve(data.data);
                 }
@@ -49,20 +48,20 @@ angular.module('auto-biz-user')
     }
     //用户认证通过/否决
     this.passUser = function(id,passFlag) {
-        var token=AuthService.user.token;
-        var url='http://123.56.220.72:3300/user/modify/approval'+'?token='+token+'&userId='+id+'&approvalStatus='+passFlag;
+        // var token=AuthService.user.token;
+        var token='111';
+        var url='http://123.56.220.72:3300/user/modify/approval?token='+token+'&userId='+id+'&approvalStatus='+passFlag;
         var deferred = $q.defer();
         $http.get(url)
             .success(function(data, status, headers, config){
-                if(data.isSuccess=='0'){
-                    alert('认证失败');
-                    deferred.resolve('');
-                }
-                else{
+                if(data.callStatus=='SUCCEED'){
                     alert('认证成功!');
                     deferred.resolve('');
                 }
-
+                else{
+                    alert('认证失败'+data.errCode)
+                    deferred.resolve('');
+                }
             })
             .error(function(data, status, headers, config){
                 deferred.reject(data);
@@ -71,19 +70,20 @@ angular.module('auto-biz-user')
     }
     //用户权限更改
     this.updateUserType = function(newType) {
-        var url='xxx'+newType;
+        // var token=AuthService.user.token;
+        var token='111';
+        var url='http://123.56.220.72:3300/user/modify/type?token='+token+'&newType='+newType;
         var deferred = $q.defer();
         $http.get(url)
             .success(function(data, status, headers, config){
-                if(data.isSuccess=='0'){
-                    alert('操作失败');
+                if(data.callStatus=='SUCCEED'){
+                    alert('更改成功!');
                     deferred.resolve('');
                 }
                 else{
-                    alert('操作成功!');
+                    alert('更改失败'+data.errCode)
                     deferred.resolve('');
                 }
-
             })
             .error(function(data, status, headers, config){
                 deferred.reject(data);

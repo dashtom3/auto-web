@@ -32,8 +32,20 @@
     <td>{{user.phone}}</td>
     <td>{{user.mail}}</td>
 	<td>{{user.timestamp | dateFilter}}</td>
-    <td><img ng-src="{{user.idImg1 | imageFilter}}"/></td>
-    <td><img ng-src="{{user.idImg2 | imageFilter}}"/></td>
+	<td>
+						<div class="row">	
+								<button class="m-img-btn" ng-click="setCurrentUser(user)" data-toggle="modal" data-target="#idModal1"> 
+									<img ng-src="{{user.idImg1 | imageFilter}}"/>
+								</button>
+						</div>
+	</td>
+	<td>
+						<div class="row">
+								<button class="m-img-btn" ng-click="setCurrentUser(user)" data-toggle="modal" data-target="#idModal2"> 
+									<img ng-src="{{user.idImg2 | imageFilter}}"/>
+								</button>
+						</div>
+	</td>
 	<td>{{user.isPassed | statusFilter}}</td>
 	<td>
 						<div class="row">
@@ -44,7 +56,49 @@
 							</div>
 						</div>
 	</td>
-    <!-- 模态框（Modal） -->
+  		</tr>
+	</table>
+	</div>
+
+	<!-- 图片模态框（Modal） -->
+    <div class="modal fade" id="idModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					{{currentUser.name}}
+				</h4>
+			</div>
+			<div class="modal-body">
+				<img ng-src="{{currentUser.idImg1 | imageFilter}}"/>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+	</div>
+
+	<!-- 图片模态框（Modal） -->
+    <div class="modal fade" id="idModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					{{currentUser.name}}
+				</h4>
+			</div>
+			<div class="modal-body">
+				<img ng-src="{{currentUser.idImg2 | imageFilter}}"/>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+	</div>
+
+	<!-- 操作模态框（Modal） -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -53,7 +107,7 @@
 					&times;
 				</button>
 				<h4 class="modal-title" id="myModalLabel">
-					{{currentUser.nikeName}}
+					{{currentUser.name}}
 				</h4>
 			</div>
 			<div class="modal-body">
@@ -70,13 +124,13 @@
 				</br>
 				<div>
 					更改权限：
-				<button type="button" class="btn btn-primary" data-dismiss="modal">
+				<button ng-click="updateUserType(currentUser._id,'vc')" type="button" class="btn btn-primary" data-dismiss="modal">
 					投资人
 				</button>
-				<button type="button" class="btn btn-primary" data-dismiss="modal">
+				<button ng-click="updateUserType(currentUser._id,'wr')" type="button" class="btn btn-primary" data-dismiss="modal">
 					专栏作家
 				</button>
-				<button type="button" class="btn btn-danger" data-dismiss="modal">
+				<button ng-click="updateUserType(currentUser._id,'no')" type="button" class="btn btn-danger" data-dismiss="modal">
 					黑名单
 				</button>
 				</div>
@@ -87,9 +141,6 @@
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
 	</div>
-  		</tr>
-	</table>
-	</div>
 
 	<!--分页-->
 	<div class="row">
@@ -98,6 +149,7 @@
 			  page="currentPage" 
 			  page-size="pageSize" 
 			  total="total"
+			  paging-action="changePage(page)"
 			  show-prev-next="true"
 			  show-first-last="true"
 			  >
