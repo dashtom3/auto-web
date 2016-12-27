@@ -223,3 +223,48 @@
  	color: red;
  	text-decoration: none;
  }
+
+
+
+ /*innovationNavBar*/
+ .ino-nav-list{
+ 	display: block;
+ }
+ .ino-nav-list > .ino-nav-type-row:nth-child(odd){
+ 	background-color: rgb(248,250,251);
+ }
+ .ino-nav-list > .ino-nav-type-row:nth-child(even){
+ 	background-color: white;
+ }
+
+ .ino-nav-type-row{
+ 	width: 880px;
+ 	display: block;
+ 	height: 45px;
+ }
+.nav-options-div{
+	display: inline-block;
+	height: 45px;
+}
+.ino-nav-type-row label{
+	vertical-align: middle;
+	font-size: 12px;
+	font-weight: normal;
+	padding-top: 14px;
+}
+.nav-type-label{
+	width: 80px;
+	margin-left: 20px;
+}
+.nav-options-div > label{
+	margin-right: 45px;
+	vertical-align: middle;
+	font-size: 12px;
+	font-weight: normal;
+	cursor: pointer;
+}
+.nav-options-div > label:hover,
+.nav-options-div > .active
+{
+	color: #c74b36;
+}
