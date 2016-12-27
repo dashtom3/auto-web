@@ -10,7 +10,7 @@ function AuthController($scope,AuthService,UserService,$location){
   $scope.clickLoginAdmin = function(){
     console.log($scope.user);
     AuthService.userLogin($scope.user.name,$scope.user.password).then(function(){
-      $location.path("/admin");
+      $location.path("/adminPage");
     })
   }
   $scope.clickRegisterUser = function(){

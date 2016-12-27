@@ -27,11 +27,12 @@ function userListController($scope,UserService) {
   //通过/否决审核
   $scope.passUser = function(id,passFlag) {
     //alert('pass:' + passFlag + '!');
-    // UserService.passUser(id,passFlag);
+    UserService.passUser(id,passFlag);
   }
   //用户权限更改
-  $scope.updateUserType = function(newType) {
-    // UserService.updateUserType(newType);
+  $scope.updateUserType = function(id,newType) {
+    //alert(newType);
+    UserService.updateUserType(id,newType);
   }
   //分页
   $scope.changePage = function(page){

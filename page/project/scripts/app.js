@@ -42,13 +42,14 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
         templateUrl: 'page/project/html/views/company/company.html',
         controller: 'CompanyMainController'
       })
-      .when('/admin', {
+      .when('/adminPage', {
         templateUrl: 'page/project/html/views/admin/admin.html',
         controller: 'AdminController'
         //redirectTo: '/error'
       })
-      .when('/loginAdmin', {
-        templateUrl: 'page/project/html/views/admin/adminLogin.html'
+      .when('/admin', {
+        templateUrl: 'page/project/html/views/admin/adminLogin.html',
+        controller: 'AuthController'
         //redirectTo: '/error'
       });
       $locationProvider.html5Mode(true);

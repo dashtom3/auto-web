@@ -48,8 +48,7 @@ angular.module('auto-biz-user')
     }
     //用户认证通过/否决
     this.passUser = function(id,passFlag) {
-        // var token=AuthService.user.token;
-        var token='111';
+        var token=AuthService.user.token;
         var url='http://123.56.220.72:3300/user/modify/approval?token='+token+'&userId='+id+'&approvalStatus='+passFlag;
         var deferred = $q.defer();
         $http.get(url)
@@ -69,10 +68,11 @@ angular.module('auto-biz-user')
         return deferred.promise;
     }
     //用户权限更改
-    this.updateUserType = function(newType) {
-        // var token=AuthService.user.token;
-        var token='111';
-        var url='http://123.56.220.72:3300/user/modify/type?token='+token+'&newType='+newType;
+    this.updateUserType = function(id,newType) {
+        var token=AuthService.user.token;
+        console.log('newType:'+newType);
+        var url='http://123.56.220.72:3300/user/modify/type?token='+token+'&userId='+id+'&newType='+newType;
+        console.log('url:'+url);
         var deferred = $q.defer();
         $http.get(url)
             .success(function(data, status, headers, config){
