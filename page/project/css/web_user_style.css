@@ -240,6 +240,18 @@
     box-sizing: content-box;
     font-family: "DengXian";
 }
+.cmp-reg-userBlocks{
+    display: block;
+    width: 500px;
+    height: 700px;
+    margin: 0px auto;
+    padding: 20px 40px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    box-sizing: content-box;
+    font-family: "DengXian";
+}
 .cmp-reg-top{
 	height: 100px;
 }
@@ -260,7 +272,24 @@
     border: 1px;
     margin: 0 ;
 }
-
+.cmp-create-loginpic{
+    width: 110px;
+    height: 110px;
+    border: solid 1px #CCC;
+    border-radius:4px;
+    text-align: center;
+    float: left;
+}
+.cmp-create-loginpic p{
+    font-size: 10px;
+    color: #ccc;
+    margin: 50px auto;
+}
+.cmp-create-loginpic img{
+    width: 108px;
+    height: 108px;
+    border-radius:4px;
+}
 .cmp-reg-thirdPartyLogin{
     font-size: 3em;
     display: block;

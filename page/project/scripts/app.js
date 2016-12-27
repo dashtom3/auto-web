@@ -24,12 +24,12 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
         //redirectTo: '/error'
       })
       .when('/loginUser', {
-        templateUrl: '/page/project/html/views/user/userRegister.html',
+        templateUrl: '/page/project/html/views/user/userLogin.html',
         //controller: 'MainController'
         //redirectTo: '/error'
       })
       .when('/loginCompany', {
-        templateUrl: '/page/project/html/views/user/userRegister.html',
+        templateUrl: '/page/project/html/views/user/companyLogin.html',
         //controller: 'MainController'
         //redirectTo: '/error'
       })
