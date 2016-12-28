@@ -1,0 +1,58 @@
+<div ng-controller="CompanyFinanceController">
+
+	<div class="cmp-detail">
+		<div class="cmp-finance-page" ng-repeat="financeItem in financeList">
+			<div class="finance-ribbon-block">
+				<a class="ui red ribbon label finance-ribbon">{{financeItem.year}}</a>
+			</div>
+			<div class="cmp-finance-block" >
+				<div class="cmp-finance-field">
+					<label class="finance-field-label">市盈率:</label>
+					<label class="finance-field-value">{{financeItem.ratio}}</label>
+					<label class="finance-field-after">%</label>
+				</div>
+				<div class="cmp-finance-field">
+					<label class="finance-field-label">营业收入增长率:</label>
+					<label class="finance-field-value">{{financeItem.increase}}</label>
+					<label class="finance-field-after">%</label>
+				</div>
+				<div class="cmp-finance-field">
+					<label class="finance-field-label">营业收入:</label>
+					<label class="finance-field-value">{{financeItem.input}}</label>
+					<label class="finance-field-after">万</label>
+				</div>
+				<div class="cmp-finance-field">
+					<label class="finance-field-label">净资产:</label>
+					<label class="finance-field-value">{{financeItem.realCapital}}</label>
+					<label class="finance-field-after">万</label>
+				</div>
+				<div class="cmp-finance-field">
+					<label class="finance-field-label">总资产:</label>
+					<label class="finance-field-value">{{financeItem.allCapital}}</label>
+					<label class="finance-field-after">万</label>
+				</div>
+				<div class="cmp-finance-field">
+					<label class="finance-field-label">净利率:</label>
+					<label class="finance-field-value">{{financeItem.realRatio}}</label>
+					<label class="finance-field-after">%</label>
+				</div>
+				<div class="cmp-finance-field">
+					<label class="finance-field-label">毛利率:</label>
+					<label class="finance-field-value">{{financeItem.allRatio}}</label>
+					<label class="finance-field-after">%</label>
+				</div>
+				<div class="cmp-finance-field">
+					<label class="finance-field-label">资产收益率:</label>
+					<label class="finance-field-value">{{financeItem.inputRatio}}</label>
+					<label class="finance-field-after">%</label>
+				</div>
+				<div class="cmp-finance-field">
+					<label class="finance-field-label">资产负债率:</label>
+					<label class="finance-field-value">{{financeItem.debtRatio}}</label>
+					<label class="finance-field-after">万</label>
+				</div>
+			</div>
+		</div>
+		<button class="cmp-discover-loadMoreButton" ng-click="loadMore()">点击加载更多</button>
+	</div>
+</div>
