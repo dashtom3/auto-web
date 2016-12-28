@@ -1,64 +1,86 @@
-<div ng-controller="companyProductController">
-	
-	
-	<div class="row">	 
-
-	<div class="col-md-4">
-	<button type="button" ng-click="setFilterType('')" class="btn btn-primary">全部</button>
-	<button type="button" ng-click="setFilterType('1')" class="btn btn-success">上线</button>	
-	<button type="button" ng-click="setFilterType('0')" class="btn btn-danger">下线</button>
-	</div><!--审核分类-->
-
-	<div class="col-md-2">
-		<div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">产品分类 <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#" ng-click="getProductListByTag('1')">汽车制造</a></li>
-                    <li><a href="#" ng-click="getProductListByTag('2')">汽车零部件</a></li>
-                    <li><a href="#" ng-click="getProductListByTag('3')">汽车销售与服务</a></li>
-                    <li><a href="#" ng-click="getProductListByTag('4')">新能源汽车</a></li>
-                    <li><a href="#" ng-click="getProductListByTag('5')">车联网</a></li>
-                    <li><a href="#" ng-click="getProductListByTag('6')">车用化工品</a></li>
-                    <li><a href="#" ng-click="getProductListByTag('7')">汽车金融</a></li>
-                    <li><a href="#" ng-click="getProductListByTag('8')">公共交通</a></li>
-                    <li><a href="#" ng-click="getProductListByTag('9')">汽车媒体</a></li>
-                  </ul>
-                </li>
-              </ul>
-        </div>
-    </div><!--下拉分类-->
-
+<div class="company-product-div container-fluid cmp-box-shadow" ng-controller="companyProductController">
+	<p></p>
+	<!--搜索-->
 	<div style="float: right">
-		<form class="navbar-form">
-            <input type="search" ng-model="searchWord" class="form-control" placeholder="Search...">
-			<button type="button" ng-click="getProductByName(searchWord)" class="btn btn-primary">搜索</button>
-    	</form>
-		
-	</div><!--搜索-->
+		<div style="display: inline-block">
+			<input class="form-control form-control-lg cmp-search-input" type="text" ng-model="searchWord" >
+		</div>
+		<div style="display: inline-block">
+			<button ng-click="getCompanyproductsList('','',searchWord)" class="btn btn-block btn-default cmp-confirm-btn cmp-find-btn">
+				<img class="img-sm-logo" src="page/project/images/company/search.png">
+				<span>查找产品</span>
+			</button>
+		</div>
+	</div>
+	<br></br>
+	<!--分类-->
+	<div class="detail-container">
+	<div class="ino-nav-list">
+	<div class="ino-nav-type-row" ng-repeat="type in navList">
+		<label class="nav-type-label">
+			{{type.name}}：
+		</label>
+		<div class="admin-nav-options-div">
+			<label class="nav-option-label" ng-class="{'active':isCurrentOption(type.name,option.name)}" ng-repeat="option in type.optionList" ng-click="getCompanyproductsList(type.name,option,'')">	
+				{{option.name}}
+			</label>
+		</div>
+	</div>
+    </div>
 	</div>
 
-    <!--表格-->
-	<div>
-	<table class="table table-striped table-hover">
-		<tr>
-    <th>缩略图</th>
-    <th>序号</th>
-    <th>产品名称</th>
-	<th>来源公司</th>
-	<th>分类</th>
-	<th>发布日期</th>
-    <th>状态</th>
-  		</tr>
-  		<tr ng-repeat="product in productList | filter: searchWord | filter : {tag : filterType}">
-    <td><img ng-src="{{product.images}}"/></td>
-	<td>{{product._id}}</td>
-    <td><a href="#" ng-click="setCurrentProduct(product)" data-toggle="modal" data-target="#myModal">{{product.name}}</a></td>
-    <td>{{product.companyName}}</td>
-    <td>{{product.tag}}</td>
-	<td>{{product.date}}</td>
-    <td>{{product.state}}</td>
+	<!--表格-->
+	<div class="row cmp-tableContain-row cmp-box-shadow">
+		<table class="table table-striped cmp-table" >
+			<thead >
+				<tr>
+					<th class="col-lg-1">缩略图</th>
+					<th class="col-lg-2">名称</th>
+					<th class="col-lg-1">公司</th>
+					<th class="col-lg-1">参数</th>
+					<th class="col-lg-1">简介</th>
+					<th class="col-lg-1">分类</th>
+					<th class="col-lg-1">状态</th>
+					<th class="col-lg-1">发布日期</th>
+					<th class="col-lg-1">操作</th>
+				</tr>
+			</thead>
+			<tbody>	
+  				<tr ng-repeat="product in productsList">
+    				<td><img ng-src="{{product.images[0]}}"/></td>
+					<td>{{product.name}}</td>
+					<td>{{product.companyName}}</td>
+					<td>{{product.argc}}</td>
+					<td>{{product.desc}}</td>
+    				<td>{{product.tag}}</td>
+					<td>{{product.state}}</td>
+					<td>{{product.date}}</td>
+					<td>
+						<div class="row">
+							<div class="col-lg-2 col-lg-offset-2">
+								<button class="m-img-btn" ng-click="setCurrentProduct(product)" data-toggle="modal" data-target="#myModal"> 
+									<img class="img-md-logo" src="page/project/images/company/view.png">
+								</button>
+							</div>
+						</div>
+					</td>
+  				</tr>
+			</tbody>
+		</table>
+		<!--分页-->
+		<div class="cmp-paging">
+			<paging
+			  page="currentPage" 
+			  page-size="pageSize" 
+			  total="total"
+			  paging-action="changePage(page)"
+			  show-prev-next="true"
+			  show-first-last="true"
+			  >
+			</paging> 
+		</div>
+	</div>
+    
     <!-- 模态框（Modal） -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -74,7 +96,7 @@
 			<div class="modal-body">
 				产品参数：{{currentProduct.argc}}
 				</br>
-				产品描述：{{currentProduct.argc}}
+				产品描述：{{currentProduct.desc}}
 			</div>
 			<div class="modal-footer">
 				<div>
@@ -88,23 +110,6 @@
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
-	</div>
-  		</tr>
-	</table>
-	</div>
-
-	<!--分页-->
-	<div class="row">
-		<div class="col-lg-6 col-lg-offset-6">
-			<paging
-			  page="currentPage" 
-			  page-size="pageSize" 
-			  total="total"
-			  show-prev-next="true"
-			  show-first-last="true"
-			  >
-			</paging> 
-		</div>
 	</div>
 
 

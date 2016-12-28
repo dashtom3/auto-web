@@ -1,39 +1,86 @@
-<div ng-controller="companyPubReportController">	
-
-	<div class="row">	 
-
-	<div class="col-md-4">
-	<button type="button" ng-click="setFilterType('')" class="btn btn-primary">全部</button>
-	<button type="button" ng-click="setFilterType('1')" class="btn btn-success">上线</button>	
-	<button type="button" ng-click="setFilterType('0')" class="btn btn-danger">下线</button>
-	</div><!--审核分类-->
-
+<div class="company-product-div container-fluid cmp-box-shadow" ng-controller="companyPubReportController">
+	<p></p>
+	<!--搜索-->
 	<div style="float: right">
-		<form class="navbar-form">
-            <input type="search" ng-model="searchWord" class="form-control" placeholder="Search...">
-			<button type="button" ng-click="getPubReportByName(searchWord)" class="btn btn-primary">搜索</button>
-    	</form>
-	</div><!--搜索-->
+		<div style="display: inline-block">
+			<input class="form-control form-control-lg cmp-search-input" type="text" ng-model="searchWord" >
+		</div>
+		<div style="display: inline-block">
+			<button ng-click="getCompanyPubReportList('','',searchWord)" class="btn btn-block btn-default cmp-confirm-btn cmp-find-btn">
+				<img class="img-sm-logo" src="page/project/images/company/search.png">
+				<span>查找专业测评</span>
+			</button>
+		</div>
+	</div>
+	<br></br>
+	<!--分类-->
+	<div class="detail-container">
+	<div class="ino-nav-list">
+	<div class="ino-nav-type-row" ng-repeat="type in navList">
+		<label class="nav-type-label">
+			{{type.name}}：
+		</label>
+		<div class="admin-nav-options-div">
+			<label class="nav-option-label" ng-class="{'active':isCurrentOption(type.name,option.name)}" ng-repeat="option in type.optionList" ng-click="getCompanyPubReportList(type.name,option,'')">	
+				{{option.name}}
+			</label>
+		</div>
+	</div>
+    </div>
 	</div>
 
-    <!--表格-->
-	<div>
-	<table class="table table-striped table-hover">
-		<tr>
-    <th>序号</th>
-    <th>产品编号</th>
-	<th>产品名称</th>
-	<th>测评日期</th>
-	<th>测评团队</th>
-    <th>测评地点</th>
-  		</tr>
-  		<tr ng-repeat="pubReport in pubReportList | filter: searchWord">
-	<td>{{pubReport._id}}</td>
-    <td>{{pubReport.productId}}</td>
-	<td><a href="#" ng-click="setCurrentPubReport(pubReport)" data-toggle="modal" data-target="#myModal">{{pubReport.productName}}</a></td>
-    <td>{{pubReport.date}}</td>
-	<td>{{pubReport.team}}</td>
-    <td>{{pubReport.site}}</td>
+	<!--表格-->
+	<div class="row cmp-tableContain-row cmp-box-shadow">
+		<table class="table table-striped cmp-table" >
+			<thead >
+				<tr>
+					<th class="col-lg-1">产品编号</th>
+					<th class="col-lg-2">产品名称</th>
+					<th class="col-lg-1">测评团队</th>
+					<th class="col-lg-1">测评地点</th>
+					<th class="col-lg-1">测评日期</th>
+					<th class="col-lg-1">公司</th>
+					<th class="col-lg-1">状态</th>
+					<th class="col-lg-1">操作</th>
+				</tr>
+			</thead>
+			<tbody>		
+  				<tr ng-repeat="pubReport in pubReportList">
+					<td>{{pubReport.productId._id}}</td>
+    				<td>{{pubReport.productId.name}}</td>
+					<td>{{pubReport.team}}</td>
+    				<td>{{pubReport.site}}</td>
+					<td>{{pubReport.date}}</td>
+					<td>{{pubReport.companyId.longName}}</td>
+					<td>{{pubReport.isOnline}}</td>
+					<td>
+						<div class="row">
+							<div class="col-lg-2 col-lg-offset-2">
+								<button class="m-img-btn" ng-click="setCurrentPubReport(pubReport)" data-toggle="modal" data-target="#myModal"> 
+									<img class="img-md-logo" src="page/project/images/company/view.png">
+								</button>
+							</div>
+						</div>
+					</td>
+  				</tr>
+			</tbody>
+		</table>
+		<!--分页-->
+		<div class="cmp-paging">
+			<paging
+			  page="currentPage" 
+			  page-size="pageSize" 
+			  total="total"
+			  paging-action="changePage(page)"
+			  show-prev-next="true"
+			  show-first-last="true"
+			  >
+			</paging> 
+		</div>
+	</div>
+
+
+
     <!-- 模态框（Modal） -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -43,11 +90,11 @@
 					&times;
 				</button>
 				<h4 class="modal-title" id="myModalLabel">
-					产品名称：{{currentPubReport.productName}}
+					产品名称：{{currentPubReport.productId.name}}
 				</h4>
 			</div>
 			<div class="modal-body">
-				{{currentPubReport.team}}
+				{{currentPubReport.testDesc}}
 			</div>
 			<div class="modal-footer">
 				<div>
@@ -62,23 +109,7 @@
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
 	</div>
-  		</tr>
-	</table>
-	</div>
 
-	<!--分页-->
-	<div class="row">
-		<div class="col-lg-6 col-lg-offset-6">
-			<paging
-			  page="currentPage" 
-			  page-size="pageSize" 
-			  total="total"
-			  show-prev-next="true"
-			  show-first-last="true"
-			  >
-			</paging> 
-		</div>
-	</div>
 
 
 </div>
