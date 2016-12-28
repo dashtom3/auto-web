@@ -9,14 +9,14 @@
 					<div class="col-md-3">
 						<label class="detail-short-name">{{companyDetail.shortName}}</label>
 					</div>
-					<div class="col-md-2 detail-area-class" ng-repeat="item in companyDetail.areaList">
-						<label class="detail-area-label" >{{item.areaName}}</label>
+					<div class="col-md-2 detail-area-class">
+						<label class="detail-area-label" >{{companyDetail.type}}</label>
 					</div>
 				</div>
 				<div class="row outline-sec-row">
 					<div class="col-md-12">
 						<label>
-							{{companyDetail.shortCut}}
+							{{companyDetail.field}}
 						</label>
 					</div>
 				</div>
@@ -25,7 +25,7 @@
 						<label>
 							<img src="page/project/images/location.jpg">
 							<span>
-								{{companyDetail.city}}
+								{{companyDetail.regAddress}}
 							</span>
 						</label>
 					</div>
