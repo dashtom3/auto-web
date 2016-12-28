@@ -1,0 +1,108 @@
+<div ng-controller="InnovationTestController">
+	<div class="cmp-detail">
+		<div class="detail-test-container">
+			<div class="cmp-reg-cardBlock" ng-repeat="test in testList | limitTo:6">
+				<div class="cmp-reg-cardImageContainer">
+					<div class="cmp-reg-cardBlockImage"></div>
+					<div class="cmp-reg-cardBlockImageCover"></div>
+					<div class="cmp-reg-cardCompanyIcon">   </div>
+					<div class="cmp-reg-cardCompany">小酱软件公司</div>
+				</div>
+
+				<div class="cmp-reg-cardContent">
+					<div class="cmp-reg-cardTitle">大黄蜂—科迈罗的发哦或爹法萨 </div>
+					<label class="cmp-reg-cardLabel">参与人数</label>
+					<div class="cmp-reg-cardValue">53/66</div>
+					<label class="cmp-reg-cardLabel">测评类型</label>
+					<div class="cmp-reg-cardValue">实地测评</div>
+					<label class="cmp-reg-cardLabel">测评时段</label>
+					<div class="cmp-reg-cardValue">2016/11/5-2017/1/31</div>
+					<label class="cmp-reg-cardLabel">地点</label>
+					<div class="cmp-reg-cardValue">上海市杨浦区四平路1239号同济大学四平校区</div>
+					<button class="cmp-reg-fullWidthRedButton" ng-click="visitTest()" data-toggle="modal" data-target="#joinTestModal">立即参与</button>
+				</div>
+			</div>
+		</div>
+		<button class="cmp-discover-loadMoreButton" ng-click="loadMore()">点击加载更多</button>
+	</div>
+	<div class="modal fade" id="joinTestModal" aria-hidden="true">
+		<div class="modal-dialog cmp-box-shadow">
+			<div class="modal-content">
+				<div class="modal-head">
+					<h4> 测评报名</h4>
+				</div>
+				<div class="modal-body modal-roll-product">
+					<div id="carousel-example-generic" class="carousel" data-ride="carousel">
+					  <!-- Indicators -->
+					  <ol class="carousel-indicators">
+					    <li data-target="#carousel-example-generic"  ng-class="{'active':currentCarouse == li.num}" ng-repeat="li in liList" ng-click="setCurrentCarouse(li.num)"></li>
+					  </ol>
+
+					  <!-- Wrapper for slides -->
+					  <div class="carousel-inner">
+					    <div class="item" ng-class="{'active':currentCarouse == img.num}" ng-repeat="img in carouselList">
+					      <img src="{{img.url}}">
+					    </div>
+					  </div>
+
+					  <!-- Controls -->
+					  <a class="left carousel-control" ng-click="moveLeft()">
+					    <span class="glyphicon glyphicon-chevron-left" ></span>
+					  </a>
+					  <a class="right carousel-control" ng-click="moveRight()">
+					    <span class="glyphicon glyphicon-chevron-right" ></span>
+					  </a>
+					</div>
+					<div class="join-test-title">
+						测评标题
+					</div>
+					<div class="join-test-cmp">
+						<img src="" alt="img">
+						<label>公司名称</label>
+					</div>
+					<div class="join-test-introduce">
+						<p>测评介绍测评介绍测评介绍测评介绍测评介绍测评介绍测评介绍<p>
+					</div>
+					<div class="join-test-config">
+						<label class="join-test-config-label control-label">参与人数：</label>
+						<label class="join-test-config-value control-label" >34/90</label>
+					</div>
+					<div class="join-test-config">
+						<label class="join-test-config-label control-label">测评时段：</label>
+						<label class="join-test-config-value control-label">2016/11/5-2017/1/31</label>
+					</div>
+					<div class="join-test-config">
+						<label class="join-test-config-label control-label">测评类型：</label>
+						<label class="join-test-config-value control-label">邮寄</label>
+					</div>
+					<div class="join-test-config">
+						<label class="join-test-config-label control-label">手机号码：</label>
+						<input class="join-test-config-input form-control"></input>
+					</div>
+					<div class="join-test-config">
+						<label class="join-test-adjust-label control-label">收件地址：</label>
+						<textarea class="join-test-config-text form-control" rows="3">
+							
+						</textarea> 
+					</div>
+					<div class="row" >
+						<div class="col-lg-3 col-lg-offset-2">
+							<button class="btn btn-default btn-block cmp-cancel-btn"  data-dismiss="modal">
+								取消
+							</button>
+						</div>
+						<div class="col-lg-3 col-lg-offset-1">
+							<button class="btn btn-default btn-block cmp-confirm-btn" data-dismiss="modal">
+								报名
+							</button>
+						</div>
+					</div>
+				</div>
+
+				
+			</div>
+		</div>
+
+	</div>
+	
+</div>

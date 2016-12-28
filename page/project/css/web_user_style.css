@@ -197,7 +197,7 @@
 	color:#C0493A;
 	text-align:right;
 }
-.cmp-innovation .table-striped > tbody > tr:nth-of-type(1) {
+.cmp-innovation .table-striped > tbody > tr:nth-of-type(odd) {
     background-color: #F1F3F5 ;
   }
  .cmp-innovation-title{
@@ -288,8 +288,8 @@
     margin: 50px auto;
 }
 .cmp-reg-loginpic img{
-    width: 108px;
-    height: 108px;
+    width: 100%;
+    height: 110px;
     border-radius:4px;
 }
 .cmp-reg-thirdPartyLogin{
@@ -512,13 +512,13 @@
     background-color: #c74b36;
     border-radius: 5px;
     border: none;
-   /* width: 80%;
+    width: 100%;
     line-height: 28px;
     padding: 3px 0;
     text-align: center;
     font-family: "Microsoft YaHei UI";
     font-size: 16px;
-    font-weight: 700;*/
+    font-weight: 700;
     color: white;
 }
 

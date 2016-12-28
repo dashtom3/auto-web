@@ -9,4 +9,10 @@
 			<div ng-if="currentPage == invItem[0]" ng-include="'page/project/html/template/user/'+invItem[1]+'.html'"></div>
 		</div>
 	</div>
+	<div class="detail-container" ng-repeat="invItem in innovationList">
+	<!-- 	<div class="cmp-detail"> -->
+			<div ng-if="currentPage == invItem[0] && invItem[2] !='null' " ng-include="'page/project/html/template/user/'+invItem[2]+'.html'"></div>
+		<!-- </div> -->
+			
+	</div>
 </div>

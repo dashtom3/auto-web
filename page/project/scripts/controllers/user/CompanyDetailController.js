@@ -35,5 +35,6 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService) {
 	// 	$scope.cmpNewsList = result;
 	// });
 	$scope.productList = [{},{},{},{}];
-	$scope.testList = [{},{},{},{}]
+	$scope.testList = [{},{},{},{}];
+
 }

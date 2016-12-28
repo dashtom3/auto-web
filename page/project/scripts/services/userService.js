@@ -7,17 +7,15 @@ angular.module('auto-biz-user')
           user
       ).success(function(data, status, headers, config){
                 console.log("注册用户");
-                if(data.isSuccess=='0'){
-                    alert(data.data)
-                    deferred.resolve("");
+                if(data.callStatus=='SUCCEED'){
+                    deferred.resolve(data.data);
                 }
                 else{
-                    deferred.resolve(data.data);
+                    alert("注册失败");
                 }
             })
             .error(function(data, status, headers, config){
-                console.log(data);
-                deferred.reject(data);
+                alert("您好，访问的内容出错");
             });
         return deferred.promise;
     }
@@ -25,7 +23,7 @@ angular.module('auto-biz-user')
     this.getUserList = function(numPerPage,pageNum,isPassed,nikeName) {
         var deferred = $q.defer();
         console.log("读取getUserListService网络数据");
-        var url='http://123.56.220.72:3300/user/list/'+numPerPage+'/'+pageNum;
+        var url=GlobalService.baseUrl+'user/list/'+numPerPage+'/'+pageNum;
         if(isPassed!==''){
             url=url+'?isPassed='+isPassed;
         }
@@ -39,34 +37,31 @@ angular.module('auto-biz-user')
                     deferred.resolve(data.data);
                 }
                 else{
-                    alert(data.errCode)
-                    deferred.resolve("");
+                    alert("获取列表失败");
                 }
             })
             .error(function(data, status, headers, config){
-                console.log(data);
-                deferred.reject(data);
+                alert("您好，访问的内容出错");
             });
         return deferred.promise;
     }
     //用户认证通过/否决
     this.passUser = function(id,passFlag) {
         var token=AuthService.user.token;
-        var url='http://123.56.220.72:3300/user/modify/approval?token='+token+'&userId='+id+'&approvalStatus='+passFlag;
+        var url=GlobalService.baseUrl+'user/modify/approval?token='+token+'&userId='+id+'&approvalStatus='+passFlag;
         var deferred = $q.defer();
         $http.get(url)
             .success(function(data, status, headers, config){
                 if(data.callStatus=='SUCCEED'){
-                    alert('认证成功!');
+                    alert('用户认证成功');
                     deferred.resolve('');
                 }
                 else{
-                    alert('认证失败'+data.errCode)
-                    deferred.resolve('');
+                    alert('用户认证失败');
                 }
             })
             .error(function(data, status, headers, config){
-                deferred.reject(data);
+                alert("您好，访问的内容出错");
             });
         return deferred.promise;
     }
@@ -74,22 +69,21 @@ angular.module('auto-biz-user')
     this.updateUserType = function(id,newType) {
         var token=AuthService.user.token;
         console.log('newType:'+newType);
-        var url='http://123.56.220.72:3300/user/modify/type?token='+token+'&userId='+id+'&newType='+newType;
+        var url=GlobalService.baseUrl+'user/modify/type?token='+token+'&userId='+id+'&newType='+newType;
         console.log('url:'+url);
         var deferred = $q.defer();
         $http.get(url)
             .success(function(data, status, headers, config){
                 if(data.callStatus=='SUCCEED'){
-                    alert('更改成功!');
+                    alert('用户类型更改成功!');
                     deferred.resolve('');
                 }
                 else{
-                    alert('更改失败'+data.errCode)
-                    deferred.resolve('');
+                    alert('用户类型更改失败');
                 }
             })
             .error(function(data, status, headers, config){
-                deferred.reject(data);
+                alert("您好，访问的内容出错");
             });
         return deferred.promise;
     }

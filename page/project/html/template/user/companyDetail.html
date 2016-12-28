@@ -45,18 +45,18 @@
 		</div>
 	</div>
 	<div class="detail-container" id="top">
-		<div class="cmp-detail">
+		<div class="cmp-detail-adjust">
 			<div class="row cmp-detail-title">
 				<div ng-repeat="invItem in cmpDetailList">
 					<a href="javascript:void(0)" ng-click="selectItem(invItem[0])"  ng-class="{'active':currentPage == invItem[0] }">{{invItem[0]}}</a>
 				</div>
 			</div>
-			<div class="row" ng-repeat="invItem in cmpDetailList">
-				<div ng-if="currentPage == invItem[0]" ng-include="'page/project/html/template/user/'+invItem[1]+'.html'"></div>
+			<div class="row cmp-container-row" ng-repeat="invItem in cmpDetailList">
+				<div ng-if="currentPage == invItem[0] && invItem[1] !='null'  " ng-include="'page/project/html/template/user/'+invItem[1]+'.html'"></div>
 			</div>
 		</div>
 	</div>
-	<div class="detail-container">
+	<div class="detail-container detail-sec-container" ng-show = "currentPage == '公司概况'">
 		<div class="cmp-detail">
 			<div class="detail-container-header">
 				<label>最新资讯</label>
@@ -67,7 +67,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="detail-container">
+	<div class="detail-container" ng-show = "currentPage == '公司概况'">
 		<div class="cmp-detail">
 			<div class="detail-container-header">
 				<label>最新产品</label>
@@ -105,7 +105,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="detail-container">
+	<div class="detail-container" ng-show = "currentPage == '公司概况'">
 		<div class="cmp-detail">
 			<div class="detail-container-header">
 				<label>热门测评</label>
@@ -132,6 +132,63 @@
 				        <div class="cmp-reg-cardValue">上海市杨浦区四平路1239号同济大学四平校区</div>
 				        <button class="cmp-reg-fullWidthRedButton">立即参与</button>
 				    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="detail-container" ng-show = "currentPage == '公司概况'">
+		<div class="cmp-detail">
+			<div class="detail-container-header">
+				<a class="ui red ribbon label finance-ribbon">{{financeItem.year}}2015</a>
+				<a class="detail-right-a" href="#top" target="_self" ng-click="selectItem('财务状况')"> 更多</a>
+			</div>
+			<div class="detail-test-container">
+				<div class="cmp-finance-block" >
+					<div class="cmp-finance-field">
+						<label class="finance-field-label">市盈率:</label>
+						<label class="finance-field-value">{{financeItem.ratio}}</label>
+						<label class="finance-field-after">%</label>
+					</div>
+					<div class="cmp-finance-field">
+						<label class="finance-field-label">营业收入增长率:</label>
+						<label class="finance-field-value">{{financeItem.increase}}</label>
+						<label class="finance-field-after">%</label>
+					</div>
+					<div class="cmp-finance-field">
+						<label class="finance-field-label">营业收入:</label>
+						<label class="finance-field-value">{{financeItem.input}}</label>
+						<label class="finance-field-after">万</label>
+					</div>
+					<div class="cmp-finance-field">
+						<label class="finance-field-label">净资产:</label>
+						<label class="finance-field-value">{{financeItem.realCapital}}</label>
+						<label class="finance-field-after">万</label>
+					</div>
+					<div class="cmp-finance-field">
+						<label class="finance-field-label">总资产:</label>
+						<label class="finance-field-value">{{financeItem.allCapital}}</label>
+						<label class="finance-field-after">万</label>
+					</div>
+					<div class="cmp-finance-field">
+						<label class="finance-field-label">净利率:</label>
+						<label class="finance-field-value">{{financeItem.realRatio}}</label>
+						<label class="finance-field-after">%</label>
+					</div>
+					<div class="cmp-finance-field">
+						<label class="finance-field-label">毛利率:</label>
+						<label class="finance-field-value">{{financeItem.allRatio}}</label>
+						<label class="finance-field-after">%</label>
+					</div>
+					<div class="cmp-finance-field">
+						<label class="finance-field-label">资产收益率:</label>
+						<label class="finance-field-value">{{financeItem.inputRatio}}</label>
+						<label class="finance-field-after">%</label>
+					</div>
+					<div class="cmp-finance-field">
+						<label class="finance-field-label">资产负债率:</label>
+						<label class="finance-field-value">{{financeItem.debtRatio}}</label>
+						<label class="finance-field-after">万</label>
+					</div>
 				</div>
 			</div>
 		</div>
