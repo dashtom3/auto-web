@@ -1,56 +1,62 @@
-<div ng-controller="companyListController">
-
-	<!--分类-->
-	<div class="ino-nav-list">
-	<div class="ino-nav-type-row" ng-repeat="type in navList">
-		<label class="nav-type-label">
-			{{type.name}}：
-		</label>
-		<div class="nav-options-div">
-			<label class="nav-option-label" ng-class="{'active':isCurrentOption(type.name,option.name)}" ng-repeat="option in type.optionList" ng-click="setCurrentOption(type.name,option,'')">	
-				{{option.name}}
-			</label>
-		</div>
-	</div>
-    </div>
-
-	<div class="row first-row">
-		<div class="col-lg-4 col-lg-offset-2">
+<div class="company-product-div container-fluid cmp-box-shadow" ng-controller="companyListController">
+	<p></p>
+	<!--搜索-->
+	<div style="float: right">
+		<div style="display: inline-block">
 			<input class="form-control form-control-lg cmp-search-input" type="text" ng-model="searchWord" >
 		</div>
-		<div class="col-lg-2">
+		<div style="display: inline-block">
 			<button ng-click="setCurrentOption('','',searchWord)" class="btn btn-block btn-default cmp-confirm-btn cmp-find-btn">
 				<img class="img-sm-logo" src="page/project/images/company/search.png">
 				<span>查找企业</span>
 			</button>
 		</div>
 	</div>
-	</br>
+	<br></br>
+	<!--分类-->
+	<div class="detail-container">
+	<div class="ino-nav-list">
+	<div class="ino-nav-type-row" ng-repeat="type in navList">
+		<label class="nav-type-label">
+			{{type.name}}：
+		</label>
+		<div class="admin-nav-options-div">
+			<label class="nav-option-label" ng-class="{'active':isCurrentOption(type.name,option.name)}" ng-repeat="option in type.optionList" ng-click="setCurrentOption(type.name,option,'')">	
+				{{option.name}}
+			</label>
+		</div>
+	</div>
+    </div>
+	</div>
 
 
-	<div>
-	<table class="table table-striped table-hover">
-		<tr>
-    <th>公司简称</th>
-    <th>公司全称</th>
-    <th>领域</th>
-	<th>注册人职位</th>
-    <th>logo</th>
-    <th>地址</th>
-    <th>联系方式</th>
-	<th>审核状态</th>
-	<th>查看详情</th>
-  		</tr>
-  		<tr ng-repeat="company in companyList | filter: searchWord">
-    <td>{{company.shortName}}</td>
-    <td>{{company.longName}}</td>
-    <td>{{company.type | companyTypeFilter}}</td>
-    <td>{{company.position}}</td>
-	 <td><img ng-src="{{company.logo | imageFilter}}"/></td>
-    <td>{{company.address}}</td>
-    <td>{{company.phone}}</td>
-	<td>{{company.isPassed | statusFilter}}</td>
-    <td>
+	<!--表格-->
+	<div class="row cmp-tableContain-row cmp-box-shadow">
+		<table class="table table-striped cmp-table" >
+			<thead >
+				<tr>
+					<th class="col-lg-1">公司简称</th>
+					<th class="col-lg-2">公司全称</th>
+					<th class="col-lg-1">领域</th>
+					<th class="col-lg-2">注册人职位</th>
+					<th class="col-lg-1">logo</th>
+					<th class="col-lg-1">地址</th>
+					<th class="col-lg-2">联系方式</th>
+					<th class="col-lg-1">审核状态</th>
+					<th class="col-lg-1">查看详情</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="company in companyList | filter: searchWord">
+					<td>{{company.shortName}}</td>
+    				<td>{{company.longName}}</td>
+    				<td>{{company.type | companyTypeFilter}}</td>
+    				<td>{{company.position}}</td>
+	 				<td><img ng-src="{{company.logo | imageFilter}}"/></td>
+    				<td>{{company.address}}</td>
+    				<td>{{company.phone}}</td>
+					<td>{{company.isPassed | statusFilter}}</td>
+    				<td>
 						<div class="row">
 							<div class="col-lg-2 col-lg-offset-2">
 								<button class="m-img-btn" ng-click="setCurrentCompany(company)" data-toggle="modal" data-target="#myModal"> 
@@ -58,10 +64,24 @@
 								</button>
 							</div>
 						</div>
-	</td>
-  		</tr>
-	</table>
+					</td>
+  				</tr>
+			</tbody>
+		</table>
+		<!--分页-->
+		<div class="cmp-paging">
+			<paging
+			  page="currentPage" 
+			  page-size="pageSize" 
+			  total="total"
+			  paging-action="changePage(page)"
+			  show-prev-next="true"
+			  show-first-last="true"
+			  >
+			</paging> 
+		</div>
 	</div>
+
 
 	<!-- 模态框（Modal） -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -93,50 +113,44 @@
 						<div class="row cmp-input-row">
 							<label class="control-label col-md-10">
 								公司简称：
-								{{currentUser.longName}}
+								{{currentUser.shortName}}
 							</label>
 						</div>
 						<div class="row cmp-input-row">
 							<label class="control-label col-md-10">
 								公司地址：
-								{{currentUser.longName}}
+								{{currentUser.address}}
 							</label>
 						</div>
 						<div class="row cmp-input-row">
 							<label class="control-label col-md-10">
 								所属领域：
-								{{currentUser.longName}}
+								{{currentUser.type | companyTypeFilter}}
 							</label>
 						</div>
 						<div class="row cmp-input-row">
 							<label class="control-label col-md-10">
 								成立时间：
-								{{currentUser.longName}}
+								{{currentUser.regTime}}
 							</label>
 						</div>
 						<div class="row cmp-input-row">
 							<label class="control-label col-md-10">
 								法人代表：
-								{{currentUser.longName}}
-							</label>
-						</div>
-						<div class="row cmp-input-row">
-							<label class="control-label col-md-10">
-								公司全称：
-								{{currentUser.longName}}
+								{{currentUser.legalEntity}}
 							</label>
 						</div>
 						<div class="row cmp-input-row">
 							<label class="control-label col-md-10">
 								注册资本：
-								{{currentUser.longName}}
+								{{currentUser.regCapital}}
 								万
 							</label>
 						</div>
 						<div class="row cmp-input-row">
 							<label class="control-label col-md-10">
 								注册地址：
-								{{currentUser.longName}}
+								{{currentUser.regAddress}}
 							</label>
 						</div>
 					</form>
@@ -215,22 +229,8 @@
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
-	</div>
+	</div><!-- 模态框（Modal） 结束-->
 
-		<!--分页-->
-	<div class="row">
-		<div class="col-lg-6 col-lg-offset-6">
-			<paging
-			  page="currentPage" 
-			  page-size="pageSize" 
-			  total="total"
-			  paging-action="changePage(page)"
-			  show-prev-next="true"
-			  show-first-last="true"
-			  >
-			</paging> 
-		</div>
-	</div>
 
 
 </div>

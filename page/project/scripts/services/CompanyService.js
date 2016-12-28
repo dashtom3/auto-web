@@ -23,16 +23,35 @@ angular.module("auto-biz-user")
         var deferred = $q.defer();
         console.log("读取getCompanyListService网络数据");
         var url='http://123.56.220.72:3300/company/list/'+numPerPage+'/'+pageNum;
+        var paras = [];
         if(isPassed!==''){
-            url=url+'?isPassed='+isPassed;
+            var obj1=new Object(); 
+            obj1.name="isPassed";
+            obj1.value=isPassed;
+            paras.push(obj1);
         }
          if(type!==''){
-            url=url+'?type='+type;
+            var obj2=new Object(); 
+            obj2.name="type";
+            obj2.value=type;
+            paras.push(obj2);
         }
         if(name!==''){
-            url=url+'?longName='+name;
+            var obj3=new Object(); 
+            obj3.name="name";
+            obj3.value=name;
+            paras.push(obj3);
+        }
+        if(paras.length!==0){
+            url=url+'?'+paras[0].name+'='+paras[0].value;
+            for(var i=1;i<paras.length;i++){
+                console.log(i);
+                console.log('then:'+paras[i].name);
+                url=url+'&'+paras[i].name+'='+paras[i].value;
+            }
         }
         console.log(url);
+
         $http.get(url)
             .success(function(data, status, headers, config){
                 console.log(data);
