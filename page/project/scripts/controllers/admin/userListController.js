@@ -1,6 +1,6 @@
 function userListController($scope,UserService) {
   console.log("载入userListController");
-  UserService.getUserList(10,1,'').then(function(result){
+  UserService.getUserList(10,1,'','').then(function(result){
       $scope.userList = result.list;
       //审核类型
       $scope.type = '';
@@ -16,7 +16,7 @@ function userListController($scope,UserService) {
   //按是否通过审核获取用户
   $scope.getlist = function(newType) {
   	//alert('newType:' + newType + '!');
-    UserService.getUserList(10,1,newType)
+    UserService.getUserList(10,1,newType,'')
       .then(function(result){
       $scope.userList = result.list;
       $scope.type = newType;
@@ -37,11 +37,21 @@ function userListController($scope,UserService) {
   //分页
   $scope.changePage = function(page){
   //console.log(page+'...'+$scope.type);
-  UserService.getUserList(10,page,$scope.type)
+  UserService.getUserList(10,page,$scope.type,'')
       .then(function(result){
       $scope.userList = result.list;
 	    $scope.total = result.totalNum;
     });
  }
+ //搜索 
+ $scope.searchUser = function(word) {
+    //alert(word);
+    UserService.getUserList(10,1,'',word)
+      .then(function(result){
+      $scope.userList = result.list;
+      $scope.currentPage=1;
+	    $scope.total = result.totalNum;
+    });
+  }
 
 }

@@ -22,12 +22,15 @@ angular.module('auto-biz-user')
         return deferred.promise;
     }
     //获取用户列表
-    this.getUserList = function(numPerPage,pageNum,isPassed) {
+    this.getUserList = function(numPerPage,pageNum,isPassed,nikeName) {
         var deferred = $q.defer();
         console.log("读取getUserListService网络数据");
         var url='http://123.56.220.72:3300/user/list/'+numPerPage+'/'+pageNum;
         if(isPassed!==''){
             url=url+'?isPassed='+isPassed;
+        }
+        if(nikeName!==''){
+            url=url+'?nikeName='+nikeName;
         }
         $http.get(url)
             .success(function(data, status, headers, config){
