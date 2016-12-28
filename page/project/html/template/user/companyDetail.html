@@ -52,28 +52,30 @@
 				</div>
 			</div>
 			<div class="row cmp-container-row" ng-repeat="invItem in cmpDetailList">
-				<div ng-if="currentPage == invItem[0] && invItem[1] !='null'  " ng-include="'page/project/html/template/user/'+invItem[1]+'.html'"></div>
+				<div ng-if="currentPage == invItem[0] && invItem[1] !='null'  " ng-include="'page/project/html/template/user/'+invItem[1]+'.html'" ></div>
 			</div>
 		</div>
 	</div>
 	<div class="detail-container detail-sec-container" ng-show = "currentPage == '公司概况'">
-		<div class="cmp-detail">
+		<div class="cmp-detail-box">
 			<div class="detail-container-header">
 				<label>最新资讯</label>
 				<a class="detail-right-a" href="#top" target="_self" ng-click="selectItem('最新资讯')"> 更多</a>
 			</div>
 			<div class="detail-table-container">
-
+				<div ng-include="'page/project/html/template/user/innovationNews.html'" >
+					
+				</div>
 			</div>
 		</div>
 	</div>
 	<div class="detail-container" ng-show = "currentPage == '公司概况'">
-		<div class="cmp-detail">
+		<div class="cmp-detail-box">
 			<div class="detail-container-header">
 				<label>最新产品</label>
 				<a class="detail-right-a" href="#top" target="_self" ng-click="selectItem('最新产品')"> 更多</a>
 			</div>
-			<div class="detail-product-container">
+			<!-- <div class="detail-product-container">
 				<div class="cmp-reg-cardBlock" ng-repeat="product in productList | limitTo:3">
 					<div class="cmp-reg-cardImageContainer">
 						<div class="cmp-reg-cardBlockImage"></div>
@@ -102,16 +104,16 @@
 						<div class="cmp-reg-cardProfessionalTest">专业测评<i class="file text outline icon" style="margin-left: 5px"></i></div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<div class="detail-container" ng-show = "currentPage == '公司概况'">
-		<div class="cmp-detail">
+		<div class="cmp-detail-box">
 			<div class="detail-container-header">
 				<label>热门测评</label>
 				<a class="detail-right-a" href="#top" target="_self" ng-click="selectItem('热门测评')"> 更多</a>
 			</div>
-			<div class="detail-test-container">
+			<!-- <div class="detail-test-container">
 				<div class="cmp-reg-cardBlock" ng-repeat="test in testList | limitTo:3">
 				    <div class="cmp-reg-cardImageContainer">
 				        <div class="cmp-reg-cardBlockImage"></div>
@@ -133,16 +135,22 @@
 				        <button class="cmp-reg-fullWidthRedButton">立即参与</button>
 				    </div>
 				</div>
+			</div> -->
+			<div ng-include="'page/project/html/template/user/hotTest.html'">
+				
 			</div>
 		</div>
 	</div>
 	<div class="detail-container" ng-show = "currentPage == '公司概况'">
-		<div class="cmp-detail">
+		<div class="cmp-detail-box">
 			<div class="detail-container-header">
-				<a class="ui red ribbon label finance-ribbon">{{financeItem.year}}2015</a>
+				<label>财务信息</label>
 				<a class="detail-right-a" href="#top" target="_self" ng-click="selectItem('财务状况')"> 更多</a>
 			</div>
-			<div class="detail-test-container">
+			<div ng-include="'page/project/html/template/user/companyFinance.html'">
+				
+			</div>
+<!-- 			<div class="detail-test-container">
 				<div class="cmp-finance-block" >
 					<div class="cmp-finance-field">
 						<label class="finance-field-label">市盈率:</label>
@@ -190,8 +198,8 @@
 						<label class="finance-field-after">万</label>
 					</div>
 				</div>
-			</div>
-		</div>
+			</div> -->
+		<!-- </div> -->
 	</div>
 	
 

@@ -1,5 +1,6 @@
-function CompanyDetailController($scope,GlobalService,CompanyNewsService) {
+function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeParams) {
   console.log("CompanyDetailController");
+    $scope.leafCmpId = "585b7d66b6a493e45ea96060";  
     $scope.companyDetail={
     	"logo":"page/project/images/web_header_logo.png",
     	"shortName":"恒昌好车",
@@ -20,20 +21,13 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService) {
 
     $scope.cmpDetailList = GlobalService.cmpDetailList;
 	$scope.currentPage=$scope.cmpDetailList[0][0];
+    $scope.leafShowStatus = $scope.currentPage;
 	$scope.selectItem = function(item){
 		$scope.currentPage=item;
+        $scope.leafShowStatus = item;
 	}
 
 
-	// $scope.cmpNews = {
-	// 	currentPage:-1,
-	// 	pagePerNum:3,
-	// 	totalNum:-1,
-	// 	totalPage:-1,
-	// }
-	// CompanyNewsService.getCompanyNewsList("","","","","",$scope.cmpNews.currentPage,$scope.cmpNews.pagePerNum).then(function(result){
-	// 	$scope.cmpNewsList = result;
-	// });
 	$scope.productList = [{},{},{},{}];
 	$scope.testList = [{},{},{},{}];
 

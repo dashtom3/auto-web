@@ -1,25 +1,26 @@
-
-<table class="innnews table table-striped" >
-	<tr ng-repeat = "cmpNews in cmpNewsList">
-	<td class="innnews-td">
-	<div class="innnews-pic"><img src="{{cmpNews.pic}}"></div>
-	<div class="innnews-content">
-		<div class="row" ><a class="innews-title" href="#{{cmpNews.id}}">{{cmpNews.title}}</a></div>
-		<div class="row">
-			<p class="innews-date">{{cmpNews.timestamp}}</p><p class="innews-company">{{cmpNews.company}}</p>
-		</div>
-		<div class="row">
-			<p class="innews-intro">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{cmpNews.desc}}</p>
-		</div>
-		<div class="row innews-copy">
-			<p ng-if="cmpNews.isFirst == '1'">[原创]</p>
-			<p ng-if="cmpNews.isFirst != '1'">[摘抄]</p>
-		</div>
+<div class="cmp-detail" ng-controller="InnovationNewsController">
+	<table class="innnews table table-striped" >
+		<tr ng-repeat = "cmpNews in cmpNewsList">
+			<td class="innnews-td">
+				<div class="innnews-pic"><img src="{{cmpNews.pic}}"></div>
+				<div class="innnews-content">
+					<div class="row" ><a class="innews-title" href="#{{cmpNews.id}}">{{cmpNews.title}}</a></div>
+					<div class="row">
+						<p class="innews-date">{{cmpNews.timestamp}}</p><p class="innews-company">{{cmpNews.companyId.longName}}</p>
+					</div>
+					<div class="row">
+						<p class="innews-intro">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{cmpNews.desc}}</p>
+					</div>
+					<div class="row innews-copy">
+						<p ng-if="cmpNews.isFirst == '1'">[原创]</p>
+						<p ng-if="cmpNews.isFirst != '1'">[摘抄]</p>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<div class="innnews-commit">
+		<button class="btn btn-danger btn-block btn-sm" ng-click="loadMore()" ng-if="cmpNews.currentPage != cmpNews.totalPage" ng-hide="status == 'cmpDetailShow'">点击加载更多</button>
+		<p ng-if="cmpNews.currentPage == cmpNews.totalPage" ng-hide="status == 'cmpDetailShow'">没有更多内容了</p>
 	</div>
-	</td>
-	</tr>
-</table>
-<div class="innnews-commit">
-	<button class="btn btn-danger btn-block btn-sm" ng-click="loadMore()" ng-if="cmpNews.currentPage != cmpNews.totalPage">点击加载更多</button>
-	<p ng-if="cmpNews.currentPage == cmpNews.totalPage">没有更多内容了</p>
 </div>
