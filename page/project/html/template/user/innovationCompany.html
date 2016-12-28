@@ -1,9 +1,13 @@
-<div class="ino-cmp-nav" ng-controller="InnovationCompanyController">
-	<div class="ino-cmp-nav-row">
-		<label >类型</label>
-		<div class="ino-nav-options">
-			<a href=""> 全部</a>
-			<a ng-repeat="type in typeList">{{type.name}}</a>
+<div class="ino-nav-list" ng-controller="InnovationCompanyController">
+	<div class="ino-nav-type-row" ng-repeat="type in navList">
+		<label class="nav-type-label">
+			{{type.name}}：
+		</label>
+		<div class="nav-options-div">
+			<label class="nav-option-label" ng-class="{'active':isCurrentOption(type.name,option.name)}" ng-repeat="option in type.optionList" ng-click="setCurrentOption(type.name,option.name)">	
+				{{option.name}}
+			</label>
 		</div>
+
 	</div>
 </div>

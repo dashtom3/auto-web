@@ -18,6 +18,7 @@ angular.module("auto-biz-user")
       });
       return deferred.promise;
   };
+  
   //获取企业列表
     this.getCompanyList = function(numPerPage,pageNum,isPassed,type,name) {
         var deferred = $q.defer();

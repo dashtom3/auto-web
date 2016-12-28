@@ -138,7 +138,7 @@
 }
 .cmp-innovation{
 	margin-top: 24px;
-	margin-bottom: 60px;
+	/*margin-bottom: 60px;*/
 	box-shadow: 0 0 7px rgba(0, 0, 0, .15);
 	padding: 28px 38px 22px 38px;
 	background-color: #fff;
@@ -161,7 +161,7 @@
 	margin-right: 30px;
 }
 .innnews-content{
-	width: 564px;
+	width: 560px;
 	float: left;
 	margin-left: 20px;
 }
@@ -202,6 +202,7 @@
   }
  .cmp-innovation-title{
  	margin-bottom: 16px !important;
+    padding: 20px 40px 0 40px;
  }
  .cmp-innovation-title a{
  	float: left;
