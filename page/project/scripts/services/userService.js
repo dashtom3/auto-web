@@ -26,13 +26,19 @@ angular.module('auto-biz-user')
         var url=GlobalService.baseUrl+'user/list/'+numPerPage+'/'+pageNum;
         if(isPassed!==''){
             url=url+'?isPassed='+isPassed;
+            if(nikeName!==''){
+            url=url+'&nikeName='+nikeName;
+            }
         }
-        if(nikeName!==''){
+        else{
+            if(nikeName!==''){
             url=url+'?nikeName='+nikeName;
-        }
+            }
+        } 
+        console.log(url);
         $http.get(url)
             .success(function(data, status, headers, config){
-                //console.log(data);
+                console.log(data);
                 if(data.callStatus=='SUCCEED'){
                     deferred.resolve(data.data);
                 }

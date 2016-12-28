@@ -258,6 +258,10 @@
 	display: inline-block;
 	height: 45px;
 }
+.admin-nav-options-div{
+	display: inline-block;
+	height: 45px;
+}
 .ino-nav-type-row label{
 	vertical-align: middle;
 	font-size: 12px;
@@ -277,6 +281,18 @@
 }
 .nav-options-div > label:hover,
 .nav-options-div > .active
+{
+	color: #c74b36;
+}
+.admin-nav-options-div > label{
+	margin-right: 20px;
+	vertical-align: middle;
+	font-size: 12px;
+	font-weight: normal;
+	cursor: pointer;
+}
+.admin-nav-options-div > label:hover,
+.admin-nav-options-div > .active
 {
 	color: #c74b36;
 }

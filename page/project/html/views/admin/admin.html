@@ -1,32 +1,30 @@
 <div ng-controller="AdminController">
 
-<!-- <div ng-include="'project/html/header.html'"></div> -->
 <!-- 导航栏 -->
-<nav class="navbar navbar-inverse " role="navigation">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">管理平台</a>
-        </div>
-</nav>
-
-<!--侧边栏-->
-<div class="admin-main-sidebar">
-          <ul class="nav nav-sidebar admin-sidebar">
-            <li><a ng-click="setPage('userList')">用户列表</a></li>
-            <li><a ng-click="setPage('companyList')">企业列表</a></li>
-            <li><a ng-click="setPage('companyProduct')">企业产品</a></li>
-            <li><a ng-click="setPage('companyNews')">企业资讯</a></li>
-            <li><a ng-click="setPage('companyPriReport')">企业用户测评</a></li>
-            <li><a ng-click="setPage('companyPubReport')">企业专业测评</a></li>
-          </ul>
+<!-- <div ng-include="'project/html/header.html'"></div> -->
+<div>
+	 <nav class="navbar" role = "navigation" style="height: 90px; background-color:#3f3835; border-bottom:4px solid #c74b36; margin-bottom: 0px">
+	 	<div class="navbar-header" style="vertical-align:middle;margin-top:20px;margin-left: 20px;">
+			<img src="page/project/images/company/logo.png">
+	 	</div>
+	 	<div class="navbar-header" style="vertical-align:middle;margin-top:30px;margin-left: 20px;">
+	 		<p style="font-size: 27px; font-family: 等线; color: #fff">管理员后台系统</p>
+	 	</div>
+	 </nav>
 </div>
-  
+
+<div class="company-main-div">
+<!--侧边栏-->
+	<div ng-include="'page/project/html/template/admin/adminSideBar.html'" ></div>
 <!-- 展示栏 -->
-<div class="admin-main-content">
+<!--<div class="admin-main-content">-->
     <div ng-if="currentPage == 'userList'" ng-include="'page/project/html/views/admin/userList.html'"></div>
     <div ng-if="currentPage == 'companyList'" ng-include="'page/project/html/views/admin/companyList.html'"></div>
     <div ng-if="currentPage == 'companyProduct'" ng-include="'page/project/html/views/admin/companyProduct.html'"></div>
     <div ng-if="currentPage == 'companyNews'" ng-include="'page/project/html/views/admin/companyNews.html'"></div>
     <div ng-if="currentPage == 'companyPriReport'" ng-include="'page/project/html/views/admin/companyPriReport.html'"></div>
     <div ng-if="currentPage == 'companyPubReport'" ng-include="'page/project/html/views/admin/companyPubReport.html'"></div>
+<!--</div>-->
 </div>
+
 </div>

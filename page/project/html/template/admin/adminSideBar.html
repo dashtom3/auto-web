@@ -1,0 +1,26 @@
+<!--<div class="admin-main-sidebar">-->
+<div class="sidebar company-sidebar">
+	<ul class="nav nav-sidebar company-sidebar-ul">
+		<li >	
+			<a ng-click="setPage('userList')"> <img src="page/project/images/company/info.png"> <span>用户列表</span></a>
+		</li>	
+		<li >
+			<a ng-click="setPage('companyList')"> <img src="page/project/images/company/news.png" > <span>企业列表</span></a>
+		</li>
+		<li >	
+			<a ng-click="setPage('companyProduct')"> <img src="page/project/images/company/product.png" > <span>企业产品</span></a>
+		</li>	
+		<li>
+			<a ng-click="setPage('companyNews')"> <img src="page/project/images/company/money.png" > <span>企业资讯 </span></a>
+		</li>	
+		<li>
+			<a ng-click="toggleTestList()"> <img src="page/project/images/company/test.png" ><span> 企业测评</span></a>
+		</li>
+		<li ng-show="testShow" class="m-toggle-item">
+			<a  ng-click="setPage('companyPubReport')" > <span> 专业测评</span></a>
+		</li>
+		<li ng-show="testShow" class="m-toggle-item">
+			<a ng-click="setPage('companyPriReport')">  <span>用户测评</span></a>
+		</li>	
+	</ul>
+</div>

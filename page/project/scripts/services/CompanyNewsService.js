@@ -1,12 +1,15 @@
 angular.module("auto-biz-user")
   .service('CompanyNewsService', function ($http,GlobalService,$q) {
   var self = this; 
-  //注册公司
+  //获取资讯
   this.getCompanyNewsList = function (title,author,isFirst,tag,isOnline,companyId,startTime,endTime,numPerPage,pageNumber) {
     var deferred = $q.defer();
     var urlStr = GlobalService.getURLStr([["title",title],["author",author],["isFirst",isFirst],["tag",tag],["isOnline",isOnline],["companyId",companyId],["startTime",startTime],["endTime",endTime]]);
-    $http.get(GlobalService.baseUrl+'news/list/'+numPerPage+'/'+pageNumber+'?'+urlStr).success(function (res) {
+    var url = GlobalService.baseUrl+'news/list/'+numPerPage+'/'+pageNumber+'?'+urlStr;
+    console.log(url);
+    $http.get(url).success(function (res) {
         console.log("获取企业新闻列表");
+        console.log(res);
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{

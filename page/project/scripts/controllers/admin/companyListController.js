@@ -37,14 +37,14 @@ function companyListController($scope,CompanyService) {
   	},
   	{
   		"name":"行业",
-      //CM汽车制作，CG汽车零部件，CS汽车销售与服务，NEC新能源汽车，NOC车联网，CC车用化工品，CE汽车金融，PT公共交通，MOC汽车媒体
+      //CM汽车制造，CG汽车零部件，CS汽车销售与服务，NEC新能源汽车，NOC车联网，CC车用化工品，CE汽车金融，PT公共交通，MOC汽车媒体
   		"optionList":[
         {
   				"name":"全部",
   				"id":'',
   			},
         {
-  				"name":"汽车制作",
+  				"name":"汽车制造",
   				"id":"CM",
   			},
   			{
@@ -54,7 +54,31 @@ function companyListController($scope,CompanyService) {
   			{
   				"name":"汽车销售与服务",
   				"id":"CS",
-      }]
+        },
+        {
+  				"name":"新能源汽车",
+  				"id":'NEC',
+  			},
+        {
+  				"name":"车联网",
+  				"id":"NOC",
+  			},
+  			{
+  				"name":"车用化工品",
+  				"id":"CC",
+  			},
+  			{
+  				"name":"汽车金融",
+  				"id":"CE",
+        },
+        {
+  				"name":"PT公共交通",
+  				"id":"PT",
+  			},
+  			{
+  				"name":"汽车媒体",
+  				"id":"MOC",
+       }]
   	}
   ];
   //高亮选中的分类
