@@ -1,26 +1,34 @@
-function CompanyBasicInfoController($scope) {
+function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileService) {
 	console.log("CompanyBasicInfoController");
-	$scope.companyName = "XJ";
 	$("#form_datetime").datetimepicker({format:'YYYY/MM/DD',locale: moment.locale('zh-cn') });
-
-
-
-
-
-	// BasicInfoService.getBasicInfo($scope.companyName)
-	// .then(function(result){
-	// 	$scope.infoList = result;
-	// 	console.log($scope.infoList);	
-	// });
-
-
 	$scope.infoList = {};
 	$scope.isEdit = false;
 	$scope.infoList_backup = null;
+	$scope.ctypeList = GlobalService.companyType;
+	CompanyService.getComppanyById($scope.cmpId).then(function(result){
+		$scope.infoList = result;
+		console.log($scope.infoList);
+		$scope.ctype = getCtypeById($scope.infoList.type);
+	}); 
+	function getCtypeById(ctypeId){
+		for (i in $scope.ctypeList){
+			if (ctypeId == $scope.ctypeList[i].id){
+				return $scope.ctypeList[i];
+			}
+		}
+	}
+	function getCIdByName(ctype){
+		for (i in $scope.ctypeList){
+			if (ctype == $scope.ctypeList[i].name){
+				return $scope.ctypeList[i].id;
+			}
+		}
+	}
 	//点击编辑按钮
 	$scope.startEdit = function(){
 		$scope.infoList_backup = cloneObj($scope.infoList);
 		$scope.isEdit =true;
+		document.getElementById("form_datetime").value = $scope.infoList.regTime;
 	}
 	//取消编辑
 	$scope.cancelEdit = function(){
@@ -31,7 +39,13 @@ function CompanyBasicInfoController($scope) {
 	}
 	//保存编辑
 	$scope.saveEdit = function(){
-		console.log("开始post");
+		$scope.infoList.type = $scope.ctype.id;
+		$scope.infoList.regTime=document.getElementById("form_datetime").value;
+		$scope.infoList.address="";
+
+		console.log($scope.infoList);
+		CompanyService.modifyCompany($scope.infoList).then(function(result){
+  		});
 		$scope.isEdit=false;
 	}
 
@@ -46,29 +60,13 @@ function CompanyBasicInfoController($scope) {
 		}  
 		return newObj;  
 	};
-	$scope.upload = function(file){
-		if (file != null){
-			$scope.fileLogo = file;
-			console.log(file);
-		}
-		
-		//$scope.file = file;
+
+	$scope.uploadLogo = function(file){
+  	if(file){
+  		$scope.fileLogo = file;
+		FileService.uploadFile(file).then(function(result) {
+  			$scope.infoList.logo = result.urls[0];
+  		});
 	}
-
-
-
-
-	//date picker
-	// var datepicker1 = $('#datetimepicker1').datetimepicker({  
-	// 	format: 'YYYY/MM/DD',  
-	// 	locale: moment.locale('zh-cn')  
-	// })
-	// // .on('dp.change', function (e) {  
-	// // 	var result = new moment(e.date).format('YYYY-MM-DD');  
-	// // 	$scope.dateOne = result;  
-	// // 	$scope.$apply();  
-	// // }); 
-	// $scope.$watch('datetime',function(){
-	// 	console.log($scope.datetime);
-	// })
+  }
 }

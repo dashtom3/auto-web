@@ -18,7 +18,28 @@ angular.module("auto-biz-user")
       });
       return deferred.promise;
     };
-    
+
+    //修改企业信息 
+    this.modifyCompany = function (company) {
+      company.token = AuthService.getToken();
+      console.log(company);
+      var deferred = $q.defer();
+      $http.post(GlobalService.baseUrl+'company/modify/info',
+        company
+        ).success(function (res) {
+          console.log("修改企业信息");
+          if(res.callStatus == "SUCCEED"){
+            deferred.resolve(res.data);
+          }else{
+            alert("您好，您访问的内容出错");
+          }
+        }).error(function (res){
+          alert("您好，您访问的内容出错");
+        });
+        return deferred.promise;
+      };
+   
+
   //获取企业列表
   this.getCompanyList = function(numPerPage,pageNum,isPassed,type,name) {
     var deferred = $q.defer();
@@ -107,4 +128,6 @@ angular.module("auto-biz-user")
       });
       return deferred.promise;
     };
+
+
   })
