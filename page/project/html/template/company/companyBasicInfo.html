@@ -14,10 +14,10 @@
 								公司全称：
 							</label>
 							<label  class="control-label col-md-10 cmp-show-label" ng-show="isEdit == false" >
-								{{infoList.name}}
+								{{infoList.longName}}
 							</label>
 							<div class="col-md-10" ng-show="isEdit == true">
-								<input type="text" class="form-control" ng-model="infoList.name">
+								<input type="text" class="form-control" ng-model="infoList.longName">
 							</div>
 						</div>
 						<div class="row cmp-input-row">
@@ -59,10 +59,10 @@
 								所属领域：
 							</label>
 							<label  class="control-label col-md-4 cmp-show-label" ng-show="isEdit == false" >
-								{{infoList.ctype}}
+								{{ctype.name}}
 							</label>
 							<div class="col-md-4" ng-show="isEdit == true">
-								<select class="form-control" type="text" ng-model="infoList.ctype" ng-options="ctype.name for ctype in ctypeList"/>
+								<select class="form-control" type="text" ng-model="ctype" ng-options="ctype.name for ctype in ctypeList"/>
 							</div>
 						</div>
 						<div class="row cmp-input-row">
@@ -70,10 +70,10 @@
 								成立时间：
 							</label>
 							<label  class="control-label col-md-4 cmp-show-label" ng-show="isEdit == false" >
-								{{form_datetime}}
+								{{infoList.regTime}}
 							</label>
 							<div class="col-md-4" ng-show="isEdit == true">
-								<input type="text" class="form-control" ng-model="form_datetime" id="form_datetime">
+								<input type="text" class="form-control"  id="form_datetime">
 							</div>
 						</div>
 						<div class="row cmp-input-row">
@@ -106,7 +106,7 @@
 								注册地址：
 							</label>
 							<label  class="control-label col-md-10 cmp-show-label" ng-show="isEdit == false" >
-								{{infoList.companyAdress}}
+								{{infoList.regAddress}}
 							</label>
 							<div class="col-md-10" ng-show="isEdit == true">
 								<input type="text" class="form-control" ng-model="infoList.companyAdress" >
@@ -115,9 +115,12 @@
 					</form>
 				</div>
 				<div class="col-md-2 cmp-basic-logo-div">
-					<div  class="cmp-logo-thumb cmp-box-shadow">
+					<div  class="cmp-logo-thumb cmp-box-shadow" ng-show="isEdit == false">
+						<img src="{{infoList.logo}}" class="cmp-img-logo"/>	
+					</div>
+					<div  class="cmp-logo-thumb cmp-box-shadow" ng-show="isEdit == true">
 						<label >
-							<div  ngf-select="upload($file)" >点击上传logo</div>
+							<div  ngf-select="uploadLogo($file)" >点击上传logo</div>
 						</label>
 						<img ngf-src="fileLogo" class="cmp-img-logo"/>	
 					</div>
