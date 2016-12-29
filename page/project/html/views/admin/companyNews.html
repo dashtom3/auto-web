@@ -48,7 +48,7 @@
 			</thead>
 			<tbody>
   				<tr ng-repeat="news in newsList">
-    				<td><img ng-src="{{news.pic}}"/></td>
+    				<td><img class="cmp-outline-logo" ng-src="{{news.pic}}"/></td>
 					<td>{{news.title}}</td>
     				<td>{{news.author}}</td>
     				<td>{{news.companyId.longName}}</td>
@@ -98,7 +98,8 @@
 				</h4>
 			</div>
 			<div class="modal-body">
-				{{currentNews.wysiwyg}}
+				<div class="news-body" ng-bind-html="currentNews.wysiwyg">
+				</div>       	
 			</div>
 			<div class="modal-footer">
 				<div>

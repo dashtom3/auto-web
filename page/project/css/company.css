@@ -252,4 +252,8 @@ ul.rating {
 	font-size: 18px;
 	vertical-align: middle;
 }
+.news-body{
+    width: 100%;
+    overflow: auto;
+}
 </style>
