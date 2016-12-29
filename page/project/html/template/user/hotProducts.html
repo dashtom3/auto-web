@@ -1,0 +1,40 @@
+<div ng-controller="InnovationProductController">
+    <div class="cmp-detail">
+		<div class="detail-test-container">
+        <div class="cmp-reg-cardBlock" ng-repeat="product in productsList">
+                <div class="cmp-reg-cardImageContainer">
+                    <div class="cmp-reg-cardBlockImage"><img style="width: 265px;height: 200px;" ng-src="{{product.images[0]}}"/></div>
+                    <div class="cmp-reg-cardBlockImageCover"></div>
+                    <div class="cmp-reg-cardCompanyIcon"></div>
+                    <div ng-click="toCompany(product.companyId._id)" class="cmp-reg-cardCompany">
+                        <label>{{product.companyId.longName}}</label>
+                    </div>
+                </div>
+
+                <div class="cmp-reg-cardContent">
+                    <div ng-click="toProductDetails(product._id)" class="cmp-reg-cardTitle">
+                        <label>{{product.name}}</label> 
+                    </div>
+                    <div class="cmp-reg-cardDate">
+                        <div class="cmp-reg-LargeDate">{{product.releaseDate | dayFilter}}</div>
+                        <div class="cmp-reg-cardSmallDate">{{product.releaseDate | yearFilter}}</div>
+                    </div>
+                    <div class="cmp-reg-cardTextBesideDate">
+                        {{product.desc}}
+                    </div>
+                    <div class="cmp-reg-cardUserTest">用户测评
+                        <i class="star yellow icon" style="margin: 0 0 0 5px;width: auto"></i>
+                        <i class="star yellow icon" style="margin: 0;width: auto"></i>
+                        <i class="star yellow icon" style="margin: 0;width: auto"></i>
+                        <i class="star yellow half icon"style="margin: 0;width: auto"></i>
+                    </div>
+                    <div class="cmp-reg-cardProfessionalTest">专业测评
+                        <i class="file text outline icon" style="margin-left: 5px"></i>
+                    </div>
+                </div>
+        </div>
+		</div>
+
+		<button class="cmp-discover-loadMoreButton" ng-click="loadMore()">点击加载更多</button>
+    </div>
+</div>

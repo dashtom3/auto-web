@@ -399,6 +399,17 @@
     width: 280px;
     color: white;
     font-family: DengXian;
+    cursor: pointer;
+
+}
+.cmp-reg-cardCompany:hover{
+    z-index: 2;
+    position: absolute;
+    top: 10px;
+    width: 280px;
+    color: mediumvioletred;
+    font-family: DengXian;
+    cursor: pointer;
 
 }
 
@@ -429,6 +440,18 @@
     font-weight: bold;
     font-size:17px;
     line-height: 25px;
+    cursor: pointer;
+}
+.cmp-reg-cardTitle:hover{
+    margin: 10px 0;
+    height: 50px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    font-family: "DengXian";
+    font-weight: bold;
+    font-size:17px;
+    line-height: 25px;
+    color: red;
 }
 
 .cmp-reg-cardLabel{
@@ -528,17 +551,41 @@
     transition: box-shadow 0.2s;
 }
 
-.cmp-reg-loadMoreButton{
-    display: block;
-    margin: 10px auto;
+.user-product-type{
+    display: inline-block;
+    text-align: center;
+    margin: 0px 0px 0px 10px;
     font-family: "Microsoft YaHei UI";
     font-size: 14px;
     font-weight: 500;
     color: white;
-    width: 300px;
-    line-height: 30px;
+    width: 80px;
     padding: 3px 0;
     background-color: #c74b36;
     border-radius: 50px;
     border: none;
+}
+
+.user-product-baseinfo{
+    display: inline-block;
+    margin: 0px 30px 0px 10px;
+}
+
+.user-product-pubReport{
+    float: right;
+    text-align: center;
+    margin: 0px 0px 0px 10px;
+    font-family: "Microsoft YaHei UI";
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    width: 80px;
+    padding: 3px 0;
+    background-color: #c74b36;
+    border: none;
+}
+
+.user-product-pubRepinfo{
+    display: inline-block;
+    margin: 0px 280px 0px 10px;
 }

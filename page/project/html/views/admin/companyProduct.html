@@ -40,8 +40,9 @@
 					<th class="col-lg-1">参数</th>
 					<th class="col-lg-1">简介</th>
 					<th class="col-lg-1">分类</th>
-					<th class="col-lg-1">状态</th>
+					<th class="col-lg-1">上线状态</th>
 					<th class="col-lg-1">发布日期</th>
+					<th class="col-lg-1">上传日期</th>
 					<th class="col-lg-1">操作</th>
 				</tr>
 			</thead>
@@ -49,12 +50,13 @@
   				<tr ng-repeat="product in productsList">
     				<td ><img class="cmp-outline-logo" ng-src="{{product.images[0]}}"/></td>
 					<td>{{product.name}}</td>
-					<td>{{product.companyName}}</td>
+					<td>{{product.companyId.longName}}</td>
 					<td>{{product.argc}}</td>
 					<td>{{product.desc}}</td>
-    				<td>{{product.tag}}</td>
-					<td>{{product.state}}</td>
-					<td>{{product.date}}</td>
+    				<td>{{product.tag | companyTypeFilter}}</td>
+					<td>{{product.state | statusFilter3}}</td>
+					<td>{{product.releaseDate | dateFilter}}</td>
+					<td>{{product.timestamp | dateFilter}}</td>
 					<td>
 						<div class="row">
 							<div class="col-lg-2 col-lg-offset-2">

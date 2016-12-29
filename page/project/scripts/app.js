@@ -56,6 +56,11 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
         templateUrl: 'page/project/html/views/admin/adminLogin.html',
         controller: 'AuthController'
         //redirectTo: '/error'
+      })
+      .when('/product', {
+        templateUrl: 'page/project/html/template/user/productDetails.html',
+        controller: 'AuthController'
+        //redirectTo: '/error'
       });
       $locationProvider.html5Mode(true);
       // $httpProvider.interceptors.push('loadingHttpInterceptor');

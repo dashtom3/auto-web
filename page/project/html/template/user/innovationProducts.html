@@ -1,0 +1,13 @@
+<div class="ino-nav-list" ng-controller="InnovationProductController">
+	<div class="ino-nav-type-row" ng-repeat="type in navList">
+		<label class="nav-type-label">
+			{{type.name}}：
+		</label>
+		<div class="admin-nav-options-div">
+			<label class="nav-option-label" ng-class="{'active':isCurrentOption(type.name,option.name)}" ng-repeat="option in type.optionList" ng-click="getCompanyProductsList(type.name,option)">	
+				{{option.name}}
+			</label>
+		</div>
+
+	</div>
+</div>

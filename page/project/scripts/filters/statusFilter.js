@@ -7,3 +7,18 @@ angular.module('auto-biz-user')
     else return "错误";
   };
 });
+
+angular.module('auto-biz-user')
+    .filter('statusFilter2', function() {
+  return function(input) {
+    if(input) return "上线";
+    else return "下线";
+  };
+});
+
+angular.module('auto-biz-user')
+    .filter('statusFilter3', function() {
+  return function(input) {
+    return input ? '\u2713' : '\u2718';
+  };
+});
