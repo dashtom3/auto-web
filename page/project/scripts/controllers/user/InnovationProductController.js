@@ -9,6 +9,8 @@ function InnovationProductController($scope,CompanyProductsService) {
       //加载更多
 			$scope.currentPages = 6;
 	    $scope.total = result.totalNum;
+			//评分
+  		$scope.ratingVal = 3;
   })
   //分类
   $scope.navList = [
@@ -120,16 +122,17 @@ function InnovationProductController($scope,CompanyProductsService) {
     if(type=="时间"){
         //TODO
       if(option.id==0) timeType='';
-      else if(option.id==1) timeType='';//一周
-      else if(option.id==2) timeType='';
-      else if(option.id==3) timeType='';
-      else if(option.id==4) timeType='';
+      else if(option.id==1) timeType=new Date().getTime() - 7*86400000;//一周
+      else if(option.id==2) timeType=new Date().setMonth(new Date().getMonth()-1);
+      else if(option.id==3) timeType=new Date().setFullYear(new Date().getFullYear()-1);
+      else if(option.id==4) timeType=new Date().setFullYear(new Date().getFullYear()-3);
       else timeType='';
     }
     if(type=="分类"){
       companyType=option.id;
     }
-    //console.log(isPassed+'###'+newType);
+		var testDate=new Date(timeType);
+    //console.log(companyType+'###'+testDate);
     //请求对应数据
     CompanyProductsService.getCompanyProductsList('',companyType,'',"","","",timeType,"",6,1)
       .then(function(result){

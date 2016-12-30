@@ -24,7 +24,7 @@ angular.module("auto-biz-user")
   this.getCompanyProductsDetail = function (productId) {
     var deferred = $q.defer();
     $http.get(GlobalService.baseUrl+'product/detail?productId='+productId).success(function (res) {
-        console.log("获取企业产品列表");
+        console.log("获取企业产品详情");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{

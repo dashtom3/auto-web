@@ -50,9 +50,9 @@
     				<td>{{pubReport.productId.name}}</td>
 					<td>{{pubReport.team}}</td>
     				<td>{{pubReport.site}}</td>
-					<td>{{pubReport.date}}</td>
+					<td>{{pubReport.date | dateFilter}}</td>
 					<td>{{pubReport.companyId.longName}}</td>
-					<td>{{pubReport.isOnline}}</td>
+					<td>{{pubReport.isOnline | statusFilter3}}</td>
 					<td>
 						<div class="row">
 							<div class="col-lg-2 col-lg-offset-2">

@@ -1,7 +1,8 @@
-<div class="panel panel-default cmp-box-shadow">
+<div ng-controller="ProductDetailsController">
+    <div class="panel panel-default cmp-box-shadow">
 		<div class="panel-body ">
             <div>
-				<h3>
+				<h3 class="user-product-title">
 				    流体力学方向盘
                 <label class="user-product-type">
 					汽车配件
@@ -23,10 +24,38 @@
 					型号：112
 				</label>
 			</div>
-		</div>
-</div>
+            <br></br>
 
-<div class="panel panel-default cmp-box-shadow">
+            <div id="carousel-example-generic" class="carousel-user-image carousel" data-ride="carousel">
+					  <!-- Indicators -->
+					  <ol class="carousel-indicators">
+					    <li data-target="#carousel-example-generic"  ng-class="{'active':currentCarouse == li.num}" ng-repeat="li in liList" ng-click="setCurrentCarouse(li.num)"></li>
+					  </ol>
+
+					  <!-- Wrapper for slides -->
+					  <div class="carousel-inner">
+					    <div class="item" ng-class="{'active':currentCarouse == img.num}" ng-repeat="img in carouselList">
+					      <img src="{{img.url}}">
+					    </div>
+					  </div>
+
+					  <!-- Controls -->
+					  <a class="left carousel-control" ng-click="moveLeft()">
+					    <span class="glyphicon glyphicon-chevron-left" ></span>
+					  </a>
+					  <a class="right carousel-control" ng-click="moveRight()">
+					    <span class="glyphicon glyphicon-chevron-right" ></span>
+					  </a>
+			</div>
+
+            <div class="carousel-user-info">
+                肯德基的卡德纳斯的健康都会觉得和 v 大家措施降低成本商家都差不多时间几乎从不说的警察部队和寄生虫病多少酒红色代表参加活动时彼此都是借此机会就是大白菜黄金时代才不会觉得
+                售出还是坚持不睡觉的好处百货商店家什么才不说话传经送宝成吉思汗的身材不是降低成本
+            </div>
+		</div>
+    </div>
+
+    <div class="panel panel-default cmp-box-shadow">
 		<div class="panel-body ">
            <div>
 				<h4>专业测评
@@ -48,27 +77,70 @@
 				</label>
 			</div>
 		</div>
-</div>
+    </div>
 
-<div class="panel panel-default cmp-box-shadow">
+    <div class="panel panel-default cmp-box-shadow">
 		<div class="panel-body ">
+			<!--标题-->
            <div>
 				<h4>用户测评</h4>
 			</div>
 
-            <div class="ino-nav-list">
-	            <div class="ino-nav-type-row">
-		            <label class="nav-type-label">
-			               综合评分：
-		            </label>
-		        <div class="admin-nav-options-div">
-			        <label class="nav-option-label">	
-				       外观：
-			        </label>
-                    <label class="nav-option-label">	
-				       颜色：
-			        </label>
-		        </div>
-            </div>
+			<!--评分-->
+            <div style="margin: 0px 0px 0px 50px;">
+				<h4>
+				<div class="star-big-title">综合评分：</div>
+				<div class="star-info" star rating-value="ratingVal" max="5" readonly=true></div>
+				</h4>
+			</div>
+		    <div style="margin: 0px 0px 0px 70px;">
+				<div class="star-allInfo">
+					<div class="star-title">外观:</div>
+					<div class="star-info" star rating-value="ratingVal" max="5" readonly=true></div>
+				</div>
+				<div class="star-allInfo">
+					<div class="star-title">颜色:</div>
+					<div class="star-info" star rating-value="ratingVal" max="5" readonly=true></div>
+				</div>
+				<div class="star-allInfo">
+					<div class="star-title">质感:</div>
+					<div class="star-info" star rating-value="ratingVal" max="5" readonly=true></div>
+				</div>
+				<div class="star-allInfo">
+					<div class="star-title">灵敏度:</div>
+					<div class="star-info" star rating-value="ratingVal" max="5" readonly=true></div>
+				</div>
+		    </div>        
+
+			<!--评论-->
+        		<div class="comment-box">
+					<div class="comment-header">
+						<label class="comment-image">
+							<img src="xxx" /> 
+						</label>
+						
+						<h4 class="comment-name">josep</h4>
+						<p class="comment-time">2016/12/23</p>
+                	</div>
+
+				 	<div class="comment-body">  	
+                    	<div class="comment-content">
+                       		xwjdjcjhjsckbdsjbcdjscbhdjchdbvhjd
+                    	</div>
+						<div class="comment-score">
+							<div class="star-title">外观:</div>
+							<div class="star-info" star rating-value="ratingVal" max="5" readonly=true></div>
+							<div class="star-title">颜色:</div>
+							<div class="star-info" star rating-value="ratingVal" max="5" readonly=true></div>
+							<div class="star-title">质感:</div>
+							<div class="star-info" star rating-value="ratingVal" max="5" readonly=true></div>
+							<div class="star-title">灵敏度:</div>
+							<div class="star-info" star rating-value="ratingVal" max="5" readonly=true></div>
+						</div>
+                	</div>
+				</div>
+
 		</div>
+    </div>
+
 </div>

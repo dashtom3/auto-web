@@ -39,7 +39,7 @@
 					<th class="col-lg-1">作者</th>
 					<th class="col-lg-1">公司</th>
 					<th class="col-lg-1">原创</th>
-					<th class="col-lg-1">状态</th>
+					<th class="col-lg-1">上线</th>
 					<th class="col-lg-1">发布日期</th>
 					<th class="col-lg-1">分类</th>
 					<th class="col-lg-2">简述</th>
@@ -52,10 +52,10 @@
 					<td>{{news.title}}</td>
     				<td>{{news.author}}</td>
     				<td>{{news.companyId.longName}}</td>
-					<td>{{news.isFirst}}</td>
-    				<td>{{news.isOnline}}</td>
-					<td>{{news.timestamp}}</td>
-    				<td>{{news.tag}}</td>
+					<td>{{news.isFirst | statusFilter3}}</td>
+    				<td>{{news.isOnline | statusFilter3}}</td>
+					<td>{{news.timestamp | dateFilter}}</td>
+    				<td>{{news.tag | companyTypeFilter}}</td>
 					<td>{{news.desc}}</td>
     				<td>
 						<div class="row">

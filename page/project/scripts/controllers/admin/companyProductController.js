@@ -24,11 +24,11 @@ function companyProductController($scope,CompanyProductsService) {
   			},
         {
   				"name":"上线",
-  				"id":"1",
+  				"id":"true",
   			},
   			{
   				"name":"下线",
-  				"id":"0",
+  				"id":"false",
       }]
   	},
   	{
