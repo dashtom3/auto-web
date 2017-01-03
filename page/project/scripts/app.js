@@ -38,8 +38,8 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
         // controller: 'CompanyDetailController'
         //redirectTo: '/error'
       })
-      .when('/companyDetail/:ID', {
-        templateUrl: '/page/project/html/views/user/companyDetail.html',
+      .when('/companyDetaill/:id', {
+        templateUrl: '/page/project/html/views/user/companyNewsDetail.html',
         // controller: 'CompanyDetailController'
         //redirectTo: '/error'
       })
