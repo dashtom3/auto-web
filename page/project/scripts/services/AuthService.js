@@ -8,6 +8,7 @@ angular.module("auto-biz-user")
       .success(function (res) {
         if(res.callStatus == "SUCCEED"){
           self.user = res.data;
+          window.localStorage.auto_user = JSON.stringify(res.data);
           console.log("用户登录");
           deferred.resolve(res.data);
         }else{
@@ -46,11 +47,12 @@ angular.module("auto-biz-user")
         if(res.callStatus == "SUCCEED"){
             console.log("企业登录");
             self.company = res.data;
+            window.localStorage.auto_company = JSON.stringify(res.data);
             deferred.resolve(res.data);
           }else{
             alert("用户名密码错误");
         }
-      })
+      }) 
       .error(function (res) {
         alert("您好，您访问的内容出错");
       });
@@ -88,5 +90,13 @@ angular.module("auto-biz-user")
         return self.company.token;
       }
       return null;
+  }
+  this.setInfoFromLocalStorage = function(){
+      if(localStorage.auto_user != null){
+        self.user =  JSON.parse(window.localStorage.auto_user);
+      }
+      if(localStorage.auto_company != null){
+        self.company =  JSON.parse(window.localStorage.auto_company);
+      }
   }
 })

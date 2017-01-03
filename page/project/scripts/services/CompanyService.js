@@ -44,7 +44,7 @@ angular.module("auto-biz-user")
   this.getCompanyList = function(numPerPage,pageNum,isPassed,type,name) {
     var deferred = $q.defer();
     console.log("读取getCompanyListService网络数据");
-    var url='http://123.56.220.72:3300/company/list/'+numPerPage+'/'+pageNum;
+    var url=GlobalService.baseUrl+'company/list/'+numPerPage+'/'+pageNum;
     var paras = [];
     if(isPassed!==''){
       var obj1=new Object(); 

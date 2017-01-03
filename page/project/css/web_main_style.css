@@ -16,12 +16,13 @@
 		margin: 0 auto;
 	}
 	.header-user-button{
-		background-image: url('../images/web_header_user.png');
+		/*background-image: url('../images/web_header_user.png');*/
 		background-size: cover;
 		background-color: transparent;
 		border:none;
 		width: 32px;
 		height: 32px;
+		border-radius: 16px;
 	}
 	.header-container .dropdown-menu{
 		margin-right: 20px;

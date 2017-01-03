@@ -38,7 +38,7 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
         // controller: 'CompanyDetailController'
         //redirectTo: '/error'
       })
-      .when('/companyDetaill/:id', {
+      .when('/companyNews/:id', {
         templateUrl: '/page/project/html/views/user/companyNewsDetail.html',
         // controller: 'CompanyDetailController'
         //redirectTo: '/error'
@@ -64,6 +64,7 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
       });
       $locationProvider.html5Mode(true);
       // $httpProvider.interceptors.push('loadingHttpInterceptor');
+
   });
     // $routeProvider
     // .when('/PARisk/EnterpriseRisk', {
@@ -74,9 +75,7 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
     // $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
     // $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
     //$locationProvider.html5Mode(true);
-// app.run(function(AuthService,$rootScope) {
-//   AuthService.userLogin("aaa","123").then(function(result) {
-//     console.log("广播用户登录数据"+result.name);
-//     $rootScope.$broadcast('UserLogin');
-//   });
-// });
+app.run(function(AuthService,$rootScope) {
+  console.log("获取本地数据");
+  AuthService.setInfoFromLocalStorage();
+});

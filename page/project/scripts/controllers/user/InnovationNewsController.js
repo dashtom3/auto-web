@@ -2,8 +2,6 @@ function InnovationNewsController($scope,CompanyNewsService) {
 	console.log("InnovationNewsController");
 
 
-
-
 	$scope.cmpNews = {
 		currentPage:1,
 		pagePerNum:10,
