@@ -10,6 +10,13 @@ angular.module('auto-biz-user').directive('ueditor',function($timeout){
 				initialFrameHeight: '200', 
 				autoHeightEnabled: true 
 			}); 
+			ctrl.$render = function () {
+					try {
+						ue.setContent(ctrl.$modelValue);
+					} catch (e) {
+
+					}
+				};
 			ue.ready(function () { 
 				ue.addListener('contentChange', function () { 
 					ctrl.$setViewValue(ue.getContent()); 

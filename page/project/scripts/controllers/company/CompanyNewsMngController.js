@@ -1,77 +1,30 @@
-function CompanyNewsMngController($scope,CompanyNewsService) {
+function CompanyNewsMngController($scope,CompanyNewsService,FileService) {
 	console.log("CompanyNewsMngController");
-	$scope.pageCount = 5;
-	$scope.pageSize = 4;
-	$scope.total = 50;
+	$scope.pageSize = 5;
 	$scope.tmpNews={};
 	$scope.companyName="小软酱有限公司";
 	$scope.deleteID ="";
 
 	//数据初始化
-	$scope.cmpNews = {
-		currentPage:1,
-		pagePerNum:5,
-		totalNum:-1,
-		totalPage:-1,
-	}
+	$scope.searchStr="";
+	$scope.currentPage = 1;
 	$scope.cmpId = $scope.leafCmpId;
-	console.log("cmpid: "+$scope.cmpId);
-	loadCompanyNewsData($scope.cmpNews.pagePerNum,$scope.cmpNews.currentPage);
+	getData();
 
-	
+	function getData(){
+		loadCompanyNewsData($scope.pageSize,1);
+	}
+
 	function loadCompanyNewsData(pagePerNum,currentPage){
 		console.log("readData");
-		CompanyNewsService.getCompanyNewsList("","","","","",$scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
-			if($scope.cmpNewsList){
-				$scope.cmpNewsList = $scope.cmpNewsList.concat(result.list);
-			}else{
-				$scope.cmpNewsList= result.list;
-				console.log($scope.cmpNewsList);
-			}
-			$scope.cmpNews.currentPage = result.currentPage;
-			console.log($scope.cmpNews.currentPage);
-			$scope.cmpNews.totalNum = result.totalNum;
-			$scope.cmpNews.totalPage = result.totalPageNum;
-			console.log($scope.cmpNews.totalPage);
+		CompanyNewsService.getCompanyNewsList($scope.searchStr,"","","","",$scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
+			$scope.cmpNewsList= result.list;
+			$scope.currentPage = result.currentPage;
+			$scope.total = result.totalNum;
 		});
 	}
 
-	// $scope.newsList = [
-	// {
-	// 	"newsThumb":"imgs/thumb_news.jpg",
-	// 	"newsID":"1",
-	// 	"newsdate":"2016/12/13",
-	// 	"newsTheme":"安全驾驶，佳通轮胎荣获两项“国际比赛大奖国际比赛大奖”",
-	// 	"newsAuthor":"李晓明",
-	// 	"newsStatus":"展示中",
-	// 	"newsIsOriginal":"true"
-	// }
-	// ];
-	$scope.getFile = function (fileName) {
-		fileReader.readAsDataUrl($scope.file, $scope)
-		.then(function(result) {
-			$scope.imgSrc = result;
-		});
-	};
-	function addNews(){
-		console.log("上传，可能需要刷新表单。");
-		newsItem = new Object();
-		newsItem.newsTheme = $scope.addNewsTheme;
-		//
-		//newsItem.newsdate = $scope.addNewsdate;
-		newsItem.newsAuthor = $scope.addNewsAuthor;
-		newsItem.newsThumb = "imgs/thumb_news.jpg";
-		//newsItem.newsStatus = $scope.newsStatus;
-		var d = new Date();
-		var str = d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate();
-		newsItem.newsdate = str;
-		if ($scope.addNewsOption1 == true){
-			newsItem.newsIsOriginal = true;
-		}else{
-			newsItem.newsIsOriginal = false;
-		}
-		$scope.newsList.push(newsItem);
-	};
+
 	$scope.confirm = function(addModal,lookModal,editModal){
 		if (addModal){
 			addNews();
@@ -91,16 +44,44 @@ function CompanyNewsMngController($scope,CompanyNewsService) {
 			;
 		}
 		if (editModal) {
-			//editNews();
 		}
 	};
-	function editNews(){
-		for (i in $scope.newsList){
-			if ( $scope.tmpNews.newsID == $scope.newsList[i].newsID){
-				$scope.newsList.splice(i,1,$scope.tmpNews);
-			}
+	$scope.uploadThumb = function(file){
+		console.log("1");
+		if(file){
+			$scope.fileLogo = file;
+			FileService.uploadFile(file).then(function(result) {
+				$scope.imgUrl = result.urls[0];
+			});
 		}
 	}
+	//确认新建资讯
+	function addNews(){
+		console.log("上传，可能需要刷新表单。");
+		var newsItem = new Object();
+		newsItem.pic = $scope.imgUrl;
+		newsItem.title = $scope.addNewsTheme;
+		newsItem.author = $scope.addNewsAuthor;
+		newsItem.tag = $scope.addNewsLabel;
+		newsItem.desc = $scope.addNewsShortCut;
+		newsItem.wysiwyg = $scope.tmpNews.ueditor;
+		newsItem.isFirst = $scope.addNewsOption;
+		console.log(newsItem);
+		CompanyNewsService.addCompanyNews(newsItem).then(function(result){
+			console.log(result);
+			getData();
+		});
+		
+	};
+
+	//确认修改资讯
+	function editNews(){
+		CompanyNewsService.updateCompanyNews($scope.tmpNews).then(function(result){
+			getData();
+		});
+	}
+
+	//取消新建资讯，临时变量初始化。
 	$scope.cancelAdd=function(){
 		$scope.addNewsTheme = "";
 		$scope.addNewsAuthor = "";
@@ -111,30 +92,24 @@ function CompanyNewsMngController($scope,CompanyNewsService) {
 		$scope.addNewshtmlVariable = "";
 		
 	};
-	$scope.deleteNews=function(id){
-		$scope.deleteID = id;
+	$scope.deleteNews=function(news){
+		$scope.deleteNews = news;
 	};
 	$scope.confirmDelete = function(){
-		for (i in $scope.newsList){
-			if ( $scope.deleteID == $scope.newsList[i].newsID){
-				$scope.newsList.splice(i,1);
-			}
-		}
+		CompanyNewsService.deleteCompanyNews($scope.deleteNews._id).then(function(result){
+			console.log("删除");
+			console.log(result);
+			getData();
+		});
 	}
 	$scope.cancelDelete=function(){
-		$scope.deleteID = "";
+		$scope.deleteID = null;
 	};
-	$scope.changeNewsStatus = function(id){
-		console.log("如果post修改成功，");
-		for (i in $scope.newsList){
-			if ( id == $scope.newsList[i].newsID){
-				if ($scope.newsList[i].newsStatus== "展示中"){
-					$scope.newsList[i].newsStatus= "隐藏";
-				}else if ($scope.newsList[i].newsStatus== "隐藏") {
-					$scope.newsList[i].newsStatus= "展示中";
-				}
-			}
-		}
+	$scope.changeNewsStatus = function(news){
+		console.log(news);
+		CompanyNewsService.changeCompanyNewsState(news._id,!news.isOnline).then(function(result){
+			news.isOnline = !news.isOnline;
+		});
 	};
 	$scope.btnAddNews =function(){
 		$scope.addModal = true;
@@ -142,30 +117,30 @@ function CompanyNewsMngController($scope,CompanyNewsService) {
 		$scope.editModal = false;
 	};
 	$scope.btnLookNews =function(newsItem){
-		console.log(newsItem);
 		$scope.addModal = false;
 		$scope.lookModal = true;
 		$scope.editModal = false;
-		$scope.tmpNews  = newsItem;
+		CompanyNewsService.getCompanyNewsDetail(newsItem._id).then(function(result){
+			$scope.tmpNews  = result;
+			$scope.fileLogo = $scope.tmpNews.pic;
+		});
+		
 		
 	};
 	$scope.btnEditNews =function(newsItem){
 		$scope.addModal = false;
 		$scope.lookModal = false;
 		$scope.editModal = true;
-		$scope.tmpNews  = cloneObj(newsItem);
-	};
-	var cloneObj = function (obj) {  
-		var newObj = {};  
-		if (obj instanceof Array) {  
-			newObj = [];  
-		}  
-		for (var key in obj) {  
-			var val = obj[key];  
-			newObj[key] = typeof val === 'object' ? cloneObj(val): val;  
-		}  
-		return newObj;  
+		CompanyNewsService.getCompanyNewsDetail(newsItem._id).then(function(result){
+			$scope.tmpNews  = result;
+			$scope.fileLogo = $scope.tmpNews.pic;
+		});
 	};
 
-
+	$scope.btnSearch = function(){
+		getData();
+	}
+	$scope.changePage = function(page){
+		loadCompanyNewsData($scope.pageSize,page);
+	}
 }

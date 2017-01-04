@@ -83,7 +83,6 @@ angular.module("auto-biz-user")
     self.token = company.token;
   }
   this.getToken = function(){
-    console.log(self);
       if(self.user){
         return self.user.token;
       }else if(self.company){

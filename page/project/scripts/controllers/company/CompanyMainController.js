@@ -5,8 +5,9 @@ function CompanyMainController($scope,AuthService) {
   	$scope.currentPage = pageName;
   }
   $scope.cmpId ="585b7d66b6a493e45ea96060"; 
-  // AuthService.companyLogin("companytest123","aabbccdd").then(function(res){
-  // 	$scope.rootCompany = res;
-  // 	console.log($scope.rootCompany);
-  // 	});
+  $scope.leafCmpId ="585b7d66b6a493e45ea96060"; 
+  AuthService.companyLogin("companytest123","aabbccdd").then(function(res){
+  	$scope.rootCompany = res;
+  	console.log($scope.rootCompany);
+  	});
 }

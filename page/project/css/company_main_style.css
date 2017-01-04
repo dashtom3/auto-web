@@ -329,9 +329,9 @@
 .cmp-newsModal-thumb{
 	height: 280px;
 	width: 340px;
+	padding: 0px;
 }
 .cmp-newsModal-thumb > img{
-	overflow: hidden;
 	height: 280px; 
 	width: 340px;
 }
@@ -476,5 +476,26 @@
 	display: block;
 	width: auto;
 	height: 250px;
-	margin: 20px 40px;
+	margin: 20px 0px;
+}
+
+#newsModal .modal-head{
+	padding: 10px 40px;
+}
+#newsModal .modal-body{
+	padding: 20px 40px;
+}
+.cmp-table-thumb{
+	height: 100px;
+	width: 150px;
+}
+.cmp-news-body{
+	width: 100%;
+	height: 250px;
+	border: 1px solid #ccc;
+	overflow: scroll;
+}
+.cmp-news-row{
+	margin: 0;
+	padding: 0;
 }

@@ -8067,7 +8067,6 @@ UE.Editor.defaultOptions = function(editor){
                     'dataType': isJsonp ? 'jsonp':'',
                     'onsuccess':function(r){
                         try {
-                            console.log(isJsonp);
                             var config = isJsonp ? r:eval("("+r.responseText+")");
                             utils.extend(me.options, config);
                             me.fireEvent('serverConfigLoaded');
@@ -15285,15 +15284,15 @@ UE.plugin.register('simpleupload', function (){
                     console.log(e.target);
                     $.ajax({
                         type: "POST",
-                        url: "http://127.0.0.1:3300/picupload",
+                        url: "http://123.56.220.72:3300/picupload",
                         data: {'picbin':e.target.result},
                         success: (data)=>{
-                            console.log(data.data.url);
                             var loader = me.document.getElementById(loadingId);
                             loader.setAttribute('src', data.data.url);
                             loader.setAttribute('_src', data.data.url);
                             loader.removeAttribute('id');
                             domUtils.removeClasses(loader, 'loadingclass');
+                            me.fireEvent('contentChange');
                         }
                     });
                 };

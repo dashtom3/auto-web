@@ -31,24 +31,24 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="item in newsList">
+				<tr ng-repeat="item in cmpNewsList">
 					<td>
-						<img src="{{item.newsThumb}}">
+						<img class="cmp-table-thumb" src="{{item.pic}}">
 					</td>
 					<td>
-						<span>{{item.newsID}}</span>
+						<span>{{item._id}}</span>
 					</td>
 					<td>
-						<span> {{item.newsdate}}</span>
+						<span> {{item.timestamp | date:'yyyy/MM/dd'}}</span>
 					</td>
 					<td>
-						<span> {{item.newsTheme}}</span>
+						<span> {{item.title}}</span>
 					</td>
 					<td>
-						<span> {{item.newsAuthor}}</span>
+						<span> {{item.author}}</span>
 					</td>
 					<td>
-						<span> {{item.newsStatus}}</span>
+						<span> {{item.isOnline |statusFilter2}}</span>
 					</td>
 					<td>
 						<div class="row">
@@ -58,7 +58,7 @@
 								</button>
 							</div>
 							<div class="col-lg-2">
-								<button class="m-img-btn" ng-click="deleteNews(item.newsID)" data-toggle="modal" data-target="#myDeleteModal"> 
+								<button class="m-img-btn" ng-click="deleteNews(item)" data-toggle="modal" data-target="#myDeleteModal"> 
 									<img class="cmp-md-logo" src="page/project/images/company/delete.png">
 								</button>
 							</div>
@@ -68,7 +68,7 @@
 								</button>
 							</div>
 							<div class="col-lg-2">
-								<button class="m-img-btn" ng-click = "changeNewsStatus(item.newsID)"> 
+								<button class="m-img-btn" ng-click = "changeNewsStatus(item)"> 
 									<img class="cmp-md-logo" src="page/project/images/company/switch.png">
 								</button>
 							</div>
@@ -83,6 +83,7 @@
 			page="currentPage" 
 			page-size="pageSize" 
 			total="total"
+			paging-action="changePage(page)"
 			show-prev-next="true"
 			show-first-last="true"
 			>
@@ -101,17 +102,23 @@
 					<h4 ng-show = "editModal"> 编辑资讯</h4>
 				</div>
 				<div class="modal-body" >
-					<div class="row">
-						<div class="col-lg-5 cmp-newsModal-thumb" >
-							<img src="{{imgSrc}}" >
+					<div class="row  cmp-news-row">
+						<div class="col-lg-5 cmp-newsModal-thumb cmp-box-shadow" ng-show="addModal">
+							<img ngf-src="fileLogo"  />
 							<label> 
-								点击上传缩略图
-								<input type="file" file-model="myThumb">
+								<div ngf-select="uploadThumb($file)" >点击上传缩略图</div>
 							</label>
 
-							<p >
-								大小:xxx*xxx
-							</p>
+						</div>
+						<div class="col-lg-5 cmp-newsModal-thumb cmp-box-shadow" ng-show="lookModal">
+							<img ngf-src="fileLogo"  />
+						</div>
+						<div class="col-lg-5 cmp-newsModal-thumb cmp-box-shadow" ng-show="editModal">
+							<img ngf-src="fileLogo"  />
+							<label> 
+								<div ngf-select="uploadThumb($file)" >点击上传缩略图</div>
+							</label>
+
 						</div>
 						<div class="col-lg-7">
 							<div class="row">
@@ -125,10 +132,10 @@
 													<input class="form-control" type="text" ng-model="addNewsTheme"/>
 												</div>
 												<div class="col-lg-10" ng-show="lookModal">
-													<label class="control-label"> {{tmpNews.newsTheme}} </label>
+													<label class="control-label"> {{tmpNews.title}} </label>
 												</div>
 												<div class="col-lg-10" ng-show="editModal">
-													<input class="form-control" type="text" ng-model="tmpNews.newsTheme"/>
+													<input class="form-control" type="text" ng-model="tmpNews.title"/>
 												</div>
 											</div>
 
@@ -139,37 +146,37 @@
 												</div>
 
 												<div class="col-lg-3 " ng-show="lookModal">
-													<label class="control-label"> {{tmpNews.newsAuthor}} </label>
+													<label class="control-label"> {{tmpNews.author}} </label>
 												</div>
 
 												<div class="col-lg-3" ng-show="editModal">
-													<input class="form-control" type="text" ng-model="tmpNews.newsAuthor" />
+													<input class="form-control" type="text" ng-model="tmpNews.author" />
 												</div>
 
 												<label class="col-lg-3 control-label"  >是否原创:</label>
 
 												<div class="col-lg-4 " ng-show="addModal">
 													<label class="checkbox-inline">
-														<input  type="radio"  name="optionsRadios" id="optionsRadios1" ng-model="addNewsOption1" />
+														<input  type="radio"  name="optionsRadios"  ng-value="true" ng-model="addNewsOption" />
 														是
 													</label>
 													<label class="checkbox-inline">
-														<input  type="radio" name="optionsRadios" id="optionsRadios2" ng-model="addNewsOption2" />
+														<input  type="radio" name="optionsRadios"  ng-value="false" ng-model="addNewsOption" />
 														否
 													</label>
 												</div>
 
 												<div class="col-lg-4 " ng-show="lookModal">
-													<label class="control-label">{{tmpNews.newsIsOriginal}}</label>
+													<label class="control-label">{{tmpNews.isFirst | yesOrNoFilter}}  </label>
 												</div>
 
 												<div class="col-lg-4 " ng-show="editModal">
 													<label class="checkbox-inline">
-														<input  type="radio"  name="optionsRadios" id="optionsRadios1" ng-model="tmpNews.NewsOption1" />
+														<input  type="radio"  name="optionsRadios" ng-value="true" ng-model="tmpNews.isFirst" />
 														是
 													</label>
 													<label class="checkbox-inline">
-														<input  type="radio" name="optionsRadios" id="optionsRadios2" ng-model="tmpNews.NewsOption2" />
+														<input  type="radio" name="optionsRadios" ng-value="false" ng-model="tmpNews.isFirst" />
 														否
 													</label>
 												</div>
@@ -189,10 +196,10 @@
 													<input class="form-control" type="text"  ng-model="addNewsLabel" />
 												</div>
 												<div class="col-lg-10 " ng-show="lookModal">
-													<label class="control-label"> {{tmpNews.newsLabel}} </label>
+													<label class="control-label"> {{tmpNews.tag}} </label>
 												</div>
 												<div class="col-lg-10" ng-show="editModal">
-													<input class="form-control" type="text"  ng-model="tmpNews.newsLabel" />
+													<input class="form-control" type="text"  ng-model="tmpNews.tag" />
 												</div>
 											</div>
 
@@ -202,10 +209,10 @@
 													<textarea class="form-control" rows="3" ng-model="addNewsShortCut"></textarea>
 												</div>
 												<div class="col-lg-10" ng-show="lookModal">
-													<textarea class="form-control" rows="3" ng-model="tmpNews.newsShortCut"></textarea>
+													<label class="control-label"> {{tmpNews.desc}} </label>
 												</div>
 												<div class="col-lg-10" ng-show="editModal">
-													<textarea class="form-control" rows="3" ng-model="tmpNews.newsShortCut"></textarea>
+													<textarea class="form-control" rows="3" ng-model="tmpNews.desc"></textarea>
 												</div>
 											</div>
 										</div>
@@ -215,14 +222,13 @@
 						</div>
 					</div>
 					<div class="cmp-ueditor-container">
-						<ueditor ng-model="tmpNews.ueditor">
+						<ueditor ng-model="tmpNews.ueditor" ng-show="addModal">
+						</ueditor>
+						<div class="cmp-news-body" ng-show="lookModal" ng-bind-html="tmpNews.wysiwyg | trustHtmlFilter">
+						</div>
+						<ueditor ng-model="tmpNews.wysiwyg" ng-show="editModal">
 						</ueditor>
 					</div>
-					<!-- <div class="row cmp-newsModal-row" >
-						<div class="col-lg-12">
-							<div text-angular ng-model="addNewshtmlVariable"></div>
-						</div>
-					</div> -->
 
 					<div class="row cmp-newsModal-row" >
 						<div class="col-lg-3 col-lg-offset-2">

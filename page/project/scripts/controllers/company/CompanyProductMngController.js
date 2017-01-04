@@ -231,4 +231,7 @@ function CompanyProductMngController($scope,Upload) {
 			}
 		}
 	}
+
+
+	
 }

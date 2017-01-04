@@ -28,6 +28,7 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 	$scope.startEdit = function(){
 		$scope.infoList_backup = cloneObj($scope.infoList);
 		$scope.isEdit =true;
+		$scope.fileLogo = $scope.infoList_backup.logo;
 		document.getElementById("form_datetime").value = $scope.infoList.regTime;
 	}
 	//取消编辑
@@ -35,6 +36,7 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 		console.log($scope.infoList);
 		console.log( $scope.infoList_backup);
 		$scope.infoList = cloneObj($scope.infoList_backup);
+
 		$scope.isEdit =false;
 	}
 	//保存编辑
@@ -45,7 +47,7 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 
 		console.log($scope.infoList);
 		CompanyService.modifyCompany($scope.infoList).then(function(result){
-  		});
+		});
 		$scope.isEdit=false;
 	}
 
@@ -58,15 +60,15 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 			var val = obj[key];  
 			newObj[key] = typeof val === 'object' ? cloneObj(val): val;  
 		}  
-		return newObj;  
+		return newObj;  	
 	};
 
 	$scope.uploadLogo = function(file){
-  	if(file){
-  		$scope.fileLogo = file;
-		FileService.uploadFile(file).then(function(result) {
-  			$scope.infoList.logo = result.urls[0];
-  		});
+		if(file){
+			$scope.fileLogo = file;
+			FileService.uploadFile(file).then(function(result) {
+				$scope.infoList.logo = result.urls[0];
+			});
+		}
 	}
-  }
 }

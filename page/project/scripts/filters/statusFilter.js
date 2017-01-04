@@ -17,8 +17,22 @@ angular.module('auto-biz-user')
 });
 
 angular.module('auto-biz-user')
+    .filter('yesOrNoFilter', function() {
+  return function(input) {
+    if(input) return "是";
+    else return "否";
+  };
+});
+
+angular.module('auto-biz-user')
     .filter('statusFilter3', function() {
   return function(input) {
     return input ? '\u2713' : '\u2718';
   };
 });
+
+app.filter("trustHtmlFilter", ['$sce', function($sce) {
+  return function(htmlCode){
+    return $sce.trustAsHtml(htmlCode);
+  }
+}]);
