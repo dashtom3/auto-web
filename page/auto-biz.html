@@ -10,9 +10,7 @@
     <link href="/page/common/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet">
     <link href="data:text/css;charset=utf-8," data-href="/page/common/bootstrap-3.3.5-dist/css/bootstrap-theme.min.css" rel="stylesheet" id="bs-theme-stylesheet">
     <script src="/page/common/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
-
-
-<!-- Custom styles for this template -->
+    <!-- Custom styles for this template -->
     
 <!--angular-->
     <script src="/page/common/angular/angular.js"></script>
@@ -48,9 +46,16 @@
     <script src="/page/common/angular/textAngular/dist/textAngular-sanitize.min.js"></script>
     <script src="/page/common/angular/textAngular/dist/textAngular.min.js"></script>
 
+    <!-- ueditor -->
+    <script src="/page/common/angular/ueditor/ueditor/ueditor.config.js"></script>     
+    <script src="/page/common/angular/ueditor/ueditor/ueditor.all.js"></script>     
+    <!-- <script src="page/common/angular/ueditor/angular-ueditor.js"></script>        -->
+
+
 </head>
 <body>
     <div ng-view></div>
+
 <!-- app.js -->
     <script src="/page/project/scripts/app.js"></script>
 
@@ -112,6 +117,8 @@
 <!-- directive.js -->
     <script src="/page/project/scripts/directives/DemoDirectives.js"></script>
     <script src="/page/project/scripts/directives/user/headerLoginDirective.js"></script>
+    <script src="/page/project/scripts/directives/UEditorDirective.js"></script>
+
     <!-- company.directives -->
     <script src="/page/project/scripts/directives/company/StarRatingDirective.js"></script>
 

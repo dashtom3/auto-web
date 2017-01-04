@@ -472,3 +472,9 @@
 	top:0;
 	right: 20px;
 }
+.cmp-ueditor-container{
+	display: block;
+	width: auto;
+	height: 250px;
+	margin: 20px 40px;
+}

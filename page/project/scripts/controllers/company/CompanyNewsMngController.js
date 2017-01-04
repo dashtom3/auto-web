@@ -1,55 +1,52 @@
-function CompanyNewsMngController($scope) {
+function CompanyNewsMngController($scope,CompanyNewsService) {
 	console.log("CompanyNewsMngController");
+	$scope.pageCount = 5;
+	$scope.pageSize = 4;
+	$scope.total = 50;
 	$scope.tmpNews={};
 	$scope.companyName="小软酱有限公司";
 	$scope.deleteID ="";
-	$scope.newsList = [
-	{
-		"newsThumb":"imgs/thumb_news.jpg",
-		"newsID":"1",
-		"newsdate":"2016/12/13",
-		"newsTheme":"安全驾驶，佳通轮胎荣获两项“国际比赛大奖国际比赛大奖”",
-		"newsAuthor":"李晓明",
-		"newsStatus":"展示中",
-		"newsIsOriginal":"true"
-	},
-	{
-		"newsThumb":"imgs/thumb_news.jpg",
-		"newsID":"2",
-		"newsdate":"2016/12/13",
-		"newsTheme":"安全驾驶，佳通轮胎荣获两项“国际比赛大奖”",
-		"newsAuthor":"李晓明",
-		"newsStatus":"展示中",
-		"newsIsOriginal":"true"
-	},
-	{
-		"newsThumb":"imgs/thumb_news.jpg",
-		"newsID":"3",
-		"newsdate":"2016/12/13",
-		"newsTheme":"安全驾驶，佳通轮胎荣获两项“国际比赛大奖”",
-		"newsAuthor":"李晓明",
-		"newsStatus":"展示中",
-		"newsIsOriginal":"true"
-	},
-	{
-		"newsThumb":"imgs/thumb_news.jpg",
-		"newsID":"4",
-		"newsdate":"2016/12/13",
-		"newsTheme":"安全驾驶，佳通轮胎荣获两项“国际比赛大奖”",
-		"newsAuthor":"李晓明",
-		"newsStatus":"展示中",
-		"newsIsOriginal":"true"
-	},
-	{
-		"newsThumb":"imgs/thumb_news.jpg",
-		"newsID":"5",
-		"newsdate":"2016/12/13",
-		"newsTheme":"安全驾驶，佳通轮胎荣获两项“国际比赛大奖”",
-		"newsAuthor":"李晓明",
-		"newsStatus":"展示中",
-		"newsIsOriginal":"true"
+
+	//数据初始化
+	$scope.cmpNews = {
+		currentPage:1,
+		pagePerNum:5,
+		totalNum:-1,
+		totalPage:-1,
 	}
-	];
+	$scope.cmpId = $scope.leafCmpId;
+	console.log("cmpid: "+$scope.cmpId);
+	loadCompanyNewsData($scope.cmpNews.pagePerNum,$scope.cmpNews.currentPage);
+
+	
+	function loadCompanyNewsData(pagePerNum,currentPage){
+		console.log("readData");
+		CompanyNewsService.getCompanyNewsList("","","","","",$scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
+			if($scope.cmpNewsList){
+				$scope.cmpNewsList = $scope.cmpNewsList.concat(result.list);
+			}else{
+				$scope.cmpNewsList= result.list;
+				console.log($scope.cmpNewsList);
+			}
+			$scope.cmpNews.currentPage = result.currentPage;
+			console.log($scope.cmpNews.currentPage);
+			$scope.cmpNews.totalNum = result.totalNum;
+			$scope.cmpNews.totalPage = result.totalPageNum;
+			console.log($scope.cmpNews.totalPage);
+		});
+	}
+
+	// $scope.newsList = [
+	// {
+	// 	"newsThumb":"imgs/thumb_news.jpg",
+	// 	"newsID":"1",
+	// 	"newsdate":"2016/12/13",
+	// 	"newsTheme":"安全驾驶，佳通轮胎荣获两项“国际比赛大奖国际比赛大奖”",
+	// 	"newsAuthor":"李晓明",
+	// 	"newsStatus":"展示中",
+	// 	"newsIsOriginal":"true"
+	// }
+	// ];
 	$scope.getFile = function (fileName) {
 		fileReader.readAsDataUrl($scope.file, $scope)
 		.then(function(result) {
@@ -170,7 +167,5 @@ function CompanyNewsMngController($scope) {
 		return newObj;  
 	};
 
-	$scope.pageCount = 5;
-	$scope.pageSize = 4;
-	$scope.total = 50;
+
 }
