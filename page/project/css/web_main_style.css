@@ -66,7 +66,10 @@
 	.auto-footer{
 		background-color: #2A2624;
 		height:120px;
-
+		/*position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;*/
 	}
 	.auto-footer .container{
 		padding-top: 25px;

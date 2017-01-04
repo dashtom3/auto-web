@@ -2,6 +2,7 @@
 	background-color: #fff;
 	height: 100%;
 	position: relative;
+	min-height: 600px;
 }
 .company-sidebar{
 	width: 240px;
@@ -43,7 +44,7 @@
 	margin-left: 242px;
 	;
 	background-color: #F7F7F5;
-	min-height: 800px;
+	min-height: 600px;
 }
 .cmp-box-shadow{
 	box-shadow: 0 0 7px rgba(0, 0, 0, .15);

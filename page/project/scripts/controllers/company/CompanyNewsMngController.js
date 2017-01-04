@@ -17,6 +17,7 @@ function CompanyNewsMngController($scope,CompanyNewsService,FileService) {
 
 	function loadCompanyNewsData(pagePerNum,currentPage){
 		console.log("readData");
+		console.log($scope.searchStr);
 		CompanyNewsService.getCompanyNewsList($scope.searchStr,"","","","",$scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
 			$scope.cmpNewsList= result.list;
 			$scope.currentPage = result.currentPage;
