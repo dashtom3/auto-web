@@ -51,6 +51,7 @@ angular.module("auto-biz-user")
   };
   this.updateCompanyFinance = function (finance) {
     finance.token = AuthService.getToken();
+    console.log(finance);
     var deferred = $q.defer();
     $http.post(GlobalService.baseUrl+'finance/modify',
           finance

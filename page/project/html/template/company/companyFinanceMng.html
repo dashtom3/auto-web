@@ -32,7 +32,7 @@
 			<div class="row cmp-finance-row" >
 				<div class="col-lg-1"></div>
 				<div class="col-lg-5  form-group">
-					<label class="col-lg-4 control-label"  >营业收入:</label>
+					<label class="col-lg-4 control-label">营业收入:</label>
 					<div class="col-lg-7">
 						<input class="form-control" type="" ng-model="winMoney"/>
 						<span class="cmp-finance-span-after"> 万</span>
@@ -109,8 +109,9 @@
 			</div>
 		</form>
 
-	<!-- 取消添加时的弹出框 -->
+	
 	</div>
+	<!-- 取消添加时的弹出框 -->
 	<div class="modal fade" id="myModal" aria-hidden="true" role="dialog" >
 		<div class="modal-dialog moadl-sm cmp-sm-modal cmp-box-shadow" >
 			<div class="modal-content" >
@@ -128,26 +129,24 @@
 						</button>
 					</div>
 				</div>
-
-
 			</div>
 		</div>
 	</div>
 
 	<!-- 过往财务信息 -->
-	<div class="panel panel-default cmp-box-shadow"  ng-repeat="financeItem in financeList">
-		<form role="form-lg" class="form-horizontal">
+	<div class="panel panel-default cmp-box-shadow"  ng-repeat="financeItem in financeList | orderBy:'-year'">
+		<form role="form-lg" class="form-horizontal" ng-init="financeItem.hideEdit=true">
 			<div class="row cmp-finance-row" >
 				<div class="col-lg-2 cmp-ribbon-div">
 					<a class="ui red ribbon label">{{financeItem.year}}</a>
 				</div>
 				<div class="col-lg-1 col-lg-offset-8">
 					<div class="row">
-						<button class="m-img-btn" ng-show="financeItem.hideEdit" ng-click="editPastFinance(financeItem.year)">
+						<button class="m-img-btn" ng-show="financeItem.hideEdit" ng-click="editPastFinance(financeItem)">
 							<img src="page/project/images/company/edit.png" class="cmp-md-logo">
 						</button>
 						
-						<button class="m-img-btn"  ng-show="financeItem.hideEdit"  ng-click = deletePastFinance(financeItem.year)>
+						<button class="m-img-btn"  ng-show="financeItem.hideEdit"  ng-click = deletePastFinance(financeItem) data-toggle="modal" data-target="#deleteModal">
 							<img src="page/project/images/company/delete.png" class="cmp-md-logo">
 						</button>
 						
@@ -159,22 +158,22 @@
 				<div class="col-lg-5  form-group " >
 					<label class="col-lg-4 control-label"  >市盈率:</label>
 					<div class="col-lg-7 m-div-noEdit" ng-show="financeItem.hideEdit">
-						<span class="m-span"> {{financeItem.winRate}} </span>
+						<span class="m-span"> {{financeItem.ratio}} </span>
 						<span class="m-span-3"> %</span>
 					</div>
 					<div class="col-lg-7" ng-show="!financeItem.hideEdit">
-						<input class="form-control" type="" ng-model="financeItem.winRate"  />
+						<input class="form-control" type="" ng-model="financeItem.ratio"  />
 						<span class="cmp-finance-span-after"> %</span>
 					</div>
 				</div>
 				<div class="col-lg-5 form-group " >
 					<label class="col-lg-4 control-label" >营业收入增长率:</label>
 					<div class="col-lg-7 m-div-noEdit" ng-show="financeItem.hideEdit">
-						<span class="m-span"> {{financeItem.winMoneyRate}} </span>
+						<span class="m-span"> {{financeItem.increase}} </span>
 						<span class="m-span-3"> %</span>
 					</div>
 					<div class="col-lg-7" ng-show="!financeItem.hideEdit">
-						<input class="form-control" type="" ng-model="financeItem.winMoneyRate" />
+						<input class="form-control" type="" ng-model="financeItem.increase" />
 						<span class="cmp-finance-span-after"> %</span>
 					</div>
 				</div>
@@ -184,12 +183,12 @@
 				<div class="col-lg-5  form-group " >
 					<label class="col-lg-4 control-label"  >营业收入:</label>
 					<div class="col-lg-7 m-div-noEdit" ng-show="financeItem.hideEdit">
-						<span class="m-span"> {{financeItem.winMoney}} </span>
+						<span class="m-span"> {{financeItem.input}} </span>
 						<span class="m-span-3"> 万</span>
 						<span class="m-span-4"> *</span>
 					</div>
 					<div class="col-lg-7" ng-show="!financeItem.hideEdit">
-						<input class="form-control" type="" ng-model="financeItem.winMoney" />
+						<input class="form-control" type="" ng-model="financeItem.input" />
 						<span class="cmp-finance-span-after"> 万</span>
 						<span class="cmp-finance-span-required">*</span>
 						<span class="m-span-error" ng-show="invalidWinMoney==true">请输入营业收入</span>
@@ -198,11 +197,11 @@
 				<div class="col-lg-5 form-group " >
 					<label class="col-lg-4 control-label " >净资产:</label>
 					<div class="col-lg-7 m-div-noEdit" ng-show="financeItem.hideEdit">
-						<span class="m-span"> {{financeItem.trueProperty}} </span>
+						<span class="m-span"> {{financeItem.realCapital}} </span>
 						<span class="m-span-3"> 万</span>
 					</div>
 					<div class="col-lg-7" ng-show="!financeItem.hideEdit">
-						<input class="form-control" type="" ng-model="financeItem.trueProperty" >
+						<input class="form-control" type="" ng-model="financeItem.realCapital" >
 						<span class="cmp-finance-span-after"> 万</span>
 					</div>
 				</div>
@@ -212,22 +211,22 @@
 				<div class="col-lg-5  form-group " >
 					<label class="col-lg-4 control-label " >总资产:</label>
 					<div class="col-lg-7 m-div-noEdit" ng-show="financeItem.hideEdit">
-						<span class="m-span"> {{financeItem.totalProperty}} </span>
+						<span class="m-span"> {{financeItem.allCapital}} </span>
 						<span class="m-span-3"> 万</span>
 					</div>
 					<div class="col-lg-7" ng-show="!financeItem.hideEdit">
-						<input class="form-control" type="" ng-model="financeItem.totalProperty">
+						<input class="form-control" type="" ng-model="financeItem.allCapital">
 						<span class="cmp-finance-span-after"> 万</span>
 					</div>
 				</div>
 				<div class="col-lg-5 form-group " >
 					<label class="col-lg-4 control-label " >净利率:</label>
 					<div class="col-lg-7 m-div-noEdit" ng-show="financeItem.hideEdit">
-						<span class="m-span"> {{financeItem.netProfitRate}} </span>
+						<span class="m-span"> {{financeItem.realRatio}} </span>
 						<span class="m-span-3"> %</span>
 					</div>
 					<div class="col-lg-7" ng-show="!financeItem.hideEdit">
-						<input class="form-control" type="" ng-model="financeItem.netProfitRate" >
+						<input class="form-control" type="" ng-model="financeItem.realRatio" >
 						<span class="cmp-finance-span-after"> %</span>
 					</div>
 				</div>
@@ -237,22 +236,22 @@
 				<div class="col-lg-5  form-group " >
 					<label class="col-lg-4 control-label"  >毛利率:</label>
 					<div class="col-lg-7 m-div-noEdit" ng-show="financeItem.hideEdit">
-						<span class="m-span"> {{financeItem.grossProfitRate}} </span>
+						<span class="m-span"> {{financeItem.allRatio}} </span>
 						<span class="m-span-3"> %</span>
 					</div>
 					<div class="col-lg-7" ng-show="!financeItem.hideEdit">
-						<input class="form-control" type="" ng-model="financeItem.grossProfitRate">
+						<input class="form-control" type="" ng-model="financeItem.allRatio">
 						<span class="cmp-finance-span-after"> %</span>
 					</div>
 				</div>
 				<div class="col-lg-5 form-group " >
 					<label class="col-lg-4 control-label " >资产收益率:</label>
 					<div class="col-lg-7 m-div-noEdit" ng-show="financeItem.hideEdit">
-						<span class="m-span"> {{financeItem.returnOnAssets}} </span>
+						<span class="m-span"> {{financeItem.inputRatio}} </span>
 						<span class="m-span-3"> %</span>
 					</div>
 					<div class="col-lg-7" ng-show="!financeItem.hideEdit">
-						<input class="form-control" type="" ng-model="financeItem.returnOnAssets" >
+						<input class="form-control" type="" ng-model="financeItem.inputRatio" >
 						<span class="cmp-finance-span-after"> %</span>
 					</div>
 				</div>
@@ -262,30 +261,51 @@
 				<div class="col-lg-5  form-group " >
 					<label class="col-lg-4 control-label"  >资产负债率:</label>
 					<div class="col-lg-7 m-div-noEdit" ng-show="financeItem.hideEdit">
-						<span class="m-span"> {{financeItem.assetLiabilityRatio}} </span>
+						<span class="m-span"> {{financeItem.debtRatio}} </span>
 						<span class="m-span-3"> %</span>
 					</div>
 					<div class="col-lg-7" ng-show="!financeItem.hideEdit">
-						<input class="form-control" type="" ng-model="financeItem.returnOnAssets" >
+						<input class="form-control" type="" ng-model="financeItem.debtRatio" >
 						<span class="cmp-finance-span-after"> %</span>
 					</div>
 				</div>
 			</div>
 			<div class="row cmp-finance-last-row">
 				<div class="col-lg-3 col-lg-offset-2">
-					<button class="btn btn-default btn-block cmp-confirm-btn"  ng-show="!financeItem.hideEdit" ng-click="savePastFinance(financeItem.year)">
+					<button class="btn btn-default btn-block cmp-confirm-btn"  ng-show="!financeItem.hideEdit" ng-click="savePastFinance(financeItem)">
 						保存
 					</button>
 					
 				</div>
 				<div class="col-lg-3 col-lg-offset-1">
-					<button class="btn btn-default btn-block cmp-cancel-btn" ng-show="!financeItem.hideEdit" ng-click="cancelEditPastFinance(financeItem.year)">
+					<button class="btn btn-default btn-block cmp-cancel-btn" ng-show="!financeItem.hideEdit" ng-click="cancelEditPastFinance(financeItem)">
 						取消
 					</button>
 				</div>
 				
 			</div>
 		</form>
+	</div>
+	<!--确认删除的弹出框 -->
+	<div class="modal fade" id="deleteModal" aria-hidden="true" role="dialog" >
+		<div class="modal-dialog moadl-sm cmp-sm-modal cmp-box-shadow" >
+			<div class="modal-content" >
+				<div class="modal-body" >
+					<div class="row cmp-modal-row-delete" >
+						<img class="cmp-warn-img" src="page/project/images/company/warn.png">
+						<span>确定要删除吗?</span>
+					</div>
+					<div class="row cmp-modal-row-control">
+						<button class="col-lg-3 col-lg-offset-2 btn btn-default cmp-cancel-btn" data-dismiss="modal" >
+							取消
+						</button>
+						<button class="col-lg-3 col-lg-offset-2 btn btn-default cmp-confirm-btn" ng-click="confirmDelete()  " data-dismiss="modal">
+							确认
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 </div>

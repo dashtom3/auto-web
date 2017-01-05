@@ -1,6 +1,6 @@
 function CompanyMainController($scope,AuthService) {
   console.log("CompanyMainController1");
-  $scope.currentPage = "companyUserTest";
+  $scope.currentPage = "companyFinanceMng";
   $scope.toPage = function(pageName){
   	$scope.currentPage = pageName;
   }
