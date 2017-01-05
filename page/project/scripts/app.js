@@ -48,18 +48,16 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
         // controller: 'CompanyMainController'
       })
       .when('/adminPage', {
-        templateUrl: 'page/project/html/views/admin/admin.html',
+        templateUrl: '/page/project/html/views/admin/admin.html',
         controller: 'AdminController'
         //redirectTo: '/error'
       })
       .when('/admin', {
-        templateUrl: 'page/project/html/views/admin/adminLogin.html',
-        controller: 'AuthController'
+        templateUrl: '/page/project/html/views/admin/adminLogin.html'
         //redirectTo: '/error'
       })
-      .when('/product', {
-        templateUrl: 'page/project/html/template/user/productDetails.html',
-        controller: 'AuthController'
+      .when('/companyProduct/:id', {
+        templateUrl: '/page/project/html/views/user/companyProductDetail.html'
         //redirectTo: '/error'
       });
       $locationProvider.html5Mode(true);

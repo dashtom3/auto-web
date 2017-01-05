@@ -1,0 +1,106 @@
+<div class="user-product-main" ng-controller="CompanyProductDetailController">
+	<div class="common-block-40">
+	<div class="row">
+		<p class="user-product-title">{{productDetail.name}}</p>
+		<p class="user-product-type">{{productDetail.tag | companyTypeFilter}}</p>
+	</div>	
+	<div class="row">
+		<img  class="user-product-logo" src="{{productDetail.companyId.logo}}">
+		<p class="user-product-baseinfo">{{productDetail.companyId.longName}}</p>
+		<p class="user-product-baseinfo">版本：{{productDetail.version}}</p>
+		<p class="user-product-baseinfo">发布时间：{{productDetail.releaseDate | date:'yyyy-MM-dd'}}</p>
+		<p class="user-product-baseinfo">型号：{{productDetail.model}}</p>
+	</div>
+	<div class="row">
+		<div id="carousel-example-generic" class="carousel-user-image carousel" data-ride="carousel">
+					  <!-- Indicators -->
+					  <!-- <ol class="carousel-indicators">
+					    <li data-target="#carousel-example-generic"  ng-class="{'active':currentCarouse == li.num}" ng-repeat="li in liList" ng-click="setCurrentCarouse(li.num)"></li>
+					  </ol> -->
+
+					  <!-- Wrapper for slides -->
+					  <!-- <div class="carousel-inner">
+					    <div class="item" ng-class="{'active':currentCarouse == img.num}" ng-repeat="img in carouselList">
+					      <img src="{{img.url}}">
+					    </div>
+					  </div> -->
+
+					  <!-- Controls -->
+					  <!-- <a class="left carousel-control" ng-click="moveLeft()">
+					    <span class="glyphicon glyphicon-chevron-left" ></span>
+					  </a>
+					  <a class="right carousel-control" ng-click="moveRight()">
+					    <span class="glyphicon glyphicon-chevron-right" ></span>
+					  </a> -->
+			</div>
+
+            <div class="carousel-user-info">
+                {{productDetail.argc}}
+            </div>
+	</div>
+	</div>
+	<div class="common-block-40">
+		<div class="row">
+			<p class="user-product-subtitle">专业测评:</p>
+			<div class="user-product-download">
+				<p>测评报告</p><img src="/page/project/images/web_user_download.png">
+			</div>
+		</div>
+		<div class="row">
+			<p class="user-product-baseinfo">测评日期：</p>
+			<p class="user-product-baseinfo">测评团队：</p>
+			<p class="user-product-baseinfo">测评地点：</p>
+		</div>
+	</div>
+	<div class="common-block-40">
+		<div class="row">
+			<p class="user-product-subtitle">用户测评：</p>
+		</div>
+		<div class="row user-product-comment">
+			<div class="row user-product-commentall">
+				<p class="user-product-title">综合：</p>
+				<div class="star-info" star rating-value="ratingVal" max="5" readonly=true></div>
+			</div>
+			<div class="row">
+				
+			</div>
+		</div>
+		<div class="user-product-comment2"> 
+			<div class="user-product-comcontent">
+				<div class="row">
+					<img src="/page/project/images/web_header_user.png">
+					<p class="user-product-comname">名字</p>
+					<p class="user-product-comdate">2016/9/22 15:00:00</p>
+				</div>
+				<div class="row">
+					<p>暂无数据</p>
+				</div>
+			</div>
+			<div class="user-product-comscore">
+				<p>外观：</p>
+				<div class="star-info" star rating-value="ratingVal" max="5" readonly=true></div>
+			</div>
+
+		</div>
+	</div>
+	<div class="common-block-40">
+		<div class="row">
+			<p class="user-product-subtitle">发表评论：</p>
+		</div>
+
+		<div class="row">
+			<div class="user-product-comcontent">
+				<div class="row">
+				<textarea class="user-product-textarea" placeholder="只有参与测评的人可以评论，请输入您对该产品的看法"></textarea>
+				</div>
+			</div> 
+			<div class="user-product-comscore">
+				<p>外观：</p>
+				<div class="star-info" star rating-value="ratingVal" max="5" readonly=flase></div>
+			</div>
+		</div>
+		<div class="row">
+			<button class="btn btn-primary user-product-btnresult">提交测评结果</button>
+		</div>
+	</div>
+</div>

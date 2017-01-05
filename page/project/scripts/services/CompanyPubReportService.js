@@ -36,54 +36,68 @@ angular.module("auto-biz-user")
       });
       return deferred.promise;
   }
-//   this.deleteCompanyNews = function (newsId) {
-//     var deferred = $q.defer();
-//     var urlStr = GlobalService.getURLStr([["newsId",newsId],["token",AuthService.getToken()]]);
-//     $http.get(GlobalService.baseUrl+'news/delete?'+urlStr).success(function (res) {
-//         console.log("删除企业资讯");
-//         if(res.callStatus == "SUCCEED"){
-//           deferred.resolve(res.data);
-//         }else{
-//           alert("删除失败");
-//         }
-//       }).error(function (res){
-//         alert("您好，您访问的内容出错");
-//       });
-//       return deferred.promise;
-//   };
-//   this.addCompanyNews = function (news) {
-//     news.token = AuthService.getToken();
-//     var deferred = $q.defer();
-//     $http.post(GlobalService.baseUrl+'finance/add',
-//           news
-//       ).success(function (res) {
-//         console.log("添加企业资讯");
-//         if(res.callStatus == "SUCCEED"){
-//           deferred.resolve(res.data);
-//         }else{
-//           alert("添加失败");
-//         }
-//       }).error(function (res){
-//         alert("您好，您访问的内容出错");
-//       });
-//       return deferred.promise;
-//   };
-//   this.updateCompanyNews = function (news) {
-//     news.token = AuthService.getToken();
-//     var deferred = $q.defer();
-//     $http.post(GlobalService.baseUrl+'finance/modify',
-//           news
-//       ).success(function (res) {
-//         console.log("修改资讯数据");
-//         if(res.callStatus == "SUCCEED"){
-//           deferred.resolve(res.data);
-//         }else{
-//           alert("修改失败");
-//         }
-//       }).error(function (res){
-//         alert("您好，您访问的内容出错");
-//       });
-//       return deferred.promise;
-//   };
+  this.getCompanyPubReportDetail = function(productId){
+    var deferred = $q.defer();
+    $http.get(GlobalService.baseUrl + 'report/public/list/1/1?productId='+productId).success(function(res){
+      console.log("获取专业测评详情");
+      if(res.callStatus == "SUCCEED"){
+        deferred.resolve(res.data);
+      }else{
+        alert("您好，您访问的内容出错");
+      }
+    }).error(function (res){
+      alert("您好，您访问的内容出错");
+    });
+      return deferred.promise;
+  }
+  this.deleteCompanyPubReport = function (reportId) {
+    var deferred = $q.defer();
+    var urlStr = GlobalService.getURLStr([["reportId",reportId],["token",AuthService.getToken()]]);
+    $http.get(GlobalService.baseUrl+'report/public/delete?'+urlStr).success(function (res) {
+        console.log("删除专业测评");
+        if(res.callStatus == "SUCCEED"){
+          deferred.resolve(res.data);
+        }else{
+          alert("删除失败");
+        }
+      }).error(function (res){
+        alert("您好，您访问的内容出错");
+      });
+      return deferred.promise;
+  };
+  this.addCompanyPubReport = function (report) {
+    report.token = AuthService.getToken();
+    var deferred = $q.defer();
+    $http.post(GlobalService.baseUrl+'report/public/add',
+          report
+      ).success(function (res) {
+        console.log("添加专业测评");
+        if(res.callStatus == "SUCCEED"){
+          deferred.resolve(res.data);
+        }else{
+          alert("添加失败");
+        }
+      }).error(function (res){
+        alert("您好，您访问的内容出错");
+      });
+      return deferred.promise;
+  };
+  this.updateCompanyPubReport = function (report) {
+    report.token = AuthService.getToken();
+    var deferred = $q.defer();
+    $http.post(GlobalService.baseUrl+'report/public/modify/detail',
+          report
+      ).success(function (res) {
+        console.log("修改专业测评");
+        if(res.callStatus == "SUCCEED"){
+          deferred.resolve(res.data);
+        }else{
+          alert("修改失败");
+        }
+      }).error(function (res){
+        alert("您好，您访问的内容出错");
+      });
+      return deferred.promise;
+  };
 
 })

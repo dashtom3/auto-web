@@ -550,11 +550,93 @@
     box-shadow: 0 3px 5px rgba(0,0,0,0.2);
     transition: box-shadow 0.2s;
 }
-
+.user-product-main .row{
+    margin: 0px 0px 16px 0px !important; 
+}
+.user-product-logo{
+    height: 20px;
+    width: 20px;
+    float: left;
+    margin-right: 5px;
+}
+.user-product-baseinfo{
+    float: left;
+    margin: 0px 36px 0px 0px;
+}
+.user-product-subtitle{
+    font-weight: bolder;
+    float: left;
+}
+.user-product-download{
+    background-color: #c74b36;
+    border-radius: 5px;
+    width: 88px;
+    height: 24px;
+    float:right;
+}
+.user-product-download img{
+    width: 20px;
+    height: 20px;
+    float: right;
+    margin: 2px 5px 0px 0px;
+}
+.user-product-download p{
+    color: white;
+    float: right;
+    margin: 4px 8px 0px 0px;
+    font-size: 12px;
+}
+.user-product-comment{
+    background-color: #F6F7F9;
+    height: 80px;
+}
+.user-product-comment2{
+    border-bottom: solid 1px #ccc;
+    padding: 30px 0px 24px 0px;
+    min-height: 160px;
+}
+.user-product-comcontent{
+    width: 680px;
+    margin-right: 24px;
+    float:left;
+}
+.user-product-comcontent img{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    float: left;
+}
+.user-product-comname{
+    margin: 8px 0px 0px 12px;
+    font-size: 18px;
+    float: left;
+}
+.user-product-comdate{
+    margin: 24px 0px 0px 12px;
+    font-size: 12px;
+    float: right;
+    color: #c74b36;
+}
+.user-product-comscore{
+    float: right;
+    width: 160px;
+}
+.user-product-textarea{
+    width: 100%;
+    height: 100px;
+}
+.user-product-btnresult{
+    float: right;
+}
+.user-product-comscore p{
+    float: left;
+}
+.user-product-comscore .star-info{
+    float:right;
+}
 .user-product-type{
-    display: inline-block;
     text-align: center;
-    margin: 0px 0px 10px 10px;
+    margin: 0px 0px 0px 50px;
     font-family: "Microsoft YaHei UI";
     font-size: 14px;
     font-weight: 500;
@@ -564,17 +646,21 @@
     background-color: #c74b36;
     border-radius: 50px;
     border: none;
+    float: left;
 }
 
-.user-product-baseinfo{
-    display: inline-block;
-    margin: 0px 30px 0px 30px;
-}
+
 
 .user-product-title{
-    margin: 0px 0px 0px 20px;
+    float: left;
+    font-size: 18px;
 }
-
+.user-product-commentall{
+    padding: 10px 20px 0px 20px;
+    font-size:18px;
+    margin-left: 20px; 
+    margin-top: 10px;  
+}
 .user-product-pubReport{
     float: right;
     text-align: center;
