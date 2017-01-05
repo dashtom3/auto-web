@@ -1,70 +1,65 @@
-function CompanyProductMngController($scope,Upload) {
+function CompanyProductMngController($scope,FileService,CompanyProductsService,GlobalService,$filter) {
 	console.log("CompanyProductMngController");
+	$("#form_datetime").datetimepicker({format:'YYYY/MM/DD',locale: moment.locale('zh-cn') });
+	$("#form_datetime2").datetimepicker({format:'YYYY/MM/DD',locale: moment.locale('zh-cn') });
 	$scope.tmpProduct={};
 	$scope.companyName="小软酱有限公司";
 	$scope.deleteID ="";
-	$scope.productList = [
-	{
-		"productThumb":"imgs/thumb_product.jpg",
-		"productID":"1",
-		"productDate":"2016/12/13",
-		"productName":"安全驾驶，佳通轮胎荣获两项“国际比赛大奖国际比赛大奖”",
-		"productStatus":"展示中",
-		"productIsOriginal":"true"
-	},
-	{
-		"productThumb":"imgs/thumb_product.jpg",
-		"productID":"2",
-		"productDate":"2016/12/13",
-		"productName":"安全驾驶，佳通轮胎荣获两项“国际比赛大奖”",
-		"productStatus":"展示中",
-		"productIsOriginal":"true"
-	},
-	{
-		"productThumb":"imgs/thumb_product.jpg",
-		"productID":"3",
-		"productDate":"2016/12/13",
-		"productName":"安全驾驶，佳通轮胎荣获两项“国际比赛大奖”",
-		"productStatus":"展示中",
-		"productIsOriginal":"true"
-	},
-	{
-		"productThumb":"imgs/thumb_product.jpg",
-		"productID":"4",
-		"productDate":"2016/12/13",
-		"productName":"安全驾驶，佳通轮胎荣获两项“国际比赛大奖”",
-		"productStatus":"展示中",
-		"productIsOriginal":"true"
-	},
-	{
-		"productThumb":"imgs/thumb_product.jpg",
-		"productID":"5",
-		"productDate":"2016/12/13",
-		"productName":"安全驾驶，佳通轮胎荣获两项“国际比赛大奖”",
-		"productStatus":"展示中",
-		"productIsOriginal":"true"
-	}
-	];
-	$scope.getFile = function (fileName) {
-		fileReader.readAsDataUrl($scope.file, $scope)
-		.then(function(result) {
-			$scope.imgSrc = result;
-		});
-	};
-	function addProduct(){
-		console.log("上传，可能需要刷新表单。");
-		productItem = new Object();
-		productItem.productName = $scope.addProductName;
-		productItem.productThumb = $scope.thumb[0].file;
-		productItem.productThumbList = cloneObj($scope.thumb);
-		productItem.productTags = $scope.addSelectedTags;
-		productItem.productConf = $scope.addProductConf;
-		productItem.productShortCut = $scope.addProductShortCut;
-		var d = new Date();
-		var str = d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate();
-		productItem.productDate = str;
+	$scope.ctypeList = GlobalService.companyType;
 
-		$scope.productList.push(productItem);
+	//数据初始化
+	$scope.searchStr="";
+	$scope.currentPage = 1;
+	$scope.pageSize=5;
+	$scope.cmpId = $scope.leafCmpId;
+	getData();
+
+	function getData(){
+		loadCompanyProductsData($scope.pageSize,$scope.currentPage);
+	}
+
+	function loadCompanyProductsData(pagePerNum,currentPage){
+		CompanyProductsService.getCompanyProductsList($scope.searchStr,"","","","",$scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
+			$scope.productList= result.list;
+			$scope.currentPage = result.currentPage;
+			$scope.total = result.totalNum;
+		});
+	}
+	$scope.btnSearch = function(){
+		getData();
+	}
+	$scope.changePage = function(page){
+		loadCompanyProductsData($scope.pageSize,page);
+	}
+	function getCtypeById(ctypeId){
+		for (i in $scope.ctypeList){
+			if (ctypeId == $scope.ctypeList[i].id){
+				return $scope.ctypeList[i];
+			}
+		}
+	}
+	function getCIdByName(ctype){
+		for (i in $scope.ctypeList){
+			if (ctype == $scope.ctypeList[i].name){
+				return $scope.ctypeList[i].id;
+			}
+		}
+	}
+
+
+	function addProduct(){
+		productItem = new Object();
+		productItem.name = $scope.addProductName;
+		productItem.images = $scope.images;
+		productItem.tag = $scope.addSelectedTags.id;
+		productItem.argc = $scope.addProductConf;
+		productItem.version = $scope.addProductVersion;
+		productItem.model = $scope.addProductModel;
+		productItem.desc = $scope.addProductShortCut;
+		productItem.releaseDate=document.getElementById("form_datetime").value;
+		CompanyProductsService.addCompanyProduct(productItem).then(function(result){
+			getData();
+		});
 	};
 	$scope.confirm = function(addModal,lookModal,editModal){
 		if (addModal){
@@ -86,151 +81,126 @@ function CompanyProductMngController($scope,Upload) {
 			;
 		}
 		if (editModal) {
-			//editProduct();
 		}
 	};
 	function editProduct(){
-		for (i in $scope.productList){
-			if ( $scope.tmpProduct.productName == $scope.productList[i].productName){
-				$scope.productList.splice(i,1,$scope.tmpProduct);
-			}
-		}
+		$scope.tmpProduct.releaseDate = document.getElementById("form_datetime2").value;
+		$scope.tmpProduct.tag =getCIdByName($scope.cmpType.name);
+		console.log($scope.tmpProduct);
+		CompanyProductsService.updateCompanyProduct($scope.tmpProduct).then(function(result){
+			getData();
+		});
 	}
 	function cancelAdd(){
 		$scope.addProductName = "";
-		$scope.thumb= [];
+		$scope.images= [];
 		$scope.addSelectedTags = "";
 		$scope.addProductConf = "";
 		$scope.addProductShortCut="";
-		
+		$scope.addProductVersion = "";
+		$scope.addProductModel = "";
+		document.getElementById("form_datetime").value=null;
+
 	};
-	$scope.deleteProduct=function(id){
-		$scope.deleteID = id;
+	$scope.deleteProduct=function(product){
+		$scope.deleteProduct = product;
 	};
 	$scope.confirmDelete = function(){
-		for (i in $scope.productList){
-			if ( $scope.deleteID == $scope.productList[i].productID){
-				$scope.productList.splice(i,1);	
-			}
-		}
+		CompanyProductsService.deleteCompanyProduct($scope.deleteProduct._id).then(function(result){
+			getData();
+		});
 	}
 	$scope.cancelDelete=function(){
-		$scope.deleteID = "";
+		$scope.deleteProduct = null;
 	};
-	$scope.changeProductStatus = function(id){
-		console.log("如果post修改成功，");
-		for (i in $scope.productList){
-			if ( id == $scope.productList[i].productID){
-				if ($scope.productList[i].productStatus== "展示中"){
-					$scope.productList[i].productStatus= "隐藏";
-				}else if ($scope.productList[i].productStatus== "隐藏") {
-					$scope.productList[i].productStatus= "展示中";
-				}
-			}
-		}
+	$scope.changeProductStatus = function(product){
+		console.log("1");
+		console.log(product);
+		CompanyProductsService.changeCompanyProductsState(product._id,!product.state).then(function(result){
+			product.state = !product.state;
+			console.log("2");
+			console.log(product);
+		});
 	};
 	$scope.btnAddProduct =function(){
-		console.log("dasd");
 		$scope.addModal = true;
 		$scope.lookModal = false;
 		$scope.editModal = false;
 	};
-	$scope.btnLookProduct =function(productItem){
-		console.log(productItem);
+	$scope.btnLookProduct =function(product){
 		$scope.addModal = false;
 		$scope.lookModal = true;
 		$scope.editModal = false;
-		$scope.tmpProduct  = productItem;
+		CompanyProductsService.getCompanyProductsDetail(product._id).then(function(result){
+			$scope.tmpProduct = result;
+
+		});
 		
 	};
-	$scope.btnEditProduct =function(productItem){
+	$scope.btnEditProduct =function(product){
 		$scope.addModal = false;
 		$scope.lookModal = false;
 		$scope.editModal = true;
-		console.log(productItem);
-		$scope.tmpProduct  = cloneObj(productItem);
-	};
-	var cloneObj = function (obj) {  
-		var newObj = {};  
-		if (obj instanceof Array) {  
-			newObj = [];  
-		}  
-		for (var key in obj) {  
-			var val = obj[key];  
-			newObj[key] = typeof val === 'object' ? cloneObj(val): val;  
-		}  
-		return newObj;  
-	};
-
-	$scope.currentPage=1;
-	$scope.pageCount = 5;
-	$scope.pageSize = 4;
-	$scope.total = 50;
-	$scope.changePage = function(page){
-		console.log(page);
-	}
-	// $scope.$watch(
-	// 	'currentPage',function(newValue,oldValue,scope){
-	// 		console.log(newValue);
-
-	// 		console.log(oldValue);
-	// 	}
-	// 	);
-
-	$scope.thumb=[];
-	$scope.reader = new FileReader();
-
-
-	$scope.upload = function(file){
-		$scope.reader.readAsDataURL(file);
-		var item = new Object();
-		item.fileName = file.name;
-		$scope.reader.onload=function(e){  
-			
-			item.file = this.result;
-			$scope.thumb.push(item);
-
-		}  
-		console.log(file);
-		Upload.upload({
-			url: 'upload',
-			data: {'fileName': item.fileName},
-			file: file
-		}).then(function (resp) {
-			console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-		}, function (resp) {
-			console.log('Error status: ' + resp.status);
+		CompanyProductsService.getCompanyProductsDetail(product._id).then(function(result){
+			console.log(result);
+			$scope.tmpProduct = result;
+			$scope.cmpType = getCtypeById($scope.tmpProduct.tag);
+			document.getElementById("form_datetime2").value = $filter('date')($scope.tmpProduct.releaseDate, 'yyyy/MM/dd');
 		});
 	};
-	// $scope.upload = function(file){
-	// 	console.log(file);
-	// }
-	$scope.uploadWhenEdit = function(file){
-		$scope.reader.readAsDataURL(file);
-		var imgItem = new Object();
-		imgItem.fileName = file.name;
-		$scope.reader.onload=function(e){  
-			
-			imgItem.file = this.result;
-			$scope.tmpProduct.productThumbList.push(imgItem);
 
-		}  
-		console.log(file);
+	$scope.images = [];
+	$scope.upload = function(file){
+		if(file){
+			FileService.uploadFile(file).then(function(result) {
+				var url = result.urls[0];
+				$scope.images.push(url);
+			});
+		}
 	};
-	$scope.delete_thumb = function(item){
-		for (i in $scope.thumb){
-			if ($scope.thumb[i].fileName == item.fileName){
-				$scope.thumb.splice(i,1);
+	$scope.delete_thumb = function(url){
+		for (i in $scope.images){
+			if ($scope.images[i] == url){
+				$scope.images.splice(i,1);
 			}
 		}
 	}
-	$scope.delete_thumbWhenEdit = function(item){
-		for (i in $scope.tmpProduct.productThumbList){
-			if ($scope.tmpProduct.productThumbList[i].fileName == item.fileName){
-				$scope.tmpProduct.productThumbList.splice(i,1);
+
+	$scope.uploadWhenEdit = function(file){
+		if(file){
+			FileService.uploadFile(file).then(function(result) {
+				var url = result.urls[0];
+				$scope.tmpProduct.images.push(url);
+			});
+		}
+	}
+	$scope.delete_thumb_edit = function(url){
+		for (i in $scope.tmpProduct.images){
+			if ($scope.tmpProduct.images[i] == url){
+				$scope.tmpProduct.images.splice(i,1);
 			}
 		}
 	}
+	// $scope.uploadWhenEdit = function(file){
+	// 	$scope.reader.readAsDataURL(file);
+	// 	var imgItem = new Object();
+	// 	imgItem.fileName = file.name;
+	// 	$scope.reader.onload=function(e){  
+			
+	// 		imgItem.file = this.result;
+	// 		$scope.tmpProduct.productThumbList.push(imgItem);
+
+	// 	}  
+	// 	console.log(file);
+	// };
+	
+	// $scope.delete_thumbWhenEdit = function(item){
+	// 	for (i in $scope.tmpProduct.productThumbList){
+	// 		if ($scope.tmpProduct.productThumbList[i].fileName == item.fileName){
+	// 			$scope.tmpProduct.productThumbList.splice(i,1);
+	// 		}
+	// 	}
+	// }
 
 
 	

@@ -134,6 +134,11 @@
 .cmp-form-group > .row > .control-label{ 
 	font-weight: normal;
 	font-size: 16px;
+
+}
+.cmp-adjust-label{
+	padding-left: 33px !important;
+	text-align: left !important;
 }
 .cmp-form-group > .row > div > .control-label{ 
 	font-weight: normal;
@@ -389,7 +394,7 @@
 	overflow: hidden;
 }
 .cmp-productModal-row{
-	margin-right: 20px;
+	/*margin-right: 20px;*/
 }
 .cmp-productModal-row > form > .row >label{
 	text-align: center;
@@ -479,10 +484,11 @@
 	height: 250px;
 	margin: 20px 0px;
 }
-
+#productModal .modal-head,
 #newsModal .modal-head{
 	padding: 10px 40px;
 }
+#productModal .modal-body,
 #newsModal .modal-body{
 	padding: 20px 40px;
 }

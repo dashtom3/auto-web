@@ -98,8 +98,6 @@ function CompanyNewsMngController($scope,CompanyNewsService,FileService) {
 	};
 	$scope.confirmDelete = function(){
 		CompanyNewsService.deleteCompanyNews($scope.deleteNews._id).then(function(result){
-			console.log("删除");
-			console.log(result);
 			getData();
 		});
 	}
@@ -107,7 +105,6 @@ function CompanyNewsMngController($scope,CompanyNewsService,FileService) {
 		$scope.deleteID = null;
 	};
 	$scope.changeNewsStatus = function(news){
-		console.log(news);
 		CompanyNewsService.changeCompanyNewsState(news._id,!news.isOnline).then(function(result){
 			news.isOnline = !news.isOnline;
 		});

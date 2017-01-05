@@ -23,6 +23,13 @@ angular.module('auto-biz-user')
     else return "否";
   };
 });
+angular.module('auto-biz-user')
+    .filter('productFilter', function() {
+  return function(input) {
+    if(input) return "展示中";
+    else return "隐藏中";
+  };
+});    
 
 angular.module('auto-biz-user')
     .filter('statusFilter3', function() {

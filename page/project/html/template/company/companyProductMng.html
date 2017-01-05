@@ -4,7 +4,7 @@
 			<input class="form-control form-control-lg cmp-search-input" type="text" ng-model="searchStr" >
 		</div>
 		<div class="col-lg-2">
-			<button class="btn btn-block btn-default cmp-confirm-btn cmp-find-btn">
+			<button class="btn btn-block btn-default cmp-confirm-btn cmp-find-btn" ng-click="btnSearch()">
 				<img class="img-sm-logo" src="page/project/images/company/search.png">
 				<span>查找产品</span>
 			</button>
@@ -31,19 +31,19 @@
 			<tbody>
 				<tr ng-repeat="item in productList">
 					<td>
-						<img src="{{item.productThumb}} cmp-product-thumb">
+						<img class="cmp-table-thumb" src="{{item.images[0]}}">
 					</td>
 					<td>
-						<span>{{item.productID}}</span>
+						<span>{{item._id}}</span>
 					</td>
 					<td>
-						<span> {{item.productDate}}</span>
+						<span> {{item.releaseDate | date:'yyyy/MM/dd'}}</span>
 					</td>
 					<td>
-						<span> {{item.productName}}</span>
+						<span> {{item.name}}</span>
 					</td>
 					<td>
-						<span> {{item.productStatus}}</span>
+						<span> {{item.state | productFilter}}</span>
 					</td>
 					<td>
 						<div class="row">
@@ -53,7 +53,7 @@
 								</button>
 							</div>
 							<div class="col-lg-2">
-								<button class="m-img-btn" ng-click="deleteProduct(item.productID)" data-toggle="modal" data-target="#myDeleteModal"> 
+								<button class="m-img-btn" ng-click="deleteProduct(item)" data-toggle="modal" data-target="#myDeleteModal"> 
 									<img class="cmp-md-logo" src="page/project/images/company/delete.png">
 								</button>
 							</div>
@@ -63,7 +63,7 @@
 								</button>
 							</div>
 							<div class="col-lg-2">
-								<button class="m-img-btn" ng-click = "changeProductStatus(item.productID)"> 
+								<button class="m-img-btn" ng-click = "changeProductStatus(item)"> 
 									<img class="cmp-md-logo" src="page/project/images/company/switch.png">
 								</button>
 							</div>
@@ -98,51 +98,87 @@
 					<div class="row cmp-productModal-row">
 						<form role="form" class="form-horizontal form-group cmp-form-group">
 							<div class="row" >
-								<label class="col-lg-2 control-label">名称:</label>
+								<label class="col-lg-2 control-label cmp-adjust-label">名称:</label>
 								<div class="col-lg-5" ng-show="addModal">
 									<input class="form-control" type="text" ng-model="addProductName"/>
 								</div>
 								<div class="col-lg-5" ng-show="lookModal">
-									<label class="control-label"> {{tmpProduct.productName}} </label>
+									<label class="control-label"> {{tmpProduct.name}} </label>
 								</div>
 								<div class="col-lg-5" ng-show="editModal">
-									<input class="form-control" type="text" ng-model="tmpProduct.productName"/>
+									<input class="form-control" type="text" ng-model="tmpProduct.name"/>
 								</div>
 							</div>
 							<div class="row cmp-product-middle-row" >
-								<label class="col-lg-2 control-label" >标签:</label>
+								<label class="col-lg-2 control-label cmp-adjust-label" >标签:</label>
 								<div class="col-lg-5" ng-show="addModal">
-									<select class="form-control" ng-model="addSelectedTags" ng-options="x for x in tagOptions" ></select>
+									<select class="form-control" ng-model="addSelectedTags" ng-options="ctype.name for ctype in ctypeList"></select>
 								</div>
 								<div class="col-lg-5" ng-show="lookModal">
-									<label class="control-label"> {{tmpProduct.selectedTags}} </label>
+									<label class="control-label"> {{tmpProduct.tag | companyTypeFilter}} </label>
 								</div>
 								<div class="col-lg-5" ng-show="editModal">
-									<select class="form-control" ng-model="tmpProduct.selectedTags" ng-options="x for x in tagOptions" ></select>
+									<select class="form-control" ng-model="cmpType" ng-options="ctype.name for ctype in ctypeList" ></select>
 								</div>
 							</div>
 							<div class="row cmp-product-middle-row" >
-								<label class="col-lg-2 control-label" >参数:</label>
+								<label class="col-lg-2 control-label cmp-adjust-label">发布时间:</label>
+								<div class="col-lg-5" ng-show="addModal">
+									<input type="text" class="form-control"  id="form_datetime">
+								</div>
+								<div class="col-lg-5" ng-show="lookModal">
+									<label class="control-label"> {{tmpProduct.releaseDate | date:'yyyy/MM/dd'}} </label>
+								</div>
+								<div class="col-lg-5" ng-show="editModal">
+									<input type="text" class="form-control"  id="form_datetime2">
+								</div>
+							</div>
+							<div class="row cmp-product-middle-row" >
+								<label class="col-lg-2 control-label cmp-adjust-label">型号:</label>
+								<div class="col-lg-5" ng-show="addModal">
+									<input class="form-control" type="text" ng-model="addProductModel"/>
+								</div>
+								<div class="col-lg-5" ng-show="lookModal">
+									<label class="control-label"> {{tmpProduct.model}} </label>
+								</div>
+								<div class="col-lg-5" ng-show="editModal">
+									<input class="form-control" type="text" ng-model="tmpProduct.model"/>
+								</div>
+							</div>
+							<div class="row cmp-product-middle-row" >
+								<label class="col-lg-2 control-label cmp-adjust-label">版本:</label>
+								<div class="col-lg-5" ng-show="addModal">
+									<input class="form-control" type="text" ng-model="addProductVersion"/>
+								</div>
+								<div class="col-lg-5" ng-show="lookModal">
+									<label class="control-label"> {{tmpProduct.version}} </label>
+								</div>
+								<div class="col-lg-5" ng-show="editModal">
+									<input class="form-control" type="text" ng-model="tmpProduct.version"/>
+								</div>
+							</div>
+							<div class="row cmp-product-middle-row" >
+								<label class="col-lg-2 control-label cmp-adjust-label" >参数:</label>
 								<div class="col-lg-10" ng-show="addModal">
 									<input class="form-control" type="text" ng-model="addProductConf"/>
 								</div>
 								<div class="col-lg-10" ng-show="lookModal">
-									<label class="control-label"> {{tmpProduct.productConf}} </label>
+									<label class="control-label"> {{tmpProduct.argc}} </label>
 								</div>
 								<div class="col-lg-10" ng-show="editModal">
-									<input class="form-control" type="text" ng-model="tmpProduct.productConf"/>
+									<input class="form-control" type="text" ng-model="tmpProduct.argc"/>
 								</div>
 							</div>
 							<div class="row cmp-product-middle-row" >
-								<label class="col-lg-2 control-label"  >介绍:</label>
+								<label class="col-lg-2 control-label cmp-adjust-label"  >介绍:</label>
 								<div class="col-lg-10" ng-show="addModal">
 									<textarea class="form-control" rows="3" ng-model="addProductShortCut"></textarea>
 								</div>
 								<div class="col-lg-10" ng-show="lookModal">
-									<label class="control-label"> {{tmpProduct.productShortCut}} </label>
+									<label class="control-label"> {{tmpProduct.desc}} </label>
 								</div>
 								<div class="col-lg-10" ng-show="editModal">
-									<textarea class="form-control" rows="3" ng-model="tmpProduct.productShortCut"></textarea>
+									<textarea class="form-control" rows="3" ng-model="tmpProduct.desc"></textarea>
 								</div>
 							</div>
 						</form>
@@ -152,25 +188,25 @@
 							<label class="col-lg-2 control-label" >产品图片:</label>
 						</div>
 						<div class="row m-thumb-row" ng-show="addModal" >
-							<div class="col-lg-3" ng-repeat = "item in thumb" >
-								<img src="{{item.file}}">
-								<button class="cmp-test-delete-thumb" style="background:url(page/project/images/company/delete_thumb.png);" ng-click="delete_thumb(item)" > </button>
+							<div class="col-lg-3" ng-repeat = "url in images track by $index" >
+								<img src="{{url}}">
+								<button class="cmp-test-delete-thumb" style="background:url(page/project/images/company/delete_thumb.jpg);" ng-click="delete_thumb(url)" > </button>
 							</div>
-							<div class="col-lg-3" ng-model="newThumb" ngf-resize="{width: 200, height: 200, quality: 0.9,centerCrop: true}" ngf-select="upload($file)" >
+							<div class="col-lg-3"  ngf-select="upload($file)" >
 								<img src="page/project/images/company/add_thumb.jpg" alt="点击添加图片" >
 							</div>
 						</div>
 						<div class="row m-thumb-row" ng-show="lookModal" >
-							<div class="col-lg-3" ng-repeat = "item in tmpProduct.productThumbList" >
-								<img src="{{item.file}}">
+							<div class="col-lg-3" ng-repeat = "url in tmpProduct.images track by $index" >
+								<img src="{{url}}">
 							</div>
 						</div>
 						<div class="row m-thumb-row" ng-show="editModal" >
-							<div class="col-lg-3" ng-repeat = "item in tmpProduct.productThumbList" >
-								<img src="{{item.file}}">
-								<button class="btn-delete-thumb" style="background:url(imgs/delete_thumb.jpg);" ng-click="delete_thumb(item)" > </button>
+							<div class="col-lg-3" ng-repeat = "url in tmpProduct.images track by $index" >
+								<img src="{{url}}">
+								<button class="cmp-test-delete-thumb" style="background:url(page/project/images/company/delete_thumb.jpg);" ng-click="delete_thumb_edit(url)" > </button>
 							</div>
-							<div class="col-lg-3" ng-model="editThumb" ngf-resize="{width: 200, height: 200, quality: 0.9,centerCrop: true}" ngf-select="uploadWhenEdit($file)" >
+							<div class="col-lg-3" ngf-select="uploadWhenEdit($file)" >
 								<img alt="点击添加图片" src="page/project/images/company/add_thumb.jpg">
 							</div>
 						</div>
