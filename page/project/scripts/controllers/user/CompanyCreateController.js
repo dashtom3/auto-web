@@ -30,7 +30,7 @@ function CompanyCreateController($scope,FileService,CompanyService,GlobalService
       $scope.company.regTime=document.getElementById("form_datetime").value;
   		$scope.company.address="";
   		CompanyService.registerCompany($scope.company).then(function(result){
-  			
+  			 
   		});
   }
 }

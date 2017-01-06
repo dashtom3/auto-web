@@ -8,7 +8,7 @@ angular.module("auto-biz-user")
       .success(function (res) {
         if(res.callStatus == "SUCCEED"){
           self.user = res.data;
-          window.localStorage.auto_user = JSON.stringify(res.data);
+          localStorage.auto_user = JSON.stringify(res.data);
           console.log("用户登录");
           deferred.resolve(res.data);
         }else{
@@ -21,17 +21,18 @@ angular.module("auto-biz-user")
     return deferred.promise;
   };
   //用户登出
-  this.userLogout=function (token) {
+  this.userLogout=function () {
     var deferred = $q.defer();
-    $http.get(GlobalService.baseUrl+'user/logout?token='+token)
+    $http.get(GlobalService.baseUrl+'user/logout?token='+self.user.token)
         .success(function (res) {
           if(res.callStatus == "SUCCEED"){
             console.log("用户登出");
             //window.location.href="/";
+            localStorage.auto_user = null;
             deferred.resolve();
 
           }else{
-          deferred.resolve();
+          alert("您好，用户登出失败");
         }
       })
       .error(function (res) {
@@ -47,7 +48,7 @@ angular.module("auto-biz-user")
         if(res.callStatus == "SUCCEED"){
             console.log("企业登录");
             self.company = res.data;
-            window.localStorage.auto_company = JSON.stringify(res.data);
+            localStorage.auto_company = JSON.stringify(res.data);
             deferred.resolve(res.data);
           }else{
             alert("用户名密码错误");
@@ -59,20 +60,21 @@ angular.module("auto-biz-user")
       return deferred.promise;
   }
   //企业登出
-  this.companyLoginout = function(token){
-    var deferred = $q.defer();$http.get(GlobalService.baseUrl+'company/logout?token'+token)
+  this.companyLogout = function(){
+    var deferred = $q.defer();$http.get(GlobalService.baseUrl+'company/logout?token='+self.company.token)
       .success(function (res) {
         if(res.callStatus == "SUCCEED"){
           console.log("企业登出");
-          
-       }else{
-          alert("您好，您访问的内容出错");
+          localStorage.auto_company = null;
           deferred.resolve();
+       }else{
+          alert("您好，企业登出失败");
         }
       })
       .error(function (res) {
         alert("您好，您访问的内容出错");
       });
+      return deferred.promise;
   }
   this.setUserInfo = function(user){
     self.user = user;
@@ -92,10 +94,10 @@ angular.module("auto-biz-user")
   }
   this.setInfoFromLocalStorage = function(){
       if(localStorage.auto_user != null){
-        self.user =  JSON.parse(window.localStorage.auto_user);
+        self.user =  JSON.parse(localStorage.auto_user);
       }
       if(localStorage.auto_company != null){
-        self.company =  JSON.parse(window.localStorage.auto_company);
+        self.company =  JSON.parse(localStorage.auto_company);
       }
   }
 })
