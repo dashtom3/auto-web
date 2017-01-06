@@ -1,26 +1,25 @@
-<div class="cmp-detail" ng-controller="InnovationNewsController">
+<div class="cmp-detail">
 	<table class="innnews table table-striped" >
-		<tr ng-repeat = "cmpNews in cmpNewsList">
+		<tr ng-repeat = "cmpNews in cmpNews.list">
 			<td class="innnews-td">
 				<div class="innnews-pic"><img src="{{cmpNews.pic}}"></div>
 				<div class="innnews-content">
 					<div class="row" ><a class="innews-title" href="/companyNews/{{cmpNews._id}}" target="_blank">{{cmpNews.title}}</a></div>
 					<div class="row">
-						<p class="innews-date">{{cmpNews.timestamp | date:'yyyy-MM-dd HH:mm:ss'}}</p><p class="innews-company">{{cmpNews.companyId.longName}}</p>
+						<p class="innews-date">{{cmpNews.timestamp | date:'yyyy-MM-dd HH:mm:ss'}}</p><p><a href="/companyInfo/{{cmpNews.companyId._id}}" target="_blank" class="innews-company">{{cmpNews.companyId.longName}}</a></p>
 					</div>
 					<div class="row">
 						<p class="innews-intro">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{cmpNews.desc}}</p>
 					</div>
 					<div class="row innews-copy">
-						<p ng-if="cmpNews.isFirst == '1'">[原创]</p>
-						<p ng-if="cmpNews.isFirst != '1'">[摘抄]</p>
+						<p >{{cmpNews.isFirst | newsFirstFilter}}</p>
 					</div>
 				</div>
 			</td>
 		</tr>
 	</table>
-	<div class="innnews-commit">
-		<button class="btn btn-danger btn-block btn-sm" ng-click="loadMore()" ng-if="cmpNews.currentPage != cmpNews.totalPage" ng-hide="status == 'cmpDetailShow'">点击加载更多</button>
+	<div class="innnews-commit" >
+		<button class="btn btn-danger btn-block btn-sm" ng-click="loadMoreNews()" ng-if="cmpNews.currentPage != cmpNews.totalPage" ng-hide="status == 'cmpDetailShow'">点击加载更多</button>
 		<p ng-if="cmpNews.currentPage == cmpNews.totalPage" ng-hide="status == 'cmpDetailShow'">没有更多内容了</p>
 	</div>
 </div>

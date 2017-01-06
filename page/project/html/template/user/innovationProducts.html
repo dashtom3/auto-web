@@ -1,13 +1,12 @@
-<div class="ino-nav-list" ng-controller="InnovationProductController">
-	<div class="ino-nav-type-row" ng-repeat="type in navList">
+<div class="ino-nav-list">
+	<div class="ino-nav-type-row" ng-repeat="productType in cmpProductType">
 		<label class="nav-type-label">
-			{{type.name}}：
+			{{productType.name}}
 		</label>
 		<div class="admin-nav-options-div">
-			<label class="nav-option-label" ng-class="{'active':isCurrentOption(type.name,option.name)}" ng-repeat="option in type.optionList" ng-click="getCompanyProductsList(type.name,option)">	
+			<label class="nav-option-label" ng-class="{'active':productType.current.name ==  option.name}" ng-repeat="option in productType.list" ng-click="selectCompanyProductsData($parent.$index,option)">	
 				{{option.name}}
 			</label>
 		</div>
-
 	</div>
 </div>

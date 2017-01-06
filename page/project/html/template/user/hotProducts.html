@@ -1,41 +1,40 @@
-<div ng-controller="InnovationProductController">
+<div>
     <div class="cmp-detail">
 		<div class="detail-test-container">
-        <div class="cmp-reg-cardBlock" ng-repeat="product in productsList">
+        <div class="cmp-reg-cardBlock" ng-repeat="product in cmpProducts.list">
                 <div class="cmp-reg-cardImageContainer">
                     <div class="cmp-reg-cardBlockImage"><img style="width: 265px;height: 200px;" ng-src="{{product.images[0]}}"/></div>
                     <div class="cmp-reg-cardBlockImageCover"></div>
                     <div class="cmp-reg-cardCompanyIcon"></div>
-                    <div ng-click="toCompany(product.companyId._id)" class="cmp-reg-cardCompany">
-                        <label>{{product.companyId.longName}}</label>
+                    <div class="cmp-reg-cardCompany">
+                        <a href="/companyInfo/{{product.companyId._id}}" target="_blank">{{product.companyId.longName}}</a>
                     </div>
                 </div>
 
                 <div class="cmp-reg-cardContent">
-                    <div ng-click="toProductDetails(product._id)" class="cmp-reg-cardTitle">
-                        <label>{{product.name}}</label> 
+                    <div class="cmp-reg-cardTitle">
+                        <label><a href="/companyProduct/{{product._id}}" target="_blank">{{product.name}}</a></label> 
                     </div>
                     <div class="cmp-reg-cardDate">
-                        <div class="cmp-reg-LargeDate">{{product.releaseDate | dayFilter}}</div>
-                        <div class="cmp-reg-cardSmallDate">{{product.releaseDate | yearFilter}}</div>
+                        <div class="cmp-reg-LargeDate">{{product.timestamp | date:'dd'}}</div>
+                        <div class="cmp-reg-cardSmallDate">{{product.timestamp | date:'yyyy/MM'}}</div>
                     </div>
                     <div class="cmp-reg-cardTextBesideDate">
                         {{product.desc}}
                     </div>
-                    <div class="cmp-reg-cardUserTest">用户测评
-                        <div class="star-info" star rating-value="ratingVal" max="5" readonly=true></div>
-                        <!--<i class="star yellow icon" style="margin: 0 0 0 5px;width: auto"></i>
-                        <i class="star yellow icon" style="margin: 0;width: auto"></i>
-                        <i class="star yellow icon" style="margin: 0;width: auto"></i>
-                        <i class="star yellow half icon"style="margin: 0;width: auto"></i>-->
-                    </div>
-                    <div class="cmp-reg-cardProfessionalTest">专业测评报告
-                        <!--<i class="file text outline icon" style="margin-left: 5px"></i>-->
+                    <div class="row cmp-reg-cardTest">
+                        <p class="cmp-reg-userTest">用户测评</p>
+                        <p class="cmp-reg-userTest" ng-if="product.privateReport == null">：暂未申请</p>
+                        <!-- <p ng-if="cmpProducts.privateReport != null">暂未申请</p> -->
+                        <div ng-if="product.privateReport != null" class="cmp-reg-star" star rating-value="ratingVal" max="5" readonly=true></div>
+                        <p class="cmp-reg-proTest" ng-if="product.publicReport != null"><a href="{{product.publicReport.report}}" target="_blank">专业测评报告</a></p>
                     </div>
                 </div>
         </div>
 		</div>
-
-		<button class="cmp-discover-loadMoreButton" ng-click="loadMore()">点击加载更多</button>
+        <div class="innnews-commit" >
+		<button class="btn btn-danger btn-block btn-sm" ng-if="cmpProducts.currentPage != cmpProducts.totalPage" ng-click="loadMoreProducts()">点击加载更多</button>
+        <p ng-if="cmpProducts.currentPage == cmpProducts.totalPage">没有更多内容了</p>
+        </div>
     </div>
 </div>

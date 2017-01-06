@@ -43,3 +43,10 @@ app.filter("trustHtmlFilter", ['$sce', function($sce) {
     return $sce.trustAsHtml(htmlCode);
   }
 }]);
+angular.module('auto-biz-user')
+    .filter('newsFirstFilter', function() {
+  return function(input) {
+    if(input=="1") return "原创";
+    else return "摘抄";
+  };
+});

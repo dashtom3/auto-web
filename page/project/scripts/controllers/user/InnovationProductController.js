@@ -1,4 +1,5 @@
 function InnovationProductController($scope,CompanyProductsService) {
+  console.log("载入InnovationProductController");
   //数据初始化
   CompanyProductsService.getCompanyProductsList("","","","","","","","",6,1).
     then(function(result){
@@ -136,7 +137,8 @@ function InnovationProductController($scope,CompanyProductsService) {
     //请求对应数据
     CompanyProductsService.getCompanyProductsList('',companyType,'',"","","",timeType,"",6,1)
       .then(function(result){
-      $scope.productsList = result.list;
+      $scope.productsList = null;
+      //$scope.productsList = result.list;
       //记录审核分类和行业分类选择，为分页做准备
       $scope.timeType = timeType;
       $scope.companyType = companyType;

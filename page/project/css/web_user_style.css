@@ -392,17 +392,22 @@
     border-radius: 5px 5px 0 0;
 }
 
-.cmp-reg-cardCompany{
+.cmp-reg-cardCompany {
     z-index: 2;
     position: absolute;
     top: 10px;
-    width: 280px;
-    color: white;
+    width: 100%;
     font-family: DengXian;
-    cursor: pointer;
-
+   /* cursor: pointer;*/
 }
-.cmp-reg-cardCompany:hover{
+.cmp-reg-cardCompany a{
+     color: #DDD;
+}
+.cmp-reg-cardCompany a:hover{
+    color: #EEE;
+    text-decoration: none;
+}
+/*.cmp-reg-cardCompany:hover{
     z-index: 2;
     position: absolute;
     top: 10px;
@@ -411,7 +416,7 @@
     font-family: DengXian;
     cursor: pointer;
 
-}
+}*/
 
 .cmp-reg-cardCompanyIcon{
     position: absolute;
@@ -427,33 +432,47 @@
 
 .cmp-reg-cardContent{
     font-family: "DengXian";
-    margin: 200px 20px 15px;
+    margin: 200px 15px 10px;
     overflow: hidden;
 }
 
 .cmp-reg-cardTitle{
     margin: 10px 0;
-    height: 50px;
+    height: 50px0
     overflow: hidden;
     text-overflow:ellipsis;
-    font-family: "DengXian";
-    font-weight: bold;
-    font-size:17px;
-    line-height: 25px;
     cursor: pointer;
 }
-.cmp-reg-cardTitle:hover{
-    margin: 10px 0;
-    height: 50px;
-    overflow: hidden;
-    text-overflow:ellipsis;
-    font-family: "DengXian";
-    font-weight: bold;
-    font-size:17px;
+.cmp-reg-cardTitle a{
+    font-weight: bolder;
+    font-size:20px;
     line-height: 25px;
-    color: red;
+    color: #111;
 }
-
+.cmp-reg-cardTitle a:hover{
+    color: #222;
+    text-decoration: none;
+}
+.cmp-reg-star{
+    float: left;
+}
+.cmp-reg-userTest{
+    float: left;
+    font-weight: 700;
+    font-size: 14px;
+}
+.cmp-reg-proTest{
+    float: right;
+    font-weight: bolder;
+    font-size: 14px;
+    margin-right: 2px;
+    padding: 0px 2px;
+    background-color: #c74b36;
+    border-radius: 4px;
+}
+.cmp-reg-proTest a{
+    color: white;
+}
 .cmp-reg-cardLabel{
     width: 70px;
     font-family: "DengXian";
@@ -507,7 +526,7 @@
     text-overflow:ellipsis;
     color: #65676b;
     vertical-align: top;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .cmp-reg-cardUserTest{
@@ -781,5 +800,8 @@
     color: red;
 }
 
-
+.user-newsdetail-isfirst{
+    float: right;
+    color: #C0493A;
+}
 

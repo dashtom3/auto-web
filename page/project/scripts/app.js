@@ -10,7 +10,10 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
       })
       .when('/innovation', {
         templateUrl: '/page/project/html/views/user/innovation.html',
-        controller: 'MainController'
+        //redirectTo: '/error'
+      })
+      .when('/innovation/:name', {
+        templateUrl: '/page/project/html/views/user/innovation.html',
         //redirectTo: '/error'
       })
       .when('/registerCompany', {
@@ -33,7 +36,7 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
         //controller: 'MainController'
         //redirectTo: '/error'
       })
-      .when('/companyDetail', {
+      .when('/companyInfo/:id', {
         templateUrl: '/page/project/html/views/user/companyDetail.html',
         // controller: 'CompanyDetailController'
         //redirectTo: '/error'
