@@ -26,6 +26,7 @@ function CompanyProductMngController($scope,FileService,CompanyProductsService,G
 		});
 	}
 	$scope.btnSearch = function(){
+		$scope.currentPage = 1;
 		getData();
 	}
 	$scope.changePage = function(page){

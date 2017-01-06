@@ -429,12 +429,14 @@
 }
 .cmp-test-modal > .row >form > .row,
 .cmp-test-modal > .row{
-	margin: 10px 5px 0px 5px;
+	margin:10px 0 0 0;
 
 }
 .cmp-test-modal > .row > .cmp-form-group > .row > .cmp-usertest-img-row > .control-label,
 .cmp-test-modal > .row > .cmp-form-group > .row > .control-label{
-	padding: 0;
+	padding-left: 0;
+	padding-right: 0;
+	text-align: left;
 }
 .cmp-test-modal > .row > .cmp-form-group > .row .cmp-radio{
 	font-size: 16px;
@@ -484,13 +486,15 @@
 	height: 250px;
 	margin: 20px 0px;
 }
+#testModal .modal-head,
 #productModal .modal-head,
 #newsModal .modal-head{
 	padding: 10px 40px;
 }
+#testModal .modal-body,
 #productModal .modal-body,
 #newsModal .modal-body{
-	padding: 20px 40px;
+	padding: 10px 40px;
 }
 .cmp-table-thumb{
 	height: 100px;

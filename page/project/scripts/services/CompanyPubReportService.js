@@ -1,5 +1,5 @@
 angular.module("auto-biz-user")
-  .service('CompanyPubReportService', function ($http,GlobalService,$q) {
+  .service('CompanyPubReportService', function ($http,GlobalService,$q,AuthService) {
   var self = this; 
   //获取专业测评
   this.getCompanyPubReportList = function (productId,isOnline,testDesc,team,site,companyId,dateStart,dateEnd,numPerPage,pageNumber) {
@@ -83,6 +83,7 @@ angular.module("auto-biz-user")
       return deferred.promise;
   };
   this.updateCompanyPubReport = function (report) {
+    report.reportId = report._id;
     report.token = AuthService.getToken();
     var deferred = $q.defer();
     $http.post(GlobalService.baseUrl+'report/public/modify/detail',

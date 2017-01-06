@@ -136,6 +136,7 @@ function CompanyNewsMngController($scope,CompanyNewsService,FileService) {
 	};
 
 	$scope.btnSearch = function(){
+		$scope.currentPage = 1;
 		getData();
 	}
 	$scope.changePage = function(page){
