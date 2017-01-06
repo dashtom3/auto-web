@@ -1,12 +1,12 @@
 angular.module("auto-biz-user")
-  .service('CompanyPriReportService', function ($http,GlobalService,$q) {
+  .service('CompanyPriReportService', function ($http,GlobalService,$q,AuthService) {
   var self = this; 
   //获取用户测评
   this.getCompanyPriReportList = function (productId,title,type,address,startDateStart,endDateStart,startDateEnd,endDateEnd,maxUserNum_Min,maxUserNum_Max,argc,state,signUser,passUser,startTime,endTime,companyId,numPerPage,pageNumber) {
     var deferred = $q.defer();
     var urlStr = GlobalService.getURLStr([["productId",productId],["title",title],["type",type],["address",address],["startDateStart",startDateStart],["endDateStart",endDateStart],
       ["endDateEnd",endDateEnd],["maxUserNum_Min",maxUserNum_Min],["maxUserNum_Max",maxUserNum_Max],["argc",argc],["state",state],["signUser",signUser],["passUser",passUser],
-      ["startTime",startTime],["endTime",endTime],["companyId",companyId],["companyId",companyId],["dateStart",dateStart],["dateEnd",dateEnd]]);
+      ["startTime",startTime],["endTime",endTime],["companyId",companyId]]);
     var url = GlobalService.baseUrl+'report/private/list/'+numPerPage+'/'+pageNumber+'?'+urlStr;
     console.log(url);
     $http.get(url).success(function (res) {
@@ -38,9 +38,9 @@ angular.module("auto-biz-user")
   //     });
   //     return deferred.promise;
   // }
-  this.getCompanyPriReportDetail = function(productId){
+  this.getCompanyPriReportDetail = function(reportId){
     var deferred = $q.defer();
-    $http.get(GlobalService.baseUrl + 'report/private/detail?productId='+productId).success(function(res){
+    $http.get(GlobalService.baseUrl + 'report/private/detail?reportId='+reportId).success(function(res){
       console.log("获取用户测评详情");
       if(res.callStatus == "SUCCEED"){
         deferred.resolve(res.data);
@@ -54,7 +54,7 @@ angular.module("auto-biz-user")
   }
   this.deleteCompanyPriReport = function (reportId) {
     var deferred = $q.defer();
-    var urlStr = GlobalService.getURLStr([["newsId",newsId],["token",AuthService.getToken()]]);
+    var urlStr = GlobalService.getURLStr([["reportId",reportId],["token",AuthService.getToken()]]);
     $http.get(GlobalService.baseUrl+'report/private/delete?'+urlStr).success(function (res) {
         console.log("删除专业测评");
         if(res.callStatus == "SUCCEED"){

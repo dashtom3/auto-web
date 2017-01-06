@@ -13,7 +13,7 @@ function CompanyTestController($scope,FileService,CompanyPubReportService,Compan
 	$scope.pageSize=5;
 	$scope.cmpId = $scope.leafCmpId;
 	getData();
-	loadAllCompanyProuctData();
+	
 
 	function getData(){
 		loadCompanyTestData($scope.pageSize,$scope.currentPage);
@@ -24,6 +24,7 @@ function CompanyTestController($scope,FileService,CompanyPubReportService,Compan
 			$scope.testList= result.list;
 			$scope.currentPage = result.currentPage;
 			$scope.total = result.totalNum;
+			loadAllCompanyProuctData();
 		});
 	}
 
@@ -108,7 +109,6 @@ function CompanyTestController($scope,FileService,CompanyPubReportService,Compan
 		$scope.setModalStatus('editModal');
 		CompanyPubReportService.getCompanyPubReportDetail(test.productId._id).then(function(result){
 			$scope.tmpTest = result.list[0];
-			console.log($scope.tmpTest);
 			$scope.tmpProduct = getProduct($scope.tmpTest.productId._id);
 			document.getElementById("form_datetime2").value = $filter('date')($scope.tmpTest.date, 'yyyy/MM/dd');
 		});

@@ -5,11 +5,15 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 	$scope.isEdit = false;
 	$scope.infoList_backup = null;
 	$scope.ctypeList = GlobalService.companyType;
-	CompanyService.getComppanyById($scope.cmpId).then(function(result){
-		$scope.infoList = result;
-		console.log($scope.infoList);
-		$scope.ctype = getCtypeById($scope.infoList.type);
-	}); 
+	getData();
+	function getData() {
+		CompanyService.getComppanyById($scope.cmpId).then(function(result){
+			$scope.infoList = result;
+			console.log($scope.infoList);
+			$scope.ctype = getCtypeById($scope.infoList.type);
+		}); 
+	}
+	
 	function getCtypeById(ctypeId){
 		for (i in $scope.ctypeList){
 			if (ctypeId == $scope.ctypeList[i].id){
@@ -43,10 +47,9 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 	$scope.saveEdit = function(){
 		$scope.infoList.type = $scope.ctype.id;
 		$scope.infoList.regTime=document.getElementById("form_datetime").value;
-		$scope.infoList.address="";
 
-		console.log($scope.infoList);
 		CompanyService.modifyCompany($scope.infoList).then(function(result){
+			getData();
 		});
 		$scope.isEdit=false;
 	}

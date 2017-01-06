@@ -4,6 +4,7 @@ function CompanyUserTestTabController($scope,Upload) {
 		$scope.currentTab=tabName;
 		console.log($scope.currentTab);
 	}
+	console.log($scope.nowUserTest);
 	$scope.userList = [
 	{
 		"userName":"宝马嘛嘛嘛没",

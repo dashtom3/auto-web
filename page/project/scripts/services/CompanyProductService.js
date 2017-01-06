@@ -6,10 +6,8 @@ angular.module("auto-biz-user")
     var deferred = $q.defer();
     var urlStr = GlobalService.getURLStr([["name",name],["tag",tag],["state",state],["argc",argc],["desc",desc],["companyId",companyId],["startTime",startTime],["endTime",endTime]]);
     var url = GlobalService.baseUrl+'product/list/'+numPerPage+'/'+pageNumber+'?'+urlStr;
-    console.log(url);
     $http.get(url).success(function (res) {
         console.log("获取企业产品列表");
-        console.log(res);
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
