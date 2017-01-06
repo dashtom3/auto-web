@@ -39,7 +39,7 @@
 								{{infoList.province}}
 							</label>
 							<div class="col-md-4" ng-show="isEdit == true">
-								<select class="form-control" type="text" ng-model="infoList.province" ng-options="province.name for ctype in provinceList"/>
+								<select class="form-control" type="text" ng-model="infoList.province" ng-change="getCityList(infoList.province)" ng-options="province.name for province in provinceList"/>
 							</div>
 							<label  class="control-label cmp-after-label col-md-1">
 								省
@@ -48,7 +48,7 @@
 								{{infoList.city}}
 							</label>
 							<div class="col-md-4" ng-show="isEdit == true">
-								<select class="form-control" type="text" ng-model="infoList.city" ng-options="city.name for ctype in cityList"/>
+								<select class="form-control" type="text" ng-model="infoList.city" ng-options="city.shi for city in cityList"/>
 							</div>
 							<label  class="control-label cmp-after-label col-md-1">
 								市
