@@ -442,3 +442,10 @@
 	font-weight: normal;
 	line-height: 25px;
 }
+.cmp-discover-href{
+	color: #000;
+}
+.cmp-discover-href:hover{
+	color: #c74b36;
+	text-decoration: none;
+}

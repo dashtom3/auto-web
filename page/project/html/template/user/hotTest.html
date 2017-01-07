@@ -1,29 +1,33 @@
-<div ng-controller="InnovationTestController">
+<div>
 	<div class="cmp-detail">
 		<div class="detail-test-container">
-			<div class="cmp-reg-cardBlock" ng-repeat="test in testList | limitTo:6">
+			<div class="cmp-reg-cardBlock" ng-repeat="test in cmpTests.list">
 				<div class="cmp-reg-cardImageContainer">
-					<div class="cmp-reg-cardBlockImage"></div>
+					<div class="cmp-reg-cardBlockImage"><img style="width: 265px;height: 200px;" ng-src="{{test.images[0]}}"/></div>
 					<div class="cmp-reg-cardBlockImageCover"></div>
 					<div class="cmp-reg-cardCompanyIcon">   </div>
-					<div class="cmp-reg-cardCompany">小酱软件公司</div>
+					<div class="cmp-reg-cardCompany">
+						<a href="/companyInfo/{{test.companyId}}" target="_blank">{{test.companyId}}</a>
+					</div>
 				</div>
 
 				<div class="cmp-reg-cardContent">
-					<div class="cmp-reg-cardTitle">大黄蜂—科迈罗的发哦或爹法萨 </div>
+					<div class="cmp-reg-cardTitle">{{test.title}} </div>
 					<label class="cmp-reg-cardLabel">参与人数</label>
-					<div class="cmp-reg-cardValue">53/66</div>
+					<div class="cmp-reg-cardValue">{{test.passUser.length}} / {{test.signUser.length}}</div>
 					<label class="cmp-reg-cardLabel">测评类型</label>
-					<div class="cmp-reg-cardValue">实地测评</div>
+					<div class="cmp-reg-cardValue">{{test.type | userTestTypeFilter}}</div>
 					<label class="cmp-reg-cardLabel">测评时段</label>
-					<div class="cmp-reg-cardValue">2016/11/5-2017/1/31</div>
+					<div class="cmp-reg-cardValue">{{test.dateStart|date:'yyyy/MM/dd'}}-{{test.dateEnd |date:'yyyy/MM/dd'}}</div>
 					<label class="cmp-reg-cardLabel">地点</label>
-					<div class="cmp-reg-cardValue">上海市杨浦区四平路1239号同济大学四平校区</div>
-					<button class="cmp-reg-fullWidthRedButton" ng-click="visitTest()" data-toggle="modal" data-target="#joinTestModal">立即参与</button>
+					<div class="cmp-reg-cardValue">{{test.address}}</div>
+					<button class="cmp-reg-fullWidthRedButton" ng-if="test.state == 0" ng-click="signTest(test)" data-toggle="modal" data-target="#joinTestModal">立即参与</button>
+					<label class="cmp-reg-fullWidthWhiteLabel" ng-if="test.state == 1">已结结束</label>
 				</div>
 			</div>
 		</div>
-		<button class="cmp-discover-loadMoreButton" ng-click="loadMore()">点击加载更多</button>
+		<button class="cmp-discover-loadMoreButton" ng-click="loadMoreTests()" ng-if="cmpTests.currentPage != cmpTests.totalPage">点击加载更多</button>
+		<p class="cmp-no-more" ng-if="cmpTests.currentPage == cmpTests.totalPage">没有更多内容了</p>
 	</div>
 	<div class="modal fade" id="joinTestModal" aria-hidden="true">
 		<div class="modal-dialog cmp-box-shadow">
@@ -35,55 +39,60 @@
 					<div id="carousel-example-generic" class="carousel" data-ride="carousel">
 					  <!-- Indicators -->
 					  <ol class="carousel-indicators">
-					    <li data-target="#carousel-example-generic"  ng-class="{'active':currentCarouse == li.num}" ng-repeat="li in liList" ng-click="setCurrentCarouse(li.num)"></li>
+					    <li data-target="#carousel-example-generic"  ng-class="{'active':testCurrentCarouse == li.num}" ng-repeat="li in testLiList" ng-click="setTestCurrentCarouse(li.num)"></li>
 					  </ol>
 
 					  <!-- Wrapper for slides -->
 					  <div class="carousel-inner">
-					    <div class="item" ng-class="{'active':currentCarouse == img.num}" ng-repeat="img in carouselList">
+					    <div class="item" ng-class="{'active':testCurrentCarouse == img.num}" ng-repeat="img in testImgList">
 					      <img src="{{img.url}}">
 					    </div>
 					  </div>
 
 					  <!-- Controls -->
-					  <a class="left carousel-control" ng-click="moveLeft()">
+					  <a class="left carousel-control" ng-click="testMoveLeft()">
 					    <span class="glyphicon glyphicon-chevron-left" ></span>
 					  </a>
-					  <a class="right carousel-control" ng-click="moveRight()">
+					  <a class="right carousel-control" ng-click="testMoveRight()">
 					    <span class="glyphicon glyphicon-chevron-right" ></span>
 					  </a>
 					</div>
 					<div class="join-test-title">
-						测评标题
+						{{currentTest.title}}
 					</div>
 					<div class="join-test-cmp">
-						<img src="" alt="img">
-						<label>公司名称</label>
+						<img src="{{currentTest.companyInfo.logo}}" alt="logo">
+						<label>{{currentTest.companyInfo.longName}}</label>
 					</div>
 					<div class="join-test-introduce">
-						<p>测评介绍测评介绍测评介绍测评介绍测评介绍测评介绍测评介绍<p>
+						<p>{{currentTest.desc}}<p>
 					</div>
 					<div class="join-test-config">
 						<label class="join-test-config-label control-label">参与人数：</label>
-						<label class="join-test-config-value control-label" >34/90</label>
+						<label class="join-test-config-value control-label" >{{currentTest.passUser.length}} / {{currentTest.signUser.length}}</label>
 					</div>
 					<div class="join-test-config">
 						<label class="join-test-config-label control-label">测评时段：</label>
-						<label class="join-test-config-value control-label">2016/11/5-2017/1/31</label>
-					</div>
+						<label class="join-test-config-value control-label">{{currentTest.dateStart|date:'yyyy/MM/dd'}}-{{currentTest.dateEnd |date:'yyyy/MM/dd'}}</label>
+					</div>	
 					<div class="join-test-config">
 						<label class="join-test-config-label control-label">测评类型：</label>
-						<label class="join-test-config-value control-label">邮寄</label>
+						<label class="join-test-config-value control-label">{{currentTest.type | userTestTypeFilter}}</label>
 					</div>
 					<div class="join-test-config">
 						<label class="join-test-config-label control-label">手机号码：</label>
-						<input class="join-test-config-input form-control"></input>
+						<input class="join-test-config-input form-control" ng-model="currentTest.signTestPhone" > </input>
 					</div>
-					<div class="join-test-config">
+					<div class="join-test-config" ng-if="currentTest.type == 'mail' ">
 						<label class="join-test-adjust-label control-label">收件地址：</label>
-						<textarea class="join-test-config-text form-control" rows="3">
-							
+						<textarea class="join-test-config-text form-control" rows="3" ng-model="currentTest.signTestAddress">
 						</textarea> 
+					</div>
+					<div class="join-test-config" ng-if="currentTest.type == 'local' ">
+						<label class="join-test-config-label control-label">测评地址：</label>
+						<label class="join-test-config-value control-label">
+							{{currentTest.address}}
+						</label> 
 					</div>
 					<div class="row" >
 						<div class="col-lg-3 col-lg-offset-2">
@@ -92,7 +101,7 @@
 							</button>
 						</div>
 						<div class="col-lg-3 col-lg-offset-1">
-							<button class="btn btn-default btn-block cmp-confirm-btn" data-dismiss="modal">
+							<button class="btn btn-default btn-block cmp-confirm-btn" ng-click="testSignTest(currentTest.signTestPhone,currentTest.signTestAddress)" data-dismiss="modal">
 								报名
 							</button>
 						</div>

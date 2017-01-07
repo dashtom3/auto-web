@@ -5,7 +5,7 @@ angular.module("auto-biz-user")
   this.getCompanyPriReportList = function (productId,title,type,address,startDateStart,endDateStart,startDateEnd,endDateEnd,maxUserNum_Min,maxUserNum_Max,argc,state,signUser,passUser,startTime,endTime,companyId,numPerPage,pageNumber) {
     var deferred = $q.defer();
     var urlStr = GlobalService.getURLStr([["productId",productId],["title",title],["type",type],["address",address],["startDateStart",startDateStart],["endDateStart",endDateStart],
-      ["endDateEnd",endDateEnd],["maxUserNum_Min",maxUserNum_Min],["maxUserNum_Max",maxUserNum_Max],["argc",argc],["state",state],["signUser",signUser],["passUser",passUser],
+      ["endDateStart",endDateStart],["endDateEnd",endDateEnd],["maxUserNum_Min",maxUserNum_Min],["maxUserNum_Max",maxUserNum_Max],["argc",argc],["state",state],["signUser",signUser],["passUser",passUser],
       ["startTime",startTime],["endTime",endTime],["companyId",companyId]]);
     var url = GlobalService.baseUrl+'report/private/list/'+numPerPage+'/'+pageNumber+'?'+urlStr;
     console.log(url);

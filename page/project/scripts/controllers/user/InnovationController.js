@@ -1,4 +1,4 @@
-function InnovationController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyProductsService) {
+function InnovationController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyProductsService,CompanyService,CompanyPriReportService) {
 	console.log("载入InnovationController");
 	//初始化
 	$scope.cmpNews = {
@@ -7,23 +7,64 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
 		totalNum:-1,
 		totalPage:-1,
 		list:null
-	}
+	};
 	$scope.cmpProducts = {
 		currentPage:1,
 		pagePerNum:6,
 		totalNum:-1,
 		totalPage:-1,
 		list:null
-	}
+	};
+	$scope.cmpTests = {
+		currentPage:1,
+		pagePerNum:6,
+		totalNum:-1,
+		totalPage:-1,
+		list:null
+	};
+	$scope.cmpCompanys = {
+		currentPage:1,
+		pagePerNum:5,
+		totalNum:-1,
+		totalPage:-1,
+		list:null
+	};
 	$scope.cmpProductType = [{
-			current:{name:"全部",id:""},
-			name:"时间：",
-			list:GlobalService.innovationTime
-		},{
-			current:{name:"全部",id:""},
-			name:"分类：",
-			list:[{name:"全部",id:""}].concat(GlobalService.companyType)
-		}];
+		current:{name:"全部",id:""},
+		name:"时间：",
+		list:GlobalService.innovationTime
+	},{
+		current:{name:"全部",id:""},
+		name:"分类：",
+		list:[{name:"全部",id:""}].concat(GlobalService.companyType)
+	}];
+
+	$scope.cmpCompanyType = [{
+		current:{name:"全部",id:""},
+		name:"类型：",
+		list:[{name:"全部",id:""}].concat(GlobalService.companyType)
+	}
+	// ,{
+	// 	current:{name:"全部",id:""},
+	// 	name:"投融资阶段：",
+	// 	list:[{name:"全部",id:""}].concat(GlobalService.investType)
+	// }
+	];	
+
+	$scope.cmpTestType = [{
+		current:{name:"全部",id:""},
+		name:"状态：",
+		list:[{name:"全部",id:""}].concat(GlobalService.testStatus)
+	},{
+		current:{name:"全部",id:""},
+		name:"时间：",
+		list:GlobalService.innovationTime
+	},{
+		current:{name:"全部",id:""},
+		name:"类型：",
+		list:[{name:"全部",id:""}].concat(GlobalService.testType)
+	}];
+
 	init($routeParams.name);
 	//初始化加载页面
 	function init(routeParams){
@@ -35,10 +76,10 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
 			getCompanyProductsData("","",$scope.cmpProducts.pagePerNum,$scope.cmpProducts.currentPage);
 		}else if(routeParams == "hotTest"){
 			$scope.innovation.currentPage = GlobalService.innovationList[2][0];
-			getCompanyNewsData($scope.cmpNews.pagePerNum,$scope.cmpNews.currentPage);
+			getCompanyTestsData("","","",$scope.cmpTests.pagePerNum,$scope.cmpTests.currentPage);
 		}else if(routeParams == "companyDiscover"){
 			$scope.innovation.currentPage = GlobalService.innovationList[3][0];
-			getCompanyNewsData($scope.cmpNews.pagePerNum,$scope.cmpNews.currentPage);
+			getCompanyCompanysData("",$scope.cmpCompanys.pagePerNum,$scope.cmpCompanys.currentPage);
 		}else{
 			$scope.innovation.currentPage = GlobalService.innovationList[0][0];
 			getCompanyNewsData($scope.cmpNews.pagePerNum,$scope.cmpNews.currentPage);
@@ -52,49 +93,183 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
 		}
 	};
 	
+
+
     //筛选产品
-	$scope.selectCompanyProductsData = function(selectNumber,option){
+    $scope.selectCompanyProductsData = function(selectNumber,option){
 		//设置选中
-    	$scope.cmpProductType[selectNumber].current = option;
+		$scope.cmpProductType[selectNumber].current = option;
     	//请求对应数据
     	$scope.cmpProducts.list = null;
     	getCompanyProductsData($scope.cmpProductType[1].current.id,getProductDateStr(),$scope.cmpProducts.pagePerNum,1);
- 	};
+    };
  	//获取当前产品时间选项
  	function getProductDateStr(){
  		if($scope.cmpProductType[0].current.id == ""){
-   			return "";
-   		}else{
-   			return GlobalService.getDateStr($scope.cmpProductType[0].current.id);
-   		}
+ 			return "";
+ 		}else{
+ 			return GlobalService.getDateStr($scope.cmpProductType[0].current.id);
+ 		}
  	}
  	//加载更多产品
  	$scope.loadMoreProducts = function(){
  		if($scope.cmpProducts.currentPage < $scope.cmpProducts.totalPage){
-			getCompanyProductsData($scope.cmpProductType[1].current.id,getProductDateStr(),$scope.cmpProducts.pagePerNum,$scope.cmpProducts.currentPage+1);
-		}}
+ 			getCompanyProductsData($scope.cmpProductType[1].current.id,getProductDateStr(),$scope.cmpProducts.pagePerNum,$scope.cmpProducts.currentPage+1);
+ 		}};
+
 	//获取企业新闻
 	function getCompanyNewsData(pagePerNum,currentPage){
 		CompanyNewsService.getCompanyNewsList("","","","","","","","",pagePerNum,currentPage).then(function(result){
-		if($scope.cmpNews.list){
-			$scope.cmpNews.list = $scope.cmpNews.list.concat(result.list);
-		}else{
-			$scope.cmpNews.list= result.list;
-		}
-		$scope.cmpNews.currentPage = result.currentPage;
-		$scope.cmpNews.totalNum = result.totalNum;
-		$scope.cmpNews.totalPage = result.totalPageNum;
-	});}
-	//获取企业新闻
+			if($scope.cmpNews.list){
+				$scope.cmpNews.list = $scope.cmpNews.list.concat(result.list);
+			}else{
+				$scope.cmpNews.list= result.list;
+			}
+			$scope.cmpNews.currentPage = result.currentPage;
+			$scope.cmpNews.totalNum = result.totalNum;
+			$scope.cmpNews.totalPage = result.totalPageNum;
+		});}
+	//获取企业产品
 	function getCompanyProductsData(cmpType,startTime,pagePerNum,currentPage){
 		CompanyProductsService.getCompanyProductsList('',cmpType,'',"","","",startTime,"",pagePerNum,currentPage).then(function(result){
-      		if($scope.cmpProducts.list){
+			if($scope.cmpProducts.list){
 				$scope.cmpProducts.list = $scope.cmpProducts.list.concat(result.list);
 			}else{
 				$scope.cmpProducts.list= result.list;
 			}
-      		$scope.cmpProducts.currentPage = result.currentPage;
+			$scope.cmpProducts.currentPage = result.currentPage;
 			$scope.cmpProducts.totalNum = result.totalNum;
 			$scope.cmpProducts.totalPage = result.totalPageNum;
-    	});}
+		});}
+
+	//筛选公司
+	$scope.selectCompanyCompanysData = function(selectNumber,option){
+		//设置选中
+		$scope.cmpCompanyType[selectNumber].current = option;
+    	//请求对应数据
+    	$scope.cmpCompanys.list = null;
+    	getCompanyCompanysData($scope.cmpCompanyType[0].current.id,$scope.cmpCompanys.pagePerNum,1);
+    };	
+	//加载更多企业
+	$scope.loadMoreCompanys = function(){
+		if($scope.cmpCompanys.currentPage < $scope.cmpCompanys.totalPage){
+			getCompanyCompanysData($scope.cmpCompanyType[0].current.id,$scope.cmpCompanys.pagePerNum,$scope.cmpCompanys.currentPage+1);
+		}};
+	//获取企业列表
+	function getCompanyCompanysData(cmpType,pagePerNum,currentPage){
+		console.log(cmpType);
+		console.log(pagePerNum);
+		console.log(currentPage);
+		CompanyService.getCompanyList(pagePerNum,currentPage,"",cmpType,"").then(function(result){
+			if($scope.cmpCompanys.list){
+				$scope.cmpCompanys.list = $scope.cmpCompanys.list.concat(result.list);
+			}else{
+				$scope.cmpCompanys.list= result.list;
+			}
+			$scope.cmpCompanys.currentPage = result.currentPage;
+			$scope.cmpCompanys.totalNum = result.totalNum;
+			$scope.cmpCompanys.totalPage = result.totalPageNum;
+		});}
+
+
+
+	//加载更多测评
+	$scope.loadMoreTests = function(){
+		if($scope.cmpTests.currentPage < $scope.cmpTests.totalPage){
+			getCompanyTestsData($scope.cmpTestType[0].current.id,getTestDateStr(),$scope.cmpTestType[2].current.id,$scope.cmpTests.pagePerNum,$scope.cmpTests.currentPage+1);
+		}};	
+ 	 //筛选测评
+ 	 $scope.selectCompanyTestsData = function(selectNumber,option){
+		//设置选中
+		$scope.cmpTestType[selectNumber].current = option;
+    	//请求对应数据
+    	$scope.cmpTests.list = null;
+    	getCompanyTestsData($scope.cmpTestType[0].current.id,getTestDateStr(),$scope.cmpTestType[2].current.id,$scope.cmpTests.pagePerNum,1);
+    };
+ 	//获取当前测评时间选项
+ 	function getTestDateStr(){
+ 		if($scope.cmpTestType[1].current.id == ""){
+ 			return "";
+ 		}else{
+ 			return GlobalService.getDateStr($scope.cmpTestType[1].current.id);
+ 		}
+ 	}
+ 	//获取用户测评
+ 	function getCompanyTestsData(testStatus,startTime,testType,pagePerNum,currentPage){
+ 		console.log(testStatus);
+ 		console.log(startTime);
+ 		console.log(testType);
+ 		console.log(pagePerNum);
+ 		console.log(currentPage);
+ 		CompanyPriReportService.getCompanyPriReportList("","",testType,"","","","","","","","",testStatus,"","",startTime,"","",pagePerNum,currentPage).then(function(result){
+ 			if($scope.cmpTests.list){
+ 				$scope.cmpTests.list = $scope.cmpTests.list.concat(result.list);
+ 			}else{
+ 				$scope.cmpTests.list= result.list;
+ 			}
+ 			$scope.cmpTests.currentPage = result.currentPage;
+ 			$scope.cmpTests.totalNum = result.totalNum;
+ 			$scope.cmpTests.totalPage = result.totalPageNum;
+ 		});}
+	//点击报名测评
+	$scope.signTest = function(test){
+		$scope.currentTest = test;
+		$scope.testLiList = [];
+		$scope.testImgList = [];
+		CompanyService.getComppanyById(test.companyId).then(function(result){
+			console.log(result);
+			$scope.currentTest.companyInfo = result;
+		});
+		console.log($scope.currentTest.images);
+		getImgList($scope.currentTest.images);
+
+	};	
+	function getImgList(imgList){
+		for (i in imgList){
+			var img = new Object();
+			img.url = imgList[i];
+			img.num = i;
+			$scope.testImgList.push(img);
+			var li = new Object();
+			li.num = i ;
+			$scope.testLiList.push(li);
+		}
+		console.log($scope.testImgList);
+		console.log($scope.testLiList);
+		$scope.testCurrentCarouse = $scope.testLiList[0].num;
+	}
+	$scope.setTestCurrentCarouse = function(num){
+		$scope.testCurrentCarouse = num;
+	}
+	$scope.testMoveLeft = function(){
+		console.log($scope.testCurrentCarouse);
+		if ($scope.testCurrentCarouse == "0"){
+			$scope.testCurrentCarouse = $scope.testLiList.length - 1;
+		}else{
+			$scope.testCurrentCarouse --;
+		}
+	}
+	$scope.testMoveRight = function(){
+		console.log($scope.testCurrentCarouse);
+		if ($scope.testCurrentCarouse == $scope.testLiList.length - 1){
+			$scope.testCurrentCarouse = 0;
+		}else{
+			$scope.testCurrentCarouse ++;
+		}
+	}
+	$scope.testSignTest = function(phone,address){
+		if (!phone){
+			alert("手机号");
+			return;
+		}
+		if (!address){
+			alert("请填地址");
+			return;
+		}
+		console.log(phone);
+		console.log(address);
+		CompanyPriReportService.signCompanyPriReport($scope.currentTest._id,phone,address).then(function(result){
+			console.log(result);
+		});
+	};
 }

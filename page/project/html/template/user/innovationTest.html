@@ -1,16 +1,12 @@
-<div class="ino-nav-list" ng-controller="InnovationTestController">
-	<div class="ino-nav-type-row" ng-repeat="type in navList">
+<div class="ino-nav-list">
+	<div class="ino-nav-type-row" ng-repeat="testType in cmpTestType">
 		<label class="nav-type-label">
-			{{type.name}}：
+			{{testType.name}}
 		</label>
-		<div class="nav-options-div">
-			<!-- <label class="nav-option-label" ng-class="{'active':isCurrentOption('') == 'true' }">
-				全部
-			</label> -->
-			<label class="nav-option-label" ng-class="{'active':isCurrentOption(type.name,option.name)}" ng-repeat="option in type.optionList" ng-click="setCurrentOption(type.name,option.name)">	
+		<div class="admin-nav-options-div">
+			<label class="nav-option-label" ng-class="{'active':testType.current.name ==  option.name}" ng-repeat="option in testType.list" ng-click="selectCompanyTestsData($parent.$index,option)">	
 				{{option.name}}
 			</label>
 		</div>
-
 	</div>
 </div>

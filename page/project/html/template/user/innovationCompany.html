@@ -1,10 +1,10 @@
-<div class="ino-nav-list" ng-controller="InnovationCompanyController">
-	<div class="ino-nav-type-row" ng-repeat="type in navList">
+<div class="ino-nav-list">
+	<div class="ino-nav-type-row" ng-repeat="companyType in cmpCompanyType">
 		<label class="nav-type-label">
-			{{type.name}}：
+			{{companyType.name}}
 		</label>
-		<div class="nav-options-div">
-			<label class="nav-option-label" ng-class="{'active':isCurrentOption(type.name,option.name)}" ng-repeat="option in type.optionList" ng-click="setCurrentOption(type.name,option.name)">	
+		<div class="admin-nav-options-div">
+			<label class="nav-option-label" ng-class="{'active':companyType.current.name == option.name}" ng-repeat="option in companyType.list" ng-click="selectCompanyCompanysData($parent.$index,option)">	
 				{{option.name}}
 			</label>
 		</div>

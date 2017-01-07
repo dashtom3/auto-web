@@ -1,4 +1,4 @@
-<div class="cmp-discover-panel" ng-controller="InnovationCompanyController">
+<div class="cmp-discover-panel" >
 	<div class="row discover-table-row">
 		<table class="table table-striped  cmp-discover-table">
 			<thead>
@@ -11,28 +11,25 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="company in companyList">
-					<td class="discover-cmp-td" ng-click="toPage(company._id)">
+				<tr ng-repeat="company in cmpCompanys.list">
+					<td class="discover-cmp-td">
 						<img class="discover-cmp-logo" src="{{company.logo}}">
-						<label>{{company.longName}}</label>
+						<a class="cmp-discover-href" href="/companyInfo/{{company.companyId._id}" target="_blank">{{company.longName}}</a>
 					</td>
 					<td>
 						<label> {{company.legalEntity}}</label>
 					</td>
 					<td>
-						<!-- <p ng-repeat="area in company.field"> {{area.areaName}} </p> -->
-						<label> {{company.type}}</label>
+						<label> {{company.type | companyTypeFilter}}</label>
 					</td>
-<!-- 					<td>
-						<label> {{company.numOfProduct}}</label>
-					</td> -->
+
 					<td>
 						<label> {{company.regAddress}}</label>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<button class="cmp-discover-loadMoreButton" ng-click="loadMore()" ng-if="cmps.currentPage != cmps.totalPage">点击加载更多</button>
-		<p class="cmp-no-more" ng-if="cmps.currentPage == cmps.totalPage">没有更多内容了</p>
+		<button class="cmp-discover-loadMoreButton" ng-click="loadMoreCompanys()" ng-if="cmpCompanys.currentPage != cmpCompanys.totalPage">点击加载更多</button>
+		<p class="cmp-no-more" ng-if="cmpCompanys.currentPage == cmpCompanys.totalPage">没有更多内容了</p>
 	</div>
 </div>

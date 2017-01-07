@@ -133,4 +133,5 @@ function InnovationTestController($scope,GlobalService) {
       $scope.currentCarouse ++;
     }
   }
+
 }
