@@ -50,3 +50,13 @@ angular.module('auto-biz-user')
     else return "摘抄";
   };
 });
+angular.module('auto-biz-user')
+    .filter('avePointFilter', function() {
+  return function(input) {
+    var a=0.0;
+    for(var i=0;i<input.length;i++){
+      a = a+parseFloat(input[i]);
+    }
+    return a/input.length;
+  };
+});

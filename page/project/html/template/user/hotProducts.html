@@ -24,9 +24,9 @@
                     </div>
                     <div class="row cmp-reg-cardTest">
                         <p class="cmp-reg-userTest">用户测评</p>
-                        <p class="cmp-reg-userTest" ng-if="product.privateReport == null">：暂未申请</p>
-                        <!-- <p ng-if="cmpProducts.privateReport != null">暂未申请</p> -->
-                        <div ng-if="product.privateReport != null" class="cmp-reg-star" star rating-value="ratingVal" max="5" readonly=true></div>
+                        <p class="cmp-reg-userTest" ng-if="product.privateReport == null || product.privateReport.scoredUserNum == null">：暂未申请</p>
+                        <p class="cmp-reg-userTest" ng-if="product.privateReport != null && product.privateReport.scoredUserNum == 0">：{{product.privateReport.state | statusFilter}}</p>
+                        <div ng-if="product.privateReport != null && product.privateReport.scoredUserNum > 0" class="cmp-reg-star" star rating-value="product.privateReport.scores | avePointFilter" max="5" readonly=true></div>
                         <p class="cmp-reg-proTest" ng-if="product.publicReport != null"><a href="{{product.publicReport.report}}" target="_blank">专业测评报告</a></p>
                     </div>
                 </div>

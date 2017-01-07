@@ -14,18 +14,27 @@
             <div class="btn-group" style=" position: absolute;right: 30px; margin-top: 20px">
 
                 <button type="button" class="header-user-button" headerloginbg data-toggle="dropdown"></button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="/loginUser">个人登录</a></li>
+                  <ul ng-if="loginState == null" class="dropdown-menu" role="menu">
+                    <li><a href="/loginUser">用户登录</a></li>
                     <li class="divider"></li>
-                    <li><a href="/registerUser">个人注册</a></li>
+                    <li><a href="/registerUser">用户注册</a></li>
                     <li class="divider"></li>
                     <li><a href="/loginCompany">企业登录</a></li>
                     <li class="divider"></li>
                     <li><a href="/registerCompany">企业入驻</a></li>
                   </ul>
+                  <ul ng-if="loginState == 'cmp'" class="dropdown-menu" role="menu">
+                    <li><a href="/company" target="_blank">企业管理</a></li>
+                    <li class="divider"></li>
+                    <li><a href="javascript:void(0)" ng-click="logout()">退出</a></li>
+                  </ul>
+                  <ul ng-if="loginState == 'user'" class="dropdown-menu" role="menu">
+                    <li><a href="javascript:void(0)">个人资料</a></li>
+                    <li class="divider"></li>
+                    <li><a href="javascript:void(0)" ng-click = "logout()">退出</a></li>
+                  </ul>
             </div>
         </div>
-		
 	</div>
 </div>
 

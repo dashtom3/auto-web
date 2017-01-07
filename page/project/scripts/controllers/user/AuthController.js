@@ -44,7 +44,7 @@ function AuthController($scope,AuthService,UserService,$location,FileService){
   $scope.clickLoginCompany = function(){
     console.log($scope.cmp);
   	AuthService.companyLogin($scope.cmp.cmpName,$scope.cmp.cmpPass).then(function(res){
-  		$location.path("/company");
+  		$location.path("/innovation");
   	})
   }
 }
