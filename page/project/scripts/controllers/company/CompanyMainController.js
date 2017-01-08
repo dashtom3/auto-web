@@ -9,5 +9,8 @@ function CompanyMainController($scope,AuthService) {
   AuthService.companyLogin("companytest123","aabbccdd").then(function(res){
   	$scope.rootCompany = res;
   	console.log($scope.rootCompany);
-  	});
+    $scope.companyLogo = $scope.rootCompany.logo;
+    $scope.companyName = $scope.rootCompany.longName;
+  });
+  
 }

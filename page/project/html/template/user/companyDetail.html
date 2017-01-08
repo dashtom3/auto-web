@@ -23,7 +23,7 @@
 				<div class="row outline-tri-row">
 					<div class="col-md-3">
 						<label>
-							<img src="page/project/images/location.jpg">
+							<img src="/page/project/images/location.jpg">
 							<span>
 								{{companyDetail.regAddress}}
 							</span>
@@ -52,7 +52,7 @@
 				</div>
 			</div>
 			<div class="row cmp-container-row" ng-repeat="invItem in cmpDetailList">
-				<div ng-if="currentPage == invItem[0] && invItem[1] !='null'  " ng-include="'page/project/html/template/user/'+invItem[1]+'.html'" ></div>
+				<div ng-if="currentPage == invItem[0] && invItem[1] !='null'  " ng-include="'/page/project/html/template/user/'+invItem[1]+'.html'" ></div>
 			</div>
 		</div>
 	</div>
@@ -63,7 +63,7 @@
 				<a class="detail-right-a" href="#top" target="_self" ng-click="selectItem('最新资讯')"> 更多</a>
 			</div>
 			<div class="detail-table-container">
-				<div ng-include="'page/project/html/template/user/innovationNews.html'" >
+				<div ng-include="'/page/project/html/template/user/innovationNews.html'" >
 					
 				</div>
 			</div>
@@ -75,36 +75,7 @@
 				<label>最新产品</label>
 				<a class="detail-right-a" href="#top" target="_self" ng-click="selectItem('最新产品')"> 更多</a>
 			</div>
-			<!-- <div class="detail-product-container">
-				<div class="cmp-reg-cardBlock" ng-repeat="product in productList | limitTo:3">
-					<div class="cmp-reg-cardImageContainer">
-						<div class="cmp-reg-cardBlockImage"></div>
-						<div class="cmp-reg-cardBlockImageCover"></div>
-						<div class="cmp-reg-cardCompanyIcon">   </div>
-						<div class="cmp-reg-cardCompany">小酱软件公司</div>
-					</div>
-
-					<div class="cmp-reg-cardContent">
-						<div class="cmp-reg-cardTitle">大黄蜂—科迈罗的发哦或爹法萨戴菲菲纷纷为 </div>
-
-						<div class="cmp-reg-cardDate">
-							<div class="cmp-reg-LargeDate">21</div>
-							<div class="cmp-reg-cardSmallDate">2016/8</div>
-						</div>
-						<div class="cmp-reg-cardTextBesideDate">
-							动画是使元素从一种样式逐渐变化为另一种样式的效果。您可以改变任意多的样式任意多的次数。请用百分比来规定变化发生的时间，或用关键词 "from" 和 "to"，等同于 0% 和 100%。0% 是动画的开始，100% 是动画的完成。a为了得到最佳的浏览器支持，您应该始终定义 0% 和 100% 选择器。
-						</div>
-						<div class="cmp-reg-cardUserTest">用户测评
-							<i class="star yellow icon" style="margin: 0 0 0 5px;width: auto"></i>
-							<i class="star yellow icon" style="margin: 0;width: auto"></i>
-							<i class="star yellow icon" style="margin: 0;width: auto"></i>
-							<i class="star yellow half icon"style="margin: 0;width: auto"></i>
-
-						</div>
-						<div class="cmp-reg-cardProfessionalTest">专业测评<i class="file text outline icon" style="margin-left: 5px"></i></div>
-					</div>
-				</div>
-			</div> -->
+			
 		</div>
 	</div>
 	<div class="detail-container" ng-show = "currentPage == '公司概况'">
@@ -113,30 +84,8 @@
 				<label>热门测评</label>
 				<a class="detail-right-a" href="#top" target="_self" ng-click="selectItem('热门测评')"> 更多</a>
 			</div>
-			<!-- <div class="detail-test-container">
-				<div class="cmp-reg-cardBlock" ng-repeat="test in testList | limitTo:3">
-				    <div class="cmp-reg-cardImageContainer">
-				        <div class="cmp-reg-cardBlockImage"></div>
-				        <div class="cmp-reg-cardBlockImageCover"></div>
-				        <div class="cmp-reg-cardCompanyIcon">   </div>
-				        <div class="cmp-reg-cardCompany">小酱软件公司</div>
-				    </div>
-
-				    <div class="cmp-reg-cardContent">
-				        <div class="cmp-reg-cardTitle">大黄蜂—科迈罗的发哦或爹法萨 </div>
-				        <label class="cmp-reg-cardLabel">参与人数</label>
-				        <div class="cmp-reg-cardValue">53/66</div>
-				        <label class="cmp-reg-cardLabel">测评类型</label>
-				        <div class="cmp-reg-cardValue">实地测评</div>
-				        <label class="cmp-reg-cardLabel">测评时段</label>
-				        <div class="cmp-reg-cardValue">2016/11/5-2017/1/31</div>
-				        <label class="cmp-reg-cardLabel">地点</label>
-				        <div class="cmp-reg-cardValue">上海市杨浦区四平路1239号同济大学四平校区</div>
-				        <button class="cmp-reg-fullWidthRedButton">立即参与</button>
-				    </div>
-				</div>
-			</div> -->
-			<div ng-include="'page/project/html/template/user/hotTest.html'">
+			
+			<div ng-include="'/page/project/html/template/user/hotTest.html'">
 				
 			</div>
 		</div>
@@ -147,59 +96,9 @@
 				<label>财务信息</label>
 				<a class="detail-right-a" href="#top" target="_self" ng-click="selectItem('财务状况')"> 更多</a>
 			</div>
-			<div ng-include="'page/project/html/template/user/companyFinance.html'">
+			<div ng-include="'/page/project/html/template/user/companyFinance.html'">
 				
 			</div>
-<!-- 			<div class="detail-test-container">
-				<div class="cmp-finance-block" >
-					<div class="cmp-finance-field">
-						<label class="finance-field-label">市盈率:</label>
-						<label class="finance-field-value">{{financeItem.ratio}}</label>
-						<label class="finance-field-after">%</label>
-					</div>
-					<div class="cmp-finance-field">
-						<label class="finance-field-label">营业收入增长率:</label>
-						<label class="finance-field-value">{{financeItem.increase}}</label>
-						<label class="finance-field-after">%</label>
-					</div>
-					<div class="cmp-finance-field">
-						<label class="finance-field-label">营业收入:</label>
-						<label class="finance-field-value">{{financeItem.input}}</label>
-						<label class="finance-field-after">万</label>
-					</div>
-					<div class="cmp-finance-field">
-						<label class="finance-field-label">净资产:</label>
-						<label class="finance-field-value">{{financeItem.realCapital}}</label>
-						<label class="finance-field-after">万</label>
-					</div>
-					<div class="cmp-finance-field">
-						<label class="finance-field-label">总资产:</label>
-						<label class="finance-field-value">{{financeItem.allCapital}}</label>
-						<label class="finance-field-after">万</label>
-					</div>
-					<div class="cmp-finance-field">
-						<label class="finance-field-label">净利率:</label>
-						<label class="finance-field-value">{{financeItem.realRatio}}</label>
-						<label class="finance-field-after">%</label>
-					</div>
-					<div class="cmp-finance-field">
-						<label class="finance-field-label">毛利率:</label>
-						<label class="finance-field-value">{{financeItem.allRatio}}</label>
-						<label class="finance-field-after">%</label>
-					</div>
-					<div class="cmp-finance-field">
-						<label class="finance-field-label">资产收益率:</label>
-						<label class="finance-field-value">{{financeItem.inputRatio}}</label>
-						<label class="finance-field-after">%</label>
-					</div>
-					<div class="cmp-finance-field">
-						<label class="finance-field-label">资产负债率:</label>
-						<label class="finance-field-value">{{financeItem.debtRatio}}</label>
-						<label class="finance-field-after">万</label>
-					</div>
-				</div>
-			</div> -->
-		<!-- </div> -->
 	</div>
 	
 

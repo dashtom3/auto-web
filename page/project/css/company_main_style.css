@@ -4,6 +4,56 @@
 	position: relative;
 	min-height: 600px;
 }
+.cmp-nav-header{
+	height: 90px;
+	line-height: 86px;
+	background-color:#3f3835; 
+	border-bottom:4px solid #c74b36;
+	margin-bottom: 0px;
+}
+.cmp-navbar-header{
+	display: inline-block;
+	vertical-align:middle;
+	margin-left: 20px;
+}
+.cmp-navbar-backend{
+	vertical-align:middle;
+	margin-left: 20px;
+}
+.cmp-backend-p{
+	font-size: 27px;
+	font-family: 等线;
+	color: #fff
+}
+.navbar-right-cmpname{
+	vertical-align:middle;
+	margin-right: 40px;
+}
+.cmp-autobiz-logo{
+	margin:0 !important;
+	vertical-align: middle;
+	width: 140px;
+	height: 45px;
+}
+.cmp-nav-logo{
+	vertical-align:middle;
+	margin-right: 10px !important;
+}
+.navbar-cmpname-p{
+	font-size: 23px;
+	 font-family: 方正兰亭超细黑简体;
+	 color: #fff;
+}
+.cmp-nav-cmplogo{
+	margin :0 !important;
+	background-size: cover;
+	background-color: transparent;
+	border:none;
+	width: 32px;
+	height: 32px !important;
+	border-radius: 16px;
+}
+
 .company-sidebar{
 	width: 240px;
 	height: 100%;
