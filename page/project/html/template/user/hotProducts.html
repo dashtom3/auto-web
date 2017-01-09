@@ -33,8 +33,8 @@
         </div>
 		</div>
         <div class="innnews-commit" >
-		<button class="btn btn-danger btn-block btn-sm" ng-if="cmpProducts.currentPage != cmpProducts.totalPage" ng-click="loadMoreProducts()">点击加载更多</button>
-        <p ng-if="cmpProducts.currentPage == cmpProducts.totalPage">没有更多内容了</p>
+		<button class="btn btn-danger btn-block btn-sm" ng-if="cmpProducts.currentPage != cmpProducts.totalPage && currentPage!= '公司概况'" ng-click="loadMoreProducts() ">点击加载更多</button>
+        <p ng-if="cmpProducts.currentPage == cmpProducts.totalPage && currentPage!= '公司概况'">没有更多内容了</p>
         </div>
     </div>
 </div>

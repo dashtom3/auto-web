@@ -19,7 +19,7 @@
 		</tr>
 	</table>
 	<div class="innnews-commit" >
-		<button class="btn btn-danger btn-block btn-sm" ng-click="loadMoreNews()" ng-if="cmpNews.currentPage != cmpNews.totalPage" ng-hide="status == 'cmpDetailShow'">点击加载更多</button>
-		<p ng-if="cmpNews.currentPage == cmpNews.totalPage" ng-hide="status == 'cmpDetailShow'">没有更多内容了</p>
+		<button class="btn btn-danger btn-block btn-sm" ng-click="loadMoreNews()" ng-if="cmpNews.currentPage != cmpNews.totalPage && currentPage!= '公司概况'" ng-hide="status == 'cmpDetailShow'">点击加载更多</button>
+		<p ng-if="cmpNews.currentPage == cmpNews.totalPage && currentPage!= '公司概况'" ng-hide="status == 'cmpDetailShow'">没有更多内容了</p>
 	</div>
 </div>

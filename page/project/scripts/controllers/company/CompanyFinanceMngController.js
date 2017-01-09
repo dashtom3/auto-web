@@ -13,7 +13,6 @@ function CompanyFinanceMngController($scope,CompanyFinanceService) {
 	}
 
 	function loadCompanyFinanceData(pagePerNum,currentPage){
-		console.log("readData");
 		CompanyFinanceService.getCompanyFinanceList($scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
 			$scope.financeList= result.list;
 			console.log($scope.financeList);

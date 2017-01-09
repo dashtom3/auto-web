@@ -14,7 +14,7 @@
 				<div class="cmp-reg-cardContent">
 					<div class="cmp-reg-cardTitle">{{test.title}} </div>
 					<label class="cmp-reg-cardLabel">参与人数</label>
-					<div class="cmp-reg-cardValue">{{test.passUser.length}} / {{test.signUser.length}}</div>
+					<div class="cmp-reg-cardValue">{{test.passUser.length}} / {{test.maxUserNum}}</div>
 					<label class="cmp-reg-cardLabel">测评类型</label>
 					<div class="cmp-reg-cardValue">{{test.type | userTestTypeFilter}}</div>
 					<label class="cmp-reg-cardLabel">测评时段</label>
@@ -26,8 +26,8 @@
 				</div>
 			</div>
 		</div>
-		<button class="cmp-discover-loadMoreButton" ng-click="loadMoreTests()" ng-if="cmpTests.currentPage != cmpTests.totalPage">点击加载更多</button>
-		<p class="cmp-no-more" ng-if="cmpTests.currentPage == cmpTests.totalPage">没有更多内容了</p>
+		<button class="cmp-discover-loadMoreButton " ng-click="loadMoreTests()" ng-if="cmpTests.currentPage != cmpTests.totalPage && currentPage!= '公司概况'">点击加载更多</button>
+		<p class="cmp-no-more" ng-if="cmpTests.currentPage == cmpTests.totalPage && currentPage!= '公司概况'">没有更多内容了</p>
 	</div>
 	<div class="modal fade" id="joinTestModal" aria-hidden="true">
 		<div class="modal-dialog cmp-box-shadow">
@@ -69,7 +69,7 @@
 					</div>
 					<div class="join-test-config">
 						<label class="join-test-config-label control-label">参与人数：</label>
-						<label class="join-test-config-value control-label" >{{currentTest.passUser.length}} / {{currentTest.signUser.length}}</label>
+						<label class="join-test-config-value control-label" >{{currentTest.passUser.length}} / {{currentTest.maxUserNum}}</label>
 					</div>
 					<div class="join-test-config">
 						<label class="join-test-config-label control-label">测评时段：</label>

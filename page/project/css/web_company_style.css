@@ -7,6 +7,11 @@
 	margin: auto;
 	width: 960px;
 }
+.cmp-location-img{
+	height: 20px;
+	width: 20px;
+	background-color: transparent;
+}
 .cmp-outline-row{
 	background-color: #ccc;
 	padding: 30px 0;
@@ -124,7 +129,7 @@
 	font-size: 14px;
 	font-weight: 500;
 	color: white;
-	width: 300px;
+	width: 220px;
 	line-height: 30px;
 	padding: 3px 0;
 	background-color: #c74b36;

@@ -2,7 +2,7 @@
 	<div class="row cmp-outline-row">
 		<div class="cmp-detail-outline">
 			<div class="cmp-outline-logo">
-				<img src="{{companyDetail.logo}}" alt="tupian">
+				<img src="{{companyDetail.logo}}" alt="公司Logo" style="text-align: center;">
 			</div>
 			<div class="cmp-outline-content">
 				<div class="row outline-fir-row">
@@ -23,7 +23,7 @@
 				<div class="row outline-tri-row">
 					<div class="col-md-3">
 						<label>
-							<img src="/page/project/images/location.jpg">
+							<img class="cmp-location-img" src="/page/project/images/address.jpg">
 							<span>
 								{{companyDetail.regAddress}}
 							</span>
@@ -48,7 +48,7 @@
 		<div class="cmp-detail-adjust">
 			<div class="row cmp-detail-title">
 				<div ng-repeat="invItem in cmpDetailList">
-					<a href="/companyInfo/{{cmpId}}/invItem[2]"  ng-class="{'active':currentPage == invItem[0] }">{{invItem[0]}}</a>
+					<a href="/companyInfo/{{cmpId}}/{{invItem[2]}}"  ng-class="{'active':currentPage == invItem[0] }">{{invItem[0]}}</a>
 				</div>
 			</div>
 			<div class="row cmp-container-row" ng-repeat="invItem in cmpDetailList">
@@ -56,7 +56,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="detail-container detail-sec-container" ng-show="cmpDetail.currentPage == '公司概况'">
+	<div class="detail-container detail-sec-container" ng-show="currentPage == '公司概况'">
 		<div class="cmp-detail-box">
 			<div class="detail-container-header">
 				<label>最新资讯</label>
@@ -70,16 +70,18 @@
 			</div>
 		</div>
 	</div>
-	<div class="detail-container" ng-show = "cmpDetail.currentPage == '公司概况'">
+	<div class="detail-container" ng-show = "currentPage == '公司概况'">
 		<div class="cmp-detail-box">
 			<div class="detail-container-header">
 				<label>最新产品</label>
 				<a class="detail-right-a" href="/companyInfo/{{cmpId}}/product" target="_self" > 更多</a>
 			</div>
-			
+			<div ng-include="'/page/project/html/template/user/hotProducts.html'">
+				
+			</div>
 		</div>
 	</div>
-	<div class="detail-container" ng-show = "cmpDetail.currentPage == '公司概况'">
+	<div class="detail-container" ng-show = "currentPage == '公司概况'">
 		<div class="cmp-detail-box">
 			<div class="detail-container-header">
 				<label>热门测评</label>
@@ -91,7 +93,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="detail-container" ng-show = "cmpDetail.currentPage == '公司概况'">
+	<div class="detail-container" ng-show = "currentPage == '公司概况'">
 		<div class="cmp-detail-box">
 			<div class="detail-container-header">
 				<label>财务信息</label>
