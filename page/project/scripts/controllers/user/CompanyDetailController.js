@@ -1,39 +1,108 @@
-function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyService) {
+function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyService,CompanyProductsService,CompanyPriReportService,CompanyFinanceService) {
   console.log("CompanyDetailController");
-    $scope.leafCmpId = "585b7d66b6a493e45ea96060"; 
-    $scope.cmpId = $scope.leafCmpId;
+
+
+    //初始化company基本数据
+    $scope.cmpId = $routeParams.id;
     CompanyService.getComppanyById($scope.cmpId).then(function(result){
         $scope.companyDetail = result;
-        if ( $scope.companyDetail.isNeedCapital == 'true'){
-             $scope.isNeedInvestContent = "有投融资需求";
-        }else{
-            $scope.isNeedInvestContent = "暂无投融资需求";
-        }
+        console.log(result);
     }); 
-    // $scope.companyDetail={
-    // 	"logo":"page/project/images/web_header_logo.png",
-    // 	"shortName":"恒昌好车",
-    // 	"areaList":[
-    // 		{"areaName":"汽车配件"},
-    // 		{"areaName":"汽车装饰"}
-    // 	],
-    // 	"shortCut":"互联网汽车金融平台O2O平台, 提供线上交易、金融解决方案、后市场服务",
-    // 	"city":"上海",
-    // 	"regTime":"2014/12/13",
-    // 	"isNeedInvest":"1"
-    // }
-    
 
     $scope.cmpDetailList = GlobalService.cmpDetailList;
-	$scope.currentPage=$scope.cmpDetailList[0][0];
-    $scope.leafShowStatus = $scope.currentPage;
-	$scope.selectItem = function(item){
-		$scope.currentPage=item;
-        $scope.leafShowStatus = item;
-	}
+    $scope.currentPage=$scope.cmpDetailList[0][0];
+    $scope.selectItem = function(item){
+        $scope.currentPage=item;
+    }
+
+    $scope.cmpNews = {
+        currentPage:1,
+        pagePerNum:10,
+        totalNum:-1,
+        totalPage:-1,
+        list:null
+    };
+    $scope.cmpProducts = {
+        currentPage:1,
+        pagePerNum:6,
+        totalNum:-1,
+        totalPage:-1,
+        list:null
+    };
+    $scope.cmpTests = {
+        currentPage:1,
+        pagePerNum:6,
+        totalNum:-1,
+        totalPage:-1,
+        list:null
+    };
+    $scope.cmpFinances = {
+        currentPage:1,
+        pagePerNum:3,
+        totalNum:-1,
+        totalPage:-1,
+        list:null
+    };
+
+    init($routeParams.name);
+    function init(routeParams){
+        $scope.cmpDetail = {
+            list : GlobalService.cmpDetailList
+        }
+        if(routeParams == "news"){
+            $scope.cmpDetail.currentPage = GlobalService.cmpDetailList[1][0];
+        }else if(routeParams == "product"){
+            $scope.cmpDetail.currentPage = GlobalService.cmpDetailList[2][0];
+        }else if(routeParams == "test"){
+            $scope.cmpDetail.currentPage = GlobalService.cmpDetailList[3][0];
+        }else if(routeParams == "finance"){
+            $scope.cmpDetail.currentPage = GlobalService.cmpDetailList[4][0];
+        }else{
+            $scope.cmpDetail.currentPage = GlobalService.cmpDetailList[0][0];
+            initOutlinePage();
+        }
+    }
 
 
-	$scope.productList = [{},{},{},{}];
-	$scope.testList = [{},{},{},{}];
+    function initOutlinePage(){
+        // // 获取outline数据
+        // CompanyService.getComppanyById($scope.cmpId).then(function(result){
+        //     $scope.outlineList = result;
+        // });
+        //获取新闻数据
+        // getCompanyNewsData(3,1);
+        //获取产品数据
+        // getCompanyProductsData(3,1);
+        //获取新闻数据
+
+    }
+
+
+    //获取企业新闻
+    function getCompanyNewsData(pagePerNum,currentPage){
+        CompanyNewsService.getCompanyNewsList("","","","","",$scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
+            if($scope.cmpNews.list){
+                $scope.cmpNews.list = $scope.cmpNews.list.concat(result.list);
+            }else{
+                $scope.cmpNews.list= result.list;
+            }
+            $scope.cmpNews.currentPage = result.currentPage;
+            $scope.cmpNews.totalNum = result.totalNum;
+            $scope.cmpNews.totalPage = result.totalPageNum;
+        });
+    }
+    //获取企业产品
+    function getCompanyProductsData(pagePerNum,currentPage){
+        CompanyProductsService.getCompanyProductsList("","","","","",$scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
+            if($scope.cmpProducts.list){
+                $scope.cmpProducts.list = $scope.cmpProducts.list.concat(result.list);
+            }else{
+                $scope.cmpProducts.list= result.list;
+            }
+            $scope.cmpProducts.currentPage = result.currentPage;
+            $scope.cmpProducts.totalNum = result.totalNum;
+            $scope.cmpProducts.totalPage = result.totalPageNum;
+        });
+    }   
 
 }

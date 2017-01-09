@@ -145,14 +145,15 @@
 	margin-right: 0;
 }
 .cmp-outline-page >div> label{
+	line-height: 30px;
 	font-size: 16px;
 	font-weight: normal;
+	margin-right: 25px;
 }
 .cmp-outline-page >div> p{
 	color: black;
 	line-height: 30px;
-	margin-top: 10px;
-	font-family: DengXian;
+	/*font-family: DengXian;*/
 	text-indent:2em;
 }
 .cmp-detail{
@@ -359,18 +360,23 @@
 #joinTestModal .modal-body{
 	padding: 20px 40px;
 }
-#joinTestModal #carousel-example-generic{
+.cmp-carousel-contain{
 	height: 330px;
 	width: 485px;
 }
-#carousel-example-generic > .carousel-inner > .item > img{
+.cmp-carousel-item{
 	height: 330px;
 	width: 485px;
 }
-#carousel-example-generic > .carousel-indicators{
+.cmp-carousel-contain > .carousel-inner > .item > img{
+	height: 100%;
+	width: auto;
+	margin:auto;
+}
+.cmp-carousel-contain > .carousel-indicators{
 	bottom: 0;
 }
-#carousel-example-generic > .carousel-indicators > li{
+.cmp-carousel-contain > .carousel-indicators > li{
 	margin-left: 5px;
 }
 .join-test-title{

@@ -1,17 +1,46 @@
-<div class="cmp-outline-page" ng-controller="CompanyOutlineController">
+<div class="cmp-outline-page">
 	<div class="cmp-detail">
 		<label>
-			内容简介：
+			公司全称：
 		</label>
-		<p>{{infoList.companyDesc}}</p>
+		<label>
+			{{companyDetail.companyDesc}}
+		</label>
+		<br>
+
+		<label>
+			法人代表：
+		</label>
+		<label>
+			{{companyDetail.legalEntity}}
+		</label>
+		<br>
+
+		<label>
+			注册资本：
+		</label>
+		<label>
+			{{companyDetail.regCapital}}
+		</label>
+		<label>
+			万
+		</label>
+		<br>
+
+		<label>
+			公司简介：
+		</label>
+		<p>{{companyDetail.companyDesc}}</p>
+
 		<label>
 			产品与优势：
 		</label>
-			<p>{{infoList.productDesc}}</p>
+		<p>{{companyDetail.productDesc}}</p>
+
 		<label>
 			目标与用户：
 		</label>
-		<p>{{infoList.field}}</p>
+		<p>{{companyDetail.userDesc}}</p>
 	</div>
 	
-<div>
+</div>

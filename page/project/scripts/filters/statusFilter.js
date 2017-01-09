@@ -1,5 +1,5 @@
 angular.module('auto-biz-user')
-    .filter('statusFilter', function() {
+.filter('statusFilter', function() {
   return function(input) {
     if(input=='1') return "已通过";
     else if(input=='0') return "待审核";
@@ -9,7 +9,7 @@ angular.module('auto-biz-user')
 });
 
 angular.module('auto-biz-user')
-    .filter('statusFilter2', function() {
+.filter('statusFilter2', function() {
   return function(input) {
     if(input) return "上线";
     else return "下线";
@@ -17,14 +17,14 @@ angular.module('auto-biz-user')
 });
 
 angular.module('auto-biz-user')
-    .filter('yesOrNoFilter', function() {
+.filter('yesOrNoFilter', function() {
   return function(input) {
     if(input) return "是";
     else return "否";
   };
 });
 angular.module('auto-biz-user')
-    .filter('productFilter', function() {
+.filter('productFilter', function() {
   return function(input) {
     if(input) return "展示中";
     else return "隐藏中";
@@ -32,7 +32,7 @@ angular.module('auto-biz-user')
 });    
 
 angular.module('auto-biz-user')
-    .filter('statusFilter3', function() {
+.filter('statusFilter3', function() {
   return function(input) {
     return input ? '\u2713' : '\u2718';
   };
@@ -44,19 +44,26 @@ app.filter("trustHtmlFilter", ['$sce', function($sce) {
   }
 }]);
 angular.module('auto-biz-user')
-    .filter('newsFirstFilter', function() {
+.filter('newsFirstFilter', function() {
   return function(input) {
     if(input=="1") return "原创";
     else return "摘抄";
   };
 });
 angular.module('auto-biz-user')
-    .filter('avePointFilter', function() {
+.filter('avePointFilter', function() {
   return function(input) {
     var a=0.0;
     for(var i=0;i<input.length;i++){
       a = a+parseFloat(input[i]);
     }
     return a/input.length;
+  };
+});
+angular.module('auto-biz-user')
+.filter('needInvestFilter', function() {
+  return function(input) {
+    if(input==true) return "有投融资需求";
+    else return "暂无投融资需求";
   };
 });

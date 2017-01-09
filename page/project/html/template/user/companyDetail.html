@@ -36,7 +36,7 @@
 					</div>
 					<div class="col-md-3">
 						<label>
-							{{isNeedInvestContent}}
+							{{companyDetail.isNeedCapital | needInvestFilter}}
 						</label>
 					</div>
 				</div>
@@ -48,7 +48,7 @@
 		<div class="cmp-detail-adjust">
 			<div class="row cmp-detail-title">
 				<div ng-repeat="invItem in cmpDetailList">
-					<a href="javascript:void(0)" ng-click="selectItem(invItem[0])"  ng-class="{'active':currentPage == invItem[0] }">{{invItem[0]}}</a>
+					<a href="/companyInfo/{{cmpId}}/invItem[2]"  ng-class="{'active':currentPage == invItem[0] }">{{invItem[0]}}</a>
 				</div>
 			</div>
 			<div class="row cmp-container-row" ng-repeat="invItem in cmpDetailList">
@@ -56,11 +56,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="detail-container detail-sec-container" ng-show = "currentPage == '公司概况'">
+	<div class="detail-container detail-sec-container" ng-show="cmpDetail.currentPage == '公司概况'">
 		<div class="cmp-detail-box">
 			<div class="detail-container-header">
 				<label>最新资讯</label>
-				<a class="detail-right-a" href="#top" target="_self" ng-click="selectItem('最新资讯')"> 更多</a>
+				<!-- <a class="detail-right-a" href="#top" target="_self" > 更多</a> -->
+				<a class="detail-right-a" href="/companyInfo/{{cmpId}}/news" target="_self" > 更多</a>
 			</div>
 			<div class="detail-table-container">
 				<div ng-include="'/page/project/html/template/user/innovationNews.html'" >
@@ -69,20 +70,20 @@
 			</div>
 		</div>
 	</div>
-	<div class="detail-container" ng-show = "currentPage == '公司概况'">
+	<div class="detail-container" ng-show = "cmpDetail.currentPage == '公司概况'">
 		<div class="cmp-detail-box">
 			<div class="detail-container-header">
 				<label>最新产品</label>
-				<a class="detail-right-a" href="#top" target="_self" ng-click="selectItem('最新产品')"> 更多</a>
+				<a class="detail-right-a" href="/companyInfo/{{cmpId}}/product" target="_self" > 更多</a>
 			</div>
 			
 		</div>
 	</div>
-	<div class="detail-container" ng-show = "currentPage == '公司概况'">
+	<div class="detail-container" ng-show = "cmpDetail.currentPage == '公司概况'">
 		<div class="cmp-detail-box">
 			<div class="detail-container-header">
 				<label>热门测评</label>
-				<a class="detail-right-a" href="#top" target="_self" ng-click="selectItem('热门测评')"> 更多</a>
+				<a class="detail-right-a" href="/companyInfo/{{cmpId}}/test" target="_self" > 更多</a>
 			</div>
 			
 			<div ng-include="'/page/project/html/template/user/hotTest.html'">
@@ -90,11 +91,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="detail-container" ng-show = "currentPage == '公司概况'">
+	<div class="detail-container" ng-show = "cmpDetail.currentPage == '公司概况'">
 		<div class="cmp-detail-box">
 			<div class="detail-container-header">
 				<label>财务信息</label>
-				<a class="detail-right-a" href="#top" target="_self" ng-click="selectItem('财务状况')"> 更多</a>
+				<a class="detail-right-a" href="/companyInfo/{{cmpId}}/finance" target="_self"> 更多</a>
 			</div>
 			<div ng-include="'/page/project/html/template/user/companyFinance.html'">
 				
