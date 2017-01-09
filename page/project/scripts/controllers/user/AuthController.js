@@ -1,6 +1,6 @@
 function AuthController($scope,AuthService,UserService,$location,FileService){
   console.log("载入AuthController");
-   $scope.userType=[["普通用户","normal"],["专栏作者","wr"],["投资人","vc"]];
+   $scope.userType=[["普通用户","normal"],["专栏作者","wr"]];
   $scope.regUserType = $scope.userType[0];
   $scope.user = {
     idImg1:"",
@@ -13,9 +13,13 @@ function AuthController($scope,AuthService,UserService,$location,FileService){
   	})
   }
   $scope.clickLoginAdmin = function(){
-    console.log($scope.user);
-    AuthService.userLogin($scope.user.name,$scope.user.password).then(function(){
-      $location.path("/adminPage");
+    AuthService.userLogin($scope.user.name,$scope.user.password).then(function(result){
+      if(result.userType == "admin"){
+          $location.path("/adminPage");
+      }else{
+          alert("权限不足，请重新登录");
+          AuthService.userLogout();
+      }
     })
   }
   $scope.uploadFirPic = function(file){

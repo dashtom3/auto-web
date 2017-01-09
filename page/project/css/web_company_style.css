@@ -373,6 +373,12 @@
 	height: 330px;
 	width: 485px;
 }
+.cmp-carousel-contain > .carousel-inner{
+	height: 100%
+}
+.cmp-carousel-contain > .carousel-inner >.item{
+	height: 100%
+}
 .cmp-carousel-contain > .carousel-inner > .item > img{
 	height: 100%;
 	width: auto;

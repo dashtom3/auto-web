@@ -58,16 +58,16 @@
 					<td>
 						<div class="row">	
 								<button class="m-img-btn" ng-click="setCurrentUser(user)" data-toggle="modal" data-target="#idModal1"> 
-									<!--<img class="cmp-outline-logo" ng-src="{{user.idImg1 | imageFilter}}"/>-->
-									<img ng-src="xxx"/>
+									<img class="cmp-outline-logo" ng-src="{{user.idImg1}}"/>
+									<!-- <img ng-src="xxx"/> -->
 								</button>
 						</div>
 					</td>
 					<td>
 						<div class="row">
 								<button class="m-img-btn" ng-click="setCurrentUser(user)" data-toggle="modal" data-target="#idModal2"> 
-									<!--<img class="cmp-outline-logo" ng-src="{{user.idImg2 | imageFilter}}"/>-->
-									<img ng-src="xxx"/>
+									<img class="cmp-outline-logo" ng-src="{{user.idImg2}}"/>
+									<!-- <img ng-src="xxx"/> -->
 								</button>
 						</div>
 					</td>
@@ -111,8 +111,8 @@
 				</h4>
 			</div>
 			<div class="modal-body">
-				<img ng-src="xxx"/>
-				<!--<img ng-src="{{currentUser.idImg1 | imageFilter}}"/>-->
+				
+				<img ng-src="{{currentUser.idImg1}}"/>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
@@ -131,8 +131,7 @@
 				</h4>
 			</div>
 			<div class="modal-body">
-				<img ng-src="xxx"/>
-				<!--<img ng-src="{{currentUser.idImg2 | imageFilter}}"/>-->
+				<img ng-src="{{currentUser.idImg2}}"/>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
@@ -161,23 +160,19 @@
 				</button>
 				</div>
 				</br>
-				</br>
 				<div>
 					更改权限：
-				<button ng-click="updateUserType(currentUser._id,'vc')" type="button" class="btn btn-primary" data-dismiss="modal">
-					投资人
-				</button>
 				<button ng-click="updateUserType(currentUser._id,'wr')" type="button" class="btn btn-primary" data-dismiss="modal">
 					专栏作家
+				</button>
+				<button ng-click="updateUserType(currentUser._id,'admin')" type="button" class="btn btn-primary" data-dismiss="modal">
+					管理员
 				</button>
 				<button ng-click="updateUserType(currentUser._id,'forbid')" type="button" class="btn btn-danger" data-dismiss="modal">
 					黑名单
 				</button>
 				</div>
 			</div>
-			<!--<div class="modal-footer">
-
-			</div>-->
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
 	</div>
