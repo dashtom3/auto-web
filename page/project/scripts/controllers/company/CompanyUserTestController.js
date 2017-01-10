@@ -190,11 +190,16 @@ function CompanyUserTestController($scope,FileService,CompanyPriReportService,Co
 	//tab框控制
 	$scope.btnShowParticipant = function(userTest){
 		
-		CompanyPriReportService.getCompanyPriReportDetail(userTest._id).then(function(result){
+		CompanyPriReportService.getCompanyPriReportDetail('58649f4622037b07da80db48').then(function(result){
 			$scope.nowUserTest = result;
-			console.log(result);
+			console.log(result.argc[0]);
 		});
-		// $scope.userList = userList.
+		CompanyPriReportService.getCompanyPriReportComment('58649f4622037b07da80db48').then(function(result){
+			console.log(result);
+			$scope.passedList = result[0];
+			console.log($scope.passedList);
+		});
+
 	};
 
 	$scope.currentTab = "testedUser";

@@ -26,30 +26,30 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="item in userList">
+					<tr ng-repeat="item in passedList">
 						<td>
-							<span> {{item.userName}}</span>
+							<span> {{item.userId[0].name}}</span>
 						</td>
 						<td>
-							<span> {{item.testTime}}</span>
+							<span> {{item.comment.timestamp}}</span>
 						</td>
 						<td>
-							<span> {{item.testContent}}</span>
+							<span> {{item.comment.content}}</span>
 						</td>
 						<td>
 							<div class="row">
 								<div class="col-lg-5">
-									<span> 外观:</span>
+									<span> {{nowUserTest.argc[0]}}:</span>
 								</div>
 								<div class="col-lg-7">
-									<div star rating-value="item.outlookRate" max="max" on-hover="onHover" on-leave="onLeave" readonly="true">
+									<div star rating-value="item.comment.score[0]" max="max" on-hover="onHover" on-leave="onLeave" readonly="true">
 									</div>
 								</div>
 								<div class="col-lg-5">
-									<span> 颜色:</span>
+									<span> {{nowUserTest.argc[1]}}:</span>
 								</div>
 								<div class="col-lg-7">
-									<div star rating-value="item.colorRate" max="max" on-hover="onHover" on-leave="onLeave" readonly="true">
+									<div star rating-value="item.comment.score[1]" max="max" on-hover="onHover" on-leave="onLeave" readonly="true">
 									</div>
 								</div>
 								<div class="col-lg-5">

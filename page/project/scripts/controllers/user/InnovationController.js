@@ -210,49 +210,11 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
 	//点击报名测评
 	$scope.signTest = function(test){
 		$scope.currentTest = test;
-		$scope.testLiList = [];
-		$scope.testImgList = [];
+		$scope.testImgList = $scope.currentTest.images;
 		CompanyService.getComppanyById(test.companyId).then(function(result){
-			console.log(result);
 			$scope.currentTest.companyInfo = result;
 		});
-		console.log($scope.currentTest.images);
-		getImgList($scope.currentTest.images);
-
 	};	
-	function getImgList(imgList){
-		for (i in imgList){
-			var img = new Object();
-			img.url = imgList[i];
-			img.num = i;
-			$scope.testImgList.push(img);
-			var li = new Object();
-			li.num = i ;
-			$scope.testLiList.push(li);
-		}
-		console.log($scope.testImgList);
-		console.log($scope.testLiList);
-		$scope.testCurrentCarouse = $scope.testLiList[0].num;
-	}
-	$scope.setTestCurrentCarouse = function(num){
-		$scope.testCurrentCarouse = num;
-	}
-	$scope.testMoveLeft = function(){
-		console.log($scope.testCurrentCarouse);
-		if ($scope.testCurrentCarouse == "0"){
-			$scope.testCurrentCarouse = $scope.testLiList.length - 1;
-		}else{
-			$scope.testCurrentCarouse --;
-		}
-	}
-	$scope.testMoveRight = function(){
-		console.log($scope.testCurrentCarouse);
-		if ($scope.testCurrentCarouse == $scope.testLiList.length - 1){
-			$scope.testCurrentCarouse = 0;
-		}else{
-			$scope.testCurrentCarouse ++;
-		}
-	}
 	$scope.testSignTest = function(phone,address){
 		if (!phone){
 			alert("手机号");

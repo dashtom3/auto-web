@@ -79,6 +79,7 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 		return newObj;  	
 	};
 
+	//上传图片至服务器并保存返回的url
 	$scope.uploadLogo = function(file){
 		if(file){
 			$scope.fileLogo = file;

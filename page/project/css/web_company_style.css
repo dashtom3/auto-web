@@ -366,12 +366,16 @@
 	padding: 20px 40px;
 }
 .cmp-carousel-contain{
-	height: 330px;
-	width: 485px;
+	height: 100%;
+	width: 100%;
 }
 .cmp-carousel-item{
-	height: 330px;
-	width: 485px;
+	height: 100%;
+	width: 100%;
+}
+.cmp-carousel-contain > .carousel-inner{
+	height: 100%;
+	width: 100%;
 }
 .cmp-carousel-contain > .carousel-inner > .item > img{
 	height: 100%;
@@ -459,4 +463,8 @@
 .cmp-discover-href:hover{
 	color: #c74b36;
 	text-decoration: none;
+}
+.cmp-carousel-div{
+	height:330px;
+	width: 485px;
 }

@@ -52,6 +52,20 @@ angular.module("auto-biz-user")
     });
       return deferred.promise;
   }
+  this.getCompanyPriReportComment = function(reportId){
+    var deferred = $q.defer();
+    $http.get(GlobalService.baseUrl + 'report/private/comment/list?reportId='+reportId).success(function(res){
+      console.log("获取用户测评详情");
+      if(res.callStatus == "SUCCEED"){
+        deferred.resolve(res.data);
+      }else{
+        alert("您好，您访问的内容出错");
+      }
+    }).error(function (res){
+      alert("您好，您访问的内容出错");
+    });
+      return deferred.promise;
+  }
   this.deleteCompanyPriReport = function (reportId) {
     var deferred = $q.defer();
     var urlStr = GlobalService.getURLStr([["reportId",reportId],["token",AuthService.getToken()]]);

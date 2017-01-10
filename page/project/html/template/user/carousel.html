@@ -1,0 +1,18 @@
+<div id="carousel-example-generic" class="carousel cmp-carousel-contain" data-ride="carousel">
+	<ol class="carousel-indicators">
+		<li data-target="#carousel-example-generic"  ng-class="{'active':currentCarouse == img.num}" ng-repeat="img in imgList" ng-click="setCurrentCarouse(img.num)"></li>
+	</ol>
+
+	<div class="carousel-inner">
+	<div class="item cmp-carousel-item" ng-class="{'active':currentCarouse == img.num}" ng-repeat="img in imgList">
+			<img src="{{img.url}}">
+		</div>
+	</div>
+
+	<a class="left carousel-control" ng-click="moveLeft()">
+		<span class="glyphicon glyphicon-chevron-left" ></span>
+	</a>
+	<a class="right carousel-control" ng-click="moveRight()">
+		<span class="glyphicon glyphicon-chevron-right" ></span>
+	</a>
+</div>

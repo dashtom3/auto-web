@@ -27,7 +27,7 @@ angular.module('auto-biz-user').directive('star', function () {
       $scope.leave = function(){
         $scope.onLeave();
       }
-    },
+    } ,
     link: function (scope, elem, attrs) {
       elem.css("text-align", "center");
       var updateStars = function () {

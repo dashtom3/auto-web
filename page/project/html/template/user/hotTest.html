@@ -1,9 +1,9 @@
-	<div>
+	<div >
 	<div class="cmp-detail">
 		<div class="detail-test-container">
 			<div class="cmp-reg-cardBlock" ng-repeat="test in cmpTests.list">
 				<div class="cmp-reg-cardImageContainer">
-					<div class="cmp-reg-cardBlockImage"><img style="width: 265px;height: 200px;" ng-src="{{test.images[0]}}"/></div>
+					<div class="cmp-reg-cardBlockImage"><img  ng-src="{{test.images[0]}}"/></div>
 					<div class="cmp-reg-cardBlockImageCover"></div>
 					<div class="cmp-reg-cardCompanyIcon">   </div>
 					<div class="cmp-reg-cardCompany">
@@ -35,28 +35,27 @@
 				<div class="modal-head">
 					<h4> 测评报名</h4>
 				</div>
-				<div class="modal-body modal-roll-product">
-					<div id="carousel-example-generic" class="carousel cmp-carousel-contain" data-ride="carousel">
-					  <!-- Indicators -->
+				<div class="modal-body modal-roll-product" >
+					<div class="cmp-carousel-div"  ><carousel image-list="testImgList"></carousel></div>
+					
+					<!-- <div id="carousel-example-generic" class="carousel cmp-carousel-contain" data-ride="carousel">
 					  <ol class="carousel-indicators">
 					    <li data-target="#carousel-example-generic"  ng-class="{'active':testCurrentCarouse == li.num}" ng-repeat="li in testLiList" ng-click="setTestCurrentCarouse(li.num)"></li>
 					  </ol>
 
-					  <!-- Wrapper for slides -->
 					  <div class="carousel-inner">
 					    <div class="item cmp-carousel-item" ng-class="{'active':testCurrentCarouse == img.num}" ng-repeat="img in testImgList">
 					      <img src="{{img.url}}">
 					    </div>
 					  </div>
 
-					  <!-- Controls -->
 					  <a class="left carousel-control" ng-click="testMoveLeft()">
 					    <span class="glyphicon glyphicon-chevron-left" ></span>
 					  </a>
 					  <a class="right carousel-control" ng-click="testMoveRight()">
 					    <span class="glyphicon glyphicon-chevron-right" ></span>
 					  </a>
-					</div>
+					</div> -->
 					<div class="join-test-title">
 						{{currentTest.title}}
 					</div>
