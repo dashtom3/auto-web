@@ -55,7 +55,49 @@ angular.module("auto-biz-user")
   this.getCompanyPriReportComment = function(reportId){
     var deferred = $q.defer();
     $http.get(GlobalService.baseUrl + 'report/private/comment/list?reportId='+reportId).success(function(res){
-      console.log("获取用户测评详情");
+      console.log("获取已测评用户");
+      if(res.callStatus == "SUCCEED"){
+        deferred.resolve(res.data);
+      }else{
+        alert("您好，您访问的内容出错");
+      }
+    }).error(function (res){
+      alert("您好，您访问的内容出错");
+    });
+      return deferred.promise;
+  }
+  this.getCompanyPriReportSignList = function(reportId){
+    var deferred = $q.defer();
+    $http.get(GlobalService.baseUrl + 'report/private/signlist?reportId='+reportId).success(function(res){
+      console.log("获取待审核用户");
+      if(res.callStatus == "SUCCEED"){
+        deferred.resolve(res.data);
+      }else{
+        alert("您好，您访问的内容出错");
+      }
+    }).error(function (res){
+      alert("您好，您访问的内容出错");
+    });
+      return deferred.promise;
+  }
+  this.getCompanyPriReportToPassList = function(reportId){
+    var deferred = $q.defer();
+    $http.get(GlobalService.baseUrl + 'report/private/comment/topasslist?reportId='+reportId).success(function(res){
+      console.log("获取测评中用户");
+      if(res.callStatus == "SUCCEED"){
+        deferred.resolve(res.data);
+      }else{
+        alert("您好，您访问的内容出错");
+      }
+    }).error(function (res){
+      alert("您好，您访问的内容出错");
+    });
+      return deferred.promise;
+  }
+  this.getCompanyPriReportToRefused = function(reportId){
+    var deferred = $q.defer();
+    $http.get(GlobalService.baseUrl + 'report/private/refused?reportId='+reportId).success(function(res){
+      console.log("获取被拒绝用户");
       if(res.callStatus == "SUCCEED"){
         deferred.resolve(res.data);
       }else{

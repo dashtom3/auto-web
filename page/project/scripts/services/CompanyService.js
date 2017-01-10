@@ -39,7 +39,23 @@ angular.module("auto-biz-user")
         return deferred.promise;
       };
    
-
+  this.getCompanysList = function(numPerPage,pageNum,isPassed,type,name) {
+      var deferred = $q.defer();
+      var urlStr = GlobalService.getURLStr([["isPassed",isPassed],["type",type],["name",name],["token",AuthService.getToken()]]);
+      var url = GlobalService.baseUrl+'company/list/'+numPerPage+'/'+pageNum + '?' +urlStr;
+      $http.get(url).success(function(res){
+        console.log("获取企业列表");
+        console.log(res);
+        if(res.callStatus == "SUCCEED"){
+          deferred.resolve(res.data);
+        }else{
+          alert("您好，您访问的内容出错");
+        }
+      }).error(function (res){
+        alert("您好，您访问的内容出错");
+      });
+      return deferred.promise;
+  };
   //获取企业列表
   this.getCompanyList = function(numPerPage,pageNum,isPassed,type,name) {
 
@@ -92,7 +108,8 @@ angular.module("auto-biz-user")
     //根据cmpID获取企业基本信息
     this.getComppanyById = function(cmpId){
       var deferred = $q.defer();
-      $http.get(GlobalService.baseUrl+'company/detail?companyId='+cmpId).success(function (res) {
+      var urlStr = GlobalService.getURLStr([["companyId",cmpId],["token",AuthService.getToken()]]);
+      $http.get(GlobalService.baseUrl+'company/detail?'+urlStr).success(function (res) {
         console.log("获取企业信息");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);

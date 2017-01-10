@@ -156,12 +156,13 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
 		console.log(cmpType);
 		console.log(pagePerNum);
 		console.log(currentPage);
-		CompanyService.getCompanyList(pagePerNum,currentPage,"",cmpType,"").then(function(result){
+		CompanyService.getCompanysList(pagePerNum,currentPage,1,cmpType,"").then(function(result){
 			if($scope.cmpCompanys.list){
 				$scope.cmpCompanys.list = $scope.cmpCompanys.list.concat(result.list);
 			}else{
 				$scope.cmpCompanys.list= result.list;
 			}
+			console.log($scope.cmpCompanys.list);
 			$scope.cmpCompanys.currentPage = result.currentPage;
 			$scope.cmpCompanys.totalNum = result.totalNum;
 			$scope.cmpCompanys.totalPage = result.totalPageNum;

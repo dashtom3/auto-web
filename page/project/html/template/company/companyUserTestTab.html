@@ -37,33 +37,12 @@
 							<span> {{item.comment.content}}</span>
 						</td>
 						<td>
-							<div class="row">
+							<div class="row" ng-repeat="argc in nowUserTest.argc">
 								<div class="col-lg-5">
-									<span> {{nowUserTest.argc[0]}}:</span>
+									<span> {{argc}}:</span>
 								</div>
 								<div class="col-lg-7">
-									<div star rating-value="item.comment.score[0]" max="max" on-hover="onHover" on-leave="onLeave" readonly="true">
-									</div>
-								</div>
-								<div class="col-lg-5">
-									<span> {{nowUserTest.argc[1]}}:</span>
-								</div>
-								<div class="col-lg-7">
-									<div star rating-value="item.comment.score[1]" max="max" on-hover="onHover" on-leave="onLeave" readonly="true">
-									</div>
-								</div>
-								<div class="col-lg-5">
-									<span> 质感:</span>
-								</div>
-								<div class="col-lg-7">
-									<div star rating-value="item.quanlityRate" max="max" on-hover="onHover" on-leave="onLeave" readonly="true">
-									</div>
-								</div>
-								<div class="col-lg-5">
-									<span> 敏感度:</span>
-								</div>
-								<div class="col-lg-7">
-									<div star rating-value="item.sensityRate" max="max" on-hover="onHover" on-leave="onLeave" readonly="true">
+									<div star rating-value="item.comment.score[$index]" max="max" on-hover="onHover" on-leave="onLeave" readonly="true">
 									</div>
 								</div>
 							</div>
@@ -84,7 +63,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="item in userList">
+					<tr ng-repeat="item in testingList">
 						<td>
 							<span> {{item.userName}}</span>
 						</td>
@@ -116,7 +95,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="item in userList">
+					<tr ng-repeat="item in auditingList">
 						<td>
 							<span> {{item.userName}}</span>
 						</td>

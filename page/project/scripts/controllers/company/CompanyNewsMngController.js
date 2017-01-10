@@ -2,8 +2,6 @@ function CompanyNewsMngController($scope,CompanyNewsService,FileService) {
 	console.log("CompanyNewsMngController");
 	$scope.pageSize = 5;
 	$scope.tmpNews={};
-	$scope.companyName="小软酱有限公司";
-	$scope.deleteID ="";
 
 	//数据初始化
 	$scope.searchStr="";
@@ -39,12 +37,13 @@ function CompanyNewsMngController($scope,CompanyNewsService,FileService) {
 	};
 	$scope.cancel = function(addModal,lookModal,editModal){
 		if (addModal){
-			cancelAdd();
+			$scope.cancelAdd();
 		}
 		if (lookModal){
 			;
 		}
 		if (editModal) {
+			$scope.cancelAdd();
 		}
 	};
 	$scope.uploadThumb = function(file){
@@ -91,7 +90,7 @@ function CompanyNewsMngController($scope,CompanyNewsService,FileService) {
 		$scope.addNewsLabel = "";
 		$scope.addNewsShortCut = "";
 		$scope.addNewshtmlVariable = "";
-		
+		$scope.fileLogo = null;
 	};
 	$scope.deleteNews=function(news){
 		$scope.deleteNews = news;
@@ -110,6 +109,7 @@ function CompanyNewsMngController($scope,CompanyNewsService,FileService) {
 		});
 	};
 	$scope.btnAddNews =function(){
+		$scope.cancelAdd();
 		$scope.addModal = true;
 		$scope.lookModal = false;
 		$scope.editModal = false;

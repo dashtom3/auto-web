@@ -189,23 +189,43 @@ function CompanyUserTestController($scope,FileService,CompanyPriReportService,Co
 
 	//tab框控制
 	$scope.btnShowParticipant = function(userTest){
-		
-		CompanyPriReportService.getCompanyPriReportDetail('58649f4622037b07da80db48').then(function(result){
+		console.log(userTest);
+		CompanyPriReportService.getCompanyPriReportDetail(userTest._id).then(function(result){
 			$scope.nowUserTest = result;
-			console.log(result.argc[0]);
+			CompanyPriReportService.getCompanyPriReportComment($scope.nowUserTest._id).then(function(result){
+				console.log(result);
+				$scope.passedList = result[0];
+				console.log($scope.passedList);
+			});
 		});
-		CompanyPriReportService.getCompanyPriReportComment('58649f4622037b07da80db48').then(function(result){
-			console.log(result);
-			$scope.passedList = result[0];
-			console.log($scope.passedList);
-		});
+		
 
 	};
 
 	$scope.currentTab = "testedUser";
 	$scope.toTab = function(tabName){
 		$scope.currentTab=tabName;
-		console.log($scope.currentTab);
+		if ($scope.currentTab == 'testingUser'){
+			CompanyPriReportService.getCompanyPriReportToPassList($scope.nowUserTest._id).then(function(result){
+				console.log(result);
+				$scope.testingList = result[0];
+			});
+		}else if ($scope.currentTab == 'auditingUser'){
+			CompanyPriReportService.getCompanyPriReportSignList($scope.nowUserTest._id).then(function(result){
+				console.log(result);
+				$scope.auditingList = result[0];
+			});
+		}else if ($scope.currentTab == 'rejectedUser'){
+			CompanyPriReportService.getCompanyPriReportToRefused($scope.nowUserTest._id).then(function(result){
+				console.log(result);
+				$scope.auditingList = result[0];
+			});
+		}else if ($scope.currentTab == 'testedUser'){
+			CompanyPriReportService.getCompanyPriReportComment($scope.nowUserTest._id).then(function(result){
+				console.log(result);
+				$scope.auditingList = result[0];
+			});
+		}
 	}
 
 

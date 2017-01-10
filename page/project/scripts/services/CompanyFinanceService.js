@@ -32,6 +32,24 @@ angular.module("auto-biz-user")
       });
       return deferred.promise;
   };
+  this.modifyCompanyFinance = function(finance){
+    var deferred =$q.defer();
+    var urlStr = GlobalService.getURLStr([["financeRecordId",finance._id],["year",finance.year],["ratio",finance.ratio],
+      ["input",finance.input],["increase",finance.increase],["allCapital",finance.allCapital],["realCapital",finance.realCapital],
+      ["allRatio",finance.allRatio],["realRatio",finance.realRatio],["debtRatio",finance.debtRatio],["inputRatio",finance.inputRatio],
+      ["token",AuthService.getToken()]]);
+    $http.get(GlobalService.baseUrl+'finance/modify?'+urlStr).success(function (res) {
+        console.log("修改企业财务");
+        if(res.callStatus == "SUCCEED"){
+          deferred.resolve(res.data);
+        }else{
+          alert("修改失败");
+        }
+      }).error(function (res){
+        alert("您好，您访问的内容出错");
+      });
+      return deferred.promise;
+  }
   this.addCompanyFinance = function (finance) {
     finance.token = AuthService.getToken();
     var deferred = $q.defer();

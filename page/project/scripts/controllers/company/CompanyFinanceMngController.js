@@ -75,7 +75,7 @@ function CompanyFinanceMngController($scope,CompanyFinanceService) {
 			console.log("钱不对");
 			return false;
 		}else {
-			CompanyFinanceService.updateCompanyFinance(finance).then(function(result){
+			CompanyFinanceService.modifyCompanyFinance(finance).then(function(result){
 				getData();
 			});
 		}

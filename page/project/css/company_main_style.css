@@ -394,7 +394,7 @@
 .cmp-newsModal-thumb > label{
 	position: absolute; 
 	top: 130px;
-	left: 150px; 
+	left: 130px; 
 	z-index: 5;
 }
 .cmp-newsModal-thumb > label >input{

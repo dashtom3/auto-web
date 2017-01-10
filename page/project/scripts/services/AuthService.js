@@ -90,7 +90,7 @@ angular.module("auto-biz-user")
       }else if(self.company){
         return self.company.token;
       }
-      return null;
+      return "guest";
   }
   this.setInfoFromLocalStorage = function(){
       if(localStorage.auto_user != null){

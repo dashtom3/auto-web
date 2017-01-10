@@ -15,14 +15,14 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 		LocationService.getCityListByProvince(province.name).then(function(result){
 			$scope.cityList = result;
 		});
-	}
+	};
 
 
 	getData();
 	function getData() {
 		CompanyService.getComppanyById($scope.cmpId).then(function(result){
+			console.log(result);
 			$scope.infoList = result;
-			console.log($scope.infoList);
 			$scope.ctype = getCtypeById($scope.infoList.type);
 		}); 
 	}
