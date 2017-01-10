@@ -36,8 +36,8 @@
 		<table class="table table-striped cmp-table" >
 			<thead >
 				<tr>
-					<th class="col-lg-1">公司简称</th>
-					<th class="col-lg-2">公司全称</th>
+					<th class="col-lg-1">公司全称</th>
+					<th class="col-lg-2">业务简述</th>
 					<th class="col-lg-1">领域</th>
 					<th class="col-lg-2">注册人职位</th>
 					<th class="col-lg-1">logo</th>
@@ -49,12 +49,13 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="company in companyList | filter: searchWord">
+					<td>{{company.longName}}</td>
 					<td>{{company.shortName}}</td>
-    				<td>{{company.longName}}</td>
+    				
     				<td>{{company.type | companyTypeFilter}}</td>
     				<td>{{company.position}}</td>
-	 				<td><img class="cmp-outline-logo" ng-src="{{company.logo | imageFilter}}"/></td>
-    				<td>{{company.address}}</td>
+	 				<td><img class="cmp-outline-logo" ng-src="{{company.logo}}"/></td>
+    				<td>{{company.field}}</td>
     				<td>{{company.phone}}</td>
 					<td>{{company.isPassed | statusFilter}}</td>
     				<td>
@@ -120,7 +121,7 @@
 						<div class="row cmp-input-row">
 							<label class="control-label col-md-10">
 								公司地址：
-								{{currentUser.address}}
+								{{currentUser.field}}
 							</label>
 						</div>
 						<div class="row cmp-input-row">
@@ -148,18 +149,17 @@
 								万
 							</label>
 						</div>
-						<div class="row cmp-input-row">
+						<!-- <div class="row cmp-input-row">
 							<label class="control-label col-md-10">
 								注册地址：
 								{{currentUser.regAddress}}
 							</label>
-						</div>
+						</div> -->
 					</form>
 					</div>
 						<div class="col-md-2 cmp-basic-logo-div">
 						<div  class="cmp-logo-thumb cmp-box-shadow">
-							<img ng-src="xxx" class="cmp-img-logo"/>	
-						<!--<img ng-src="{{currentUser.logo | imageFilter}}" class="cmp-img-logo"/>	-->
+								<img ng-src="{{currentUser.logo}}" class="cmp-img-logo"/>	
 						</div>
 						</div>
 					</div>
@@ -182,8 +182,8 @@
 							<label class="control-label col-md-10">
 								审核认证信息：
 							</label>
-							<img ng-src="xxx"/>
-							<!--<img ng-src="{{currentUser.info | imageFilter}}"/>-->
+							
+							<img ng-src="{{currentUser.info}}"/>
 						</div>
 					</div>
 				</div>

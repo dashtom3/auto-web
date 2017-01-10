@@ -23,9 +23,9 @@ angular.module('auto-biz-user')
     this.getUserList = function(numPerPage,pageNum,isPassed,nikeName) {
         var deferred = $q.defer();
         console.log("读取getUserListService网络数据");
-        var url=GlobalService.baseUrl+'user/list/'+numPerPage+'/'+pageNum;
+        var url=GlobalService.baseUrl+'user/list/'+numPerPage+'/'+pageNum+"?token="+AuthService.user.token;
         if(isPassed!==''){
-            url=url+'?isPassed='+isPassed;
+            url=url+'&isPassed='+isPassed;
             if(nikeName!==''){
             url=url+'&nikeName='+nikeName;
             }
@@ -74,9 +74,7 @@ angular.module('auto-biz-user')
     //用户权限更改
     this.updateUserType = function(id,newType) {
         var token=AuthService.user.token;
-        console.log('newType:'+newType);
         var url=GlobalService.baseUrl+'user/modify/type?token='+token+'&userId='+id+'&newType='+newType;
-        console.log('url:'+url);
         var deferred = $q.defer();
         $http.get(url)
             .success(function(data, status, headers, config){

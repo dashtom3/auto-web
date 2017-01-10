@@ -7,62 +7,67 @@
 	<div class="row">
 		<img  class="user-product-logo" src="{{productDetail.companyId.logo}}">
 		<p class="user-product-baseinfo">{{productDetail.companyId.longName}}</p>
+	</div>
+	<div class="row">
 		<p class="user-product-baseinfo">版本：{{productDetail.version}}</p>
 		<p class="user-product-baseinfo">发布时间：{{productDetail.releaseDate | date:'yyyy-MM-dd'}}</p>
 		<p class="user-product-baseinfo">型号：{{productDetail.model}}</p>
 	</div>
 	<div class="row">
-		<div id="carousel-example-generic" class="carousel-user-image carousel" data-ride="carousel">
+	<div class="col-xs-7">
+		<div id="carousel-example-generic" class="cmp-carousel-contain carousel" data-ride="carousel">
 					  <!-- Indicators -->
-					  <!-- <ol class="carousel-indicators">
-					    <li data-target="#carousel-example-generic"  ng-class="{'active':currentCarouse == li.num}" ng-repeat="li in liList" ng-click="setCurrentCarouse(li.num)"></li>
-					  </ol> -->
+					  <ol class="carousel-indicators">
+					    <li data-target="#carousel-example-generic"  ng-class="{'active':detailCurrentCarouse == li.num}" ng-repeat="li in testLiList" ng-click="setDetailCurrentCarouse(li.num)"></li>
+					  </ol>
 
 					  <!-- Wrapper for slides -->
-					  <!-- <div class="carousel-inner">
-					    <div class="item" ng-class="{'active':currentCarouse == img.num}" ng-repeat="img in carouselList">
+					  <div class="carousel-inner">
+					    <div class="item" ng-class="{'active':detailCurrentCarouse == img.num}" ng-repeat="img in testImgList">
 					      <img src="{{img.url}}">
 					    </div>
-					  </div> -->
+					  </div>
 
 					  <!-- Controls -->
-					  <!-- <a class="left carousel-control" ng-click="moveLeft()">
+					  <a class="left carousel-control" ng-click="detailMoveLeft()">
 					    <span class="glyphicon glyphicon-chevron-left" ></span>
 					  </a>
-					  <a class="right carousel-control" ng-click="moveRight()">
+					  <a class="right carousel-control" ng-click="detailMoveRight()">
 					    <span class="glyphicon glyphicon-chevron-right" ></span>
-					  </a> -->
+					  </a>
 			</div>
-
+		</div>
+		<div class="col-xs-5">
             <div class="carousel-user-info">
                 {{productDetail.argc}}
             </div>
+        </div>
 	</div>
 	</div>
 	<div class="common-block-40">
 		<div class="row">
-			<p class="user-product-subtitle">专业测评:</p>
-			<div class="user-product-download">
-				<p>测评报告</p><img src="/page/project/images/web_user_download.png">
+			<p class="user-product-subtitle">专业测评：</p>
+			<p class="user-product-subtitle" ng-if="productPubReport == null">&nbsp;&nbsp;&nbsp;&nbsp;目前该产品尚未进行专业测评</p>
+			<div class="user-product-download" ng-if="productPubReport != null">
+				<a href="{{productPubReport.report}}"><p>测评报告</p><img src="/page/project/images/web_user_download.png"></a>
 			</div>
 		</div>
-		<div class="row">
-			<p class="user-product-baseinfo">测评日期：</p>
-			<p class="user-product-baseinfo">测评团队：</p>
-			<p class="user-product-baseinfo">测评地点：</p>
+		<div class="row" ng-if="productPubReport != null">
+			<p class="user-product-baseinfo">测评日期：{{productPubReport.date}}</p>
+			<p class="user-product-baseinfo">测评团队：{{productPubReport.team}}</p>
+			<p class="user-product-baseinfo">测评地点：{{productPubReport.site}}</p>
 		</div>
 	</div>
 	<div class="common-block-40">
 		<div class="row">
 			<p class="user-product-subtitle">用户测评：</p>
+			<p class="user-product-subtitle" ng-if="productPriReport == null">&nbsp;&nbsp;&nbsp;&nbsp;目前该产品尚未申请用户测评</p>
 		</div>
+		<div ng-if="productPriReport != null">
 		<div class="row user-product-comment">
 			<div class="row user-product-commentall">
 				<p class="user-product-title">综合：</p>
 				<div class="star-info" star rating-value="ratingVal" max="5" readonly=true></div>
-			</div>
-			<div class="row">
-				
 			</div>
 		</div>
 		<div class="user-product-comment2"> 
@@ -82,8 +87,9 @@
 			</div>
 
 		</div>
+		</div>
 	</div>
-	<div class="common-block-40">
+	<div class="common-block-40" ng-if="productPriReport != null">
 		<div class="row">
 			<p class="user-product-subtitle">发表评论：</p>
 		</div>
