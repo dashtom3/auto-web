@@ -46,7 +46,7 @@ app.filter("trustHtmlFilter", ['$sce', function($sce) {
 angular.module('auto-biz-user')
 .filter('newsFirstFilter', function() {
   return function(input) {
-    if(input=="1") return "原创";
+    if(input== true ) return "原创";
     else return "摘抄";
   };
 });

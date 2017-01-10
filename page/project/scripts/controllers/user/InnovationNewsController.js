@@ -23,7 +23,7 @@ function InnovationNewsController($scope,CompanyNewsService) {
 	loadCompanyNewsData($scope.cmpNews.pagePerNum,$scope.cmpNews.currentPage);
 	function loadCompanyNewsData(pagePerNum,currentPage){
 		console.log("readData");
-		CompanyNewsService.getCompanyNewsList("","","","","",$scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
+		CompanyNewsService.getCompanyNewsList("","","","","1",$scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
 			if($scope.cmpNewsList){
 				$scope.cmpNewsList = $scope.cmpNewsList.concat(result.list);
 			}else{

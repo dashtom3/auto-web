@@ -9,6 +9,7 @@ function companyListController($scope,CompanyService) {
       //审核分类、行业分类
       $scope.passFlag = '';
       $scope.companyType = '';
+      $scope.type="";
       //分页
 	    $scope.pageSize = 10;
 	    $scope.total = result.totalNum;
@@ -20,7 +21,7 @@ function companyListController($scope,CompanyService) {
   		"optionList":[
         {
   				"name":"全部",
-  				"id":'',
+  				"id":"",
   			},
         {
   				"name":"已通过",
@@ -32,7 +33,7 @@ function companyListController($scope,CompanyService) {
   			},
   			{
   				"name":"未通过",
-  				"id":"－1",
+  				"id":"-1",
       }]
   	},
   	{
@@ -152,6 +153,11 @@ function companyListController($scope,CompanyService) {
   //通过/否决审核
   $scope.passUser = function(id,passFlag) {
     //alert('pass:' + passFlag + '!');
-    CompanyService.passUser(id,passFlag);
+    CompanyService.passCompany(id,passFlag).then(function(result){
+        CompanyService.getCompanyList(10,$scope.currentPage,$scope.passFlag,$scope.type,'').then(function(result){
+          $scope.companyList = result.list;
+          $scope.total = result.totalNum;
+        });
+    })
   }
 }

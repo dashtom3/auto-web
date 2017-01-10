@@ -50,6 +50,22 @@ angular.module("auto-biz-user")
       });
       return deferred.promise;
   }
+  this.changeCompanyProductsStateAdmin = function(productId,state){
+    var deferred = $q.defer();
+    state = ""+state;
+     var urlStr = GlobalService.getURLStr([["productId",productId],["state",state],["token",AuthService.getToken()]]);
+    $http.get(GlobalService.baseUrl+'product/modify/online/admin?'+urlStr).success(function (res) {
+        console.log("改变产品状态");
+        if(res.callStatus == "SUCCEED"){
+          deferred.resolve(res.data);
+        }else{
+          alert("您好，您访问的内容出错");
+        }
+      }).error(function (res){
+        alert("您好，您访问的内容出错");
+      });
+      return deferred.promise;
+  }
   this.deleteCompanyProduct = function (productId) {
     var deferred = $q.defer();
     var urlStr = GlobalService.getURLStr([["productId",productId],["token",AuthService.getToken()]]);

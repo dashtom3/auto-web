@@ -36,6 +36,21 @@ angular.module("auto-biz-user")
       });
       return deferred.promise;
   }
+  this.changeCompanyPubReportStateAdmin = function(reportId,isOnline){
+    var deferred = $q.defer();
+     var urlStr = GlobalService.getURLStr([["reportId",reportId],["isOnline",isOnline],["token",AuthService.getToken()]]);
+    $http.get(GlobalService.baseUrl+'report/public/modify/online/admin?'+urlStr).success(function (res) {
+        console.log("改变测评状态");
+        if(res.callStatus == "SUCCEED"){
+          deferred.resolve(res.data);
+        }else{
+          alert("您好，您访问的内容出错");
+        }
+      }).error(function (res){
+        alert("您好，您访问的内容出错");
+      });
+      return deferred.promise;
+  }
   this.getCompanyPubReportDetail = function(productId){
     var deferred = $q.defer();
     $http.get(GlobalService.baseUrl + 'report/public/list/1/1?productId='+productId).success(function(res){

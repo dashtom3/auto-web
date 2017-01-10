@@ -34,36 +34,40 @@
 		<table class="table table-striped cmp-table" >
 			<thead >
 				<tr>
-					<th class="col-lg-1">测评名称</th>
-    				<th class="col-lg-1">所属公司</th>
-					<th class="col-lg-1">产品名称</th>
-    				<th class="col-lg-1">测评描述</th>
-					<th class="col-lg-1">测评日期</th>
-					<th class="col-lg-1">测评类型</th>
-    				<th class="col-lg-1">测评状态</th>
-    				<th class="col-lg-1">测评人数信息</th>
-    				<th class="col-lg-1">查看详情</th> 
-    				<th class="col-lg-1">用户审核</th>
-    				<th class="col-lg-1">测评审核</th>
+					<th >测评名称</th>
+    				<th >所属公司</th>
+					<th >产品名称</th>
+    				<th >测评描述</th>
+					<th >测评起止日期</th>
+					<th >测评类型和地址</th>
+    				<th >上线状态</th>
+    				<th >审核状态</th>
+    				<th >测评人数信息</th>
+    				<th >查看详情</th> 
+    				<th >用户审核</th>
+    				<th >测评审核</th>
 				</tr>
 			</thead>
 			<tbody>			
   				<tr ng-repeat="priReport in priReportList | filter: searchWord">
     				<td>{{priReport.title}}</td>
-					<td>{{pubReport.companyName}}</td>
-   				 	<td>{{priReport.product}}</td>
+    				<td><a href="/companyInfo/{{priReport.companyId}}" target="_blank">点击链接</a></td>
+    				<td><a href="/companyProduct/{{priReport.productId}}" target="_blank">点击链接</a></td>
     				<td>{{priReport.desc}}</td>
-    				<td>{{priReport.date}}</td>
-    				<td>{{pubReport.type}}</td>
-					<td>{{priReport.state}}</td>
+    				<td>{{priReport.dateStart | date:'yyyy-MM-dd' }}～{{priReport.dateEnd | date:'yyyy-MM-dd'}}</td>
+    				<td>{{priReport.type | userTestTypeFilter}}/{{priReport.address}}</td>
+					<td>{{priReport.isOnline | statusFilter2}}</td>
+					<td>{{priReport.state | statusFilter}}</td>
    					 <td><p>人数上限：{{priReport.maxUserNum}}</p>
-       					 <p>报名人数：{{priReport.signUserNum}}</p>
-       					 <p>通过人数：{{priReport.passUserNum}}</p>
+       					 <p ng-if="priReport.signUserNum">报名人数：{{priReport.signUserNum}}</p>
+       					 <p ng-if="priReport.passUserNum">通过人数：{{priReport.passUserNum}}</p>
+       					 <p ng-if="!priReport.signUserNum">报名人数：0</p>
+       					 <p ng-if="!priReport.passUserNum">通过人数：0</p>
     				</td>
     				<td>
 						<div class="row">
 							<div class="col-lg-2 col-lg-offset-2">
-								<button class="m-img-btn" ng-click="setCurrentPriReport(pubReport)" data-toggle="modal" data-target="#infoModal"> 
+								<button class="m-img-btn" ng-click="setCurrentPriReport(priReport)" data-toggle="modal" data-target="#infoModal"> 
 									<img class="img-md-logo" src="/page/project/images/company/view.png">
 								</button>
 							</div>
@@ -113,7 +117,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 					&times;
 				</button>
-	            info...
+	            {{currentPriReport.title}}
 			</div>
 			<div class="modal-body">
 				{{currentPriReport.desc}}

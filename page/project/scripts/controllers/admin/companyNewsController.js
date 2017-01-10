@@ -141,7 +141,13 @@ function companyNewsController($scope,CompanyNewsService) {
   }
   //资讯上线／下线
   $scope.setNewsState = function(id,newState) {
-    CompanyNewsService.changeCompanyNewsState(id,newState);
+    CompanyNewsService.changeCompanyNewsStateAdmin(id,newState).then(function(result){
+      CompanyNewsService.getCompanyNewsList("","","",$scope.companyType,$scope.passFlag,"","","",10,$scope.currentPage)
+      .then(function(result){
+      $scope.newsList = result.list;
+      $scope.total = result.totalNum;
+      });
+    })
   }
 	//分页
   $scope.changePage = function(page){

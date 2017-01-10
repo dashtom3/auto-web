@@ -86,7 +86,13 @@ function companyPubReportController($scope,CompanyPubReportService) {
   }
   //测评上线／下线
   $scope.setPubReportState = function(id,newState) {
-    CompanyPubReportService.changeCompanyPubReportState(id,newState);
+    CompanyPubReportService.changeCompanyPubReportStateAdmin(id,newState).then(function(result){
+         CompanyPubReportService.getCompanyPubReportList("",$scope.passFlag,"","","","","","",10,$scope.currentPage)
+            .then(function(result){
+            $scope.pubReportList = result.list;
+            $scope.total = result.totalNum;
+          });
+    });
   }
   //分页
   $scope.changePage = function(page){

@@ -115,7 +115,7 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
 
 	//获取企业新闻
 	function getCompanyNewsData(pagePerNum,currentPage){
-		CompanyNewsService.getCompanyNewsList("","","","","","","","",pagePerNum,currentPage).then(function(result){
+		CompanyNewsService.getCompanyNewsList("","","","",true,"","","",pagePerNum,currentPage).then(function(result){
 			if($scope.cmpNews.list){
 				$scope.cmpNews.list = $scope.cmpNews.list.concat(result.list);
 			}else{

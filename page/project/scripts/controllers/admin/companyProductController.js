@@ -138,7 +138,13 @@ function companyProductController($scope,CompanyProductsService) {
   }
   //产品上线／下线
   $scope.setProductState = function(id,newState) {
-    CompanyProductsService.changeCompanyProductsState(id,newState);
+    CompanyProductsService.changeCompanyProductsStateAdmin(id,newState).then(function(result){
+        CompanyProductsService.getCompanyProductsList("",$scope.companyType,$scope.passFlag,"","","","","",10,$scope.currentPage)
+          .then(function(result){
+          $scope.productsList = result.list;
+          $scope.total = result.totalNum;
+        });
+    })
   }
   //分页
   $scope.changePage = function(page){

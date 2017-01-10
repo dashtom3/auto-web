@@ -28,7 +28,7 @@ function userListController($scope,UserService) {
   			},
   			{
   				"name":"未通过",
-  				"id":"－1",
+  				"id":"-1",
       }]
   	}
   ];
@@ -79,12 +79,20 @@ function userListController($scope,UserService) {
   //通过/否决审核
   $scope.passUser = function(id,passFlag) {
     //alert('pass:' + passFlag + '!');
-    UserService.passUser(id,passFlag);
+    UserService.passUser(id,passFlag).then(function(result){
+      UserService.getUserList(10,$scope.currentPage,$scope.type,"").then(function(result){
+              $scope.userList = result.list;
+              $scope.total = result.totalNum;});
+    })
   }
   //用户权限更改
   $scope.updateUserType = function(id,newType) {
     //alert(newType);
-    UserService.updateUserType(id,newType);
+    UserService.updateUserType(id,newType).then(function(result){
+          UserService.getUserList(10,$scope.currentPage,$scope.type,"").then(function(result){
+              $scope.userList = result.list;
+              $scope.total = result.totalNum;});
+    });
   }
   //分页
   $scope.changePage = function(page){
@@ -105,5 +113,4 @@ function userListController($scope,UserService) {
 	    $scope.total = result.totalNum;
     });
   }
-
 }
