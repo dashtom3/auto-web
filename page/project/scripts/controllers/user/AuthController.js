@@ -24,26 +24,33 @@ function AuthController($scope,AuthService,UserService,$location,FileService){
   }
   $scope.uploadFirPic = function(file){
     if(file){
-      $scope.firpic = file;
+      
     FileService.uploadFile(file).then(function(result) {
         $scope.user.idImg1  = result.urls[0];
+        $scope.firpic = file;
       });
     }
   }
   $scope.uploadSecPic = function(file){
     if(file){
-      $scope.secpic = file;
+      
       FileService.uploadFile(file).then(function(result) {
         $scope.user.idImg2 = result.urls[0];
+        $scope.secpic = file;
       });
     }
   }
   $scope.clickRegisterUser = function(){
     $scope.user.userType = $scope.regUserType[1];
     console.log($scope.user);
-  	UserService.registerUser($scope.user).then(function(){
-  		$location.path("/innovation");
-  	})
+    if($scope.user.idImg1 == "" || $scope.user.idImg2 == ""){
+      alert("请上传用户认证照片");
+    }else{
+      UserService.registerUser($scope.user).then(function(){
+      $location.path("/innovation");
+      })
+    }
+  	
   }
   $scope.clickLoginCompany = function(){
     console.log($scope.cmp);

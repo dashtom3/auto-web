@@ -12,7 +12,8 @@
 			</button>
 		</div>
 	</div>
-	<br></br>
+	<br>
+	<br>
 	<!--分类-->
 	<div class="detail-container">
 	<div class="ino-nav-list">
@@ -149,8 +150,9 @@
 					{{currentUser.name}}
 				</h4>
 			</div>
-			<div class="modal-body">
-				<div>
+
+			<div class="modal-footer">
+				<div class="row">
 					审核：
 				<button ng-click="passUser(currentUser._id,'1')" type="button" class="btn btn-success" data-dismiss="modal">
 					通过
@@ -159,7 +161,7 @@
 					否决
 				</button>
 				</div>
-				<div>
+				<div class="row">
 					更改权限：
 				<button ng-click="updateUserType(currentUser._id,'normal')" type="button" class="btn btn-primary" data-dismiss="modal">
 					普通用户

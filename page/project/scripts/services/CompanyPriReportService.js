@@ -22,22 +22,37 @@ angular.module("auto-biz-user")
       });
       return deferred.promise;
   };
-  //设置审核状态 true false
-  // this.changeCompanyPriReportState = function(reportId,type){
-  //   var deferred = $q.defer();
-  //    var urlStr = GlobalService.getURLStr([["reportId",reportId],["isOnline",isOnline],["token",AuthService.getToken()]]);
-  //   $http.get(GlobalService.baseUrl+'report/private/modify/online?'+urlStr).success(function (res) {
-  //       console.log("改变测评状态");
-  //       if(res.callStatus == "SUCCEED"){
-  //         deferred.resolve(res.data);
-  //       }else{
-  //         alert("您好，您访问的内容出错");
-  //       }
-  //     }).error(function (res){
-  //       alert("您好，您访问的内容出错");
-  //     });
-  //     return deferred.promise;
-  // }
+  //设置上下线
+  this.changeCompanyPriReportOnline = function(reportId,isOnline){
+    var deferred = $q.defer();
+     var urlStr = GlobalService.getURLStr([["reportId",reportId],["isOnline",isOnline],["token",AuthService.getToken()]]);
+    $http.get(GlobalService.baseUrl+'report/private/modify/online?'+urlStr).success(function (res) {
+        console.log("改变测评状态");
+        if(res.callStatus == "SUCCEED"){
+          deferred.resolve(res.data);
+        }else{
+          alert("您好，您访问的内容出错");
+        }
+      }).error(function (res){
+        alert("您好，您访问的内容出错");
+      });
+      return deferred.promise;
+  }
+  this.changeCompanyPriReportState = function(reportId,state){
+    var deferred = $q.defer();
+     var urlStr = GlobalService.getURLStr([["reportId",reportId],["state",state],["token",AuthService.getToken()]]);
+    $http.get(GlobalService.baseUrl+'report/private/modify/approval?'+urlStr).success(function (res) {
+        console.log("改变测评状态");
+        if(res.callStatus == "SUCCEED"){
+          deferred.resolve(res.data);
+        }else{
+          alert("您好，您访问的内容出错");
+        }
+      }).error(function (res){
+        alert("您好，您访问的内容出错");
+      });
+      return deferred.promise;
+  }
   this.getCompanyPriReportDetail = function(reportId){
     var deferred = $q.defer();
     $http.get(GlobalService.baseUrl + 'report/private/detail?reportId='+reportId).success(function(res){

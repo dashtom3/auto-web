@@ -12,7 +12,8 @@
 			</button>
 		</div>
 	</div>
-	<br></br>
+	<br>
+	<br>
 	<!--分类-->
 	<div class="detail-container">
 	<div class="ino-nav-list">
@@ -21,7 +22,7 @@
 			{{type.name}}：
 		</label>
 		<div class="admin-nav-options-div">
-			<label class="nav-option-label" ng-class="{'active':isCurrentOption(type.name,option.name)}" ng-repeat="option in type.optionList" ng-click="getCompanyPubReportList(type.name,option,'')">	
+			<label class="nav-option-label" ng-class="{'active':isCurrentOption(type.name,option.name)}" ng-repeat="option in type.optionList" ng-click="getCompanyPriReportList(type.name,option,'')">	
 				{{option.name}}
 			</label>
 		</div>
@@ -120,10 +121,27 @@
 	            {{currentPriReport.title}}
 			</div>
 			<div class="modal-body">
-				{{currentPriReport.desc}}
+				
 			</div>
 			<div class="modal-footer">
-				
+				<div class="row">
+					审核：
+				<button ng-click="passPriReport(currentPriReport._id,'1')" type="button" class="btn btn-success" data-dismiss="modal">
+					通过
+				</button>
+				<button ng-click="passPriReport(currentPriReport._id,'-1')" type="button" class="btn btn-danger" data-dismiss="modal">
+					否决
+				</button>
+				</div>
+				<div class="row">
+					设置上下线：
+				<button ng-click="setPriReport(currentPriReport._id,'true')" type="button" class="btn btn-primary" data-dismiss="modal">
+					上线
+					</button>
+				<button ng-click="setPriReport(currentPriReport._id,'false')" type="button" class="btn btn-primary" data-dismiss="modal">
+					下线
+				</button>
+				</div>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->

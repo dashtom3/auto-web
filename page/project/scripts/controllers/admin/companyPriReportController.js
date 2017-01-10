@@ -22,12 +22,15 @@ function companyPriReportController($scope,CompanyService,CompanyPriReportServic
   				"id":'',
   			},
         {
-  				"name":"上线",
+  				"name":"已通过",
   				"id":"1",
   			},
   			{
-  				"name":"下线",
+  				"name":"待审核",
   				"id":"0",
+      },{
+          "name":"未通过",
+          "id":"-1",
       }]
   	}
   ];
@@ -54,7 +57,7 @@ function companyPriReportController($scope,CompanyService,CompanyPriReportServic
   	return false;
   };
   //获取列表:按上线状态、搜索
-   $scope.getCompanyPubReportList = function(type,option,searchWord){
+   $scope.getCompanyPriReportList = function(type,option,searchWord){
     //高亮选中分类
     for ( i in $scope.currentOptionList){
   		if ($scope.currentOptionList[i].type == type){
@@ -68,9 +71,9 @@ function companyPriReportController($scope,CompanyService,CompanyPriReportServic
     }
     //console.log(isPassed+'###'+newType);
     //请求对应数据
-    CompanyPubReportService.getCompanyPubReportList(searchWord,isPassed,"","","","","","",10,1)
+    CompanyPriReportService.getCompanyPriReportList("",searchWord,"","","","","","","","","",isPassed,"","","","","",10,1)
       .then(function(result){
-      $scope.pubReportList = result.list;
+      $scope.priReportList = result.list;
       //记录审核分类和行业分类选择，为分页做准备
       $scope.passFlag = isPassed;
       //重置为第一页
@@ -106,6 +109,29 @@ function companyPriReportController($scope,CompanyService,CompanyPriReportServic
     else{
         $scope.contentFilter = '-1';
     }
+  }
+  //设置审核
+  $scope.passPriReport = function(id,state){
+    CompanyPriReportService.changeCompanyPriReportState(id,state).then(function(result){
+      CompanyPriReportService.getCompanyPriReportList("",searchWord,"","","","","","","","","",state,"","","","","",10,$scope.currentPage)
+      .then(function(result){
+        $scope.priReportList = result.list;
+      //记录审核分类和行业分类选择，为分页做准备
+        $scope.passFlag = state;
+        $scope.total = result.totalNum;
+      });
+    });
+  }
+  $scope.setPriReport = function(id,isOnline){
+     CompanyPriReportService.changeCompanyPriReportOnline(id,isOnline).then(function(result){
+        CompanyPriReportService.getCompanyPriReportList("",searchWord,"","","","","","","","","",state,"","","","","",10,$scope.currentPage)
+        .then(function(result){
+        $scope.priReportList = result.list;
+      //记录审核分类和行业分类选择，为分页做准备
+        $scope.passFlag = state;
+        $scope.total = result.totalNum;
+        });
+     })
   }
 //   //搜索
 //   $scope.getPriReportByName = function(name) {
