@@ -44,13 +44,13 @@
 	<div class="common-block-40">
 		<div class="row">
 			<p class="user-product-subtitle">用户测评：</p>
-			<p class="user-product-subtitle" ng-if="productPriReport == null">&nbsp;&nbsp;&nbsp;&nbsp;目前该产品尚未申请用户测评</p>
-			<p class="user-product-subtitle" ng-if="productPriReport != null && commentLength == 0 ">&nbsp;&nbsp;&nbsp;&nbsp;尚无用户评论</p>
+			<p class="user-product-subtitle" ng-if="getStatus(productPriReport) == 'noReport'">&nbsp;&nbsp;&nbsp;&nbsp;目前该产品尚未申请用户测评</p>
+			<p class="user-product-subtitle" ng-if="getStatus(productPriReport) == 'offline'">&nbsp;&nbsp;&nbsp;&nbsp;测评已下线</p>
+			<p class="user-product-subtitle" ng-if="getStatus(productPriReport) == 'auditing'">&nbsp;&nbsp;&nbsp;&nbsp;测评审核中</p>
+			<p class="user-product-subtitle" ng-if="getStatus(productPriReport) == 'unstart'">&nbsp;&nbsp;&nbsp;&nbsp;测评尚未开始</p>
+			<p class="user-product-subtitle" ng-if="getStatus(productPriReport) == 'noComment'">&nbsp;&nbsp;&nbsp;&nbsp;尚无用户评论</p>
 		</div>
-		<div class="row">
-			<p class="user-product-subtitle" ng-if="productPriReport != null && commentLength == 0 ">&nbsp;&nbsp;&nbsp;&nbsp;尚无用户评论</p>
-		</div>
-		<div ng-if="productPriReport != null && commentLength != 0">
+		<div ng-if="getStatus(productPriReport) == 'showComment'">
 			<div class="row user-product-comment">
 				<div class="row user-product-commentall">
 					<p class="user-product-title">综合：</p>
@@ -82,7 +82,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="common-block-40" ng-if="productPriReport != null">
+	<div class="common-block-40" ng-if="getStatus(productPriReport) == 'showComment'">
 		<div class="row">
 			<p class="user-product-subtitle">发表评论：</p>
 		</div>

@@ -8,6 +8,34 @@ function CompanyProductDetailController($scope,GlobalService,$routeParams,Compan
      }
      $scope.commentLength = 0;
 
+
+    $scope.getStatus = function(privateReport){
+        if (!privateReport){
+            return 'noReport'
+        }
+        if (privateReport.isOnline == false){
+            return 'offline'
+        }
+        if (privateReport.state == 0 || privateReport.state == -1){
+            return 'auditing'
+        }
+        if (!isStart(privateReport.dateStart)){
+            return 'unstart'
+        }
+        if($scope.commentList.length == 0){
+            return 'noComment'
+        }
+        return 'showComment';
+    };
+
+    function isStart(timeStamp){
+        var nowTime =new Date().getTime();
+        if (timeStamp > nowTime){
+            return false;
+        }
+        return true;
+    }
+
     if($routeParams.id != null){
         CompanyProductsService.getCompanyProductsDetail($routeParams.id).then(function(result){
            $scope.productDetail = result;
