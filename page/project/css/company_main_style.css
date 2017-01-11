@@ -131,6 +131,11 @@
 .cmp-table > thead{
 	background-color: rgb(221,221,221); 
 }
+.cmp-table > thead > tr > th,
+.cmp-table > tbody > tr > td{
+	vertical-align: middle;
+	text-align: center;
+}
 .cmp-table>tbody>tr:nth-child(odd)>td{
 	background-color: #fff;
 }	

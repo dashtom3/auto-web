@@ -39,7 +39,7 @@
 						<span>{{item.title}}</span>
 					</td>
 					<td>
-						<span> {{getName(item.productId)}}</span>
+						<span> {{item.productId.name}}</span>
 					</td>
 					<td>
 						<span> {{item.dateStart | date:'yyyy/MM/dd'}} - {{item.dateEnd | date:'yyyy/MM/dd'}}</span>
@@ -62,13 +62,13 @@
 								<span class="span-small-left">报名人数：</span>
 							</div>
 							<div class="col-lg-4 div-small-right">
-								<span>{{item.signUser.length}}</span>
+								<span>{{item.signUserNum}}</span>
 							</div>
 							<div class="col-lg-8 div-small-left" >
 								<span >审核通过人数：</span>
 							</div>
 							<div class="col-lg-4 div-small-right">
-								<span>{{item.passUser.length}}</span>
+								<span>{{item.passUserNum}}</span>
 							</div>
 						</div>
 					</td>

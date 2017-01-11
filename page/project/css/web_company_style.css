@@ -91,6 +91,11 @@
 	height: 65px;
 	margin: 20px;
 }
+.cmp-discover-table > thead > tr > th,
+.cmp-discover-table > tbody > tr > td{
+	vertical-align: middle;
+	text-align: center;
+}
 .cmp-discover-table > tbody p,
 .cmp-discover-table > tbody label{
 	font-size: 14px;

@@ -1,5 +1,5 @@
 
-var app = angular.module('auto-biz-user', ['ngRoute','bw.paging','ngFileUpload']);
+var app = angular.module('auto-biz-user', ['ngRoute','bw.paging','ngFileUpload','ui.bootstrap']);
 
 app.config(function ($locationProvider,$httpProvider,$routeProvider) {
     console.log("载入angular config");

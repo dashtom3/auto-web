@@ -1,10 +1,10 @@
-angular.module('auto-biz-user').directive('star', function () {
+angular.module('auto-biz-user').directive('star', function ($timeout) {
   return {
     template: '<ul class="rating" ng-mouseleave="leave()">' +
-        '<li ng-repeat="star in stars" ng-class="star" ng-click="click($index + 1)" ng-mouseover="over($index + 1)">' +
-        '\u2605' +
-        '</li>' +
-        '</ul>',
+    '<li ng-repeat="star in stars" ng-class="star" ng-click="click($index + 1)" ng-mouseover="over($index + 1)">' +
+    '\u2605' +
+    '</li>' +
+    '</ul>',
     scope: {
       ratingValue: '=',
       max: '=',
@@ -32,21 +32,22 @@ angular.module('auto-biz-user').directive('star', function () {
       elem.css("text-align", "center");
       var updateStars = function () {
         scope.stars = [];
-        for (var i = 0; i < scope.max; i++) {
-          scope.stars.push({
-            filled: i < scope.ratingValue
-          });
-        }
+          for (var i = 0; i < scope.max; i++) {
+            scope.stars.push({
+              filled: i < scope.ratingValue
+            });
+          }
       };
       updateStars();
- 
+
       scope.$watch('ratingValue', function (oldVal, newVal) {
-        if (newVal) {
+        if(newVal != oldVal){
           updateStars();
+          
         }
       });
       scope.$watch('max', function (oldVal, newVal) {
-        if (newVal) {
+        if(newVal){
           updateStars();
         }
       });

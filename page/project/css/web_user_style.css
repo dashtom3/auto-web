@@ -873,4 +873,7 @@
 .user-product-avrscrore > p{
     float: left;
 }
-
+.cmp-reg-title-logo{
+    width: 100%;
+    height: 100%;
+}
