@@ -122,11 +122,13 @@
 		from {transform: rotate(0)}
 		to{transform: rotate(360deg)}
 	}
-@media (-webkit-min-device-pixel-ratio: 1.5),(min--moz-device-pixel-ratio: 1.5),(-o-min-device-pixel-ratio: 3/2),(min-resolution: 1.5dppx) {
-  .isloading-overlay {
-    background-image: url("../images/web_main_waiting.png")!important;
-    background-size: 80px 80px!important
-  }
+	@media (-webkit-min-device-pixel-ratio: 1.5),(min--moz-device-pixel-ratio: 1.5),(-o-min-device-pixel-ratio: 3/2),(min-resolution: 1.5dppx) {
+	  .isloading-overlay {
+	    background-image: url("../images/web_main_waiting.png")!important;
+	    background-size: 80px 80px!important
+	  }
+
+	}
   .common-block-40{
   	margin: auto;
   	height: auto;
@@ -136,4 +138,3 @@
   	background-color: white;
   	margin-bottom: 12px;
   }
-}
