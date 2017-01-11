@@ -8,7 +8,6 @@ angular.module("auto-biz-user")
       ["endDateStart",endDateStart],["endDateEnd",endDateEnd],["maxUserNum_Min",maxUserNum_Min],["maxUserNum_Max",maxUserNum_Max],["argc",argc],["state",state],["signUser",signUser],["passUser",passUser],
       ["startTime",startTime],["endTime",endTime],["companyId",companyId]]);
     var url = GlobalService.baseUrl+'report/private/list/'+numPerPage+'/'+pageNumber+'?'+urlStr;
-    console.log(url);
     $http.get(url).success(function (res) {
         console.log("获取用户测评列表");
         console.log(res);
@@ -27,6 +26,21 @@ angular.module("auto-biz-user")
     var deferred = $q.defer();
      var urlStr = GlobalService.getURLStr([["reportId",reportId],["isOnline",isOnline],["token",AuthService.getToken()]]);
     $http.get(GlobalService.baseUrl+'report/private/modify/online?'+urlStr).success(function (res) {
+        console.log("改变测评状态");
+        if(res.callStatus == "SUCCEED"){
+          deferred.resolve(res.data);
+        }else{
+          alert("您好，您访问的内容出错");
+        }
+      }).error(function (res){
+        alert("您好，您访问的内容出错");
+      });
+      return deferred.promise;
+  }
+  this.changeCompanyPriReportOnlineAdmin = function(reportId,isOnline){
+    var deferred = $q.defer();
+     var urlStr = GlobalService.getURLStr([["reportId",reportId],["isOnline",isOnline],["token",AuthService.getToken()]]);
+    $http.get(GlobalService.baseUrl+'report/private/modify/online/admin?'+urlStr).success(function (res) {
         console.log("改变测评状态");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);

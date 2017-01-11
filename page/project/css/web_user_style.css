@@ -501,6 +501,19 @@
     vertical-align: top;
     margin-left: 10px;
 }
+.cmp-reg-cardSecValue{
+    height: 50px;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    width: 135px;
+    display: inline-block;
+    font-family: "DengXian";
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 25px;
+    vertical-align: top;
+    margin-left: 10px;
+}
 
 .cmp-reg-cardDate{
     width: 40px;

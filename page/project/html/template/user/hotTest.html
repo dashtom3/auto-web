@@ -7,22 +7,22 @@
 					<div class="cmp-reg-cardBlockImageCover"></div>
 					<div class="cmp-reg-cardCompanyIcon">   </div>
 					<div class="cmp-reg-cardCompany">
-						<a href="/companyInfo/{{test.companyId}}" target="_blank">{{test.companyId}}</a>
+						<a href="/companyInfo/{{test.companyId}}" target="_blank">{{test.companyId.longName}}</a>
 					</div>
 				</div>
 
 				<div class="cmp-reg-cardContent">
 					<div class="cmp-reg-cardTitle">{{test.title}} </div>
 					<label class="cmp-reg-cardLabel">参与人数</label>
-					<div class="cmp-reg-cardValue">{{test.passUser.length}} / {{test.maxUserNum}}</div>
+					<div class="cmp-reg-cardValue">{{test.signUserNum}}／{{test.maxUserNum}}</div>
 					<label class="cmp-reg-cardLabel">测评类型</label>
 					<div class="cmp-reg-cardValue">{{test.type | userTestTypeFilter}}</div>
 					<label class="cmp-reg-cardLabel">测评时段</label>
-					<div class="cmp-reg-cardValue">{{test.dateStart|date:'yyyy/MM/dd'}}-{{test.dateEnd |date:'yyyy/MM/dd'}}</div>
+					<div class="cmp-reg-cardSecValue">{{test.dateStart|date:'yyyy/MM/dd'}}-{{test.dateEnd |date:'yyyy/MM/dd'}}</div>
 					<label class="cmp-reg-cardLabel">地点</label>
-					<div class="cmp-reg-cardValue">{{test.address}}</div>
-					<button class="cmp-reg-fullWidthRedButton" ng-if="test.state == 0" ng-click="signTest(test)" data-toggle="modal" data-target="#joinTestModal">立即参与</button>
-					<label class="cmp-reg-fullWidthWhiteLabel" ng-if="test.state == 1">已结结束</label>
+					<div class="cmp-reg-cardSecValue">{{test.address}}</div>
+					<button class="cmp-reg-fullWidthRedButton" ng-if="test.dateEnd > timeNow" ng-click="signTest(test)" data-toggle="modal" data-target="#joinTestModal">立即参与</button>
+					<label class="cmp-reg-fullWidthWhiteLabel" ng-if="test.dateEnd <= timeNow">已经结束</label>
 				</div>
 			</div>
 		</div>
@@ -60,15 +60,15 @@
 						{{currentTest.title}}
 					</div>
 					<div class="join-test-cmp">
-						<img src="{{currentTest.companyInfo.logo}}" alt="logo">
-						<label>{{currentTest.companyInfo.longName}}</label>
+						<img src="{{currentTest.companyId.logo}}" alt="logo">
+						<label>{{currentTest.companyId.longName}}</label>
 					</div>
 					<div class="join-test-introduce">
 						<p>{{currentTest.desc}}<p>
 					</div>
 					<div class="join-test-config">
 						<label class="join-test-config-label control-label">参与人数：</label>
-						<label class="join-test-config-value control-label" >{{currentTest.passUser.length}} / {{currentTest.maxUserNum}}</label>
+						<label class="join-test-config-value control-label" >{{currentTest.signUserNum}} / {{currentTest.maxUserNum}}</label>
 					</div>
 					<div class="join-test-config">
 						<label class="join-test-config-label control-label">测评时段：</label>

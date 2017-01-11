@@ -67,3 +67,12 @@ angular.module('auto-biz-user')
     else return "暂无投融资需求";
   };
 });
+angular.module('auto-biz-user')
+.filter('countFilter', function() {
+  return function(input) {
+    if(input == null){
+      return 0;
+    }
+    return input.length;
+  };
+});

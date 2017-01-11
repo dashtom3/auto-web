@@ -84,13 +84,17 @@ function companyPriReportController($scope,CompanyService,CompanyPriReportServic
   $scope.setCurrentPriReport = function(data){
     $scope.currentPriReport = data;
   }
-
+  $scope.getSignUser = function(priReport){
+    $scope.currentPriReport = priReport;
+    CompanyPriReportService.getCompanyPriReportToPassList(priReport._id).then(function(result){
+      $scope.signUserList = result;
+    })
+  } 
   //获取用户测评评论
   $scope.getPriReportContent = function(flag) {
   	//alert('user:' + (user || 'world') + '!');
     if(flag=='1'){
         $scope.userFilter = '1';
-        alert('haha'+flag);
     }
     else{
         $scope.userFilter = '0';
@@ -104,7 +108,6 @@ function companyPriReportController($scope,CompanyService,CompanyPriReportServic
     }
     else if(flag=='0'){
         $scope.contentFilter = '0';
-        alert('haha'+flag);
     }
     else{
         $scope.contentFilter = '-1';
@@ -113,22 +116,23 @@ function companyPriReportController($scope,CompanyService,CompanyPriReportServic
   //设置审核
   $scope.passPriReport = function(id,state){
     CompanyPriReportService.changeCompanyPriReportState(id,state).then(function(result){
-      CompanyPriReportService.getCompanyPriReportList("",searchWord,"","","","","","","","","",state,"","","","","",10,$scope.currentPage)
+      CompanyPriReportService.getCompanyPriReportList("","","","","","","","","","","",$scope.passFlag,"","","","","",10,$scope.currentPage)
       .then(function(result){
         $scope.priReportList = result.list;
       //记录审核分类和行业分类选择，为分页做准备
-        $scope.passFlag = state;
+        // $scope.passFlag = state;
         $scope.total = result.totalNum;
       });
     });
   }
+  //设置上下线
   $scope.setPriReport = function(id,isOnline){
-     CompanyPriReportService.changeCompanyPriReportOnline(id,isOnline).then(function(result){
-        CompanyPriReportService.getCompanyPriReportList("",searchWord,"","","","","","","","","",state,"","","","","",10,$scope.currentPage)
+     CompanyPriReportService.changeCompanyPriReportOnlineAdmin(id,isOnline).then(function(result){
+        CompanyPriReportService.getCompanyPriReportList("","","","","","","","","","","",$scope.passFlag,"","","","","",10,$scope.currentPage)
         .then(function(result){
         $scope.priReportList = result.list;
       //记录审核分类和行业分类选择，为分页做准备
-        $scope.passFlag = state;
+        //$scope.passFlag = state;
         $scope.total = result.totalNum;
         });
      })

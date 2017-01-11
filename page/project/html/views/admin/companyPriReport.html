@@ -39,57 +39,50 @@
     				<th >所属公司</th>
 					<th >产品名称</th>
     				<th >测评描述</th>
+    				<th >测评参数</th>
 					<th >测评起止日期</th>
 					<th >测评类型和地址</th>
     				<th >上线状态</th>
     				<th >审核状态</th>
     				<th >测评人数信息</th>
-    				<th >查看详情</th> 
-    				<th >用户审核</th>
-    				<th >测评审核</th>
+    				<th >操作</th> 
 				</tr>
 			</thead>
 			<tbody>			
   				<tr ng-repeat="priReport in priReportList | filter: searchWord">
     				<td>{{priReport.title}}</td>
-    				<td><a href="/companyInfo/{{priReport.companyId}}" target="_blank">点击链接</a></td>
-    				<td><a href="/companyProduct/{{priReport.productId}}" target="_blank">点击链接</a></td>
-    				<td>{{priReport.desc}}</td>
+    				<td><a href="/companyInfo/{{priReport.companyId._id}}" target="_blank">{{priReport.companyId.longName}}</a></td>
+    				<td><a href="/companyProduct/{{priReport.productId._id}}" target="_blank">{{priReport.productId.name}}</a></td>
+    				<td>{{priReport.testdesc}}</td>
+    				<td style="width: 100px"><p ng-repeat="priargc in priReport.argc">{{priargc}}</p></td>
     				<td>{{priReport.dateStart | date:'yyyy-MM-dd' }}～{{priReport.dateEnd | date:'yyyy-MM-dd'}}</td>
     				<td>{{priReport.type | userTestTypeFilter}}/{{priReport.address}}</td>
-					<td>{{priReport.isOnline | statusFilter2}}</td>
+					<td>{{priReport.isOnline | statusFilter3}}</td>
 					<td>{{priReport.state | statusFilter}}</td>
-   					 <td><p>人数上限：{{priReport.maxUserNum}}</p>
-       					 <p ng-if="priReport.signUserNum">报名人数：{{priReport.signUserNum}}</p>
-       					 <p ng-if="priReport.passUserNum">通过人数：{{priReport.passUserNum}}</p>
-       					 <p ng-if="!priReport.signUserNum">报名人数：0</p>
-       					 <p ng-if="!priReport.passUserNum">通过人数：0</p>
+   					 <td style="width: 100px"><p>人数上限：{{priReport.maxUserNum}}</p>
+       					 <p ng-if="priReport.signUser != null">报名人数：{{priReport.signUser | countFilter}}</p>
+       					 <p ng-if="priReport.passUser != null">通过人数：{{priReport.passUser | countFilter}}</p>
+       					 <p ng-if="priReport.signUser == null">报名人数：0</p>
+       					 <p ng-if="priReport.passUser == null">通过人数：0</p>
     				</td>
-    				<td>
+    				<td style="width: 80px">
 						<div class="row">
-							<div class="col-lg-2 col-lg-offset-2">
-								<button class="m-img-btn" ng-click="setCurrentPriReport(priReport)" data-toggle="modal" data-target="#infoModal"> 
-									<img class="img-md-logo" src="/page/project/images/company/view.png">
+								<button class="btn btn-sm" ng-click="setCurrentPriReport(priReport)" data-toggle="modal" data-target="#infoModal"> 
+									测评审核
 								</button>
-							</div>
 						</div>
-					</td>
-    				<td>
+						<br>
 						<div class="row">
-							<div class="col-lg-2 col-lg-offset-2">
-								<button class="m-img-btn" data-toggle="modal" data-target="#userModal"> 
-									<img class="img-md-logo" src="/page/project/images/company/view.png">
+								<button class="btn btn-sm" ng-click="getSignUser(priReport)" data-toggle="modal" data-target="#userModal"> 
+									报名审核
 								</button>
-							</div>
 						</div>
-					</td>
-    				<td>
+						<br>
 						<div class="row">
-							<div class="col-lg-2 col-lg-offset-2">
-								<button class="m-img-btn" data-toggle="modal" data-target="#contentModal"> 
-									<img class="img-md-logo" src="/page/project/images/company/view.png">
+							
+								<button class="btn  btn-sm" ng-click="setCurrentPriReport(priReport)" data-toggle="modal" data-target="#contentModal"> 
+									评论审核
 								</button>
-							</div>
 						</div>
 					</td>
 				</tr>
@@ -164,7 +157,7 @@
 		            <tr>
                         <th>用户</th> 
   		            </tr>
-  		            <tr ng-repeat="user in userList | filter: userFilter">
+  		            <tr ng-repeat="user in signUserList | filter: userFilter">
 	                    <td>{{user}}</td>
                     </tr>
 	            </table>

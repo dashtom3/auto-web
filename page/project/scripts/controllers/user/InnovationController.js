@@ -1,4 +1,4 @@
-function InnovationController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyProductsService,CompanyService,CompanyPriReportService) {
+function InnovationController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyProductsService,CompanyService,CompanyPriReportService,AuthService) {
 	console.log("载入InnovationController");
 	//初始化
 	$scope.cmpNews = {
@@ -29,6 +29,7 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
 		totalPage:-1,
 		list:null
 	};
+	$scope.timeNow = new Date().getTime();
 	$scope.cmpProductType = [{
 		current:{name:"全部",id:""},
 		name:"时间：",
@@ -193,12 +194,9 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
  	}
  	//获取用户测评
  	function getCompanyTestsData(testStatus,startTime,testType,pagePerNum,currentPage){
- 		console.log(testStatus);
- 		console.log(startTime);
- 		console.log(testType);
- 		console.log(pagePerNum);
- 		console.log(currentPage);
- 		CompanyPriReportService.getCompanyPriReportList("","",testType,"","","","","","","","",testStatus,"","",startTime,"","",pagePerNum,currentPage).then(function(result){
+ 		CompanyPriReportService.getCompanyPriReportList("","",testType,"","","","","","","","","1","","",startTime,"","",pagePerNum,currentPage).then(function(result){
+ 			$scope.timeNow = new Date().getTime();
+ 			console.log($scope.timeNow);
  			if($scope.cmpTests.list){
  				$scope.cmpTests.list = $scope.cmpTests.list.concat(result.list);
  			}else{
@@ -212,23 +210,24 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
 	$scope.signTest = function(test){
 		$scope.currentTest = test;
 		$scope.testImgList = $scope.currentTest.images;
-		CompanyService.getComppanyById(test.companyId).then(function(result){
-			$scope.currentTest.companyInfo = result;
-		});
+		// CompanyService.getComppanyById(test.companyId).then(function(result){
+		// 	$scope.currentTest.companyInfo = result;
+		// });
 	};	
 	$scope.testSignTest = function(phone,address){
 		if (!phone){
-			alert("手机号");
+			alert("请填写手机号");
 			return;
 		}
-		if (!address){
-			alert("请填地址");
-			return;
+		if(address == null){
+			address = "暂无";
 		}
-		console.log(phone);
-		console.log(address);
-		CompanyPriReportService.signCompanyPriReport($scope.currentTest._id,phone,address).then(function(result){
-			console.log(result);
-		});
+		if(AuthService.getToken() != "guest"){
+			CompanyPriReportService.signCompanyPriReport($scope.currentTest._id,phone,address).then(function(result){
+				alert("申请报名成功，请等待工作人员联系");
+			});
+		}else{
+			alert("用户尚未登录，请注册并且通过审核");
+		}
 	};
 }
