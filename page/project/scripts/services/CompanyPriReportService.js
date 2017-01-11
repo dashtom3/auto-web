@@ -216,7 +216,7 @@ angular.module("auto-biz-user")
           alert("评论失败");
         }
       }).error(function (res){
-        alert("您好，您访问的内容出错");
+        alert("您好，您不是该测评的用户");
       });
       return deferred.promise;
   };

@@ -589,7 +589,7 @@
     transition: box-shadow 0.2s;
 }
 .user-product-main .row{
-    margin: 0px 0px 16px 0px !important; 
+    margin: 0px 0px 16px 0px ; 
 }
 .user-product-logo{
     height: 20px;
@@ -626,7 +626,7 @@
 }
 .user-product-comment{
     background-color: #F6F7F9;
-    height: 80px;
+  /*  height: 80px;*/
 }
 .user-product-comment2{
     border-bottom: solid 1px #ccc;
@@ -668,6 +668,16 @@
 }
 .user-product-comscore p{
     float: left;
+    max-width: 60px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.user-product-comscore p:hover{
+    float: left;
+    max-width: 60px;
+    overflow: visible;
+    text-overflow: inherit;
 }
 .user-product-comscore .star-info{
     float:right;
@@ -699,7 +709,8 @@
     padding: 10px 20px 0px 20px;
     font-size:18px;
     margin-left: 20px; 
-    margin-top: 10px;  
+    margin-top: 10px; 
+    margin-bottom: 0px !important;
 }
 .user-product-pubReport{
     float: right;
@@ -749,6 +760,10 @@
 .star-allInfo{
     display: inline-block; 
     margin: 0px 20px; 
+}
+.big-star-info{
+    display: inline-block; 
+    width: 150px;
 }
 
 .star-info{
@@ -824,5 +839,25 @@
 .user-newsdetail-isfirst{
     float: right;
     color: #C0493A;
+}
+.product-carousel-div{
+    width: 450px;
+    height: 350px;
+}
+.user-product-avrscrore-row{
+    padding: 0px 20px 0px 20px;
+}
+.user-product-avrscrore{
+    float: left;
+    width: 160px;
+}
+.user-product-avrscrore{
+    float: left;
+    margin-right: 20px;
+    min-width: 160px;
+    width: auto;
+}
+.user-product-avrscrore > p{
+    float: left;
 }
 

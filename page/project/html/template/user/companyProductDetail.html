@@ -1,48 +1,31 @@
 <div class="user-product-main" ng-controller="CompanyProductDetailController">
 	<div class="common-block-40">
-	<div class="row">
-		<p class="user-product-title">{{productDetail.name}}</p>
-		<p class="user-product-type">{{productDetail.tag | companyTypeFilter}}</p>
-	</div>	
-	<div class="row">
-		<img  class="user-product-logo" src="{{productDetail.companyId.logo}}">
-		<p class="user-product-baseinfo">{{productDetail.companyId.longName}}</p>
-	</div>
-	<div class="row">
-		<p class="user-product-baseinfo">版本：{{productDetail.version}}</p>
-		<p class="user-product-baseinfo">发布时间：{{productDetail.releaseDate | date:'yyyy-MM-dd'}}</p>
-		<p class="user-product-baseinfo">型号：{{productDetail.model}}</p>
-	</div>
-	<div class="row">
-	<div class="col-xs-7">
-		<div id="carousel-example-generic" class="cmp-carousel-contain carousel" data-ride="carousel">
-					  <!-- Indicators -->
-					  <ol class="carousel-indicators">
-					    <li data-target="#carousel-example-generic"  ng-class="{'active':detailCurrentCarouse == li.num}" ng-repeat="li in testLiList" ng-click="setDetailCurrentCarouse(li.num)"></li>
-					  </ol>
-
-					  <!-- Wrapper for slides -->
-					  <div class="carousel-inner">
-					    <div class="item" ng-class="{'active':detailCurrentCarouse == img.num}" ng-repeat="img in testImgList">
-					      <img src="{{img.url}}">
-					    </div>
-					  </div>
-
-					  <!-- Controls -->
-					  <a class="left carousel-control" ng-click="detailMoveLeft()">
-					    <span class="glyphicon glyphicon-chevron-left" ></span>
-					  </a>
-					  <a class="right carousel-control" ng-click="detailMoveRight()">
-					    <span class="glyphicon glyphicon-chevron-right" ></span>
-					  </a>
+		<div class="row">
+			<p class="user-product-title">{{productDetail.name}}</p>
+			<p class="user-product-type">{{productDetail.tag | companyTypeFilter}}</p>
+		</div>	
+		<div class="row">
+			<img  class="user-product-logo" src="{{productDetail.companyId.logo}}">
+			<p class="user-product-baseinfo">{{productDetail.companyId.longName}}</p>
+		</div>
+		<div class="row">
+			<p class="user-product-baseinfo">版本：{{productDetail.version}}</p>
+			<p class="user-product-baseinfo">发布时间：{{productDetail.releaseDate | date:'yyyy-MM-dd'}}</p>
+			<p class="user-product-baseinfo">型号：{{productDetail.model}}</p>
+		</div>
+		<div class="row">
+			<div class="col-xs-7">
+				<div class="product-carousel-div"><carousel image-list="productDetail.images"></carousel></div>
+			</div>
+			<div class="col-xs-5">
+				<div class="carousel-user-info">
+					{{productDetail.argc}}
+				</div>
+				<div class="carousel-user-info">
+					{{productDetail.desc}}
+				</div>
 			</div>
 		</div>
-		<div class="col-xs-5">
-            <div class="carousel-user-info">
-                {{productDetail.argc}}
-            </div>
-        </div>
-	</div>
 	</div>
 	<div class="common-block-40">
 		<div class="row">
@@ -62,31 +45,41 @@
 		<div class="row">
 			<p class="user-product-subtitle">用户测评：</p>
 			<p class="user-product-subtitle" ng-if="productPriReport == null">&nbsp;&nbsp;&nbsp;&nbsp;目前该产品尚未申请用户测评</p>
+			<p class="user-product-subtitle" ng-if="productPriReport != null && commentLength == 0 ">&nbsp;&nbsp;&nbsp;&nbsp;尚无用户评论</p>
 		</div>
-		<div ng-if="productPriReport != null">
-		<div class="row user-product-comment">
-			<div class="row user-product-commentall">
-				<p class="user-product-title">综合：</p>
-				<div class="star-info" star rating-value="ratingVal" max="5" readonly=true></div>
-			</div>
+		<div class="row">
+			<p class="user-product-subtitle" ng-if="productPriReport != null && commentLength == 0 ">&nbsp;&nbsp;&nbsp;&nbsp;尚无用户评论</p>
 		</div>
-		<div class="user-product-comment2"> 
-			<div class="user-product-comcontent">
-				<div class="row">
-					<img src="/page/project/images/web_header_user.png">
-					<p class="user-product-comname">名字</p>
-					<p class="user-product-comdate">2016/9/22 15:00:00</p>
+		<div ng-if="productPriReport != null && commentLength != 0">
+			<div class="row user-product-comment">
+				<div class="row user-product-commentall">
+					<p class="user-product-title">综合：</p>
+					<div class="big-star-info" star rating-value="totalAverageScore" max="5" readonly=true on-hover="onHover" on-leave="onLeave"></div>
 				</div>
-				<div class="row">
-					<p>暂无数据</p>
+				<div class="row user-product-avrscrore-row">
+					<div class="user-product-avrscrore" ng-repeat="arg in productPriReport.argc">
+						<p>{{arg}}：</p>
+						<div class="star-info" star rating-value="scores[$index]" on-hover="onHover" on-leave="onLeave" max="5" readonly=true></div>
+					</div>
 				</div>
 			</div>
-			<div class="user-product-comscore">
-				<p>外观：</p>
-				<div class="star-info" star rating-value="ratingVal" max="5" readonly=true></div>
-			</div>
+			<div class="user-product-comment2" ng-repeat="comment in commentList"> 
+				<div class="user-product-comcontent">
+					<div class="row">
+						<img src="/page/project/images/web_header_user.png">
+						<p class="user-product-comname">{{comment.passUser.userId[0].name}}</p>
+						<p class="user-product-comdate">{{comment.passUser.comment.timestamp | date:'yyyy-MM-dd  hh:mm'}}</p>
+					</div>
+					<div class="row">
+						<p>{{comment.passUser.comment.content}}</p>
+					</div>
+				</div>
+				<div class="user-product-comscore" ng-repeat="arg in productPriReport.argc">
+					<p ng-init="p_index = $index">{{arg}}：</p>
+					<div class="star-info" star rating-value="comment.passUser.comment.score[p_index]" on-hover="onHover" on-leave="onLeave" max="5" readonly=false></div>
+				</div>
 
-		</div>
+			</div>
 		</div>
 	</div>
 	<div class="common-block-40" ng-if="productPriReport != null">
@@ -97,16 +90,16 @@
 		<div class="row">
 			<div class="user-product-comcontent">
 				<div class="row">
-				<textarea class="user-product-textarea" placeholder="只有参与测评的人可以评论，请输入您对该产品的看法"></textarea>
+					<textarea class="user-product-textarea" placeholder="只有参与测评的人可以评论，请输入您对该产品的看法" ng-model="newComment.content"></textarea>
 				</div>
 			</div> 
-			<div class="user-product-comscore">
-				<p>外观：</p>
-				<div class="star-info" star rating-value="ratingVal" max="5" readonly=flase></div>
+			<div class="user-product-comscore" ng-repeat="arg in productPriReport.argc">
+				<p ng-init="p_index = $index">{{arg}}：</p>
+				<div class="star-info" star rating-value="newComment.score[p_index]" on-hover="onHover" on-leave="onLeave" max="5" readonly=false></div>
 			</div>
 		</div>
 		<div class="row">
-			<button class="btn btn-primary user-product-btnresult">提交测评结果</button>
+			<button class="btn btn-primary user-product-btnresult" ng-click="commitComment()">提交测评结果</button>
 		</div>
 	</div>
 </div>
