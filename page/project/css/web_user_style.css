@@ -184,6 +184,9 @@
 	font-size: 14px;
 	color:#271701;
 }
+.innews-intro{
+    height: 70px;
+}
 .innnews-commit{
 	text-align: center;
 }
