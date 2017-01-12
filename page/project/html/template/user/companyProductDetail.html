@@ -76,7 +76,7 @@
 				</div>
 				<div class="user-product-comscore" ng-repeat="arg in productPriReport.argc">
 					<p ng-init="p_index = $index">{{arg}}：</p>
-					<div class="star-info" star rating-value="comment.passUser.comment.score[p_index]" on-hover="onHover" on-leave="onLeave" max="5" readonly=false></div>
+					<div class="star-info" star rating-value="comment.passUser.comment.score[p_index]" on-hover="onHover" on-leave="onLeave" max="5" readonly=true></div>
 				</div>
 
 			</div>

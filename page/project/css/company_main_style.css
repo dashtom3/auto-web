@@ -94,7 +94,7 @@
 	margin-left: 242px;
 	;
 	background-color: #F7F7F5;
-	min-height: 600px;
+	min-height: 700px;
 }
 .cmp-box-shadow{
 	box-shadow: 0 0 7px rgba(0, 0, 0, .15);
@@ -246,7 +246,7 @@
 	font-size: 16px;
 }
 .cmp-reg-thumb{
-	text-align: center;
+	text-align: center;	
 }
 .cmp-info-thumb{
 	width: 100px;

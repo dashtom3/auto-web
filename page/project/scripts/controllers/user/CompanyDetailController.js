@@ -1,4 +1,4 @@
-function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyService,CompanyProductsService,CompanyPriReportService,CompanyFinanceService) {
+function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyService,CompanyProductsService,CompanyPriReportService,CompanyFinanceService,AuthService) {
   console.log("CompanyDetailController");
 
 
@@ -153,6 +153,7 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
     //获取企业测评
     function getCompanyTestsData(pagePerNum,currentPage){
         CompanyPriReportService.getCompanyPriReportList("","","","","","","","","","","","","","","","",$scope.cmpId,pagePerNum,currentPage).then(function(result){
+            $scope.timeNow = new Date().getTime();
             if($scope.cmpTests.list){
                 $scope.cmpTests.list = $scope.cmpTests.list.concat(result.list);
             }else{
@@ -181,62 +182,25 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
     //点击test页面的报名测评
     $scope.signTest = function(test){
         $scope.currentTest = test;
-        $scope.testLiList = [];
-        $scope.testImgList = [];
-        CompanyService.getComppanyById(test.companyId).then(function(result){
-            console.log(result);
-            $scope.currentTest.companyInfo = result;
-        });
-        console.log($scope.currentTest.images);
-        getImgList($scope.currentTest.images);
+        $scope.testImgList = $scope.currentTest.images;
 
     };  
-    function getImgList(imgList){
-        for (i in imgList){
-            var img = new Object();
-            img.url = imgList[i];
-            img.num = i;
-            $scope.testImgList.push(img);
-            var li = new Object();
-            li.num = i ;
-            $scope.testLiList.push(li);
-        }
-        console.log($scope.testImgList);
-        console.log($scope.testLiList);
-        $scope.testCurrentCarouse = $scope.testLiList[0].num;
-    }
-    $scope.setTestCurrentCarouse = function(num){
-        $scope.testCurrentCarouse = num;
-    }
-    $scope.testMoveLeft = function(){
-        console.log($scope.testCurrentCarouse);
-        if ($scope.testCurrentCarouse == "0"){
-            $scope.testCurrentCarouse = $scope.testLiList.length - 1;
-        }else{
-            $scope.testCurrentCarouse --;
-        }
-    }
-    $scope.testMoveRight = function(){
-        console.log($scope.testCurrentCarouse);
-        if ($scope.testCurrentCarouse == $scope.testLiList.length - 1){
-            $scope.testCurrentCarouse = 0;
-        }else{
-            $scope.testCurrentCarouse ++;
-        }
-    }
     $scope.testSignTest = function(phone,address){
         if (!phone){
-            alert("手机号");
+            alert("请填写手机号");
             return;
         }
-        if (!address){
-            alert("请填地址");
-            return;
+        if(address == null){
+            address = "暂无";
         }
-        console.log(phone);
-        console.log(address);
-        CompanyPriReportService.signCompanyPriReport($scope.currentTest._id,phone,address).then(function(result){
-            console.log(result);
-        });
+        if(AuthService.getToken() == "guest"){
+            alert("用户尚未登录，请注册并且通过审核");
+        }else if(AuthService.company){
+            alert("您现在是企业账号，请以用户身份报名");
+        }else if (AuthService.user){
+            CompanyPriReportService.signCompanyPriReport($scope.currentTest._id,phone,address).then(function(result){
+                alert("申请报名成功，请等待工作人员联系");
+            });
+        }
     };
 }

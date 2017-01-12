@@ -1,4 +1,4 @@
-function InnovationController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyProductsService,CompanyService,CompanyPriReportService,AuthService) {
+function InnovationController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyProductsService,CompanyService,CompanyPriReportService,AuthService,$filter) {
 	console.log("载入InnovationController");
 	//初始化
 	$scope.cmpNews = {
@@ -51,7 +51,7 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
 	$scope.cmpTestType = [{
 		current:{name:"全部",id:""},
 		name:"状态：",
-		list:[{name:"全部",id:""}].concat(GlobalService.testStatus)
+		list:[{name:"全部",id:"all"}].concat(GlobalService.testStatus)
 	},{
 		current:{name:"全部",id:""},
 		name:"时间：",
@@ -182,6 +182,7 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
 		$scope.cmpTestType[selectNumber].current = option;
     	//请求对应数据
     	$scope.cmpTests.list = null;
+    	console.log($scope.cmpTestType[0].current.id);
     	getCompanyTestsData($scope.cmpTestType[0].current.id,getTestDateStr(),$scope.cmpTestType[2].current.id,$scope.cmpTests.pagePerNum,1);
     };
  	//获取当前测评时间选项
@@ -194,9 +195,20 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
  	}
  	//获取用户测评
  	function getCompanyTestsData(testStatus,startTime,testType,pagePerNum,currentPage){
- 		CompanyPriReportService.getCompanyPriReportList("","",testType,"","","","","","","","","1","","",startTime,"","",pagePerNum,currentPage).then(function(result){
- 			$scope.timeNow = new Date().getTime();
- 			console.log($scope.timeNow);
+ 		$scope.timeNow = new Date().getTime();
+ 		var startDateEnd = "";
+ 		var endDateEnd = "";
+ 		if (testStatus == "0"){
+ 			endDateEnd = $filter("date")($scope.timeNow,"yyyy-MM-dd");
+ 			startDateEnd = "";
+ 		}else if (testStatus == "1"){
+ 			startDateEnd = $filter("date")($scope.timeNow,"yyyy-MM-dd");;
+ 			endDateEnd = "";
+ 		}else if (testStatus == "all"){
+ 			startDateEnd = "";
+ 			endDateEnd = "";
+ 		}
+ 		CompanyPriReportService.getCompanyPriReportList("","",testType,"","","",startDateEnd,endDateEnd,"","","","1","","",startTime,"","",pagePerNum,currentPage).then(function(result){
  			if($scope.cmpTests.list){
  				$scope.cmpTests.list = $scope.cmpTests.list.concat(result.list);
  			}else{
@@ -210,9 +222,9 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
 	$scope.signTest = function(test){
 		$scope.currentTest = test;
 		$scope.testImgList = $scope.currentTest.images;
-		// CompanyService.getComppanyById(test.companyId).then(function(result){
-		// 	$scope.currentTest.companyInfo = result;
-		// });
+		$scope.currentTest.signTestPhone=null;
+		$scope.currentTest.signTestAddress=null;
+		$scope.currentTest.address=null;
 	};	
 	$scope.testSignTest = function(phone,address){
 		if (!phone){
@@ -222,12 +234,15 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
 		if(address == null){
 			address = "暂无";
 		}
-		if(AuthService.getToken() != "guest"){
+		if(AuthService.getToken() == "guest"){
+			alert("用户尚未登录，请注册并且通过审核");
+			
+		}else if (AuthService.company){
+			alert("您现在是企业账号，请以用户身份报名");
+		}else if (AuthService.user){
 			CompanyPriReportService.signCompanyPriReport($scope.currentTest._id,phone,address).then(function(result){
 				alert("申请报名成功，请等待工作人员联系");
 			});
-		}else{
-			alert("用户尚未登录，请注册并且通过审核");
 		}
 	};
 }

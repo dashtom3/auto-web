@@ -4,8 +4,10 @@ angular.module("auto-biz-user")
   //获取用户测评
   this.getCompanyPriReportList = function (productId,title,type,address,startDateStart,endDateStart,startDateEnd,endDateEnd,maxUserNum_Min,maxUserNum_Max,argc,state,signUser,passUser,startTime,endTime,companyId,numPerPage,pageNumber) {
     var deferred = $q.defer();
+    console.log(startDateEnd);
+    console.log(endDateEnd);
     var urlStr = GlobalService.getURLStr([["productId",productId],["title",title],["type",type],["address",address],["startDateStart",startDateStart],["endDateStart",endDateStart],
-      ["endDateStart",endDateStart],["endDateEnd",endDateEnd],["maxUserNum_Min",maxUserNum_Min],["maxUserNum_Max",maxUserNum_Max],["argc",argc],["state",state],["signUser",signUser],["passUser",passUser],
+      ["startDateEnd",startDateEnd],["endDateEnd",endDateEnd],["maxUserNum_Min",maxUserNum_Min],["maxUserNum_Max",maxUserNum_Max],["argc",argc],["state",state],["signUser",signUser],["passUser",passUser],
       ["startTime",startTime],["endTime",endTime],["companyId",companyId]]);
     var url = GlobalService.baseUrl+'report/private/list/'+numPerPage+'/'+pageNumber+'?'+urlStr;
     $http.get(url).success(function (res) {
@@ -191,6 +193,8 @@ angular.module("auto-biz-user")
         console.log("添加用户测评");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
+        }else if (res.errCode == "ALREADY_CREATE_PRIVATE_REPORT"){
+          alert("该产品已经有用户测评了");
         }else{
           alert("添加失败");
         }
@@ -224,8 +228,12 @@ angular.module("auto-biz-user")
         console.log("报名用户测评");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
+        }else if(res.errCode == "NOT_PASSED"){
+          alert("您的用户审核还未通过");
+        }else if (res.errCode == "ALREADY_SIGNED"){
+          alert("您已经报名过该测评");
         }else{
-          alert("报名失败");
+          alert("报名失败，错误为"+res.errCode+"");
         }
       }).error(function (res){
         alert("您好，您访问的内容出错");
