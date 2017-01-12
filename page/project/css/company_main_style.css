@@ -513,6 +513,11 @@
 	overflow-x:hidden;
 	height: 500px; 
 }
+.cmp-modal-roll-usertesttab{
+	overflow-y: scroll;
+	overflow-x:hidden;
+	max-height: 500px; 
+}
 .cmp-rate-tag-row{
 	padding-top: 7px;
 }
@@ -588,4 +593,10 @@
 .cmp-news-row{
 	margin: 0;
 	padding: 0;
+}
+.cmp-tag-modal-row{
+	margin-top: 20px;
+}
+.cmp-testtab-close{
+	margin-right: 20px;
 }

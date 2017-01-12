@@ -39,7 +39,6 @@ function CompanyUserTestController($scope,FileService,CompanyPriReportService,Co
 	function loadCompanyUserTestData(pagePerNum,currentPage){
 		CompanyPriReportService.getCompanyPriReportList("",$scope.searchStr,"","","","","","","","","","","","","","",$scope.cmpId,pagePerNum,currentPage).then(function(result){
 			$scope.userTestList= result.list;
-			console.log(result.list);
 			$scope.currentPage = result.currentPage;
 			$scope.total = result.totalNum;
 			loadAllCompanyProuctData();
@@ -192,38 +191,36 @@ function CompanyUserTestController($scope,FileService,CompanyPriReportService,Co
 		console.log(userTest);
 		CompanyPriReportService.getCompanyPriReportDetail(userTest._id).then(function(result){
 			$scope.nowUserTest = result;
-			CompanyPriReportService.getCompanyPriReportComment($scope.nowUserTest._id).then(function(result){
+			CompanyPriReportService.getReportPassUser($scope.nowUserTest._id,"1").then(function(result){
 				console.log(result);
-				$scope.passedList = result[0];
-				console.log($scope.passedList);
+				$scope.testedList = result;
 			});
 		});
-		
-
+		$scope.currentTab = "testedUser";
 	};
 
-	$scope.currentTab = "testedUser";
+	
 	$scope.toTab = function(tabName){
 		$scope.currentTab=tabName;
 		if ($scope.currentTab == 'testingUser'){
-			CompanyPriReportService.getCompanyPriReportToPassList($scope.nowUserTest._id).then(function(result){
+			CompanyPriReportService.getReportPassUser($scope.nowUserTest._id,"0").then(function(result){
 				console.log(result);
-				$scope.testingList = result[0];
+				$scope.testingList = result;
 			});
-		}else if ($scope.currentTab == 'auditingUser'){
-			CompanyPriReportService.getCompanyPriReportSignList($scope.nowUserTest._id).then(function(result){
+		}else if ($scope.currentTab == 'passedUser'){
+			CompanyPriReportService.getReportSignUser($scope.nowUserTest._id,"1").then(function(result){
 				console.log(result);
-				$scope.auditingList = result[0];
+				$scope.passList = result;
 			});
-		}else if ($scope.currentTab == 'rejectedUser'){
-			CompanyPriReportService.getCompanyPriReportToRefused($scope.nowUserTest._id).then(function(result){
+		}else if ($scope.currentTab == 'signUser'){
+			CompanyPriReportService.getReportSignUser($scope.nowUserTest._id,"0").then(function(result){
 				console.log(result);
-				$scope.auditingList = result[0];
+				$scope.signList = result;
 			});
 		}else if ($scope.currentTab == 'testedUser'){
-			CompanyPriReportService.getCompanyPriReportComment($scope.nowUserTest._id).then(function(result){
+			CompanyPriReportService.getReportPassUser($scope.nowUserTest._id,"1").then(function(result){
 				console.log(result);
-				$scope.auditingList = result[0];
+				$scope.testedList = result;
 			});
 		}
 	}

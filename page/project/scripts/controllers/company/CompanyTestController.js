@@ -17,6 +17,7 @@ function CompanyTestController($scope,FileService,CompanyPubReportService,Compan
 
 	function getData(){
 		loadCompanyTestData($scope.pageSize,$scope.currentPage);
+		loadAllCompanyProuctData();
 	}
 
 	function loadCompanyTestData(pagePerNum,currentPage){
@@ -24,7 +25,7 @@ function CompanyTestController($scope,FileService,CompanyPubReportService,Compan
 			$scope.testList= result.list;
 			$scope.currentPage = result.currentPage;
 			$scope.total = result.totalNum;
-			loadAllCompanyProuctData();
+			
 		});
 	}
 

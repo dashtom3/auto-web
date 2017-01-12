@@ -302,15 +302,19 @@
 					<h4>请输入你想要评分的参数</h4>
 				</div>
 				<div class="modal-body" >
-					<input type="text" ng-model="tmpTagName">
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-default btn-block cmp-cancel-btn" ng-click="cancelNewTag()" data-dismiss="modal" >
-							取消
-						</button>
-						<button class="btn btn-default btn-block cmp-confirm-btn" ng-click="confirmNewTag()" data-dismiss="modal">
-							确认
-						</button>
+					<input type="text" class="form-control" ng-model="tmpTagName">
+					<div class="row cmp-tag-modal-row"> 
+						<div class="col-lg-4 col-lg-offset-1">
+							<button class="btn btn-default btn-block cmp-cancel-btn"  ng-click="cancelNewTag()" data-dismiss="modal">
+								取消
+							</button>
+						</div>
+						<div class="col-lg-4 col-lg-offset-1">
+							<button class="btn btn-default btn-block cmp-confirm-btn"  ng-click="confirmNewTag()" data-dismiss="modal">
+								确定
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
 			

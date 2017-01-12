@@ -4,19 +4,19 @@
 			<button  class="btn btn-block " ng-class="{true:'tab-select',false:'tab-unselect'}[currentTab == 'testedUser']" ng-click="toTab('testedUser')"> 已测评用户</button>
 		</div>
 		<div class="col-md-2" >
-			<button class="btn btn-block" ng-class="{true:'tab-select',false:'tab-unselect'}[currentTab == 'testingUser']" ng-click="toTab('testingUser')"> 测评中用户</button>
+			<button class="btn btn-block" ng-class="{true:'tab-select',false:'tab-unselect'}[currentTab == 'testingUser']" ng-click="toTab('testingUser')"> 未测评用户</button>
 		</div>
 		<div class="col-md-2" >
-			<button class="btn btn-block" ng-class="{true:'tab-select',false:'tab-unselect'}[currentTab == 'auditingUser']" ng-click="toTab('auditingUser')"> 报名审核中用户</button>
+			<button class="btn btn-block" ng-class="{true:'tab-select',false:'tab-unselect'}[currentTab == 'passedUser']" ng-click="toTab('passedUser')"> 报名通过用户</button>
 		</div>
 		<div class="col-md-2" >
-			<button class="btn btn-block" ng-class="{true:'tab-select',false:'tab-unselect'}[currentTab == 'rejectedUser']" ng-click="toTab('rejectedUser')"> 已拒绝用户</button>
-		</div>
-		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">x</span></button>
+			<button class="btn btn-block" ng-class="{true:'tab-select',false:'tab-unselect'}[currentTab == 'signUser']" ng-click="toTab('signUser')"> 报名审核中用户</button>
+		</div>	
+		<button type="button" class="close cmp-testtab-close" data-dismiss="modal"><span aria-hidden="true">x</span></button>
 	</div>
 	<div class="row">
 		<div ng-show="currentTab == 'testedUser'">
-			<table class="table table-striped cmp-table">
+			<table class="table table-striped cmp-table cmp-modal-roll-usertesttab">
 				<thead>
 					<tr>
 						<th class="col-lg-2">用户名</th>
@@ -26,15 +26,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="item in passedList">
+					<tr ng-repeat="item in testedList">
 						<td>
-							<span> {{item.userId[0].name}}</span>
+							<span> {{item.passUser.userId[0].name}}</span>
 						</td>
 						<td>
-							<span> {{item.comment.timestamp}}</span>
+							<span> {{item.passUser.comment.timestamp | date:'yyyy/MM/dd'}}</span>
 						</td>
 						<td>
-							<span> {{item.comment.content}}</span>
+							<span> {{item.passUser.comment.content}}</span>
 						</td>
 						<td>
 							<div class="row" ng-repeat="argc in nowUserTest.argc">
@@ -42,7 +42,7 @@
 									<span> {{argc}}:</span>
 								</div>
 								<div class="col-lg-7">
-									<div star rating-value="item.comment.score[$index]" max="max" on-hover="onHover" on-leave="onLeave" readonly="true">
+									<div star rating-value="item.passUser.comment.score[$index]" max="max" on-hover="onHover" on-leave="onLeave" readonly="true">
 									</div>
 								</div>
 							</div>
@@ -52,7 +52,7 @@
 			</table>
 		</div>
 		<div ng-show="currentTab=='testingUser'">
-			<table class="table table-striped">
+			<table class="table table-striped cmp-table cmp-modal-roll-usertesttab">
 				<thead>
 					<tr>
 						<th class="col-lg-2">用户名</th>
@@ -65,13 +65,13 @@
 				<tbody>
 					<tr ng-repeat="item in testingList">
 						<td>
-							<span> {{item.userName}}</span>
+							<span> {{item.passUser.userId[0].name}}</span>
 						</td>
 						<td>
-							<span> {{item.registerTime}}</span>
+							<span> {{item.passUser.registerTime}}</span>
 						</td>
 						<td>
-							<span> {{item.mailAddress}}</span>
+							<span> {{item.passUser.mailAddress}}</span>
 						</td>
 						<td>
 							<span> 暂无</span>
@@ -83,27 +83,27 @@
 				</tbody>
 			</table>
 		</div>
-		<div ng-show = "currentTab == 'auditingUser'">
-			<table class="table table-striped">
+		<div ng-show = "currentTab == 'passedUser'">
+			<table class="table table-striped cmp-table cmp-modal-roll-usertesttab">
 				<thead>
 					<tr>
 						<th class="col-lg-2">用户名</th>
-						<th class="col-lg-2">报名时间</th>
+						<th class="col-lg-2">手机号</th>
 						<th class="col-lg-4">邮寄地址</th>
 						<th class="col-lg-2">评测内容</th>
 						<th class="col-lg-2">打分</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="item in auditingList">
+					<tr ng-repeat="item in passList">
 						<td>
-							<span> {{item.userName}}</span>
+							<span> {{item.signUser.userId[0].name}}</span>
 						</td>
 						<td>
-							<span> {{item.registerTime}}</span>
+							<span> {{item.signUser.phoneNumber}}</span>
 						</td>
 						<td>
-							<span> {{item.mailAddress}}</span>
+							<span> {{item.signUser.address}}</span>
 						</td>
 						<td>
 							<span> 暂无</span>
@@ -115,27 +115,27 @@
 				</tbody>
 			</table>
 		</div>
-		<div ng-show = "currentTab == 'rejectedUser'">
-			<table class="table table-striped">
+		<div ng-show = "currentTab == 'signUser'">
+			<table class="table table-striped cmp-table cmp-modal-roll-usertesttab">
 				<thead>
 					<tr>
 						<th class="col-lg-2">用户名</th>
-						<th class="col-lg-2">报名时间</th>
+						<th class="col-lg-2">手机号</th>
 						<th class="col-lg-4">邮寄地址</th>
 						<th class="col-lg-2">评测内容</th>
 						<th class="col-lg-2">打分</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="item in userList">
+					<tr ng-repeat="item in signList">
 						<td>
-							<span> {{item.userName}}</span>
+							<span> {{item.signUser.userId[0].name}}</span>
 						</td>
 						<td>
-							<span> {{item.registerTime}}</span>
+							<span> {{item.signUser.phoneNumber}}</span>
 						</td>
 						<td>
-							<span> {{item.mailAddress}}</span>
+							<span> {{item.signUser.address}}</span>
 						</td>
 						<td>
 							<span> 暂无</span>
@@ -146,13 +146,6 @@
 					</tr>
 				</tbody>
 			</table>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-lg-4 col-lg-offset-4">
-			<button class="btn btn-block m-btn-loadMore" ng-click="loadMore()">
-				{{loadMoreText}}
-			</button>
 		</div>
 	</div>
 </div>

@@ -81,10 +81,40 @@ angular.module("auto-biz-user")
     });
       return deferred.promise;
   }
+  this.getReportSignUser = function(reportId,passed){
+    var deferred = $q.defer();
+    var  urlStr = GlobalService.getURLStr([["reportId",reportId],["passed",passed],["token",AuthService.getToken()]]);
+    $http.get(GlobalService.baseUrl+'report/private/signuser/list?'+urlStr).success(function (res) {
+        console.log("获取报名用户");
+        if(res.callStatus == "SUCCEED"){
+          deferred.resolve(res.data);
+        }else{
+          alert("您好，您访问的内容出错");
+        }
+      }).error(function (res){
+        alert("您好，您访问的内容出错");
+      });
+      return deferred.promise;
+  };
+  this.getReportPassUser = function(reportId,passed){
+    var deferred = $q.defer();
+    var  urlStr = GlobalService.getURLStr([["reportId",reportId],["passed",passed],["token",AuthService.getToken()]]);
+    $http.get(GlobalService.baseUrl+'report/private/passuser/list?'+urlStr).success(function (res) {
+        console.log("获取测评用户用户");
+        if(res.callStatus == "SUCCEED"){
+          deferred.resolve(res.data);
+        }else{
+          alert("您好，您访问的内容出错");
+        }
+      }).error(function (res){
+        alert("您好，您访问的内容出错");
+      });
+      return deferred.promise;
+  };
   this.getCompanyPriReportComment = function(reportId){
     var deferred = $q.defer();
     $http.get(GlobalService.baseUrl + 'report/private/comment/list?reportId='+reportId).success(function(res){
-      console.log("获取已测评用户");
+      console.log("获取用户评论");
       if(res.callStatus == "SUCCEED"){
         deferred.resolve(res.data);
       }else{
@@ -95,48 +125,48 @@ angular.module("auto-biz-user")
     });
       return deferred.promise;
   }
-  this.getCompanyPriReportSignList = function(reportId){
-    var deferred = $q.defer();
-    $http.get(GlobalService.baseUrl + 'report/private/signlist?reportId='+reportId).success(function(res){
-      console.log("获取待审核用户");
-      if(res.callStatus == "SUCCEED"){
-        deferred.resolve(res.data);
-      }else{
-        alert("您好，您访问的内容出错");
-      }
-    }).error(function (res){
-      alert("您好，您访问的内容出错");
-    });
-      return deferred.promise;
-  }
-  this.getCompanyPriReportToPassList = function(reportId){
-    var deferred = $q.defer();
-    $http.get(GlobalService.baseUrl + 'report/private/comment/topasslist?reportId='+reportId).success(function(res){
-      console.log("获取测评中用户");
-      if(res.callStatus == "SUCCEED"){
-        deferred.resolve(res.data);
-      }else{
-        alert("您好，您访问的内容出错");
-      }
-    }).error(function (res){
-      alert("您好，您访问的内容出错");
-    });
-      return deferred.promise;
-  }
-  this.getCompanyPriReportToRefused = function(reportId){
-    var deferred = $q.defer();
-    $http.get(GlobalService.baseUrl + 'report/private/refused?reportId='+reportId).success(function(res){
-      console.log("获取被拒绝用户");
-      if(res.callStatus == "SUCCEED"){
-        deferred.resolve(res.data);
-      }else{
-        alert("您好，您访问的内容出错");
-      }
-    }).error(function (res){
-      alert("您好，您访问的内容出错");
-    });
-      return deferred.promise;
-  }
+  // this.getCompanyPriReportSignList = function(reportId){
+  //   var deferred = $q.defer();
+  //   $http.get(GlobalService.baseUrl + 'report/private/signlist?reportId='+reportId).success(function(res){
+  //     console.log("获取待审核用户");
+  //     if(res.callStatus == "SUCCEED"){
+  //       deferred.resolve(res.data);
+  //     }else{
+  //       alert("您好，您访问的内容出错");
+  //     }
+  //   }).error(function (res){
+  //     alert("您好，您访问的内容出错");
+  //   });
+  //     return deferred.promise;
+  // }
+  // this.getCompanyPriReportToPassList = function(reportId){
+  //   var deferred = $q.defer();
+  //   $http.get(GlobalService.baseUrl + 'report/private/comment/topasslist?reportId='+reportId).success(function(res){
+  //     console.log("获取测评中用户");
+  //     if(res.callStatus == "SUCCEED"){
+  //       deferred.resolve(res.data);
+  //     }else{
+  //       alert("您好，您访问的内容出错");
+  //     }
+  //   }).error(function (res){
+  //     alert("您好，您访问的内容出错");
+  //   });
+  //     return deferred.promise;
+  // }
+  // this.getCompanyPriReportToRefused = function(reportId){
+  //   var deferred = $q.defer();
+  //   $http.get(GlobalService.baseUrl + 'report/private/refused?reportId='+reportId).success(function(res){
+  //     console.log("获取被拒绝用户");
+  //     if(res.callStatus == "SUCCEED"){
+  //       deferred.resolve(res.data);
+  //     }else{
+  //       alert("您好，您访问的内容出错");
+  //     }
+  //   }).error(function (res){
+  //     alert("您好，您访问的内容出错");
+  //   });
+  //     return deferred.promise;
+  // }
   this.deleteCompanyPriReport = function (reportId) {
     var deferred = $q.defer();
     var urlStr = GlobalService.getURLStr([["reportId",reportId],["token",AuthService.getToken()]]);

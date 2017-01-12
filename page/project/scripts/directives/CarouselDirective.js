@@ -1,4 +1,4 @@
-angular.module('auto-biz-user').directive('carousel', function(){
+angular.module('auto-biz-user').directive('mycarousel', function(){
 	return {
 		templateUrl: '/page/project/html/template/user/carousel.html',
 		scope:{
