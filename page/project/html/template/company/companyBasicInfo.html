@@ -56,6 +56,17 @@
 						</div>
 						<div class="row cmp-input-row">
 							<label  class="control-label col-md-2">
+								详细地址：
+							</label>
+							<label  class="control-label col-md-10 cmp-show-label" ng-show="isEdit == false" >
+								{{infoList.field}}
+							</label>
+							<div class="col-md-10" ng-show="isEdit == true">
+								<input type="text" class="form-control" ng-model="infoList.field" >
+							</div>
+						</div>
+						<div class="row cmp-input-row">
+							<label  class="control-label col-md-2">
 								所属领域：
 							</label>
 							<label  class="control-label col-md-4 cmp-show-label" ng-show="isEdit == false" >
@@ -101,17 +112,6 @@
 								万
 							</label>
 						</div>
-						<div class="row cmp-input-row">
-							<label  class="control-label col-md-2">
-								注册地址：
-							</label>
-							<label  class="control-label col-md-10 cmp-show-label" ng-show="isEdit == false" >
-								{{infoList.regAddress}}
-							</label>
-							<div class="col-md-10" ng-show="isEdit == true">
-								<input type="text" class="form-control" ng-model="infoList.regAddress" >
-							</div>
-						</div>
 					</form>
 				</div>
 				<div class="col-md-2 cmp-basic-logo-div">
@@ -154,16 +154,14 @@
 				<div class="col-md-9 col-md-offset-1">
 					<form role="form" class="form-horizontal">
 						<div class="row cmp-input-row">
-							<label class="col-md-2 ">
+							<label class="col-md-2 control-label">
 								审核认证信息：
 							</label>
+							<div class=" col-md-3 cmp-reg-thumb" >
+								<img class="cmp-info-thumb" src="{{infoList.info}}"/>	
+							</div>
 						</div> 
-						<div class=" col-md-3 cmp-reg-thumb" >
-							<img src="{{imageSrc2}}"/>	
-						</div>
-						<div class=" col-md-3 cmp-reg-thumb" >
-							<img src="{{imageSrc3}}"/>	
-						</div> 
+
 					</form>	   
 				</div>
 			</div>

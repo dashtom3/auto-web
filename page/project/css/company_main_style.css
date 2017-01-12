@@ -246,9 +246,11 @@
 	font-size: 16px;
 }
 .cmp-reg-thumb{
-	height: 100px;
+	text-align: center;
+}
+.cmp-info-thumb{
 	width: 100px;
-	overflow: hidden;
+	height: 80px;
 }
 .cmp-basic-logo-div{
 	margin-top: 20px;
