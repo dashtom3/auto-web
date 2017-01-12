@@ -17,7 +17,7 @@ angular.module("auto-biz-user")
       })
       .error(function (res) {
         alert("您好，您访问的内容出错");
-      });
+      }); 
     return deferred.promise;
   };
   //用户登出

@@ -6,7 +6,7 @@
 			<input class="form-control form-control-lg cmp-search-input" type="text" ng-model="searchWord" >
 		</div>
 		<div style="display: inline-block">
-			<button ng-click="getCompanyPubReportList('','',searchWord)" class="btn btn-block btn-default cmp-confirm-btn cmp-find-btn">
+			<button ng-click="getCompanyPriReportList('','',searchWord)" class="btn btn-block btn-default cmp-confirm-btn cmp-find-btn">
 				<img class="img-sm-logo" src="/page/project/images/company/search.png">
 				<span>查找专业测评</span>
 			</button>
@@ -16,18 +16,18 @@
 	<br>
 	<!--分类-->
 	<div class="detail-container">
-	<div class="ino-nav-list">
-	<div class="ino-nav-type-row" ng-repeat="type in navList">
-		<label class="nav-type-label">
-			{{type.name}}：
-		</label>
-		<div class="admin-nav-options-div">
-			<label class="nav-option-label" ng-class="{'active':isCurrentOption(type.name,option.name)}" ng-repeat="option in type.optionList" ng-click="getCompanyPriReportList(type.name,option,'')">	
-				{{option.name}}
-			</label>
+		<div class="ino-nav-list">
+			<div class="ino-nav-type-row" ng-repeat="type in navList">
+				<label class="nav-type-label">
+					{{type.name}}：
+				</label>
+				<div class="admin-nav-options-div">
+					<label class="nav-option-label" ng-class="{'active':isCurrentOption(type.name,option.name)}" ng-repeat="option in type.optionList" ng-click="getCompanyPriReportList(type.name,option,'')">	
+						{{option.name}}
+					</label>
+				</div>
+			</div>
 		</div>
-	</div>
-    </div>
 	</div>
 
 	<!--表格-->
@@ -36,53 +36,53 @@
 			<thead >
 				<tr>
 					<th >测评名称</th>
-    				<th >所属公司</th>
+					<th >所属公司</th>
 					<th >产品名称</th>
-    				<th >测评描述</th>
-    				<th >测评参数</th>
+					<th >测评描述</th>
+					<th >测评参数</th>
 					<th >测评起止日期</th>
 					<th >测评类型和地址</th>
-    				<th >上线状态</th>
-    				<th >审核状态</th>
-    				<th >测评人数信息</th>
-    				<th >操作</th> 
+					<th >上线状态</th>
+					<th >审核状态</th>
+					<th >测评人数信息</th>
+					<th >操作</th> 
 				</tr>
 			</thead>
 			<tbody>			
-  				<tr ng-repeat="priReport in priReportList | filter: searchWord">
-    				<td>{{priReport.title}}</td>
-    				<td><a href="/companyInfo/{{priReport.companyId._id}}" target="_blank">{{priReport.companyId.longName}}</a></td>
-    				<td><a href="/companyProduct/{{priReport.productId._id}}" target="_blank">{{priReport.productId.name}}</a></td>
-    				<td>{{priReport.testdesc}}</td>
-    				<td style="width: 100px"><p ng-repeat="priargc in priReport.argc">{{priargc}}</p></td>
-    				<td>{{priReport.dateStart | date:'yyyy-MM-dd' }}～{{priReport.dateEnd | date:'yyyy-MM-dd'}}</td>
-    				<td>{{priReport.type | userTestTypeFilter}}/{{priReport.address}}</td>
+				<tr ng-repeat="priReport in priReportList">
+					<td>{{priReport.title}}</td>
+					<td><a href="/companyInfo/{{priReport.companyId._id}}" target="_blank">{{priReport.companyId.longName}}</a></td>
+					<td><a href="/companyProduct/{{priReport.productId._id}}" target="_blank">{{priReport.productId.name}}</a></td>
+					<td>{{priReport.testDesc}}</td>
+					<td style="width: 100px"><p ng-repeat="priargc in priReport.argc">{{priargc}}</p></td>
+					<td>{{priReport.dateStart | date:'yyyy-MM-dd' }}～{{priReport.dateEnd | date:'yyyy-MM-dd'}}</td>
+					<td>{{priReport.type | userTestTypeFilter}}/{{priReport.address}}</td>
 					<td>{{priReport.isOnline | statusFilter3}}</td>
 					<td>{{priReport.state | statusFilter}}</td>
-   					 <td style="width: 100px"><p>人数上限：{{priReport.maxUserNum}}</p>
-       					 <p ng-if="priReport.signUser != null">报名人数：{{priReport.signUser | countFilter}}</p>
-       					 <p ng-if="priReport.passUser != null">通过人数：{{priReport.passUser | countFilter}}</p>
-       					 <p ng-if="priReport.signUser == null">报名人数：0</p>
-       					 <p ng-if="priReport.passUser == null">通过人数：0</p>
-    				</td>
-    				<td style="width: 80px">
+					<td style="width: 100px"><p>人数上限：{{priReport.maxUserNum}}</p>
+						<p ng-if="priReport.signUser != null">报名人数：{{priReport.signUser | countFilter}}</p>
+						<p ng-if="priReport.passUser != null">通过人数：{{priReport.passUser | countFilter}}</p>
+						<p ng-if="priReport.signUser == null">报名人数：{{priReport.signUserNum}}</p>
+						<p ng-if="priReport.passUser == null">通过人数：{{priReport.passUserNum}}</p>
+					</td>
+					<td style="width: 80px">
 						<div class="row">
-								<button class="btn btn-sm" ng-click="setCurrentPriReport(priReport)" data-toggle="modal" data-target="#infoModal"> 
-									测评审核
-								</button>
+							<button class="btn btn-sm" ng-click="setCurrentPriReport(priReport)" data-toggle="modal" data-target="#infoModal"> 
+								测评审核
+							</button>
 						</div>
 						<br>
 						<div class="row">
-								<button class="btn btn-sm" ng-click="getSignUser(priReport)" data-toggle="modal" data-target="#userModal"> 
-									报名审核
-								</button>
+							<button class="btn btn-sm" ng-click="getSignUser(priReport)" data-toggle="modal" data-target="#userModal"> 
+								报名审核
+							</button>
 						</div>
 						<br>
 						<div class="row">
 							
-								<button class="btn  btn-sm" ng-click="setCurrentPriReport(priReport)" data-toggle="modal" data-target="#contentModal"> 
-									评论审核
-								</button>
+							<button class="btn  btn-sm" ng-click="getPassUser(priReport)" data-toggle="modal" data-target="#contentModal"> 
+								评论审核
+							</button>
 						</div>
 					</td>
 				</tr>
@@ -91,27 +91,27 @@
 		<!--分页-->
 		<div class="cmp-paging">
 			<paging
-			  page="currentPage" 
-			  page-size="pageSize" 
-			  total="total"
-			  paging-action="changePage(page)"
-			  show-prev-next="true"
-			  show-first-last="true"
-			  >
-			</paging> 
-		</div>
+			page="currentPage" 
+			page-size="pageSize" 
+			total="total"
+			paging-action="changePage(page)"
+			show-prev-next="true"
+			show-first-last="true"
+			>
+		</paging> 
 	</div>
+</div>
 
 
-    <!-- 测评详情模态框（Modal） -->
-    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- 测评详情模态框（Modal） -->
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 					&times;
 				</button>
-	            {{currentPriReport.title}}
+				{{currentPriReport.title}}
 			</div>
 			<div class="modal-body">
 				
@@ -119,89 +119,124 @@
 			<div class="modal-footer">
 				<div class="row">
 					审核：
-				<button ng-click="passPriReport(currentPriReport._id,'1')" type="button" class="btn btn-success" data-dismiss="modal">
-					通过
-				</button>
-				<button ng-click="passPriReport(currentPriReport._id,'-1')" type="button" class="btn btn-danger" data-dismiss="modal">
-					否决
-				</button>
+					<button ng-click="passPriReport(currentPriReport._id,'1')" type="button" class="btn btn-success" data-dismiss="modal">
+						通过
+					</button>
+					<button ng-click="passPriReport(currentPriReport._id,'-1')" type="button" class="btn btn-danger" data-dismiss="modal">
+						否决
+					</button>
 				</div>
 				<div class="row">
 					设置上下线：
-				<button ng-click="setPriReport(currentPriReport._id,'true')" type="button" class="btn btn-primary" data-dismiss="modal">
-					上线
+					<button ng-click="setPriReport(currentPriReport._id,'true')" type="button" class="btn btn-primary" data-dismiss="modal">
+						上线
 					</button>
-				<button ng-click="setPriReport(currentPriReport._id,'false')" type="button" class="btn btn-primary" data-dismiss="modal">
-					下线
-				</button>
+					<button ng-click="setPriReport(currentPriReport._id,'false')" type="button" class="btn btn-primary" data-dismiss="modal">
+						下线
+					</button>
 				</div>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
-	</div> <!-- 模态框（Modal） -->
+</div> <!-- 模态框（Modal） -->
 
-	 <!-- 用户审核模态框（Modal） -->
-    <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
+<!-- 用户审核模态框（Modal） -->
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 					&times;
 				</button>
-                <button type="button" ng-click="getUserList('1')" class="btn btn-success">已审核用户</button>	
-	            <button type="button" ng-click="getUserList('0')" class="btn btn-warning">未审核用户</button>
-	            <button type="button" ng-click="getUserList('-1')" class="btn btn-danger">已拒绝用户</button>
+				<button type="button" ng-click="getUserList('')" class="btn btn-primary">全部</button>
+				<button type="button" ng-click="getUserList('1')" class="btn btn-success">已审核用户</button>	
+				<button type="button" ng-click="getUserList('0')" class="btn btn-warning">未审核用户</button>
+				<button type="button" ng-click="getUserList('-1')" class="btn btn-danger">已拒绝用户</button>
 			</div>
 			<div class="modal-body">
-				<table class="table table-striped table-hover">
-		            <tr>
-                        <th>用户</th> 
-  		            </tr>
-  		            <tr ng-repeat="user in signUserList | filter: userFilter">
-	                    <td>{{user}}</td>
-                    </tr>
-	            </table>
+				<table class="table table-striped cmp-table">
+					<thead>
+						<tr>
+							<th>用户名</th>
+							<th>手机号</th>
+							<th>邮寄地址</th>
+							<th>审核状态</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="user in signUserList">
+						<td>{{user.signUser.userId[0].name}}</td>
+							<td>{{user.signUser.phoneNumber}}</td>
+							<td>{{user.signUser.address}}</td>
+							<td>{{user.signUser.passed | statusFilter}}</td>
+							<td>
+								<button type="button" class="btn btn-success" ng-click = "approveUser(user)">通过
+								</button>
+								<button type="button" class="btn btn-danger" ng-click = "denyUser(user)">否决 
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div> <!-- 模态框（Modal） -->
+
+<!-- 评论模态框（Modal） -->
+<div class="modal fade" id="contentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<button type="button" ng-click="getPassUserList('')" class="btn btn-primary">全部</button>
+				<button type="button" ng-click="getPassUserList('1')" class="btn btn-success">已审核测评</button>	
+				<button type="button" ng-click="getPassUserList('0')" class="btn btn-warning">未审核测评</button>
+				<button type="button" ng-click="getPassUserList('-1')" class="btn btn-danger">已拒绝测评</button>
+			</div>
+			<div class="modal-body">
+				<table class="table table-striped cmp-table">
+					<thead>
+						<tr>
+							<th>用户名</th>
+							<th>评论内容</th>
+							<th style="width: 200px">打分</th>
+							<th>评论时间</th>
+							<th>审核状态</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="user in passUserList">
+							<td>{{user.passUser.userId[0].name}}</td>
+							<td>{{user.passUser.comment.content}}</td>
+							<td>
+								<div class="admin-user-product-comscore" ng-repeat="arg in currentPriReport.argc">
+									<p ng-init="p_index = $index">{{arg}}：</p>
+									<div class="star-info" star rating-value="user.passUser.comment.score[p_index]" on-hover="onHover" on-leave="onLeave" max="5" readonly=true></div>
+								</div>
+							</td>
+							<td>{{user.passUser.comment.timestamp | date:'yyyy/MM/dd'}}</td>
+							<td>{{user.passUser.comment.passed |statusFilter}}</td>
+							<td>
+								<button type="button" class="btn btn-success" ng-click = "approveComment(user)" ng-if="user.passUser.comment.passed =='0' " >通过
+								</button>
+								<button type="button" class="btn btn-danger" ng-click = "denyComment(user)" ng-if="user.passUser.comment.passed =='0'">否决 
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<div class="modal-footer">
 				
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
-	</div> <!-- 模态框（Modal） -->
-
-	 <!-- 评论模态框（Modal） -->
-    <div class="modal fade" id="contentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-					&times;
-				</button>
-	            <button type="button" ng-click="getPriReportContent('1')" class="btn btn-success">已审核测评</button>	
-	            <button type="button" ng-click="getPriReportContent('0')" class="btn btn-warning">未审核测评</button>
-			</div>
-			<div class="modal-body">
-				<table class="table table-striped table-hover">
-		            <tr>
-                        <th>用户</th>
-                        <th>评测时间</th> 
-                        <th>评测内容</th> 
-                        <th>评分</th>  
-  		            </tr>
-  		            <tr ng-repeat="content in contentList | filter: contentFilter">
-	                    <td>{{content}}</td>
-                        <td>{{content}}</td>
-                        <td>{{content}}</td>
-                        <td>{{content}}</td>
-                    </tr>
-	            </table>
-			</div>
-			<div class="modal-footer">
-				
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-	</div> <!-- 模态框（Modal） -->
+</div> <!-- 模态框（Modal） -->
 
 
 </div>

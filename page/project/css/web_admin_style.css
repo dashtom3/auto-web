@@ -14,3 +14,23 @@
 .modal-footer .row {
 	margin: 20px 20px 0px 0px;
 }
+.admin-user-product-comscore{
+	float: right;
+	width: 200px;
+}
+.admin-user-product-comscore > p{
+	float: left;
+	max-width: 90px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.admin-user-product-comscore p:hover{
+    float: left;
+    max-width: 90px;
+    overflow: visible;
+    text-overflow: inherit;
+}
+.admin-user-product-comscore .star-info{
+    float:right;
+}

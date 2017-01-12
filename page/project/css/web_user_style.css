@@ -411,7 +411,9 @@
 .cmp-reg-cardCompany a{
      color: #DDD;
 }
-.cmp-reg-cardCompany a:hover{
+.cmp-reg-cardCompany a:hover,
+.cmp-reg-cardCompany a:active,
+.cmp-reg-cardCompany a:visited{
     color: #EEE;
     text-decoration: none;
 }

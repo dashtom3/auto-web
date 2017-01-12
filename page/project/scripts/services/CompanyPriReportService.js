@@ -272,7 +272,7 @@ angular.module("auto-biz-user")
       });
       return deferred.promise;
   };
-  //通过报名参加测评
+  //通过测评评论
   this.passCommentCompanyPriReport= function (reportId,userId,passed) {
     var deferred = $q.defer();
    var urlStr = GlobalService.getURLStr([["reportId",reportId],["userId",userId],["passed",passed],["token",AuthService.getToken()]]);
@@ -281,7 +281,7 @@ angular.module("auto-biz-user")
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
-          alert("通过失败");
+          alert(res.errCode);
         }
       }).error(function (res){
         alert("您好，您访问的内容出错");
