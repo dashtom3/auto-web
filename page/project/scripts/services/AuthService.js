@@ -7,6 +7,7 @@ angular.module("auto-biz-user")
     $http.get(GlobalService.baseUrl+'user/login?name='+username+'&password='+GlobalService.MD5Decode(password))
       .success(function (res) {
         if(res.callStatus == "SUCCEED"){
+          self.kickOut();
           self.user = res.data;
           localStorage.auto_user = JSON.stringify(res.data);
           console.log("用户登录");
@@ -20,6 +21,16 @@ angular.module("auto-biz-user")
       }); 
     return deferred.promise;
   };
+  this.kickOut = function(){
+    if (self.user){
+      self.user = null;
+      localStorage.auto_user = null;
+    }
+    if (self.company){
+      self.company = null;
+      localStorage.auto_company = null;
+    }
+  }
   //用户登出
   this.userLogout=function () {
     var deferred = $q.defer();
@@ -27,7 +38,6 @@ angular.module("auto-biz-user")
         .success(function (res) {
           if(res.callStatus == "SUCCEED"){
             console.log("用户登出");
-            //window.location.href="/";
             localStorage.auto_user = null;
             deferred.resolve();
 
@@ -46,6 +56,7 @@ angular.module("auto-biz-user")
     $http.get(GlobalService.baseUrl+'company/login?name='+username+'&password='+password)
       .success(function (res) {
         if(res.callStatus == "SUCCEED"){
+            self.kickOut();
             console.log("企业登录");
             self.company = res.data;
             localStorage.auto_company = JSON.stringify(res.data);

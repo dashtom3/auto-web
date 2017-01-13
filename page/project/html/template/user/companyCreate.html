@@ -30,7 +30,7 @@
  					<div class="row">
     					<label class="col-xs-4 control-label" for="rpassword">重复密码：</label>
     					<div class="col-xs-8">
-     				 		<input class="form-control" type="password" id="rpassword" placeholder="" ng-model="certificate.repass">
+     				 		<input class="form-control" type="password" id="rpassword" placeholder="" ng-model="company.repass">
     					</div>
  					</div>
  				</div>
@@ -103,11 +103,11 @@
     			<div class="col-xs-10">
      				<div class="cmp-create-prov">
      				<div class="col-xs-4">
-     					<select class="form-control" type="text" ng-model="provience" ng-options="prov.name for prov in provList"/>
+     					<select class="form-control" type="text" ng-model="provence" ng-change="getCityList(provence)" ng-options="prov.name for prov in provinceList"/>
      				</div>
      				<label class="col-xs-1">省</label>
      				<div class="col-xs-4">
-     					<select class="form-control" type="text" ng-model="company.address" ng-options="city.name for city in cityList"/>
+     					<select class="form-control" type="text" ng-model="city" ng-options="city.shi for city in cityList"/>
      				</div>
      				<label class="col-xs-1">市</label>
      				</div>

@@ -21,9 +21,16 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 	getData();
 	function getData() {
 		CompanyService.getComppanyById($scope.cmpId).then(function(result){
-			console.log(result);
 			$scope.infoList = result;
 			$scope.ctype = getCtypeById($scope.infoList.type);
+			LocationService.getCityListByNum($scope.infoList.address).then(function(result){
+				$scope.infoList.province = {};
+				$scope.infoList.province.name = result.sheng;
+				$scope.infoList.city = {};
+				$scope.infoList.city.shi = result.shi;
+				$scope.infoList.city.no = result.no;
+				console.log($scope.infoList);
+			})
 		}); 
 	}
 	
@@ -46,6 +53,7 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 		$scope.infoList_backup = cloneObj($scope.infoList);
 		$scope.isEdit =true;
 		$scope.fileLogo = $scope.infoList_backup.logo;
+		console.log($scope.infoList);
 		document.getElementById("form_datetime").value = $scope.infoList.regTime;
 	}
 	//取消编辑
@@ -59,7 +67,7 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 	$scope.saveEdit = function(){
 		$scope.infoList.type = $scope.ctype.id;
 		$scope.infoList.regTime=document.getElementById("form_datetime").value;
-		$scope.infoList.province = $scope.infoList.province.name;
+		$scope.infoList.address = $scope.infoList.city.no;
 		console.log($scope.infoList);
 		CompanyService.modifyCompany($scope.infoList).then(function(result){
 			getData();

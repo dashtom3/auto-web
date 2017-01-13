@@ -1,4 +1,4 @@
-function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyService,CompanyProductsService,CompanyPriReportService,CompanyFinanceService,AuthService) {
+function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyService,CompanyProductsService,CompanyPriReportService,CompanyFinanceService,AuthService,LocationService) {
   console.log("CompanyDetailController");
 
 
@@ -6,6 +6,9 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
     $scope.cmpId = $routeParams.id;
     CompanyService.getComppanyById($scope.cmpId).then(function(result){
         $scope.companyDetail = result;
+        LocationService.getCityListByNum($scope.companyDetail.address).then(function(result){
+            $scope.city = result.shi;
+        });
     }); 
 
     $scope.cmpDetailList = GlobalService.cmpDetailList;

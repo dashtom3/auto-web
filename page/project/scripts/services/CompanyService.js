@@ -9,9 +9,12 @@ angular.module("auto-biz-user")
       ).success(function (res) {
         console.log("企业注册");
         if(res.callStatus == "SUCCEED"){
+          AuthService.kickOut();
           deferred.resolve(res.data);
+          AuthService.company = res.data;
+          localStorage.auto_company = JSON.stringify(res.data);
         }else{
-          alert("您好，您访问的内容出错");
+          alert(res.errCode);
         }
       }).error(function (res){
         alert("您好，您访问的内容出错");

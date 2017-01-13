@@ -8,10 +8,15 @@ angular.module('auto-biz-user')
       ).success(function(data, status, headers, config){
                 console.log("注册用户");
                 if(data.callStatus=='SUCCEED'){
+                    AuthService.kickOut();
                     deferred.resolve(data.data);
+                    AuthService.user = data.data;
+                    localStorage.auto_user = JSON.stringify(data.data);
+                }else if (data.errCode == 'USER_EXIST'){
+                    alert("账户名已存在");
                 }
                 else{
-                    alert("注册失败");
+                    alert("注册失败"+data.errCode);
                 }
             })
             .error(function(data, status, headers, config){

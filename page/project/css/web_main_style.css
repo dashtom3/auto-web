@@ -138,3 +138,61 @@
   	background-color: white;
   	margin-bottom: 12px;
   }
+  .modal-middle{
+  	list-style:none;
+  	margin:0 auto;
+  	padding:0px;
+  	width:100%;
+  }
+  .modal-top{
+  	background:rgb(199,74,54);
+  	height:2px;
+  	width:100%;
+  }
+  .modal-content2{
+  	background:#fff;
+  	text-align:center;
+  	font-size:14px;
+  	height:80px;
+  	line-height:80px;
+  }
+  .modal-content2 img{
+  	width:20px;
+  	height:20px;
+  	margin-right:10px;
+  }
+  .modal-def1{
+  	margin-left:45px;
+  	width:100px;
+  	float:left;
+  	text-align:center;
+  	height:25px;
+  	line-height:25px;
+  	background:white;
+  }
+  .modal-def2{
+  	margin-right:45px;
+  	width:100px;
+  	float:right;
+  	text-align:center;
+  	height:25px;
+  	line-height:25px;
+  	background:white;
+  }
+  .inp1{
+  	width:100px;
+  	height:25px;
+  	background:rgb(219,219,219);
+  	float:left;
+  	border:0;
+  	border-radius: 4px;
+  }
+  .inp2{
+  	width:100px;
+  	height:25px;
+  	background:rgb(199,74,54);
+  	float:right;
+  	border:0;
+  	color:white;
+  	border-radius: 4px;
+  }
