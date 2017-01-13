@@ -41,10 +41,10 @@ angular.module("auto-biz-user")
   .factory('loadingHttpInterceptor', function loadingHttpInterceptor($q, $timeout) {
     return {
       'request': function(config) {
-        if($(".isloading-overlay").is(":hidden")){
+        // if($(".isloading-overlay").is(":hidden")){
           console.log(config);
            $.isLoading();
-        }
+        // }
         return config || $q.when(config);
       },
       'requestError': function(config) {
