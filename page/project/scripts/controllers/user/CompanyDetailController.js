@@ -6,9 +6,11 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
     $scope.cmpId = $routeParams.id;
     CompanyService.getComppanyById($scope.cmpId).then(function(result){
         $scope.companyDetail = result;
-        LocationService.getCityListByNum($scope.companyDetail.address).then(function(result){
-            $scope.city = result.shi;
-        });
+        if($scope.companyDetail.address != ""){
+            LocationService.getCityByNum($scope.companyDetail.address).then(function(result){
+                $scope.city = result.shi;
+            });
+        }
     }); 
 
     $scope.cmpDetailList = GlobalService.cmpDetailList;
