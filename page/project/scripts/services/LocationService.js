@@ -37,7 +37,7 @@ angular.module("auto-biz-user")
 		});
 		return deferred.promise;
 	}
-	this.getCityListByNum = function(no){
+	this.getCityByNum = function(no){
 		var deferred = $q.defer();
 		var url = GlobalService.baseUrl+'city/detail/' + no;
 		console.log(url);

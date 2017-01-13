@@ -36,19 +36,21 @@
 								公司地址：
 							</label>
 							<label  class="control-label col-md-4 cmp-show-label" ng-show="isEdit == false" >
-								{{infoList.province.name}}
+								<!-- {{infoList.province.name}} -->
+								{{provinceName}}
 							</label>
 							<div class="col-md-4" ng-show="isEdit == true">
-								<select class="form-control" type="text" ng-model="infoList.province" ng-change="getCityList(infoList.province)" ng-options="province.name for province in provinceList"/>
+								<select class="form-control" type="text" ng-model="province" ng-change="getCityList(infoList.province)" ng-options="province.name for province in provinceList"/>
 							</div>
 							<label  class="control-label cmp-after-label col-md-1">
 								省
 							</label>
 							<label  class="control-label col-md-4 cmp-show-label" ng-show="isEdit == false" >
-								{{infoList.city.shi}}
+								<!-- {{infoList.city.shi}} -->
+								{{cityName}}
 							</label>
 							<div class="col-md-4" ng-show="isEdit == true">
-								<select class="form-control" type="text" ng-model="infoList.city" ng-options="city.shi for city in cityList"/>
+								<select class="form-control" type="text" ng-model="city" ng-options="city.shi for city in cityList"/>
 							</div>
 							<label  class="control-label cmp-after-label col-md-1">
 								市

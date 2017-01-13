@@ -23,13 +23,10 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 		CompanyService.getComppanyById($scope.cmpId).then(function(result){
 			$scope.infoList = result;
 			$scope.ctype = getCtypeById($scope.infoList.type);
-			LocationService.getCityListByNum($scope.infoList.address).then(function(result){
-				$scope.infoList.province = {};
-				$scope.infoList.province.name = result.sheng;
-				$scope.infoList.city = {};
-				$scope.infoList.city.shi = result.shi;
-				$scope.infoList.city.no = result.no;
-				console.log($scope.infoList);
+			LocationService.getCityByNum($scope.infoList.address).then(function(result){
+				$scope.cityName = result.shi;
+				$scope.cityNum = result.no;
+				$scope.provinceName = result.sheng;
 			})
 		}); 
 	}
@@ -48,11 +45,30 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 			}
 		}
 	}
+	function getProvinceByName(pName){
+		for (i in $scope.provinceList){
+			if ($scope.provinceList[i].name == pName){
+				return $scope.provinceList[i];
+			}
+		}
+	}
+	function getCityByNo(num){
+		for (i in $scope.cityList){
+			if ($scope.cityList[i].no == num){
+				return $scope.cityList[i];
+			}
+		}
+	}
 	//点击编辑按钮
 	$scope.startEdit = function(){
 		$scope.infoList_backup = cloneObj($scope.infoList);
 		$scope.isEdit =true;
 		$scope.fileLogo = $scope.infoList_backup.logo;
+		$scope.province = getProvinceByName($scope.provinceName);
+		LocationService.getCityListByProvince($scope.province.name).then(function(result){
+			$scope.cityList = result;
+			$scope.city = getCityByNo($scope.cityNum);
+		});
 		console.log($scope.infoList);
 		document.getElementById("form_datetime").value = $scope.infoList.regTime;
 	}
@@ -67,7 +83,7 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 	$scope.saveEdit = function(){
 		$scope.infoList.type = $scope.ctype.id;
 		$scope.infoList.regTime=document.getElementById("form_datetime").value;
-		$scope.infoList.address = $scope.infoList.city.no;
+		$scope.infoList.address = $scope.city.no;
 		console.log($scope.infoList);
 		CompanyService.modifyCompany($scope.infoList).then(function(result){
 			getData();
