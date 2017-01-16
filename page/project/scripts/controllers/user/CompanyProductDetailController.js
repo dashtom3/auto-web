@@ -23,7 +23,7 @@ function CompanyProductDetailController($scope,GlobalService,$routeParams,Compan
         if (!isStart(privateReport.dateStart)){
             return 'unstart'
         }
-        if($scope.commentList.length == 0){
+        if($scope.commentList && $scope.commentList.length == 0){
             return 'noComment'
         }
         return 'showComment';
@@ -47,11 +47,11 @@ function CompanyProductDetailController($scope,GlobalService,$routeParams,Compan
             console.log(result.list[0]);
             })
             }
-
+            console.log($scope.productDetail.privateReport);
             if($scope.productDetail.privateReport){
                 CompanyPriReportService.getCompanyPriReportDetail($scope.productDetail.privateReport).then(function(result){
                     $scope.productPriReport = result;
-                    
+                    console.log($scope.productPriReport);
                     $scope.scores = getAverageScore($scope.productPriReport.scores,$scope.productPriReport.scoredUserNum);
                     $scope.totalAverageScore = getTotalAverageScore($scope.scores);
                     console.log(result);
