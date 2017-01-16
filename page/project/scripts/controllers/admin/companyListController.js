@@ -156,6 +156,7 @@ function companyListController($scope,CompanyService) {
     //alert('pass:' + passFlag + '!');
     CompanyService.passCompany(id,passFlag).then(function(result){
         CompanyService.getCompanyList(10,$scope.currentPage,$scope.passFlag,$scope.type,'').then(function(result){
+          console.log(result.list);
           $scope.companyList = result.list;
           $scope.total = result.totalNum;
         });

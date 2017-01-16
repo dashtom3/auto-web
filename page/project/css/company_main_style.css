@@ -23,7 +23,8 @@
 .cmp-backend-p{
 	font-size: 27px;
 	font-family: 等线;
-	color: #fff
+	color: #fff;
+	line-height: 90px;
 }
 .navbar-right-cmpname{
 	vertical-align:middle;
@@ -40,6 +41,7 @@
 	margin-right: 10px !important;
 }
 .navbar-cmpname-p{
+	line-height: 90px;
 	font-size: 23px;
 	 font-family: 方正兰亭超细黑简体;
 	 color: #fff;
