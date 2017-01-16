@@ -7,7 +7,7 @@ app.config(["$locationProvider","$httpProvider","$routeProvider",function ($loca
     $routeProvider
       .when('/', {
         templateUrl: '/page/project/html/views/user/innovation.html',
-        controller: 'MainController'
+        // controller: 'MainController'
       })
       .when('/innovation', {
         templateUrl: '/page/project/html/views/user/innovation.html',

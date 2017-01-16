@@ -7,7 +7,7 @@ app.config(["$locationProvider","$httpProvider","$routeProvider",function ($loca
     $routeProvider
       .when('/', {
         templateUrl: '/page/project/html/views/user/innovation.html',
-        controller: 'MainController'
+        // controller: 'MainController'
       })
       .when('/innovation', {
         templateUrl: '/page/project/html/views/user/innovation.html',
@@ -3865,6 +3865,17 @@ angular.module("auto-biz-user").controller("CompanyDetailController",["$scope","
 function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyService,CompanyProductsService,CompanyPriReportService,CompanyFinanceService,AuthService,LocationService) {
   console.log("CompanyDetailController");
 
+    console.log($scope);
+    console.log(GlobalService);
+    console.log(CompanyNewsService);
+    console.log($routeParams);
+    console.log(CompanyService);
+    console.log(CompanyProductsService);
+    console.log(CompanyPriReportService);
+    console.log(CompanyFinanceService);
+    console.log(CompanyPriReportService);
+    console.log(AuthService);
+    console.log(LocationService);
 
     //初始化company基本数据
     $scope.cmpId = $routeParams.id;
@@ -3996,6 +4007,8 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
     //获取企业新闻
     function getCompanyNewsData(pagePerNum,currentPage){
         CompanyNewsService.getCompanyNewsList("","","","","",$scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
+        console.log("news");
+           
             if($scope.cmpNews.list){
                 $scope.cmpNews.list = $scope.cmpNews.list.concat(result.list);
             }else{
@@ -4009,6 +4022,7 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
     //获取企业产品
     function getCompanyProductsData(pagePerNum,currentPage){
         CompanyProductsService.getCompanyProductsList("","","","","",$scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
+            console.log("products");
             if($scope.cmpProducts.list){
                 $scope.cmpProducts.list = $scope.cmpProducts.list.concat(result.list);
             }else{
@@ -4021,7 +4035,9 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
     }   
     //获取企业测评
     function getCompanyTestsData(pagePerNum,currentPage){
+        
         CompanyPriReportService.getCompanyPriReportList("","","","","","","","","","","","","","","","",$scope.cmpId,pagePerNum,currentPage).then(function(result){
+            console.log("tests");
             $scope.timeNow = new Date().getTime();
             if($scope.cmpTests.list){
                 $scope.cmpTests.list = $scope.cmpTests.list.concat(result.list);
@@ -4036,6 +4052,7 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
     //获取企业财务
     function getCompanyFinancesData(pagePerNum,currentPage){
         CompanyFinanceService.getCompanyFinanceList($scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
+        console.log("finances");
             if($scope.cmpFinances.list){
              $scope.cmpFinances.list = $scope.cmpFinances.list.concat(result.list);
          }else{
@@ -4520,7 +4537,7 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
 }
 ]);
 
-angular.module("auto-biz-user").controller("CompanyBasicInfoController",["$scope",
+angular.module("auto-biz-user").controller("MainController",["$scope",
 function MainController($scope) {
   console.log("载入MainController");
   // $scope.currentPage = "partA";
