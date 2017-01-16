@@ -101,9 +101,8 @@ function CompanyCreateController($scope,FileService,CompanyService,GlobalService
         alert("请选择成立时间");
         return;
       }
-       if ($scope.company.regTime==null ||$scope.company.regTime == ""){
-        alert("请选择是否需要投融资");
-        return;
+       if ($scope.company.isNeedCapital==null ||$scope.company.isNeedCapital == ""){
+        $scope.company.isNeedCapital = false;
       }
   		CompanyService.registerCompany($scope.company).then(function(result){
   			 $location.path("/innovation");
