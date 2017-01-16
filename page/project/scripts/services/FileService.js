@@ -1,5 +1,5 @@
 angular.module("auto-biz-user")
-  .service('FileService', ["$http","GlobalService","$q", "AuthService",function ($q,$http,GlobalService,Upload) {
+  .service('FileService', ["$q","$http","GlobalService", "Upload",function ($q,$http,GlobalService,Upload) {
   	//上传文件
   	this.uploadFile = function(file){
   		var deferred = $q.defer();
