@@ -1,6 +1,3 @@
-// 'use strict';
-// require('./controllers/admin/AdminController.js');
-
 
 
 var app = angular.module('auto-biz-user', ['ngRoute','bw.paging','ngFileUpload']);

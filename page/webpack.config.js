@@ -6,19 +6,19 @@ module.exports = {
         path: __dirname,
         filename: "bundle.js"
     },
-    // module: {
-    //         loaders: [
-    //         {  
-    //          test:/\.css$/,  
-    //          loader:'style!css'  
-    //         }, 
-    //       {
-    //         test: /\.js$/,
-    //         exclude: /node_modules/,
-    //         loader: 'babel-loader'
-    //       }
-    //     ]
-    // },
+    module: {
+            loaders: [
+            {  
+             test:/\.css$/,  
+             loader:'style!css'  
+            }, 
+          {
+            test: /^.*\.js$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader'
+          }
+        ]
+    },
     plugins: [
     new uglifyJsPlugin({
       compress: {
