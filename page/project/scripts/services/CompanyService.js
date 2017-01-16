@@ -4,6 +4,7 @@ angular.module("auto-biz-user")
   //注册公司
   this.registerCompany = function (company) {
     var deferred = $q.defer();
+    console.log(company);
     $http.post(GlobalService.baseUrl+'company/signup',
       company
       ).success(function (res) {

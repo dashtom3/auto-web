@@ -175,7 +175,6 @@
 .cmp-outline-page >div> p{
 	color: black;
 	line-height: 30px;
-	/*font-family: DengXian;*/
 	text-indent:2em;
 }
 .cmp-detail{
@@ -413,7 +412,6 @@
 }
 .join-test-title{
 	margin: 10px 0;
-	font-family: "DengXian";
 	font-weight: bold;
 	font-size: 17px;
 	line-height: 25px;
@@ -427,14 +425,12 @@
 	margin-left: 20px;
 	vertical-align: middle;
 	font-size: 14px;
-	font-family: "DengXian";
 	font-weight: normal;
 	line-height: 25px;
 }
 .join-test-introduce{
 	text-indent: 2em;
 	font-size: 14px;
-	font-family: "DengXian";
 	font-weight: normal;
 	line-height: 25px;
 }
@@ -443,7 +439,6 @@
 }
 .join-test-config > label{
 	font-size: 14px;
-	font-family: "DengXian";
 	font-weight: normal;
 	line-height: 25px;
 }
@@ -456,7 +451,6 @@
 	display: inline-block;
 	margin-left: 20px;
 	font-size: 14px;
-	font-family: "DengXian";
 	font-weight: normal;
 	line-height: 25px;
 }
@@ -465,7 +459,6 @@
 	display: inline-block;
 	margin-left: 20px;
 	font-size: 14px;
-	font-family: "DengXian";
 	font-weight: normal;
 	line-height: 25px;
 	overflow-x: hidden;
@@ -476,7 +469,6 @@
 .cmp-no-more{
 	text-align: center;
 	font-size: 14px;
-	font-family: "DengXian";
 	font-weight: normal;
 	line-height: 25px;
 }

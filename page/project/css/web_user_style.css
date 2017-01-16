@@ -243,7 +243,6 @@
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
     box-sizing: content-box;
-    font-family: "DengXian";
 }
 .cmp-reg-userBlocks{
     display: block;
@@ -255,7 +254,6 @@
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.15);
     box-sizing: content-box;
-    font-family: "DengXian";
 }
 .cmp-reg-top{
 	height: 100px;
@@ -310,7 +308,6 @@
     margin: 10px 0;
     font-weight: 600;
     font-size: 16px;
-    font-family: DengXian;
 }
 
 .cmp-reg-timeStamp{
@@ -319,7 +316,6 @@
     margin: 10px 0;
     font-weight: 200;
     font-size: 16px;
-    font-family: DengXian;
 }
 
 .cmp-reg-headerImage{
@@ -341,7 +337,6 @@
     color: black;
     line-height: 40px;
     margin-top: 10px;
-    font-family: DengXian;
 }
 
 .cmp-reg-newsImage{
@@ -405,7 +400,6 @@
     position: absolute;
     top: 10px;
     width: 100%;
-    font-family: DengXian;
    /* cursor: pointer;*/
 }
 .cmp-reg-cardCompany a{
@@ -441,7 +435,6 @@
 }
 
 .cmp-reg-cardContent{
-    font-family: "DengXian";
     margin: 200px 15px 10px;
     overflow: hidden;
 }
@@ -485,7 +478,6 @@
 }
 .cmp-reg-cardLabel{
     width: 70px;
-    font-family: "DengXian";
     font-size: 14px;
     font-weight: normal;
     line-height: 25px;
@@ -499,7 +491,6 @@
     overflow:hidden;
     width: 135px;
     display: inline-block;
-    font-family: "DengXian";
     font-size: 14px;
     font-weight: normal;
     line-height: 25px;
@@ -512,7 +503,6 @@
     overflow:hidden;
     width: 135px;
     display: inline-block;
-    font-family: "DengXian";
     font-size: 14px;
     font-weight: normal;
     line-height: 25px;
@@ -522,7 +512,6 @@
 
 .cmp-reg-cardDate{
     width: 40px;
-    font-family:"DengXian";
     color: #c74b36;
     display: inline-block;
     vertical-align: top;

@@ -39,17 +39,20 @@ angular.module("auto-biz-user")
   });
 angular.module("auto-biz-user")
   .factory('loadingHttpInterceptor', function loadingHttpInterceptor($q, $timeout) {
+    var isLoading = false;
+
     return {
       'request': function(config) {
-        // if($(".isloading-overlay").is(":hidden")){
-          console.log(config);
+          if (isLoading == false){
            $.isLoading();
-        // }
+           isLoading = true;
+          }
         return config || $q.when(config);
       },
       'requestError': function(config) {
         $timeout(function() {
           $.isLoading('hide');
+          isLoading = false;
         }, 500);
         
         // do something on error
@@ -61,6 +64,7 @@ angular.module("auto-biz-user")
       'response': function(response) {
         $timeout(function() {
           $.isLoading('hide');
+          isLoading = false;
         }, 500);
         
         // do something on success
@@ -69,6 +73,7 @@ angular.module("auto-biz-user")
       'responseError': function(rejection) {
         $timeout(function() {
           $.isLoading('hide');
+          isLoading = false;
         }, 500);
         
         // do something on error

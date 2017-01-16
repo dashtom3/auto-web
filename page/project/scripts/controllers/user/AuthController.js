@@ -47,7 +47,7 @@ function AuthController($scope,AuthService,UserService,$location,FileService){
       alert("请输入用户名");
       return ;
     } 
-    if (!$scope.user.nickName ||$scope.user.nickName == ""){
+    if (!$scope.user.nikeName ||$scope.user.nikeName == ""){
       alert("请输入昵称");
       return;
     }
