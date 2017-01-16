@@ -1,5 +1,5 @@
 angular.module("auto-biz-user")
-  .service('CompanyNewsService', function ($http,GlobalService,$q,AuthService) {
+  .service('CompanyNewsService', ["$http","GlobalService","$q", "AuthService",function ($http,GlobalService,$q,AuthService) {
   var self = this; 
   //获取资讯
   this.getCompanyNewsList = function (title,author,isFirst,tag,isOnline,companyId,startTime,endTime,numPerPage,pageNumber) {
@@ -119,4 +119,4 @@ angular.module("auto-biz-user")
       return deferred.promise;
   };
 
-})
+}]);

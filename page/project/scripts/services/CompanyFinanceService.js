@@ -1,5 +1,5 @@
 angular.module("auto-biz-user")
-  .service('CompanyFinanceService', function ($http,GlobalService,$q,AuthService) {
+  .service('CompanyFinanceService', ["$http","GlobalService","$q","AuthService", function ($http,GlobalService,$q,AuthService) {
   var self = this; 
   //获取企业财务列表
   this.getCompanyFinanceList = function (companyId,yearStart,yearEnd,numPerPage,pageNumber) {
@@ -85,4 +85,4 @@ angular.module("auto-biz-user")
       });
       return deferred.promise;
   };
-})
+}]);

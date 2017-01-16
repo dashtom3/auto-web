@@ -1,5 +1,5 @@
 angular.module("auto-biz-user")
-  .service('CompanyProductsService', function ($http,GlobalService,$q,AuthService) {
+  .service('CompanyProductsService',["$http","GlobalService","$q", "AuthService", function ($http,GlobalService,$q,AuthService) {
   var self = this; 
   //获取产品
   this.getCompanyProductsList = function (name,tag,state,argc,desc,companyId,startTime,endTime,numPerPage,pageNumber) {
@@ -117,4 +117,4 @@ angular.module("auto-biz-user")
       return deferred.promise;
   };
 
-})
+}]);

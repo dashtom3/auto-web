@@ -1,3 +1,5 @@
+angular.module("auto-biz-user").controller("CompanySideBarController",["$scope",
+
 function CompanySideBarController($scope) {
   console.log("CompanySideBarController");
   $scope.testShow = false;
@@ -6,3 +8,4 @@ function CompanySideBarController($scope) {
   		$scope.testShow = !$scope.testShow;
   }
 }
+]);

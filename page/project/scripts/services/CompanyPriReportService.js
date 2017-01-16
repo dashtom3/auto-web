@@ -1,5 +1,5 @@
 angular.module("auto-biz-user")
-  .service('CompanyPriReportService', function ($http,GlobalService,$q,AuthService) {
+  .service('CompanyPriReportService', ["$http","GlobalService","$q", "AuthService",function ($http,GlobalService,$q,AuthService) {
   var self = this; 
   //获取用户测评
   this.getCompanyPriReportList = function (productId,title,type,address,startDateStart,endDateStart,startDateEnd,endDateEnd,maxUserNum_Min,maxUserNum_Max,argc,state,signUser,passUser,startTime,endTime,companyId,numPerPage,pageNumber) {
@@ -288,4 +288,4 @@ angular.module("auto-biz-user")
       });
       return deferred.promise;
   };
-})
+}]);

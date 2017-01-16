@@ -1,5 +1,5 @@
 angular.module("auto-biz-user")
-  .service('AuthService', function ($q,$http,GlobalService) {
+  .service('AuthService',["$q","$http","GlobalService", function ($q,$http,GlobalService) {
   var self = this; 
   //用户登录
   this.userLogin = function (username, password) {
@@ -111,4 +111,4 @@ angular.module("auto-biz-user")
         self.company =  JSON.parse(localStorage.auto_company);
       }
   }
-})
+}]);

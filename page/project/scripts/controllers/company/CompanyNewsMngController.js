@@ -1,3 +1,4 @@
+angular.module("auto-biz-user").controller("CompanyNewsMngController",["$scope","CompanyNewsService","FileService",
 function CompanyNewsMngController($scope,CompanyNewsService,FileService) {
 	console.log("CompanyNewsMngController");
 	$scope.pageSize = 5;
@@ -143,3 +144,4 @@ function CompanyNewsMngController($scope,CompanyNewsService,FileService) {
 		loadCompanyNewsData($scope.pageSize,page);
 	}
 }
+]);

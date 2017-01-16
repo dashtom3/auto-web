@@ -1,3 +1,4 @@
+angular.module("auto-biz-user").controller("CompanyBasicInfoController",["$scope","CompanyService","GlobalService","FileService","LocationService",
 function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileService,LocationService) {
 	console.log("CompanyBasicInfoController");
 	$("#form_datetime").datetimepicker({format:'YYYY/MM/DD',locale: moment.locale('zh-cn') });
@@ -113,3 +114,4 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 		}
 	}
 }
+]);

@@ -1,3 +1,5 @@
+angular.module("auto-biz-user").controller("CompanyMainController",["$scope","AuthService","$location",
+
 function CompanyMainController($scope,AuthService,$location) {
     console.log("CompanyMainController");
    
@@ -24,3 +26,4 @@ function CompanyMainController($scope,AuthService,$location) {
         }
     }   
 }
+]);

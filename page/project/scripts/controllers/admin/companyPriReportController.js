@@ -1,6 +1,6 @@
+angular.module("auto-biz-user").controller("companyPriReportController",["$scope","CompanyService","CompanyPriReportService",
 function companyPriReportController($scope,CompanyService,CompanyPriReportService) {
   console.log("载入companyPriReportController");
-  //TODO 后端接口未完成
    //初始化数据
   CompanyPriReportService.getCompanyPriReportList("","","","","","","","","","","","","","","","","",10,1)
     .then(function(result){
@@ -184,3 +184,5 @@ function companyPriReportController($scope,CompanyService,CompanyPriReportServic
       $scope.ratingVal = val;
   }
 }
+]
+);

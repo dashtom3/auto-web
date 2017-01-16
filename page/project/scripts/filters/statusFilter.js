@@ -38,7 +38,8 @@ angular.module('auto-biz-user')
   };
 });
 
-app.filter("trustHtmlFilter", ['$sce', function($sce) {
+angular.module('auto-biz-user')
+.filter("trustHtmlFilter", ['$sce', function($sce) {
   return function(htmlCode){
     return $sce.trustAsHtml(htmlCode);
   }

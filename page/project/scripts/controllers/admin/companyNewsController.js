@@ -1,3 +1,4 @@
+angular.module("auto-biz-user").controller("companyNewsController",["$scope","CompanyNewsService",
 function companyNewsController($scope,CompanyNewsService) {
   console.log("载入companyNewsController");
   //数据初始化
@@ -158,3 +159,5 @@ function companyNewsController($scope,CompanyNewsService) {
     });
  }
 }
+]
+);

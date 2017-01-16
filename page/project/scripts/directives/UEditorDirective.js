@@ -1,4 +1,4 @@
-angular.module('auto-biz-user').directive('ueditor',function($timeout){
+angular.module('auto-biz-user').directive('ueditor',["$timeout" ,function($timeout){
 	return {
 		restrict: 'E',
 		require : 'ngModel',
@@ -27,4 +27,4 @@ angular.module('auto-biz-user').directive('ueditor',function($timeout){
 			}); 	
 		}
 	}
-});
+}]);

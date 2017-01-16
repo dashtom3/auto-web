@@ -1,3 +1,4 @@
+angular.module("auto-biz-user").controller("companyListController",["$scope","CompanyService",
 function companyListController($scope,CompanyService) {
   console.log("载入companyListController");
   //数据初始化
@@ -161,3 +162,5 @@ function companyListController($scope,CompanyService) {
     })
   }
 }
+]
+);

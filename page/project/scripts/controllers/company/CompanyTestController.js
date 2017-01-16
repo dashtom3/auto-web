@@ -1,3 +1,5 @@
+angular.module("auto-biz-user").controller("CompanyTestController",["$scope","FileService","CompanyPubReportService","CompanyProductsService","$filter",
+
 function CompanyTestController($scope,FileService,CompanyPubReportService,CompanyProductsService,$filter) {
 	console.log("CompanyTestController");
 	$scope.tmpTest={};
@@ -151,10 +153,5 @@ function CompanyTestController($scope,FileService,CompanyPubReportService,Compan
 			});
 		}
 	}
-
-
-
-
-
-
 }
+]);

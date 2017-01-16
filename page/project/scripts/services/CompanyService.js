@@ -1,5 +1,5 @@
 angular.module("auto-biz-user")
-.service('CompanyService', function ($http,GlobalService,$q,AuthService) {
+.service('CompanyService', ["$http","GlobalService","$q", "AuthService",function ($http,GlobalService,$q,AuthService) {
   var self = this; 
   //注册公司
   this.registerCompany = function (company) {
@@ -127,4 +127,4 @@ angular.module("auto-biz-user")
     };
 
 
-  })
+  }]);

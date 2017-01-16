@@ -1,3 +1,4 @@
+angular.module("auto-biz-user").controller("CompanyDetailController",["$scope","GlobalService","CompanyNewsService","$routeParams","CompanyService","CompanyProductsService","CompanyPriReportService","CompanyFinanceService","AuthService","LocationService",
 function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyService,CompanyProductsService,CompanyPriReportService,CompanyFinanceService,AuthService,LocationService) {
   console.log("CompanyDetailController");
 
@@ -209,3 +210,4 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
         }
     };
 }
+]);

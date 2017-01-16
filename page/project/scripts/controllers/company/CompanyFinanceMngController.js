@@ -1,3 +1,4 @@
+angular.module("auto-biz-user").controller("CompanyFinanceMngController",["$scope","CompanyFinanceService",
 function CompanyFinanceMngController($scope,CompanyFinanceService) {
 	console.log("CompanyFinanceMngController");
 	$scope.tmpItem={};
@@ -146,3 +147,4 @@ function CompanyFinanceMngController($scope,CompanyFinanceService) {
 		return newObj;  
 	};
 }
+]);

@@ -1,3 +1,4 @@
+angular.module("auto-biz-user").controller("CompanyCreateController",["$scope","FileService","CompanyService","GlobalService","AuthService","LocationService","$location",
 function CompanyCreateController($scope,FileService,CompanyService,GlobalService,AuthService,LocationService,$location) {
   console.log("载入CompanyCreateController");
   //初始化
@@ -37,7 +38,9 @@ function CompanyCreateController($scope,FileService,CompanyService,GlobalService
   $scope.registerCompany  = function(){
   		$scope.company.type = $scope.cmptype.id;
       $scope.company.regTime=document.getElementById("form_datetime").value;
-      $scope.company.address = $scope.city.no || null;
+      if ($scope.city){
+        $scope.company.address = $scope.city.no || null;
+      }
       if (!$scope.company.name ||$scope.company.name == ""){
         alert("请输入用户名");
         return;
@@ -106,4 +109,4 @@ function CompanyCreateController($scope,FileService,CompanyService,GlobalService
   			 $location.path("/innovation");
   		});
   }
-}
+}]);

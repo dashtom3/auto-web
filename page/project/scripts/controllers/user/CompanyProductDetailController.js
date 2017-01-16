@@ -1,3 +1,4 @@
+angular.module("auto-biz-user").controller("CompanyProductDetailController",["$scope","GlobalService","$routeParams","CompanyProductsService","CompanyPubReportService","CompanyPriReportService","AuthService",
 function CompanyProductDetailController($scope,GlobalService,$routeParams,CompanyProductsService,CompanyPubReportService,CompanyPriReportService,AuthService) {
     console.log("载入CompanyProductDetailController");
      $scope.productType = GlobalService.companyType;
@@ -121,3 +122,4 @@ function CompanyProductDetailController($scope,GlobalService,$routeParams,Compan
         $scope.ratingVal = val;
     }
 }
+]);

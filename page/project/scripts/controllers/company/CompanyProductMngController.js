@@ -1,3 +1,4 @@
+angular.module("auto-biz-user").controller("CompanyProductMngController",["$scope","FileService","CompanyProductsService","GlobalService","$filter",
 function CompanyProductMngController($scope,FileService,CompanyProductsService,GlobalService,$filter) {
 	console.log("CompanyProductMngController");
 	$("#form_datetime").datetimepicker({format:'YYYY/MM/DD',locale: moment.locale('zh-cn') });
@@ -206,3 +207,4 @@ function CompanyProductMngController($scope,FileService,CompanyProductsService,G
 
 	
 }
+]);

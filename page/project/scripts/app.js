@@ -1,7 +1,11 @@
+// 'use strict';
+// require('./controllers/admin/AdminController.js');
+
+
 
 var app = angular.module('auto-biz-user', ['ngRoute','bw.paging','ngFileUpload']);
 
-app.config(function ($locationProvider,$httpProvider,$routeProvider) {
+app.config(["$locationProvider","$httpProvider","$routeProvider",function ($locationProvider,$httpProvider,$routeProvider) {
     console.log("载入angular config");
     $routeProvider
       .when('/', {
@@ -71,7 +75,7 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
       $locationProvider.html5Mode(true);
       $httpProvider.interceptors.push('loadingHttpInterceptor');
 
-  });
+  }]);
     // $routeProvider
     // .when('/PARisk/EnterpriseRisk', {
     //     templateUrl:'page/project/html/main.html',
@@ -81,7 +85,7 @@ app.config(function ($locationProvider,$httpProvider,$routeProvider) {
     // $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
     // $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
     //$locationProvider.html5Mode(true);
-app.run(function(AuthService,$rootScope) {
+app.run(["AuthService","$rootScope",function(AuthService,$rootScope) {
   console.log("获取本地数据");
   AuthService.setInfoFromLocalStorage();
-});
+}]);

@@ -1,3 +1,4 @@
+angular.module("auto-biz-user").controller("companyProductController",["$scope","CompanyProductsService",
 function companyProductController($scope,CompanyProductsService) {
   console.log("载入companyProductController");
   //数据初始化
@@ -155,3 +156,5 @@ function companyProductController($scope,CompanyProductsService) {
     });
  }
 }
+]
+);

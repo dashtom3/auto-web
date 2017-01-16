@@ -1,5 +1,5 @@
 angular.module('auto-biz-user')
-  .directive('headerloginbg',function (AuthService) {
+  .directive('headerloginbg',["AuthService",function (AuthService) {
     return {
       restrict: 'A',
       link: function postLink(scope, element) {
@@ -10,4 +10,4 @@ angular.module('auto-biz-user')
         }
       }
     };
-  });
+  }]);

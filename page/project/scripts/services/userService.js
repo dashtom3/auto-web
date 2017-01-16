@@ -1,5 +1,5 @@
 angular.module('auto-biz-user')
-  .service('UserService', function UserService($http, $q,GlobalService,AuthService) {
+  .service('UserService', ["$http","$q","GlobalService", "AuthService",function UserService($http, $q,GlobalService,AuthService) {
     //注册用户
     this.registerUser = function(user) {
         var deferred = $q.defer();
@@ -96,4 +96,4 @@ angular.module('auto-biz-user')
             });
         return deferred.promise;
     }
-});
+}]);

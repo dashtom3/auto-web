@@ -1,5 +1,5 @@
 angular.module("auto-biz-user")
-.service('LocationService', function ($q,$http,GlobalService) {
+.service('LocationService',["$q","$http","GlobalService", function ($q,$http,GlobalService) {
 	var self = this;
 
 	this.getProvinceList = function(){
@@ -55,4 +55,4 @@ angular.module("auto-biz-user")
 		return deferred.promise;
 	}
 
-});
+}]);

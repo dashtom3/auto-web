@@ -1,3 +1,5 @@
+angular.module("auto-biz-user").controller("CompanyNewsDetailController",["$scope","CompanyNewsService","$routeParams",
+
 function CompanyNewsDetailController($scope,CompanyNewsService,$routeParams) {
 	console.log("载入CompanyNewsDetailController");
 
@@ -7,3 +9,4 @@ function CompanyNewsDetailController($scope,CompanyNewsService,$routeParams) {
 		});
 	}
 }
+]);

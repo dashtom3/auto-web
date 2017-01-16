@@ -1,3 +1,4 @@
+angular.module("auto-biz-user").controller("userListController",["$scope","UserService",
 function userListController($scope,UserService) {
   console.log("载入userListController");
   //数据初始化
@@ -114,3 +115,4 @@ function userListController($scope,UserService) {
     });
   }
 }
+]);

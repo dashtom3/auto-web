@@ -1,3 +1,4 @@
+angular.module("auto-biz-user").controller("companyPubReportController",["$scope","CompanyPubReportService",
 function companyPubReportController($scope,CompanyPubReportService) {
   console.log("载入companyPubReportController");
   //初始化数据
@@ -103,3 +104,4 @@ function companyPubReportController($scope,CompanyPubReportService) {
     });
  }
 }
+]);

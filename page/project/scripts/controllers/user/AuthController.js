@@ -1,3 +1,5 @@
+angular.module("auto-biz-user").controller("AuthController",["$scope","AuthService","UserService","$location","FileService",
+
 function AuthController($scope,AuthService,UserService,$location,FileService){
   console.log("载入AuthController");
   $scope.userType=[["普通用户","normal"],["专栏作者","wr"]];
@@ -75,3 +77,4 @@ function AuthController($scope,AuthService,UserService,$location,FileService){
     })
   }
 }
+]);
