@@ -95,11 +95,11 @@ angular.module("auto-biz-user")
       $http.get(url)
       .success(function(data, status, headers, config){
         if(data.callStatus=='SUCCEED'){
-          alert('认证成功!');
+          alert('操作成功!');
           deferred.resolve('');
         }
         else{
-          alert('认证失败'+data.errCode)
+          alert('操作失败'+data.errCode)
           deferred.resolve('');
         }
       })
