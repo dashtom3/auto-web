@@ -2,7 +2,7 @@
 	<div class="panel panel-default cmp-box-shadow">
 		<div class="panel-body ">
 			<div class="row cmp-first-row" >
-				<label class="col-md-2 col-md-offset-1 cmp-title-label" >
+				<label class="col-md-2 col-md-offset-1 cmp-title-label cmp-clear-padding" >
 					基本信息
 				</label>
 			</div>
@@ -10,7 +10,7 @@
 				<div class="col-md-7 col-md-offset-1 form-group">
 					<form role="form" class="form-horizontal">
 						<div class="row cmp-input-row">
-							<label  class="control-label col-md-2">
+							<label  class="control-label col-md-2 cmp-clear-padding">
 								公司全称：
 							</label>
 							<label  class="control-label col-md-10 cmp-show-label" ng-show="isEdit == false" >
@@ -21,7 +21,7 @@
 							</div>
 						</div>
 						<div class="row cmp-input-row">
-							<label  class="control-label col-md-2">
+							<label  class="control-label col-md-2 cmp-clear-padding">
 								业务简述：
 							</label>
 							<label  class="control-label col-md-10 cmp-show-label" ng-show="isEdit == false">
@@ -32,7 +32,7 @@
 							</div>
 						</div>
 						<div class="row cmp-input-row">
-							<label  class="control-label col-md-2">
+							<label  class="control-label col-md-2 cmp-clear-padding">
 								公司地址：
 							</label>
 							<label  class="control-label col-md-4 cmp-show-label" ng-show="isEdit == false" >
@@ -56,7 +56,7 @@
 							</label>
 						</div>
 						<div class="row cmp-input-row">
-							<label  class="control-label col-md-2">
+							<label  class="control-label col-md-2 cmp-clear-padding">
 								详细地址：
 							</label>
 							<label  class="control-label col-md-10 cmp-show-label" ng-show="isEdit == false" >
@@ -67,7 +67,7 @@
 							</div>
 						</div>
 						<div class="row cmp-input-row">
-							<label  class="control-label col-md-2">
+							<label  class="control-label col-md-2 cmp-clear-padding">
 								所属领域：
 							</label>
 							<label  class="control-label col-md-4 cmp-show-label" ng-show="isEdit == false" >
@@ -78,7 +78,7 @@
 							</div>
 						</div>
 						<div class="row cmp-input-row">
-							<label  class="control-label col-md-2">
+							<label  class="control-label col-md-2 cmp-clear-padding">
 								成立时间：
 							</label>
 							<label  class="control-label col-md-4 cmp-show-label" ng-show="isEdit == false" >
@@ -89,7 +89,7 @@
 							</div>
 						</div>
 						<div class="row cmp-input-row">
-							<label  class="control-label col-md-2">
+							<label  class="control-label col-md-2 cmp-clear-padding">
 								法人代表：
 							</label>
 							<label  class="control-label col-md-4 cmp-show-label" ng-show="isEdit == false" >
@@ -100,7 +100,7 @@
 							</div>
 						</div>
 						<div class="row cmp-input-row">
-							<label  class="control-label col-md-2">
+							<label  class="control-label col-md-2 cmp-clear-padding">
 								注册资本：
 							</label>
 							<label  class="control-label col-md-4 cmp-show-label" ng-show="isEdit == false" >
@@ -133,7 +133,7 @@
 	<div class="panel panel-default cmp-box-shadow" >
 		<div class="panel-body">
 			<div class="row cmp-first-row" >
-				<label class="col-md-2 col-md-offset-1 cmp-title-label">
+				<label class="col-md-2 col-md-offset-1 cmp-title-label cmp-clear-padding">
 					认证信息
 				</label>
 			</div>
@@ -141,7 +141,7 @@
 				<div class="col-md-7 col-md-offset-1">
 					<form role="form" class="form-horizontal">
 						<div class="row cmp-input-row">
-							<label class="col-md-3 ">
+							<label class="col-md-3 cmp-clear-padding">
 								注册人职位：
 							</label>
 							<label class="col-md-3 cmp-show-label">
@@ -155,7 +155,7 @@
 				<div class="col-md-9 col-md-offset-1">
 					<form role="form" class="form-horizontal">
 						<div class="row cmp-input-row">
-							<label class="col-md-2 control-label">
+							<label class="col-md-2 control-label cmp-clear-padding">
 								审核认证信息：
 							</label>
 							<div class=" col-md-3 cmp-reg-thumb" >
@@ -171,13 +171,13 @@
 	<div class="panel panel-default cmp-box-shadow">
 		<div class="panel-body">
 			<div class="row cmp-first-row cmp-intro-row">
-				<label class="col-md-2 col-md-offset-1 cmp-title-label">
+				<label class="col-md-2 col-md-offset-1 cmp-title-label cmp-clear-padding">
 					公司介绍
 				</label>
 			</div>
 			<div class="row cmp-form-row">
 				<div class="form-group" >
-					<label class="col-md-2 control-label col-md-offset-1" >公司简介:</label>
+					<label class="col-md-2 control-label col-md-offset-1 cmp-clear-padding" >公司简介:</label>
 					<label  ng-if="isEdit==false" class="col-md-7" > {{infoList.companyDesc}}</label>
 					<div ng-if="isEdit==true" class="col-md-7" >
 						<textarea class="form-control" rows="3" ng-model="infoList.companyDesc"> </textarea>
@@ -186,7 +186,7 @@
 			</div>		
 			<div class="row cmp-form-row">
 				<div class="form-group">
-					<label class="col-md-2 control-label col-md-offset-1" >产品与优势:</label>
+					<label class="col-md-2 control-label col-md-offset-1 cmp-clear-padding" >产品与优势:</label>
 					<label  ng-if="isEdit==false" class="col-md-7" > {{infoList.productDesc}}</label>
 					<div ng-if="isEdit==true" class="col-md-7" >
 						<textarea class="form-control" rows="3" ng-model="infoList.productDesc"></textarea>
@@ -195,7 +195,7 @@
 			</div>	
 			<div class="row cmp-form-row">		
 				<div class="form-group" >
-					<label class="col-md-2  col-md-offset-1 control-label">目标与用户:</label>
+					<label class="col-md-2  col-md-offset-1 control-label cmp-clear-padding">目标与用户:</label>
 					<label  ng-if="isEdit==false" class="col-md-7"  > {{infoList.userDesc}}</label>
 					<div ng-if="isEdit==true" class="col-md-7" >
 						<textarea class="form-control" rows="3" ng-model="infoList.userDesc" ></textarea>

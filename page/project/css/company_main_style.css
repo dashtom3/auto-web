@@ -98,6 +98,10 @@
 	background-color: #F7F7F5;
 	min-height: 700px;
 }
+.cmp-clear-padding{
+	padding-left: 0px;
+	padding-right: 0px;
+}
 .cmp-box-shadow{
 	box-shadow: 0 0 7px rgba(0, 0, 0, .15);
 }

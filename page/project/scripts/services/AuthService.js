@@ -43,12 +43,12 @@ angular.module("auto-biz-user")
 
           }else{
           self.kickOut();
-           $location.path("/loginUser");
+           $location.path("/innovation");
         }
       })
       .error(function (res) {
         self.kickOut();
-        $location.path("/loginUser");
+        $location.path("/innovation");
       });
       return deferred.promise;
   };
@@ -82,12 +82,12 @@ angular.module("auto-biz-user")
           deferred.resolve();
        }else{
           self.kickOut();
-          $location.path("/loginCompany");
+          $location.path("/innovation");
         }
       })
       .error(function (res) {
         self.kickOut();
-        $location.path("/loginCompany");
+        $location.path("/innovation");
       });
       return deferred.promise;
   }
