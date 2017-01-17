@@ -7,16 +7,16 @@
 			<div class="cmp-outline-content">
 				<div class="row outline-fir-row">
 					<div class="detail-short-name-div">
-						<label class="detail-short-name">{{companyDetail.shortName}}</label>
+						<label class="detail-short-name">{{companyDetail.longName}}</label>
 					</div>
 					<div class="detail-area-class">
 						<label class="detail-area-label" >{{companyDetail.type | companyTypeFilter}}</label>
 					</div>
 				</div>
 				<div class="row outline-sec-row">
-					<div class="col-md-12">
+					<div class="col-md-9">
 						<label>
-							{{companyDetail.field}}
+							{{companyDetail.shortName}}
 						</label>
 					</div>
 				</div>
@@ -25,7 +25,7 @@
 						<label>
 							<img class="cmp-location-img" src="/page/project/images/location.png">
 							<span>
-								{{city}}
+								{{locationStr}}
 							</span>
 						</label>
 					</div>

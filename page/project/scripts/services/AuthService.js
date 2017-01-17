@@ -1,5 +1,5 @@
 angular.module("auto-biz-user")
-  .service('AuthService',["$q","$http","GlobalService", function ($q,$http,GlobalService) {
+  .service('AuthService',["$q","$http","GlobalService","$location", function ($q,$http,GlobalService,$location) {
   var self = this; 
   //用户登录
   this.userLogin = function (username, password) {
@@ -17,7 +17,7 @@ angular.module("auto-biz-user")
         }
       })
       .error(function (res) {
-        alert("您好，您访问的内容出错");
+        self.kickOut();
       }); 
     return deferred.promise;
   };
@@ -42,11 +42,13 @@ angular.module("auto-biz-user")
             deferred.resolve();
 
           }else{
-          alert("您好，用户登出失败");
+          self.kickOut();
+           $location.path("/loginUser");
         }
       })
       .error(function (res) {
-        alert("您好，您访问的内容出错");
+        self.kickOut();
+        $location.path("/loginUser");
       });
       return deferred.promise;
   };
@@ -79,11 +81,13 @@ angular.module("auto-biz-user")
           localStorage.auto_company = null;
           deferred.resolve();
        }else{
-          alert("您好，企业登出失败");
+          self.kickOut();
+          $location.path("/loginCompany");
         }
       })
       .error(function (res) {
-        alert("您好，您访问的内容出错");
+        self.kickOut();
+        $location.path("/loginCompany");
       });
       return deferred.promise;
   }

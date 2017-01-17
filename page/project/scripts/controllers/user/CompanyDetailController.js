@@ -2,18 +2,6 @@ angular.module("auto-biz-user").controller("CompanyDetailController",["$scope","
 function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyService,CompanyProductsService,CompanyPriReportService,CompanyFinanceService,AuthService,LocationService) {
   console.log("CompanyDetailController");
 
-    console.log($scope);
-    console.log(GlobalService);
-    console.log(CompanyNewsService);
-    console.log($routeParams);
-    console.log(CompanyService);
-    console.log(CompanyProductsService);
-    console.log(CompanyPriReportService);
-    console.log(CompanyFinanceService);
-    console.log(CompanyPriReportService);
-    console.log(AuthService);
-    console.log(LocationService);
-
     //初始化company基本数据
     $scope.cmpId = $routeParams.id;
     CompanyService.getComppanyById($scope.cmpId).then(function(result){
@@ -21,9 +9,26 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
         if($scope.companyDetail.address != ""){
             LocationService.getCityByNum($scope.companyDetail.address).then(function(result){
                 $scope.city = result.shi;
+                $scope.province = result.sheng;
+                $scope.locationStr = getLocationStr($scope.province,$scope.city);
             });
         }
     }); 
+
+    $scope.directCity = ["北京","上海","天津","重庆","香港","澳门"];
+    function getLocationStr(province,city){
+        var flag = false;
+        for (var i = 0; i < $scope.directCity.length; i++) {
+             if (province == $scope.directCity[i]){
+                flag = true;
+             }
+         } 
+         if (flag){
+            return province+""+city;
+         }else{
+            return province+"省"+city+"市";
+         }
+    }
 
     $scope.cmpDetailList = GlobalService.cmpDetailList;
     $scope.currentPage=$scope.cmpDetailList[0][0];
