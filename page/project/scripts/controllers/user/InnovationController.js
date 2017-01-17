@@ -1,5 +1,5 @@
-angular.module("auto-biz-user").controller("InnovationController",["$scope","GlobalService","CompanyNewsService","$routeParams","CompanyProductsService","CompanyService","CompanyPriReportService","AuthService","$filter",
-function InnovationController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyProductsService,CompanyService,CompanyPriReportService,AuthService,$filter) {
+angular.module("auto-biz-user").controller("InnovationController",["$scope","GlobalService","CompanyNewsService","$routeParams","CompanyProductsService","CompanyService","CompanyPriReportService","AuthService","$filter","$ocLazyLoad",
+function InnovationController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyProductsService,CompanyService,CompanyPriReportService,AuthService,$filter,$ocLazyLoad) {
 	console.log("载入InnovationController");
 	//初始化
 	$scope.cmpNews = {

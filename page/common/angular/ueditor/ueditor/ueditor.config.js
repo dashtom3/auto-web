@@ -22,8 +22,8 @@
     // var URL = '/page/common/angular/ueditor/ueditor/';
 
        // var server_URL = 'http://localhost:8080/ueditor/'
-       //  var URL = '/page/common/angular/ueditor/ueditor/'
-        var URL = window.UEDITOR_HOME_URL || getUEBasePath();
+        var URL = '/page/common/angular/ueditor/ueditor/';
+        // var URL = window.UEDITOR_HOME_URL || getUEBasePath();
     /**
      * 配置项主体。注意，此处所有涉及到路径的配置别遗漏URL变量。
      */

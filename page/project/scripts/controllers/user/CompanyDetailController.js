@@ -14,7 +14,8 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
             });
         }
     }); 
-
+    
+    
     $scope.directCity = ["北京","上海","天津","重庆","香港","澳门"];
     function getLocationStr(province,city){
         var flag = false;
@@ -231,5 +232,8 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
             });
         }
     };
+
 }
+
+
 ]);
