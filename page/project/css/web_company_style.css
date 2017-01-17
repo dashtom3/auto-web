@@ -36,7 +36,7 @@
 }
 .cmp-outline-content{
 	width: 840px;
-	height: 120px;
+	height: auto;
 	float: left;
 	padding-left: 100px;
 }
@@ -52,22 +52,28 @@
 	float: left;
 	padding: 0 7px;
 	margin-left: 20px;
+	height: 35px;
+	line-height: 35px;
 }
 .detail-area-label{
 	height: 30px;
+	line-height: 30px;
 	font-size: 14px;
 	font-weight: normal;
 	border: 1px solid #830000;
 	border-radius: 15px;
-	padding: 6px 25px;
+	padding: 0px 25px;
+	margin-top:2px;
 }
 .outline-fir-row{
+	height: 35px;
+	line-height: 35px;
 	margin-left: 0px;
 	margin-right: 0px;
 }
 .outline-sec-row{
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 .outline-sec-row > div > label{
 	font-size: 18px;
