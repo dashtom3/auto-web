@@ -3,6 +3,7 @@ function CompanyCreateController($scope,FileService,CompanyService,GlobalService
   console.log("载入CompanyCreateController");
   //初始化
   $scope.ctypeList = GlobalService.companyType;
+  $scope.isdirectCity = false;
   $scope.cmptype = $scope.ctypeList[0];
   $scope.company = {
     regTime:"",
@@ -11,12 +12,23 @@ function CompanyCreateController($scope,FileService,CompanyService,GlobalService
   LocationService.getProvinceList().then(function(result){
     $scope.provinceList = result;
   });
+  
+  $scope.directCity = GlobalService.directCityList;
   $scope.getCityList = function(province){
-    console.log(province);
+    $scope.isdirectCity = isDirectCityByName(province.name);
     LocationService.getCityListByProvince(province.name).then(function(result){
       $scope.cityList = result;
     });
   };
+  function isDirectCityByName(province){
+    for (i in $scope.directCity){
+        if (province == $scope.directCity[i]){
+          return true;
+        }
+    }
+    return false;
+  }
+
   $scope.company.type = $scope.ctypeList[0].id;
   $("#form_datetime").datetimepicker({format:'YYYY/MM/DD',locale: moment.locale('zh-cn') });
   //交互

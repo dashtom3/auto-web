@@ -15,8 +15,8 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
         }
     }); 
     
-    
-    $scope.directCity = ["北京","上海","天津","重庆","香港","澳门"];
+
+    $scope.directCity = GlobalService.directCityList;
     function getLocationStr(province,city){
         var flag = false;
         for (var i = 0; i < $scope.directCity.length; i++) {
@@ -25,7 +25,7 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
              }
          } 
          if (flag){
-            return province+""+city;
+            return province+"市"+city;
          }else{
             return province+"省"+city+"市";
          }
@@ -35,7 +35,7 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
     $scope.currentPage=$scope.cmpDetailList[0][0];
     $scope.selectItem = function(item){
         $scope.currentPage=item;
-    }
+    };
 
     $scope.cmpNews = {
         currentPage:1,

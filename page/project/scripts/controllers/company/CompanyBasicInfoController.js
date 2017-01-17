@@ -1,6 +1,9 @@
 angular.module("auto-biz-user").controller("CompanyBasicInfoController",["$scope","CompanyService","GlobalService","FileService","LocationService",
 function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileService,LocationService) {
 	console.log("CompanyBasicInfoController");
+
+
+	$scope.directCity = GlobalService.directCityList;
 	$("#form_datetime").datetimepicker({format:'YYYY/MM/DD',locale: moment.locale('zh-cn') });
 	$scope.infoList = {};
 	$scope.isEdit = false;
@@ -16,6 +19,8 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 		LocationService.getCityListByProvince(province.name).then(function(result){
 			$scope.cityList = result;
 		});
+		$scope.isDirectCity = isDirectCityByName(province.name);
+
 	};
 
 
@@ -28,9 +33,18 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 				$scope.cityName = result.shi;
 				$scope.cityNum = result.no;
 				$scope.provinceName = result.sheng;
+				$scope.isDirectCity = isDirectCityByName($scope.provinceName);
 			})
 		}); 
 	}
+	function isDirectCityByName(province){
+    for (i in $scope.directCity){
+        if (province == $scope.directCity[i]){
+          return true;
+        }
+    }
+    return false;
+  }
 	
 	function getCtypeById(ctypeId){
 		for (i in $scope.ctypeList){
@@ -62,6 +76,8 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 	}
 	//点击编辑按钮
 	$scope.startEdit = function(){
+		$scope.isDirectCity_backup = $scope.isDirectCity;
+		console.log($scope.isDirectCity_backup);
 		$scope.infoList_backup = cloneObj($scope.infoList);
 		$scope.isEdit =true;
 		$scope.fileLogo = $scope.infoList_backup.logo;
@@ -75,9 +91,9 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 	}
 	//取消编辑
 	$scope.cancelEdit = function(){
-
+		console.log($scope.isDirectCity_backup);
 		$scope.infoList = cloneObj($scope.infoList_backup);
-
+		$scope.isDirectCity = $scope.isDirectCity_backup;
 		$scope.isEdit =false;
 	}
 	//保存编辑

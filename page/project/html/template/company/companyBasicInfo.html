@@ -1,5 +1,5 @@
 <div class="company-basicInfo-div container-fluid cmp-box-shadow" ng-controller="CompanyBasicInfoController" ng-init = "isEdit=false" >
-	<div class="panel panel-default cmp-box-shadow" oc-lazy-load="['/page/common/angular/ueditor/ueditor/ueditor.config.js','/page/common/angular/ueditor/ueditor/ueditor.all.js']">
+	<div class="panel panel-default cmp-box-shadow" >
 		<div class="panel-body ">
 			<div class="row cmp-first-row" >
 				<label class="col-md-2 col-md-offset-1 cmp-title-label cmp-clear-padding" >
@@ -41,8 +41,17 @@
 							<div class="col-md-4" ng-show="isEdit == true">
 								<select class="form-control" type="text" ng-model="province" ng-change="getCityList(province)" ng-options="province.name for province in provinceList"/>
 							</div>
-							<label  class="control-label cmp-after-label col-md-1">
+							<label  class="control-label cmp-after-label col-md-1" ng-show="isEdit == false && !isDirectCity">
 								省
+							</label>
+							<label  class="control-label cmp-after-label col-md-1" ng-show="isEdit == true && !isDirectCity">
+								省
+							</label>
+							<label  class="control-label cmp-after-label col-md-1" ng-show="isEdit == false && isDirectCity">
+								市
+							</label>
+							<label  class="control-label cmp-after-label col-md-1" ng-show="isEdit == true && isDirectCity">
+								市
 							</label>
 							<label  class="control-label col-md-4 cmp-show-label" ng-show="isEdit == false" >
 								<!-- {{infoList.city.shi}} -->
@@ -51,7 +60,7 @@
 							<div class="col-md-4" ng-show="isEdit == true">
 								<select class="form-control" type="text" ng-model="city" ng-options="city.shi for city in cityList"/>
 							</div>
-							<label  class="control-label cmp-after-label col-md-1">
+							<label  class="control-label cmp-after-label col-md-1" ng-show="!isDirectCity">
 								市
 							</label>
 						</div>
@@ -168,6 +177,7 @@
 			</div>
 		</div>
 	</div>
+	<div oc-lazy-load="['/page/common/angular/ueditor/ueditor/ueditor.config.js','/page/common/angular/ueditor/ueditor/ueditor.all.js']"></div>
 	<div class="panel panel-default cmp-box-shadow">
 		<div class="panel-body">
 			<div class="row cmp-first-row cmp-intro-row">
