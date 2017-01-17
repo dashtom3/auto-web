@@ -43,12 +43,14 @@ angular.module("auto-biz-user")
 
           }else{
           self.kickOut();
-           $location.path("/innovation");
+           $location.path("/loginUser");
+
         }
       })
       .error(function (res) {
+        alert("该账户已在其他地方登陆");
         self.kickOut();
-        $location.path("/innovation");
+        $location.path("/loginUser");
       });
       return deferred.promise;
   };
@@ -82,12 +84,13 @@ angular.module("auto-biz-user")
           deferred.resolve();
        }else{
           self.kickOut();
-          $location.path("/innovation");
+          $location.path("/loginCompany");
         }
       })
       .error(function (res) {
+        alert("该账户已在其他地方登陆");
         self.kickOut();
-        $location.path("/innovation");
+        $location.path("/loginCompany");
       });
       return deferred.promise;
   }
