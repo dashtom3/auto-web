@@ -86,16 +86,17 @@ function CompanyNewsMngController($scope,CompanyNewsService,FileService) {
 		$scope.addNewshtmlVariable = "";
 		$scope.fileLogo = null;
 	};
-	$scope.deleteNews=function(news){
-		$scope.deleteNews = news;
+	$scope.deleteNews = function(news){
+		console.log(news);
+		$scope.nowDeleteNews = news;
 	};
 	$scope.confirmDelete = function(){
-		CompanyNewsService.deleteCompanyNews($scope.deleteNews._id).then(function(result){
+		CompanyNewsService.deleteCompanyNews($scope.nowDeleteNews._id).then(function(result){
 			getData();
 		});
 	}
-	$scope.cancelDelete=function(){
-		$scope.deleteID = null;
+	$scope.cancelDelete = function(){
+		$scope.nowDeleteNews = null;
 	};
 	$scope.changeNewsStatus = function(news){
 		CompanyNewsService.changeCompanyNewsState(news._id,!news.isOnline).then(function(result){

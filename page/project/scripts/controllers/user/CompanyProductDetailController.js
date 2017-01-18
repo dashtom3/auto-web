@@ -73,7 +73,6 @@ function CompanyProductDetailController($scope,GlobalService,$routeParams,Compan
     function isPassUser(){
         var passList = $scope.productPriReport.passUser;
         if (AuthService.user){
-            console.log(AuthService.user);
             for (i in passList){
                 if (AuthService.user._id == passList[i].userId){
                     return true;

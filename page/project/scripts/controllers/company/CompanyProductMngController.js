@@ -103,15 +103,15 @@ function CompanyProductMngController($scope,FileService,CompanyProductsService,G
 
 	};
 	$scope.deleteProduct=function(product){
-		$scope.deleteProduct = product;
+		$scope.nowDeleteProduct = product;
 	};
 	$scope.confirmDelete = function(){
-		CompanyProductsService.deleteCompanyProduct($scope.deleteProduct._id).then(function(result){
+		CompanyProductsService.deleteCompanyProduct($scope.nowDeleteProduct._id).then(function(result){
 			getData();
 		});
 	}
 	$scope.cancelDelete=function(){
-		$scope.deleteProduct = null;
+		$scope.nowDeleteProduct = null;
 	};
 	$scope.changeProductStatus = function(product){
 		CompanyProductsService.changeCompanyProductsState(product._id,!product.state).then(function(result){
