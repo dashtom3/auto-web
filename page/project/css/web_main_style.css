@@ -5,6 +5,7 @@
 		min-width: 1200px;
 		overflow: auto;
 	}
+	*,:after,:before{ box-sizing:border-box; }
 	.navbar{
 		border-radius: 0px;
 		border-bottom: solid 4px #C0493A;
