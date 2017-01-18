@@ -283,7 +283,7 @@
 .ino-nav-type-row{
 	width: 880px;
 	display: block;
-	height: 45px;
+	min-height: 45px;
 }
 .nav-options-div{
 	display: inline-block;
@@ -291,7 +291,8 @@
 }
 .admin-nav-options-div{
 	display: inline-block;
-	height: 45px;
+	min-height: 45px;
+	width: 750px;
 }
 .ino-nav-type-row label{
 	vertical-align: middle;
@@ -302,6 +303,7 @@
 .nav-type-label{
 	width: 80px;
 	margin-left: 20px;
+	float: left;
 }
 .nav-options-div > label{
 	margin-right: 45px;
