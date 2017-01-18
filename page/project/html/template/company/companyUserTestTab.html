@@ -1,15 +1,15 @@
 <div>
 	<div class="row">
-		<div class="col-md-2" >
+		<div class="col-xs-2" >
 			<button  class="btn btn-block " ng-class="{true:'tab-select',false:'tab-unselect'}[currentTab == 'testedUser']" ng-click="toTab('testedUser')"> 已测评用户</button>
 		</div>
-		<div class="col-md-2" >
+		<div class="col-xs-2" >
 			<button class="btn btn-block" ng-class="{true:'tab-select',false:'tab-unselect'}[currentTab == 'testingUser']" ng-click="toTab('testingUser')"> 未测评用户</button>
 		</div>
-		<div class="col-md-2" >
+		<div class="col-xs-2" >
 			<button class="btn btn-block" ng-class="{true:'tab-select',false:'tab-unselect'}[currentTab == 'passedUser']" ng-click="toTab('passedUser')"> 报名通过用户</button>
 		</div>
-		<div class="col-md-2" >
+		<div class="col-xs-2" >
 			<button class="btn btn-block" ng-class="{true:'tab-select',false:'tab-unselect'}[currentTab == 'signUser']" ng-click="toTab('signUser')"> 报名审核中用户</button>
 		</div>	
 		<button type="button" class="close cmp-testtab-close" data-dismiss="modal"><span aria-hidden="true">x</span></button>
@@ -19,10 +19,10 @@
 			<table class="table table-striped cmp-table cmp-modal-roll-usertesttab">
 				<thead>
 					<tr>
-						<th class="col-lg-2">用户名</th>
-						<th class="col-lg-2">评测时间</th>
-						<th class="col-lg-5">评测内容</th>
-						<th class="col-lg-3">打分</th>
+						<th class="col-xs-2">用户名</th>
+						<th class="col-xs-2">评测时间</th>
+						<th class="col-xs-5">评测内容</th>
+						<th class="col-xs-3">打分</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -38,10 +38,10 @@
 						</td>
 						<td>
 							<div class="row" ng-repeat="argc in nowUserTest.argc">
-								<div class="col-lg-5">
+								<div class="col-xs-5">
 									<span> {{argc}}:</span>
 								</div>
-								<div class="col-lg-7">
+								<div class="col-xs-7">
 									<div star rating-value="item.passUser.comment.score[$index]" max="max" on-hover="onHover" on-leave="onLeave" readonly="true">
 									</div>
 								</div>
@@ -55,11 +55,11 @@
 			<table class="table table-striped cmp-table cmp-modal-roll-usertesttab">
 				<thead>
 					<tr>
-						<th class="col-lg-2">用户名</th>
-						<th class="col-lg-2">联系电话</th>
-						<th class="col-lg-4">邮寄地址</th>
-						<th class="col-lg-2">评测内容</th>
-						<th class="col-lg-2">打分</th>
+						<th class="col-xs-2">用户名</th>
+						<th class="col-xs-2">联系电话</th>
+						<th class="col-xs-4">邮寄地址</th>
+						<th class="col-xs-2">评测内容</th>
+						<th class="col-xs-2">打分</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -87,11 +87,11 @@
 			<table class="table table-striped cmp-table cmp-modal-roll-usertesttab">
 				<thead>
 					<tr>
-						<th class="col-lg-2">用户名</th>
-						<th class="col-lg-2">联系电话</th>
-						<th class="col-lg-4">邮寄地址</th>
-						<th class="col-lg-2">评测内容</th>
-						<th class="col-lg-2">打分</th>
+						<th class="col-xs-2">用户名</th>
+						<th class="col-xs-2">联系电话</th>
+						<th class="col-xs-4">邮寄地址</th>
+						<th class="col-xs-2">评测内容</th>
+						<th class="col-xs-2">打分</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -119,11 +119,11 @@
 			<table class="table table-striped cmp-table cmp-modal-roll-usertesttab">
 				<thead>
 					<tr>
-						<th class="col-lg-2">用户名</th>
-						<th class="col-lg-2">联系电话</th>
-						<th class="col-lg-4">邮寄地址</th>
-						<th class="col-lg-2">评测内容</th>
-						<th class="col-lg-2">打分</th>
+						<th class="col-xs-2">用户名</th>
+						<th class="col-xs-2">联系电话</th>
+						<th class="col-xs-4">邮寄地址</th>
+						<th class="col-xs-2">评测内容</th>
+						<th class="col-xs-2">打分</th>
 					</tr>
 				</thead>
 				<tbody>

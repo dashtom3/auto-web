@@ -97,6 +97,12 @@
 	;
 	background-color: #F7F7F5;
 	min-height: 700px;
+	min-width: 1000px;
+	overflow-x: auto;
+}
+.company-basicInfo-div .panel{
+	min-width: 960px;
+	margin: 20px auto;
 }
 .cmp-clear-padding{
 	padding-left: 0px;

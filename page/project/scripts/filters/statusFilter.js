@@ -24,6 +24,13 @@ angular.module('auto-biz-user')
   };
 });
 angular.module('auto-biz-user')
+.filter('haveOrNoFilter', function() {
+  return function(input) {
+    if(input) return "有";
+    else return "无";
+  };
+});
+angular.module('auto-biz-user')
 .filter('productFilter', function() {
   return function(input) {
     if(input) return "展示中";

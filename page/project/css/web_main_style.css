@@ -2,6 +2,8 @@
 	body{
 		font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
 		background-color: #F7F7F5 ;
+		min-width: 1200px;
+		overflow: auto;
 	}
 	.navbar{
 		border-radius: 0px;
