@@ -1,6 +1,5 @@
 angular.module("auto-biz-user").controller("AdminController",["$scope","AuthService","$location",
     function AdminController($scope,AuthService,$location) {
-      console.log("载入AdminController");
       $scope.testShow = false;
 
       $scope.currentPage = "userList";

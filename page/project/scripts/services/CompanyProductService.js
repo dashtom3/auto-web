@@ -7,7 +7,6 @@ angular.module("auto-biz-user")
     var urlStr = GlobalService.getURLStr([["name",name],["tag",tag],["state",state],["argc",argc],["desc",desc],["companyId",companyId],["startTime",startTime],["endTime",endTime]]);
     var url = GlobalService.baseUrl+'product/list/'+numPerPage+'/'+pageNumber+'?'+urlStr;
     $http.get(url).success(function (res) {
-        console.log("获取企业产品列表");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
@@ -22,7 +21,6 @@ angular.module("auto-biz-user")
   this.getCompanyProductsDetail = function (productId) {
     var deferred = $q.defer();
     $http.get(GlobalService.baseUrl+'product/detail?productId='+productId).success(function (res) {
-        console.log("获取企业产品详情");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
@@ -39,7 +37,6 @@ angular.module("auto-biz-user")
     state = ""+state;
      var urlStr = GlobalService.getURLStr([["productId",productId],["state",state],["token",AuthService.getToken()]]);
     $http.get(GlobalService.baseUrl+'product/modify/online?'+urlStr).success(function (res) {
-        console.log("改变产品状态");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
@@ -55,7 +52,6 @@ angular.module("auto-biz-user")
     state = ""+state;
      var urlStr = GlobalService.getURLStr([["productId",productId],["state",state],["token",AuthService.getToken()]]);
     $http.get(GlobalService.baseUrl+'product/modify/online/admin?'+urlStr).success(function (res) {
-        console.log("改变产品状态");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
@@ -70,7 +66,6 @@ angular.module("auto-biz-user")
     var deferred = $q.defer();
     var urlStr = GlobalService.getURLStr([["productId",productId],["token",AuthService.getToken()]]);
     $http.get(GlobalService.baseUrl+'product/delete?'+urlStr).success(function (res) {
-        console.log("删除产品");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
@@ -87,7 +82,6 @@ angular.module("auto-biz-user")
     $http.post(GlobalService.baseUrl+'product/add',
           product
       ).success(function (res) {
-        console.log("添加产品");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
@@ -105,7 +99,6 @@ angular.module("auto-biz-user")
     $http.post(GlobalService.baseUrl+'product/modify/detail',
           product
       ).success(function (res) {
-        console.log("修改产品");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{

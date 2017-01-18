@@ -1,6 +1,5 @@
 angular.module("auto-biz-user").controller("CompanyDetailController",["$scope","GlobalService","CompanyNewsService","$routeParams","CompanyService","CompanyProductsService","CompanyPriReportService","CompanyFinanceService","AuthService","LocationService",
 function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyService,CompanyProductsService,CompanyPriReportService,CompanyFinanceService,AuthService,LocationService) {
-  console.log("CompanyDetailController");
 
     //初始化company基本数据
     $scope.cmpId = $routeParams.id;
@@ -150,7 +149,6 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
     //获取企业新闻
     function getCompanyNewsData(pagePerNum,currentPage){
         CompanyNewsService.getCompanyNewsList("","","","","",$scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
-        console.log("news");
            
             if($scope.cmpNews.list){
                 $scope.cmpNews.list = $scope.cmpNews.list.concat(result.list);
@@ -165,7 +163,6 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
     //获取企业产品
     function getCompanyProductsData(pagePerNum,currentPage){
         CompanyProductsService.getCompanyProductsList("","","","","",$scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
-            console.log("products");
             if($scope.cmpProducts.list){
                 $scope.cmpProducts.list = $scope.cmpProducts.list.concat(result.list);
             }else{
@@ -180,7 +177,6 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
     function getCompanyTestsData(pagePerNum,currentPage){
         
         CompanyPriReportService.getCompanyPriReportList("","","","","","","","","","","","","","","","",$scope.cmpId,pagePerNum,currentPage).then(function(result){
-            console.log("tests");
             $scope.timeNow = new Date().getTime();
             if($scope.cmpTests.list){
                 $scope.cmpTests.list = $scope.cmpTests.list.concat(result.list);
@@ -195,7 +191,6 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
     //获取企业财务
     function getCompanyFinancesData(pagePerNum,currentPage){
         CompanyFinanceService.getCompanyFinanceList($scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
-        console.log("finances");
             if($scope.cmpFinances.list){
              $scope.cmpFinances.list = $scope.cmpFinances.list.concat(result.list);
          }else{

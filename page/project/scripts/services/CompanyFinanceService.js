@@ -6,7 +6,6 @@ angular.module("auto-biz-user")
     var deferred = $q.defer();
     var urlStr = GlobalService.getURLStr([["companyId",companyId],["yearStart",yearStart],["yearEnd",yearEnd]]);
     $http.get(GlobalService.baseUrl+'finance/list/'+numPerPage+'/'+pageNumber+'?'+urlStr).success(function (res) {
-        console.log("获取企业财务列表");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
@@ -21,7 +20,6 @@ angular.module("auto-biz-user")
     var deferred = $q.defer();
     var urlStr = GlobalService.getURLStr([["financeRecordId",financeRecordId],["token",AuthService.getToken()]]);
     $http.get(GlobalService.baseUrl+'finance/delete?'+urlStr).success(function (res) {
-        console.log("删除企业财务");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
@@ -39,7 +37,6 @@ angular.module("auto-biz-user")
       ["allRatio",finance.allRatio],["realRatio",finance.realRatio],["debtRatio",finance.debtRatio],["inputRatio",finance.inputRatio],
       ["token",AuthService.getToken()]]);
     $http.get(GlobalService.baseUrl+'finance/modify?'+urlStr).success(function (res) {
-        console.log("修改企业财务");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
@@ -56,7 +53,6 @@ angular.module("auto-biz-user")
     $http.post(GlobalService.baseUrl+'finance/add',
           finance
       ).success(function (res) {
-        console.log("添加财务");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
@@ -69,7 +65,6 @@ angular.module("auto-biz-user")
   };
   this.updateCompanyFinance = function (finance) {
     finance.token = AuthService.getToken();
-    console.log(finance);
     var deferred = $q.defer();
     $http.post(GlobalService.baseUrl+'finance/modify',
           finance

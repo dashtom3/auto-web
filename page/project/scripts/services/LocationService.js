@@ -5,10 +5,7 @@ angular.module("auto-biz-user")
 	this.getProvinceList = function(){
 		var deferred = $q.defer();
 		var url = GlobalService.baseUrl+'list/prov';
-		console.log(url);
 		$http.get(url).success(function(res){
-			console.log("获取省份列表");
-			console.log(res);
 			if(res.callStatus == "SUCCEED"){
 			  deferred.resolve(res.data);
 			}else{
@@ -23,10 +20,7 @@ angular.module("auto-biz-user")
 	this.getCityListByProvince = function(provinceName){
 		var deferred = $q.defer();
 		var url = GlobalService.baseUrl+'list/cityof/' + provinceName;
-		console.log(url);
 		$http.get(url).success(function(res){
-			console.log("获取市级列表");
-			console.log(res);
 			if(res.callStatus == "SUCCEED"){
 			  deferred.resolve(res.data);
 			}else{
@@ -40,10 +34,7 @@ angular.module("auto-biz-user")
 	this.getCityByNum = function(no){
 		var deferred = $q.defer();
 		var url = GlobalService.baseUrl+'city/detail/' + no;
-		console.log(url);
 		$http.get(url).success(function(res){
-			console.log("获取省市名字");
-			console.log(res);
 			if(res.callStatus == "SUCCEED"){
 			  deferred.resolve(res.data);
 			}else{

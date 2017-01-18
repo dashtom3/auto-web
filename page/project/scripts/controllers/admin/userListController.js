@@ -1,6 +1,5 @@
 angular.module("auto-biz-user").controller("userListController",["$scope","UserService",
 function userListController($scope,UserService) {
-  console.log("载入userListController");
   //数据初始化
   UserService.getUserList(10,1,'','').then(function(result){
       $scope.userList = result.list;
@@ -97,7 +96,6 @@ function userListController($scope,UserService) {
   }
   //分页
   $scope.changePage = function(page){
-  //console.log(page+'...'+$scope.type);
   UserService.getUserList(10,page,$scope.type,'')
       .then(function(result){
       $scope.userList = result.list;

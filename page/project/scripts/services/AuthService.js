@@ -10,7 +10,6 @@ angular.module("auto-biz-user")
           self.kickOut();
           self.user = res.data;
           localStorage.auto_user = JSON.stringify(res.data);
-          console.log("用户登录");
           deferred.resolve(res.data);
         }else{
           alert("用户名密码错误");
@@ -37,7 +36,6 @@ angular.module("auto-biz-user")
     $http.get(GlobalService.baseUrl+'user/logout?token='+self.user.token)
         .success(function (res) {
           if(res.callStatus == "SUCCEED"){
-            console.log("用户登出");
             localStorage.auto_user = null;
             deferred.resolve();
 
@@ -61,7 +59,6 @@ angular.module("auto-biz-user")
       .success(function (res) {
         if(res.callStatus == "SUCCEED"){
             self.kickOut();
-            console.log("企业登录");
             self.company = res.data;
             localStorage.auto_company = JSON.stringify(res.data);
             deferred.resolve(res.data);
@@ -79,7 +76,6 @@ angular.module("auto-biz-user")
     var deferred = $q.defer();$http.get(GlobalService.baseUrl+'company/logout?token='+self.company.token)
       .success(function (res) {
         if(res.callStatus == "SUCCEED"){
-          console.log("企业登出");
           localStorage.auto_company = null;
           deferred.resolve();
        }else{

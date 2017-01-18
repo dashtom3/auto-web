@@ -1,6 +1,5 @@
 angular.module("auto-biz-user").controller("companyNewsController",["$scope","CompanyNewsService",
 function companyNewsController($scope,CompanyNewsService) {
-  console.log("载入companyNewsController");
   //数据初始化
   CompanyNewsService.getCompanyNewsList("","","","","","","","",10,1)
     .then(function(result){
@@ -108,7 +107,6 @@ function companyNewsController($scope,CompanyNewsService) {
   			$scope.currentOptionList[i].current = option.name;
   		}
   	}
-	  console.log(type+option);
     //3个参数赋值
     var isPassed=$scope.passFlag;
     var newType=$scope.companyType;

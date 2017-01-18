@@ -3,7 +3,6 @@
 var app = angular.module('auto-biz-user', ['ngRoute','bw.paging','ngFileUpload','oc.lazyLoad']);
 
 app.config(["$locationProvider","$httpProvider","$routeProvider",function ($locationProvider,$httpProvider,$routeProvider) {
-    console.log("载入angular config");
     $routeProvider
       .when('/', {
         templateUrl: '/page/project/html/views/user/innovation.html',
@@ -83,6 +82,5 @@ app.config(["$locationProvider","$httpProvider","$routeProvider",function ($loca
     // $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
     //$locationProvider.html5Mode(true);
 app.run(["AuthService","$rootScope",function(AuthService,$rootScope) {
-  console.log("获取本地数据");
   AuthService.setInfoFromLocalStorage();
 }]);

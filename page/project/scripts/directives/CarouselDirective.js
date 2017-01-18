@@ -13,7 +13,6 @@ angular.module('auto-biz-user').directive('mycarousel', function(){
 				$scope.currentCarouse = num;
 			}
 			$scope.moveLeft = function(){
-				console.log($scope.currentCarouse);
 				if ($scope.currentCarouse == "0"){
 					$scope.currentCarouse = $scope.imgList.length - 1;
 				}else{
@@ -21,7 +20,6 @@ angular.module('auto-biz-user').directive('mycarousel', function(){
 				}
 			}
 			$scope.moveRight = function(){
-				console.log($scope.currentCarouse);
 				if ($scope.currentCarouse == $scope.imgList.length - 1){
 					$scope.currentCarouse = 0;
 				}else{

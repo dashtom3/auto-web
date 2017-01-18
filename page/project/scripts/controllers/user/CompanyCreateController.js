@@ -1,6 +1,5 @@
 angular.module("auto-biz-user").controller("CompanyCreateController",["$scope","FileService","CompanyService","GlobalService","AuthService","LocationService","$location",
 function CompanyCreateController($scope,FileService,CompanyService,GlobalService,AuthService,LocationService,$location) {
-  console.log("载入CompanyCreateController");
   //初始化
   $scope.ctypeList = GlobalService.companyType;
   $scope.isdirectCity = false;

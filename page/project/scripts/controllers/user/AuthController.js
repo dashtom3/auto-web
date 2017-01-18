@@ -1,7 +1,6 @@
 angular.module("auto-biz-user").controller("AuthController",["$scope","AuthService","UserService","$location","FileService",
 
 function AuthController($scope,AuthService,UserService,$location,FileService){
-  console.log("载入AuthController");
   $scope.userType=[["普通用户","normal"],["专栏作者","wr"]];
   $scope.regUserType = $scope.userType[0];
   $scope.user = {
@@ -9,7 +8,6 @@ function AuthController($scope,AuthService,UserService,$location,FileService){
     idImg2:""
   }
   $scope.clickLoginUser = function(){
-    console.log($scope.user);
     AuthService.userLogin($scope.user.name,$scope.user.password).then(function(){
       $location.path("/innovation");
     })
@@ -44,7 +42,6 @@ function AuthController($scope,AuthService,UserService,$location,FileService){
   }
   $scope.clickRegisterUser = function(){
     $scope.user.userType = $scope.regUserType[1];
-    console.log($scope.user);
     if (!$scope.user.name || $scope.user.name == ""){
       alert("请输入用户名");
       return ;
@@ -71,7 +68,6 @@ function AuthController($scope,AuthService,UserService,$location,FileService){
 
   }
   $scope.clickLoginCompany = function(){
-    console.log($scope.cmp);
     AuthService.companyLogin($scope.cmp.cmpName,$scope.cmp.cmpPass).then(function(res){
       $location.path("/innovation");
     })

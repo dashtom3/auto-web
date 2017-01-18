@@ -1,6 +1,5 @@
 angular.module("auto-biz-user").controller("CompanyNewsMngController",["$scope","CompanyNewsService","FileService",
 function CompanyNewsMngController($scope,CompanyNewsService,FileService) {
-	console.log("CompanyNewsMngController");
 	$scope.pageSize = 5;
 	$scope.tmpNews={};
 
@@ -15,8 +14,6 @@ function CompanyNewsMngController($scope,CompanyNewsService,FileService) {
 	}
 
 	function loadCompanyNewsData(pagePerNum,currentPage){
-		console.log("readData");
-		console.log($scope.searchStr);
 		CompanyNewsService.getCompanyNewsList($scope.searchStr,"","","","",$scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
 			$scope.cmpNewsList= result.list;
 			$scope.currentPage = result.currentPage;
@@ -48,7 +45,6 @@ function CompanyNewsMngController($scope,CompanyNewsService,FileService) {
 		}
 	};
 	$scope.uploadThumb = function(file){
-		console.log("1");
 		if(file){
 			$scope.fileLogo = file;
 			FileService.uploadFile(file).then(function(result) {
@@ -58,7 +54,6 @@ function CompanyNewsMngController($scope,CompanyNewsService,FileService) {
 	}
 	//确认新建资讯
 	function addNews(){
-		console.log("上传，可能需要刷新表单。");
 		var newsItem = new Object();
 		newsItem.pic = $scope.imgUrl;
 		newsItem.title = $scope.addNewsTheme;
@@ -67,9 +62,7 @@ function CompanyNewsMngController($scope,CompanyNewsService,FileService) {
 		newsItem.desc = $scope.addNewsShortCut;
 		newsItem.wysiwyg = $scope.tmpNews.ueditor;
 		newsItem.isFirst = $scope.addNewsOption;
-		console.log(newsItem);
 		CompanyNewsService.addCompanyNews(newsItem).then(function(result){
-			console.log(result);
 			getData();
 		});
 		

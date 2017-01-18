@@ -1,6 +1,5 @@
 angular.module("auto-biz-user").controller("companyPubReportController",["$scope","CompanyPubReportService",
 function companyPubReportController($scope,CompanyPubReportService) {
-  console.log("载入companyPubReportController");
   //初始化数据
   CompanyPubReportService.getCompanyPubReportList("","","","","","","","",10,1)
     .then(function(result){
@@ -61,12 +60,10 @@ function companyPubReportController($scope,CompanyPubReportService) {
   			$scope.currentOptionList[i].current = option.name;
   		}
   	}
-	  //console.log(type+option);
     var isPassed=$scope.passFlag;
     if(type=="上线状态"){
       isPassed=option.id;
     }
-    //console.log(isPassed+'###'+newType);
     //请求对应数据
     CompanyPubReportService.getCompanyPubReportList(searchWord,isPassed,"","","","","","",10,1)
       .then(function(result){

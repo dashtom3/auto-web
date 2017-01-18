@@ -1,10 +1,8 @@
 angular.module("auto-biz-user").controller("companyListController",["$scope","CompanyService",
 function companyListController($scope,CompanyService) {
-  console.log("载入companyListController");
   //数据初始化
   CompanyService.getCompanyList(10,1,'','','')
     .then(function(result){
-      console.log(result);
       $scope.companyList = result.list;
       $scope.currentUser = result.list[0];
       //审核分类、行业分类
@@ -83,6 +81,8 @@ function companyListController($scope,CompanyService) {
        }]
   	}
   ];
+
+
   //高亮选中的分类
   $scope.currentOptionList = getCurrentOptionList();
   function getCurrentOptionList(){
@@ -114,24 +114,21 @@ function companyListController($scope,CompanyService) {
   			$scope.currentOptionList[i].current = option.name;
   		}
   	}
-	  console.log(type+option);
     //3个参数赋值
-    var isPassed=$scope.passFlag;
-    var newType=$scope.companyType;
+    // var isPassed=$scope.passFlag;
+    // var newType=$scope.companyType;
     if(type=="审核状态"){
-      isPassed=option.id;
+      $scope.passFlag=option.id;
     }
     if(type=="行业"){
-      newType=option.id;
+      $scope.companyType=option.id;
     }
-    //console.log(isPassed+'###'+newType);
     //请求对应数据
-    CompanyService.getCompanyList(10,1,isPassed,newType,searchWord)
+
+
+    CompanyService.getCompanyList(10,1,$scope.passFlag,$scope.companyType,searchWord)
       .then(function(result){
       $scope.companyList = result.list;
-      //记录审核分类和行业分类选择，为分页做准备
-      $scope.passFlag = isPassed;
-      $scope.companyType = newType;
       //重置为第一页
       $scope.currentPage=1;
 	    $scope.total = result.totalNum;
@@ -140,7 +137,7 @@ function companyListController($scope,CompanyService) {
   };
   //分页
   $scope.changePage = function(page){
-  CompanyService.getCompanyList(10,page,$scope.passFlag,$scope.type,'')
+  CompanyService.getCompanyList(10,page,$scope.passFlag,$scope.companyType,'')
       .then(function(result){
       $scope.companyList = result.list;
 	    $scope.total = result.totalNum;
@@ -155,8 +152,7 @@ function companyListController($scope,CompanyService) {
   $scope.passUser = function(id,passFlag) {
     //alert('pass:' + passFlag + '!');
     CompanyService.passCompany(id,passFlag).then(function(result){
-        CompanyService.getCompanyList(10,$scope.currentPage,$scope.passFlag,$scope.type,'').then(function(result){
-          console.log(result.list);
+        CompanyService.getCompanyList(10,$scope.currentPage,$scope.passFlag,$scope.companyType,'').then(function(result){
           $scope.companyList = result.list;
           $scope.total = result.totalNum;
         });

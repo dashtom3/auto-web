@@ -1,6 +1,5 @@
 angular.module("auto-biz-user").controller("companyPriReportController",["$scope","CompanyService","CompanyPriReportService",
 function companyPriReportController($scope,CompanyService,CompanyPriReportService) {
-  console.log("载入companyPriReportController");
    //初始化数据
   CompanyPriReportService.getCompanyPriReportList("","","","","","","","","","","","","","","","","",10,1)
     .then(function(result){
@@ -59,13 +58,11 @@ function companyPriReportController($scope,CompanyService,CompanyPriReportServic
   //获取列表:按上线状态、搜索
    $scope.getCompanyPriReportList = function(type,option,searchWord){
     //高亮选中分类
-    console.log(searchWord);
     for ( i in $scope.currentOptionList){
   		if ($scope.currentOptionList[i].type == type){
   			$scope.currentOptionList[i].current = option.name;
   		}
   	}
-	  console.log(type+option);
     var isPassed=$scope.passFlag;
     if(type=="审核状态"){
       isPassed=option.id;
@@ -106,33 +103,26 @@ function companyPriReportController($scope,CompanyService,CompanyPriReportServic
   function loadPriReportSignUser(reportId,passed){
     CompanyPriReportService.getReportSignUser(reportId,passed).then(function(result){
        $scope.signUserList = result;
-       console.log(result);
     })
   }
   function loadPriReportPassUser(reportId,passed){
     CompanyPriReportService.getReportPassUser(reportId,passed).then(function(result){
        $scope.passUserList = result;
-       console.log(result);
     })
   }
   //改变审核状态
   $scope.approveUser = function(user){
     console.log(user);
     CompanyPriReportService.passCompanyPriReport($scope.currentPriReport._id,user.signUser.userId[0]._id,1).then(function(result){
-        console.log(result);
         user.signUser.passed = "1";
     });
   }
   $scope.denyUser = function(user){
-    console.log(user);
-    console.log("no");
     CompanyPriReportService.passCompanyPriReport($scope.currentPriReport._id,user.signUser.userId[0]._id,-1).then(function(result){
-        console.log(result);
         user.signUser.passed = "-1";
     });
   }
   $scope.approveComment = function(user){
-    console.log(user);
     CompanyPriReportService.passCommentCompanyPriReport($scope.currentPriReport._id,user.passUser.userId[0]._id,1).then(function(result){
         console.log(result);
         user.signUser.passed = "1";
@@ -140,7 +130,6 @@ function companyPriReportController($scope,CompanyService,CompanyPriReportServic
   }
   $scope.denyComment = function(user){
     CompanyPriReportService.passCommentCompanyPriReport($scope.currentPriReport._id,user.passUser.userId[0]._id,-1).then(function(result){
-        console.log(result);
         user.signUser.passed = "-1";
     });
   };

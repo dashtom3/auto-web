@@ -9,7 +9,6 @@ angular.module("auto-biz-user")
 			file: file
 		}).success(function (res) {
 			if(res.callStatus=="SUCCEED"){
-				console.log("上传文件成功");
 				deferred.resolve(res.data);
 			}else{
 				alert("您好，上传文件失败");

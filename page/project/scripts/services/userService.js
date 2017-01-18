@@ -6,7 +6,6 @@ angular.module('auto-biz-user')
         $http.post(GlobalService.baseUrl+'user/signup',
           user
       ).success(function(data, status, headers, config){
-                console.log("注册用户");
                 if(data.callStatus=='SUCCEED'){
                     AuthService.kickOut();
                     deferred.resolve(data.data);
@@ -27,7 +26,6 @@ angular.module('auto-biz-user')
     //获取用户列表
     this.getUserList = function(numPerPage,pageNum,isPassed,nikeName) {
         var deferred = $q.defer();
-        console.log("读取getUserListService网络数据");
         var url=GlobalService.baseUrl+'user/list/'+numPerPage+'/'+pageNum+"?token="+AuthService.user.token;
         if(isPassed!==''){
             url=url+'&isPassed='+isPassed;
@@ -40,10 +38,8 @@ angular.module('auto-biz-user')
             url=url+'?nikeName='+nikeName;
             }
         } 
-        console.log(url);
         $http.get(url)
             .success(function(data, status, headers, config){
-                console.log(data);
                 if(data.callStatus=='SUCCEED'){
                     deferred.resolve(data.data);
                 }

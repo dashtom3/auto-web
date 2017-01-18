@@ -1,6 +1,5 @@
 angular.module("auto-biz-user").controller("CompanyProductDetailController",["$scope","GlobalService","$routeParams","CompanyProductsService","CompanyPubReportService","CompanyPriReportService","AuthService",
 function CompanyProductDetailController($scope,GlobalService,$routeParams,CompanyProductsService,CompanyPubReportService,CompanyPriReportService,AuthService) {
-    console.log("载入CompanyProductDetailController");
      $scope.productType = GlobalService.companyType;
      $scope.newComment = {
         "score":[],
@@ -40,43 +39,36 @@ function CompanyProductDetailController($scope,GlobalService,$routeParams,Compan
     if($routeParams.id != null){
         CompanyProductsService.getCompanyProductsDetail($routeParams.id).then(function(result){
            $scope.productDetail = result;
-           console.log(result);
            if($scope.productDetail.publicReport){
             CompanyPubReportService.getCompanyPubReportDetail($routeParams.id).then(function(result){
             $scope.productPubReport = result.list[0];
-            console.log(result.list[0]);
             })
             }
-            console.log($scope.productDetail.privateReport);
             if($scope.productDetail.privateReport){
                 CompanyPriReportService.getCompanyPriReportDetail($scope.productDetail.privateReport).then(function(result){
                     $scope.productPriReport = result;
-                    console.log($scope.productPriReport);
                     $scope.scores = getAverageScore($scope.productPriReport.scores,$scope.productPriReport.scoredUserNum);
                     $scope.totalAverageScore = getTotalAverageScore($scope.scores);
-                    console.log(result);
                 });
                 CompanyPriReportService.getCompanyPriReportComment($scope.productDetail.privateReport).then(function(result){
                     $scope.commentList = result;
                     $scope.commentLength = $scope.commentList.length;
-                    console.log(result);
                 });
             }
         });   
     }
     $scope.commitComment = function(){
-        console.log($scope.newComment);
         if (isPassUser()){
             $scope.newComment.reportId = $scope.productDetail.privateReport;
             CompanyPriReportService.commentCompanyPriReport($scope.newComment).then(function(result){
-                console.log(result);
+                
             });
         }else {
             alert("你不是报名用户");
             return;
         }
         
-    }
+    };
 
     function isPassUser(){
         var passList = $scope.productPriReport.passUser;
@@ -117,9 +109,9 @@ function CompanyProductDetailController($scope,GlobalService,$routeParams,Compan
     };
     $scope.onLeave = function(){
         $scope.hoverVal = null;
-    }
+    };
     $scope.onChange = function(val){
         $scope.ratingVal = val;
-    }
+    };
 }
 ]);

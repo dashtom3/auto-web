@@ -6,10 +6,7 @@ angular.module("auto-biz-user")
     var deferred = $q.defer();
     var urlStr = GlobalService.getURLStr([["title",title],["author",author],["isFirst",isFirst],["tag",tag],["isOnline",isOnline],["companyId",companyId],["startTime",startTime],["endTime",endTime]]);
     var url = GlobalService.baseUrl+'news/list/'+numPerPage+'/'+pageNumber+'?'+urlStr;
-    console.log(url);
     $http.get(url).success(function (res) {
-        console.log("获取企业新闻列表");
-        console.log(res);
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
@@ -23,7 +20,6 @@ angular.module("auto-biz-user")
   this.getCompanyNewsDetail = function (newsId) {
     var deferred = $q.defer();
     $http.get(GlobalService.baseUrl+'news/detail?newsId='+newsId).success(function (res) {
-        console.log("获取企业新闻详情");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
@@ -40,7 +36,6 @@ angular.module("auto-biz-user")
     isOnline = ""+isOnline;
      var urlStr = GlobalService.getURLStr([["newsId",newsId],["isOnline",isOnline],["token",AuthService.getToken()]]);
     $http.get(GlobalService.baseUrl+'news/modify/online?'+urlStr).success(function (res) {
-        console.log("改变新闻状态");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
@@ -56,7 +51,6 @@ angular.module("auto-biz-user")
     isOnline = ""+isOnline;
      var urlStr = GlobalService.getURLStr([["newsId",newsId],["isOnline",isOnline],["token",AuthService.getToken()]]);
     $http.get(GlobalService.baseUrl+'news/modify/online/admin?'+urlStr).success(function (res) {
-        console.log("改变新闻状态");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
@@ -71,7 +65,6 @@ angular.module("auto-biz-user")
     var deferred = $q.defer();
     var urlStr = GlobalService.getURLStr([["newsId",newsId],["token",AuthService.getToken()]]);
     $http.get(GlobalService.baseUrl+'news/delete?'+urlStr).success(function (res) {
-        console.log("删除企业资讯");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
@@ -84,12 +77,10 @@ angular.module("auto-biz-user")
   };
   this.addCompanyNews = function (news) {
     news.token = AuthService.getToken();
-    console.log(news.token);
     var deferred = $q.defer();
     $http.post(GlobalService.baseUrl+'news/add',
           news
       ).success(function (res) {
-        console.log("添加企业资讯");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
@@ -107,7 +98,6 @@ angular.module("auto-biz-user")
     $http.post(GlobalService.baseUrl+'news/modify/detail',
           news
       ).success(function (res) {
-        console.log("修改资讯数据");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{

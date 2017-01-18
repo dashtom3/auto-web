@@ -1,6 +1,5 @@
 angular.module("auto-biz-user").controller("CompanyBasicInfoController",["$scope","CompanyService","GlobalService","FileService","LocationService",
 function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileService,LocationService) {
-	console.log("CompanyBasicInfoController");
 
 
 	$scope.directCity = GlobalService.directCityList;
@@ -15,7 +14,6 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 		$scope.provinceList = result;
 	});
 	$scope.getCityList = function(province){
-		console.log(province);
 		LocationService.getCityListByProvince(province.name).then(function(result){
 			$scope.cityList = result;
 		});
@@ -77,7 +75,6 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 	//点击编辑按钮
 	$scope.startEdit = function(){
 		$scope.isDirectCity_backup = $scope.isDirectCity;
-		console.log($scope.isDirectCity_backup);
 		$scope.infoList_backup = cloneObj($scope.infoList);
 		$scope.isEdit =true;
 		$scope.fileLogo = $scope.infoList_backup.logo;
@@ -86,12 +83,10 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 			$scope.cityList = result;
 			$scope.city = getCityByNo($scope.cityNum);
 		});
-		console.log($scope.infoList);
 		document.getElementById("form_datetime").value = $scope.infoList.regTime;
 	}
 	//取消编辑
 	$scope.cancelEdit = function(){
-		console.log($scope.isDirectCity_backup);
 		$scope.infoList = cloneObj($scope.infoList_backup);
 		$scope.isDirectCity = $scope.isDirectCity_backup;
 		$scope.isEdit =false;
@@ -101,7 +96,6 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 		$scope.infoList.type = $scope.ctype.id;
 		$scope.infoList.regTime=document.getElementById("form_datetime").value;
 		$scope.infoList.address = $scope.city.no;
-		console.log($scope.infoList);
 		CompanyService.modifyCompany($scope.infoList).then(function(result){
 			getData();
 		});

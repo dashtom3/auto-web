@@ -4,11 +4,9 @@ angular.module("auto-biz-user")
   //注册公司
   this.registerCompany = function (company) {
     var deferred = $q.defer();
-    console.log(company);
     $http.post(GlobalService.baseUrl+'company/signup',
       company
       ).success(function (res) {
-        console.log("企业注册");
         if(res.callStatus == "SUCCEED"){
           AuthService.kickOut();
           deferred.resolve(res.data);
@@ -26,12 +24,10 @@ angular.module("auto-biz-user")
     //修改企业信息 
     this.modifyCompany = function (company) {
       company.token = AuthService.getToken();
-      console.log(company);
       var deferred = $q.defer();
       $http.post(GlobalService.baseUrl+'company/modify/info',
         company
         ).success(function (res) {
-          console.log("修改企业信息");
           if(res.callStatus == "SUCCEED"){
             deferred.resolve(res.data);
           }else{
@@ -48,8 +44,6 @@ angular.module("auto-biz-user")
       var urlStr = GlobalService.getURLStr([["isPassed",isPassed],["type",type],["name",name],["token",AuthService.getToken()]]);
       var url = GlobalService.baseUrl+'company/list/'+numPerPage+'/'+pageNum + '?' +urlStr;
       $http.get(url).success(function(res){
-        console.log("获取企业列表");
-        console.log(res);
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{
@@ -64,17 +58,14 @@ angular.module("auto-biz-user")
   this.getCompanyList = function(numPerPage,pageNum,isPassed,type,name) {
 
     var deferred = $q.defer();
-    console.log("读取getCompanyListService网络数据");
     var urlStr = GlobalService.getURLStr([["isPassed",isPassed],["type",type],["name",name]]);
     var url=GlobalService.baseUrl+'company/list/'+numPerPage+'/'+pageNum+"?";
     url = url+urlStr;
     if(AuthService.user.token){
       url = url+"&token="+AuthService.user.token
     }
-    console.log(url);
     $http.get(url)
     .success(function(data, status, headers, config){
-      console.log(data);
       if(data.callStatus=='SUCCEED'){
         deferred.resolve(data.data);
       }
@@ -83,7 +74,6 @@ angular.module("auto-biz-user")
       }
     })
     .error(function(data, status, headers, config){
-      console.log(data);
     });
     return deferred.promise;
   }
@@ -114,7 +104,6 @@ angular.module("auto-biz-user")
       var deferred = $q.defer();
       var urlStr = GlobalService.getURLStr([["companyId",cmpId],["token",AuthService.getToken()]]);
       $http.get(GlobalService.baseUrl+'company/detail?'+urlStr).success(function (res) {
-        console.log("获取企业信息");
         if(res.callStatus == "SUCCEED"){
           deferred.resolve(res.data);
         }else{

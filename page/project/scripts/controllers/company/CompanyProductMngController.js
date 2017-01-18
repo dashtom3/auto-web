@@ -1,6 +1,5 @@
 angular.module("auto-biz-user").controller("CompanyProductMngController",["$scope","FileService","CompanyProductsService","GlobalService","$filter",
 function CompanyProductMngController($scope,FileService,CompanyProductsService,GlobalService,$filter) {
-	console.log("CompanyProductMngController");
 	$("#form_datetime").datetimepicker({format:'YYYY/MM/DD',locale: moment.locale('zh-cn') });
 	$("#form_datetime2").datetimepicker({format:'YYYY/MM/DD',locale: moment.locale('zh-cn') });
 	$scope.tmpProduct={};
@@ -88,7 +87,6 @@ function CompanyProductMngController($scope,FileService,CompanyProductsService,G
 	function editProduct(){
 		$scope.tmpProduct.releaseDate = document.getElementById("form_datetime2").value;
 		$scope.tmpProduct.tag =getCIdByName($scope.cmpType.name);
-		console.log($scope.tmpProduct);
 		CompanyProductsService.updateCompanyProduct($scope.tmpProduct).then(function(result){
 			getData();
 		});
@@ -116,12 +114,8 @@ function CompanyProductMngController($scope,FileService,CompanyProductsService,G
 		$scope.deleteProduct = null;
 	};
 	$scope.changeProductStatus = function(product){
-		console.log("1");
-		console.log(product);
 		CompanyProductsService.changeCompanyProductsState(product._id,!product.state).then(function(result){
 			product.state = !product.state;
-			console.log("2");
-			console.log(product);
 		});
 	};
 	$scope.btnAddProduct =function(){
@@ -144,7 +138,6 @@ function CompanyProductMngController($scope,FileService,CompanyProductsService,G
 		$scope.lookModal = false;
 		$scope.editModal = true;
 		CompanyProductsService.getCompanyProductsDetail(product._id).then(function(result){
-			console.log(result);
 			$scope.tmpProduct = result;
 			$scope.cmpType = getCtypeById($scope.tmpProduct.tag);
 			document.getElementById("form_datetime2").value = $filter('date')($scope.tmpProduct.releaseDate, 'yyyy/MM/dd');

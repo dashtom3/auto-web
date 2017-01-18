@@ -1,6 +1,5 @@
 angular.module("auto-biz-user").controller("InnovationController",["$scope","GlobalService","CompanyNewsService","$routeParams","CompanyProductsService","CompanyService","CompanyPriReportService","AuthService","$filter","$ocLazyLoad",
 function InnovationController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyProductsService,CompanyService,CompanyPriReportService,AuthService,$filter,$ocLazyLoad) {
-	console.log("载入InnovationController");
 	//初始化
 	$scope.cmpNews = {
 		currentPage:1,
@@ -155,16 +154,12 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
 		}};
 	//获取企业列表
 	function getCompanyCompanysData(cmpType,pagePerNum,currentPage){
-		console.log(cmpType);
-		console.log(pagePerNum);
-		console.log(currentPage);
 		CompanyService.getCompanysList(pagePerNum,currentPage,1,cmpType,"").then(function(result){
 			if($scope.cmpCompanys.list){
 				$scope.cmpCompanys.list = $scope.cmpCompanys.list.concat(result.list);
 			}else{
 				$scope.cmpCompanys.list= result.list;
 			}
-			console.log($scope.cmpCompanys.list);
 			$scope.cmpCompanys.currentPage = result.currentPage;
 			$scope.cmpCompanys.totalNum = result.totalNum;
 			$scope.cmpCompanys.totalPage = result.totalPageNum;
@@ -183,7 +178,6 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
 		$scope.cmpTestType[selectNumber].current = option;
     	//请求对应数据
     	$scope.cmpTests.list = null;
-    	console.log($scope.cmpTestType[0].current.id);
     	getCompanyTestsData($scope.cmpTestType[0].current.id,getTestDateStr(),$scope.cmpTestType[2].current.id,$scope.cmpTests.pagePerNum,1);
     };
  	//获取当前测评时间选项

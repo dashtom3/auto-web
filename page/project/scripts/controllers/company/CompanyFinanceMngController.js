@@ -1,6 +1,5 @@
 angular.module("auto-biz-user").controller("CompanyFinanceMngController",["$scope","CompanyFinanceService",
 function CompanyFinanceMngController($scope,CompanyFinanceService) {
-	console.log("CompanyFinanceMngController");
 	$scope.tmpItem={};
 
 	//数据初始化
@@ -16,7 +15,6 @@ function CompanyFinanceMngController($scope,CompanyFinanceService) {
 	function loadCompanyFinanceData(pagePerNum,currentPage){
 		CompanyFinanceService.getCompanyFinanceList($scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
 			$scope.financeList= result.list;
-			console.log($scope.financeList);
 			$scope.currentPage = result.currentPage;
 			$scope.total = result.totalNum;
 		});
@@ -69,11 +67,9 @@ function CompanyFinanceMngController($scope,CompanyFinanceService) {
 
 	//点击确认按钮，保存编辑
 	$scope.savePastFinance = function(finance){
-		console.log(finance);
 		$scope.tmpItem = finance;
 		$scope.tmpItem.hideEdit = true;
 		if (!validate_money($scope.tmpItem.money)){
-			console.log("钱不对");
 			return false;
 		}else {
 			CompanyFinanceService.modifyCompanyFinance(finance).then(function(result){

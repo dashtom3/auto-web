@@ -1,7 +1,6 @@
 angular.module("auto-biz-user").controller("CompanyTestController",["$scope","FileService","CompanyPubReportService","CompanyProductsService","$filter",
 
 function CompanyTestController($scope,FileService,CompanyPubReportService,CompanyProductsService,$filter) {
-	console.log("CompanyTestController");
 	$scope.tmpTest={};
 	$scope.companyName="小软酱有限公司";
 	$scope.deleteID ="";

@@ -1,6 +1,5 @@
 angular.module("auto-biz-user").controller("companyProductController",["$scope","CompanyProductsService",
 function companyProductController($scope,CompanyProductsService) {
-  console.log("载入companyProductController");
   //数据初始化
   CompanyProductsService.getCompanyProductsList("","","","","","","","",10,1).
     then(function(result){
@@ -13,7 +12,7 @@ function companyProductController($scope,CompanyProductsService) {
       //分页
 	    $scope.pageSize = 10;
 	    $scope.total = result.totalNum;
-  })
+  });
   //分类目录
   $scope.navList = [
   	{
@@ -136,7 +135,7 @@ function companyProductController($scope,CompanyProductsService) {
   $scope.setCurrentProduct = function(product) {
   	//alert('user:' + (user || 'world') + '!');
     $scope.currentProduct = product;
-  }
+  };
   //产品上线／下线
   $scope.setProductState = function(id,newState) {
     CompanyProductsService.changeCompanyProductsStateAdmin(id,newState).then(function(result){
@@ -146,7 +145,7 @@ function companyProductController($scope,CompanyProductsService) {
           $scope.total = result.totalNum;
         });
     })
-  }
+  };
   //分页
   $scope.changePage = function(page){
   CompanyProductsService.getCompanyProductsList("",$scope.companyType,$scope.passFlag,"","","","","",10,page)
@@ -154,7 +153,7 @@ function companyProductController($scope,CompanyProductsService) {
       $scope.productsList = result.list;
 	    $scope.total = result.totalNum;
     });
- }
+ };
 }
 ]
 );

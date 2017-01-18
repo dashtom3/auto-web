@@ -1,6 +1,5 @@
 angular.module("auto-biz-user").controller("CompanyUserTestController",["$scope","FileService","CompanyPriReportService","CompanyProductsService","$filter",
 function CompanyUserTestController($scope,FileService,CompanyPriReportService,CompanyProductsService,$filter) {
-	console.log("CompanyUserTestController");
 	$scope.tmpUserTest={};
 	$scope.companyName="小软酱有限公司";
 	$scope.deleteID ="";
@@ -22,7 +21,6 @@ function CompanyUserTestController($scope,FileService,CompanyPriReportService,Co
 	function getProduct(pId){
 		for (i in $scope.productList){
 			if ($scope.productList[i]._id == pId){
-				console.log($scope.productList[i]);
 				return $scope.productList[i];
 			}
 		}
@@ -87,7 +85,6 @@ function CompanyUserTestController($scope,FileService,CompanyPriReportService,Co
 
 	//添加测评
 	function addUserTest(){
-		console.log($scope.addType);
 		var userTestItem = new Object();
 		userTestItem.productId = $scope.addTestProduct._id;
 		userTestItem.title = $scope.addUserTestTitle;
@@ -98,7 +95,6 @@ function CompanyUserTestController($scope,FileService,CompanyPriReportService,Co
 		userTestItem.argc = $scope.addTagList;
 		userTestItem.maxUserNum = Number($scope.addUserTestPeople);
 		userTestItem.images = $scope.imgList;
-		console.log(userTestItem);
 		CompanyPriReportService.addCompanyPriReport(userTestItem).then(function(result){
 			getData();
 		})
@@ -137,7 +133,6 @@ function CompanyUserTestController($scope,FileService,CompanyPriReportService,Co
 	//查看测评
 	$scope.btnLookUserTest = function(userTest){
 		$scope.setModalStatus('lookModal');
-		console.log(userTest.productId);
 		CompanyPriReportService.getCompanyPriReportDetail(userTest._id).then(function(result){
 			$scope.tmpUserTest = result;
 		});
@@ -170,11 +165,8 @@ function CompanyUserTestController($scope,FileService,CompanyPriReportService,Co
 		$scope.tmpTagName = "";
 	}
 	$scope.confirmNewTag = function(){
-		console.log("tmpTagName")
 		$scope.addTagList.push($scope.tmpTagName);
-		console.log($scope.addTagList);
 		$scope.tmpTagName = "";
-		console.log($scope.addTagList);
 	}
 	$scope.cancelNewTag = function(){
 		$scope.tmpTagName = "";
@@ -189,11 +181,9 @@ function CompanyUserTestController($scope,FileService,CompanyPriReportService,Co
 
 	//tab框控制
 	$scope.btnShowParticipant = function(userTest){
-		console.log(userTest);
 		CompanyPriReportService.getCompanyPriReportDetail(userTest._id).then(function(result){
 			$scope.nowUserTest = result;
 			CompanyPriReportService.getReportPassUser($scope.nowUserTest._id,"1").then(function(result){
-				console.log(result);
 				$scope.testedList = result;
 			});
 		});
@@ -205,22 +195,18 @@ function CompanyUserTestController($scope,FileService,CompanyPriReportService,Co
 		$scope.currentTab=tabName;
 		if ($scope.currentTab == 'testingUser'){
 			CompanyPriReportService.getReportPassUser($scope.nowUserTest._id,"0").then(function(result){
-				console.log(result);
 				$scope.testingList = result;
 			});
 		}else if ($scope.currentTab == 'passedUser'){
 			CompanyPriReportService.getReportSignUser($scope.nowUserTest._id,"1").then(function(result){
-				console.log(result);
 				$scope.passList = result;
 			});
 		}else if ($scope.currentTab == 'signUser'){
 			CompanyPriReportService.getReportSignUser($scope.nowUserTest._id,"0").then(function(result){
-				console.log(result);
 				$scope.signList = result;
 			});
 		}else if ($scope.currentTab == 'testedUser'){
 			CompanyPriReportService.getReportPassUser($scope.nowUserTest._id,"1").then(function(result){
-				console.log(result);
 				$scope.testedList = result;
 			});
 		}
