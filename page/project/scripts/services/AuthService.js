@@ -11,8 +11,12 @@ angular.module("auto-biz-user")
           self.user = res.data;
           localStorage.auto_user = JSON.stringify(res.data);
           deferred.resolve(res.data);
+        }else if(res.errCode=="COMPANY_EXIST"){
+            alert("不存在的用户名");
+        }else if(res.errCode=="USERNAME_PASSWORD_MISMATCH"){
+            alert("用户名密码错误");
         }else{
-          alert("用户名密码错误");
+          alert(res.errCode);
         }
       })
       .error(function (res) {
@@ -62,9 +66,13 @@ angular.module("auto-biz-user")
             self.company = res.data;
             localStorage.auto_company = JSON.stringify(res.data);
             deferred.resolve(res.data);
-          }else{
+          }else if (res.errCode == "COMPANY_NOT_EXIST"){
+            alert("不存在该公司账户");
+          }else if (res.errCode == "USERNAME_PASSWORD_MISMATCH"){
             alert("用户名密码错误");
-        }
+          }else{
+            alert(res.errCode);
+          }
       }) 
       .error(function (res) {
         alert("您好，您访问的内容出错");
