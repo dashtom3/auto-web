@@ -69,17 +69,17 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
 			list : GlobalService.innovationList
 		}
 		if(routeParams == "hotProducts"){
-			$scope.innovation.currentPage = GlobalService.innovationList[1][0];
+			$scope.innovation.currentPage = GlobalService.innovationList[2][0];
 			getCompanyProductsData("","",$scope.cmpProducts.pagePerNum,$scope.cmpProducts.currentPage);
 		}else if(routeParams == "hotTest"){
-			$scope.innovation.currentPage = GlobalService.innovationList[2][0];
-			getCompanyTestsData("","","",$scope.cmpTests.pagePerNum,$scope.cmpTests.currentPage);
-		}else if(routeParams == "companyDiscover"){
 			$scope.innovation.currentPage = GlobalService.innovationList[3][0];
-			getCompanyCompanysData("",$scope.cmpCompanys.pagePerNum,$scope.cmpCompanys.currentPage);
+			getCompanyTestsData("","","",$scope.cmpTests.pagePerNum,$scope.cmpTests.currentPage);
+		}else if(routeParams == "innovationNews"){
+			$scope.innovation.currentPage = GlobalService.innovationList[1][0];
+			getCompanyNewsData($scope.cmpNews.pagePerNum,$scope.cmpNews.currentPage);
 		}else{
 			$scope.innovation.currentPage = GlobalService.innovationList[0][0];
-			getCompanyNewsData($scope.cmpNews.pagePerNum,$scope.cmpNews.currentPage);
+			getCompanyCompanysData("",$scope.cmpCompanys.pagePerNum,$scope.cmpCompanys.currentPage);
 		}
 	}
 

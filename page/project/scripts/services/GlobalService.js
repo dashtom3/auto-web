@@ -12,7 +12,7 @@ angular.module("auto-biz-user")
     this.testStatus=[{name:"已结束",id:"0"},{name:"测评中",id:"1"}];
   	this.testType=[{name:"实地",id:"local"},{name:"邮寄",id:"mail"}];
     this.innovationTime = [{name:"全部",id:""},{name:"一周内",id:-604800000},{name:"一个月内",id:-2592000000},{name:"三个月内",id:-7776000000},{name:"一年内",id:-31536000000}];
-    this.innovationList=[["最新资讯","null","innovationNews"],["最新产品","innovationProducts","hotProducts"],["热门测评","innovationTest","hotTest"],["发现企业","innovationCompany","companyDiscover"]];
+    this.innovationList=[["发现企业","innovationCompany","companyDiscover"],["最新资讯","null","innovationNews"],["最新产品","innovationProducts","hotProducts"],["热门测评","innovationTest","hotTest"]];
     this.cmpDetailList=[["公司概况","companyOutline","outline"],["最新资讯","innovationNews","news"],["最新产品","hotProducts","product"],["热门测评","hotTest","test"],["财务状况","companyFinance","finance"]];
     this.directCityList = ["北京","上海","天津","重庆","香港","澳门"];
     //拼接url inputArray [["username","XXXX"],["password","XXX"]]
