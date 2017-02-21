@@ -38,7 +38,7 @@ angular.module("auto-biz-user")
 
   }]);
 angular.module("auto-biz-user")
-  .factory('loadingHttpInterceptor', ["$q","$timeout" ,function loadingHttpInterceptor($q, $timeout) {
+  .factory('loadingHttpInterceptor', ["$q","$timeout","$location","GlobalService" ,function loadingHttpInterceptor($q, $timeout,$location,GlobalService) {
     var isLoading = false;
     return {
       'request': function(config) {
@@ -65,7 +65,7 @@ angular.module("auto-biz-user")
           $.isLoading('hide');
           isLoading = false;
         }, 500);
-        
+      
         // do something on success
         return response || $q.when(response);
       },
@@ -74,7 +74,21 @@ angular.module("auto-biz-user")
           $.isLoading('hide');
           isLoading = false;
         }, 500);
-        
+        if (rejection.status ==  403 && rejection.data == "Forbidden"){
+          console.log(localStorage);
+          if(localStorage.auto_company){
+            $location.path("/loginCompany");
+          }
+          if(localStorage.auto_user){
+            var user =  JSON.parse(localStorage.auto_user);
+            console.log(user);
+            if (user.userType == "admin"){
+              $location.path("/admin");
+            }else {
+              $location.path("/loginUser");
+            }
+          }
+        }
         // do something on error
         // if (canRecover(rejection)) {
         //   return responseOrNewPromise
