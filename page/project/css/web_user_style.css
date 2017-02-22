@@ -872,3 +872,313 @@
     width: 100%;
     height: 100%;
 }
+.cmp-detail-page{
+    width: 100%;
+    
+}
+.cmpdetail-container-menu{
+    width: 100%;
+    height: 1266px;
+    background-image: url(/page/project/images/cmp_bg.png);
+    background-size: cover;
+    padding-top: 115px;
+}
+.cmpdetail-shortcut{
+    height: 490px;
+    width: 680px;
+    margin-left: 0;
+    background-color: rgb(230,230,230);
+    padding-top: 40px;
+    padding-left: 140px;
+}
+.cmpdetail-shortcut-logo{
+    width: 140px;
+    height: 140px;
+    display: block;
+}
+.cmpdetail-shortcut-name{
+    display: block;
+    margin-top: 30px;
+    height: 55px;
+    line-height: 55px;
+    font-size: 35px;
+    color: rgb(124,124,124);
+    background-color: white;
+    width:fit-content;
+    width:-webkit-fit-content;
+    width:-moz-fit-content;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.cmpdetail-shortcut-phone{
+    display: block;
+    margin-top: 50px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 16px;
+    color: rgb(191,191,191);
+    background-color: white;
+    width:fit-content;
+    width:-webkit-fit-content;
+    width:-moz-fit-content;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.cmpdetail-shortcut-address{
+    display: block;
+    margin-top: 20px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 16px;
+    color: rgb(191,191,191);
+    background-color: white;
+    width:fit-content;
+    width:-webkit-fit-content;
+    width:-moz-fit-content;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.cmpdetail-catlog{
+    width: 870px;
+    height: 460px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+.cmpdetail-catlog-item{
+    display: inline-block;
+    width: 195px;
+    height: 150px;
+    text-align: center;
+    text-decoration : none;
+}
+.cmpdetail-catlog-item:hover{
+    cursor: pointer;
+    text-decoration : none;
+}
+.catlog-top-left{
+    margin-top: 0px;
+    margin-right: 135px;
+}
+.catlog-top-middle{
+    margin-top: 0px;
+    margin-right: 135px;
+}
+.catlog-top-right{
+    margin-top: 0px;
+    margin-right: 0px;
+}
+.catlog-bottom-left{
+    margin-top: 150px;
+    margin-right: 135px;
+}
+.catlog-bottom-middle{
+    margin-top: 150px;
+    margin-right: 135px;
+}
+.catlog-bottom-right{
+    margin-top: 150px;
+    margin-right: 0px;
+}
+.cmpdetail-catlog-img{
+    height: 65px;
+    width: 65px;
+}
+.cmpdetail-catlog-chinese{
+    margin-top: 15px;
+    font-size: 24px;
+    color: white;
+    margin-bottom: 0px;
+    text-decoration : none;
+}
+.cmpdetail-catlog-english{
+    margin-bottom: 0px;
+    font-size: 18px;
+    color: white;
+    text-decoration : none;
+}
+.hr-top{
+    width: 92px;
+    height:2px;
+    border:none;
+    border-top:1px solid gray;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.cmpdetail-item-container-gray{
+    width: 100%;
+    background-color: rgb(230,230,230);
+    padding-bottom: 50px;
+}
+.cmpdetail-item-container-white{
+    width: 100%;
+    background-color: white;
+    padding-bottom: 50px;
+}
+.cmpdetail-item-block{
+    width: 1200px;
+    margin: 0 auto;
+}
+.cmpdetail-item-firrow{
+    width: 100%;
+    height: 136px;
+}
+.cmpdetail-item-num{
+    height: 80px;
+    width: 80px;
+    line-height: 80px;
+    text-align: center;
+    margin-top: 0;
+    background-color: red;
+    color: white;
+    font-size: 36px;
+    float: left;
+}
+.cmpdetail-item-name-white{
+    width: 186px;
+    height: 86px;
+    display: inline-block;
+    margin-top: 35px;
+    margin-left: 40px;
+    border:5px solid white;
+}
+.cmpdetail-item-name-gray{
+    width: 186px;
+    height: 86px;
+    display: inline-block;
+    margin-top: 40px;
+    margin-left: 40px;
+    border:5px solid rgb(228,228,228);
+}
+.cmpdetail-item-chinese{
+    margin-left: -38px;
+    margin-bottom: 0px;
+    padding: 0;
+    font-size: 34px;
+    color: rgb(118,118,118);
+}
+.cmpdetail-item-english-white{
+    margin-left: -38px;
+    margin-top: 3px;
+    color: white;
+    font-size: 16px;
+}
+.cmpdetail-item-english-gray{
+    margin-left: -38px;
+    margin-top: 3px;
+    color:rgb(118,118,118);
+    font-size: 16px;
+}
+.cmpdetail-item-shortcut{
+    width: 960px;
+    margin-top: 30px;
+    margin-left: 146px;
+}
+.cmpdetail-item-shortcut-title{
+    width: 410px;
+    /*height: 36px;*/
+    padding-bottom: 10px;    
+    text-align: left;
+    vertical-align: top;
+    font-size: 24px;
+    color: #f33;
+    border-bottom: 2px solid #f33;
+}
+.cmpdetail-item-shortcut-content{
+    width: 935px;
+    margin-left: 22px;
+    margin-top: 22px;
+    border-radius: 5px;
+    background-color: white;
+    color: gray;
+    text-indent: 2em;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.cmpdetail-item-more{
+    height: 50px;
+    width: 205px;
+    float: right;
+    margin-top: 40px;
+    background-image: url(/page/project/images/more.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.cmpdetail-item-more:hover{
+    height: 50px;
+    width: 205px;
+    float: right;
+    margin-top: 40px;
+    background-image: url(/page/project/images/more_hover.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.cmpdetail-item-news{
+    width: 1150px;
+    margin-left: 50px;
+    margin-top: 30px;
+}
+.cmpdetail-item-news-container{
+    padding: 1px 35px;
+    margin: 0;
+    width: 574px;
+    height: 145px;
+    display: inline-block;
+}
+.news-right-border{
+    border-right: 2px solid black;
+}
+.cmpdetail-item-news-thumb{
+    height: 143px;
+    width: 143px;
+    margin: 0 25px 0 0;
+}
+.cmpdetail-item-news-block{
+    /* display: inline-block; */
+    float: right;
+    height: 143px;
+    width: 330px;
+    margin: 0;
+    padding: 15px 20px;
+    background-color: rgb(238,238,238);
+}
+.cmpdetail-item-news-title{
+    font-size: 20px;
+    color: black;
+}
+.cmpdetail-item-news-hr{
+    width: 290px;
+    height: 2px;
+    border:none;
+    border-top:2px solid rgb(132,51,66);
+    margin: 8px 0;
+}
+.cmpdetail-item-news-secrow{
+    margin: 0;
+    width: 100%;
+}
+.cmpdetail-item-news-date{
+    color: red;
+    font-size: 12px;
+    margin-right: 10px;
+}
+.cmpdetail-item-news-date{
+    color: red;
+    font-size: 12px;
+    margin-right: 10px;
+}
+.cmpdetail-item-news-cmpname{
+    font-size: 12px;
+    color: black;
+    text-decoration: none;
+}
+.cmpdetail-item-news-content{
+    text-indent: 2em;
+    font-size: 14px;
+    line-height: 16px;
+    color: black;
+    overflow: hidden;
+    max-height: 48px;
+}

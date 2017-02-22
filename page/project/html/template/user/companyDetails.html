@@ -1,0 +1,105 @@
+<div class="cmp-detail-page" ng-controller="CompanyDetailsController">
+	<div class="cmpdetail-container-menu">
+		<div class="cmpdetail-shortcut">
+			<img class="cmpdetail-shortcut-logo" src="{{companyDetail.logo}}" >
+			<label class="cmpdetail-shortcut-name">
+				{{companyDetail.longName}}
+			</label>
+			<label class="cmpdetail-shortcut-phone">联系电话:{{companyDetail.phone}}</label>
+			<label class="cmpdetail-shortcut-address">公司地址:{{companyDetail.field}}</label>
+		</div>
+		<div class="cmpdetail-catlog">
+			<a class="cmpdetail-catlog-item catlog-top-left" href="#shortcut">
+				<img class="cmpdetail-catlog-img" src="/page/project/images/cmp_1.png">
+				<p class="cmpdetail-catlog-chinese">公司概况</p>
+				<hr class="hr-top">
+				<p class="cmpdetail-catlog-english">Company Overview</p>
+			</a>
+			<a class="cmpdetail-catlog-item catlog-top-middle" href="#news">
+				<img class="cmpdetail-catlog-img" src="/page/project/images/cmp_2.png">
+				<p class="cmpdetail-catlog-chinese">最新资讯</p>
+				<hr class="hr-top">
+				<p class="cmpdetail-catlog-english">Latest News</p>
+			</a>
+			<a class="cmpdetail-catlog-item catlog-top-right">
+				<img class="cmpdetail-catlog-img" src="/page/project/images/cmp_3.png">
+				<p class="cmpdetail-catlog-chinese">最新产品</p>
+				<hr class="hr-top">
+				<p class="cmpdetail-catlog-english">Latest Products</p>
+			</a>
+			<a class="cmpdetail-catlog-item catlog-bottom-left">
+				<img class="cmpdetail-catlog-img" src="/page/project/images/cmp_4.png">
+				<p class="cmpdetail-catlog-chinese">热门测评</p>
+				<hr class="hr-top">
+				<p class="cmpdetail-catlog-english">Popular Reviews</p>
+			</a>
+			<a class="cmpdetail-catlog-item catlog-bottom-middle">
+				<img class="cmpdetail-catlog-img" src="/page/project/images/cmp_5.png">
+				<p class="cmpdetail-catlog-chinese">财务状况</p>
+				<hr class="hr-top">
+				<p class="cmpdetail-catlog-english">Financial Status</p>
+			</a>
+			<a class="cmpdetail-catlog-item catlog-bottom-right">
+				<img class="cmpdetail-catlog-img" src="/page/project/images/cmp_6.png">
+				<p class="cmpdetail-catlog-chinese">联系我们</p>
+				<hr class="hr-top">
+				<p class="cmpdetail-catlog-english">Contact Us</p>
+			</a>
+		</div>
+	</div>
+
+	<div class="cmpdetail-item-container-gray" id="shortcut">
+		<div class="cmpdetail-item-block">
+			<div class="cmpdetail-item-firrow"> 
+				<label class="cmpdetail-item-num">
+					1
+				</label>
+				<div class="cmpdetail-item-name-white">
+					<p class="cmpdetail-item-chinese">公司概况</p>
+					<p class="cmpdetail-item-english-white">Company Overview</p>
+				</div>
+			</div>
+			<div class="cmpdetail-item-shortcut">
+				<p class="cmpdetail-item-shortcut-title">
+					公司简介
+				</p>
+				<p class="cmpdetail-item-shortcut-content">
+					{{companyDetail.companyDesc}}
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="cmpdetail-item-container-white" id="news">
+		<div class="cmpdetail-item-block">
+			<div class="cmpdetail-item-firrow"> 
+				<label class="cmpdetail-item-num">
+					2
+				</label>
+				<div class="cmpdetail-item-name-gray">
+					<p class="cmpdetail-item-chinese">最新资讯</p>
+					<p class="cmpdetail-item-english-gray">Latest News</p>
+				</div>
+				<a href="/companyInfo/{{cmpId}}/news" class="cmpdetail-item-more"></a>
+			</div>
+			<div class="cmpdetail-item-news">
+				<div class="cmpdetail-item-news-container" ng-repeat="news in cmpNews.list" ng-class-odd="'news-right-border'">
+					<img class="cmpdetail-item-news-thumb" src="{{news.pic}}">
+					<div class="cmpdetail-item-news-block">
+						<a href="/companyNews/{{news._id}}" class="cmpdetail-item-news-title">{{news.title}}</a>
+						<hr class="cmpdetail-item-news-hr">
+						<div class="cmpdetail-item-news-secrow">
+							<label class="cmpdetail-item-news-date">
+								{{news.timestamp | date:'yyyy-MM-dd'}}
+							</label>
+							<a class="cmpdetail-item-news-cmpname" href="/companyInfo/{{news.companyId._id}}">{{news.companyId.longName}}</a>
+						</div>
+						<p class="cmpdetail-item-news-content">
+							{{news.desc}}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
