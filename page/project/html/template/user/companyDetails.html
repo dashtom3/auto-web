@@ -69,6 +69,7 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="cmpdetail-item-container-white" id="news">
 		<div class="cmpdetail-item-block">
 			<div class="cmpdetail-item-firrow"> 
@@ -102,4 +103,101 @@
 		</div>
 	</div>
 
+	<div class="cmpdetail-item-container-gray" id="products">
+		<div class="cmpdetail-item-block">
+			<div class="cmpdetail-item-firrow"> 
+				<label class="cmpdetail-item-num">
+					3
+				</label>
+				<div class="cmpdetail-item-name-white">
+					<p class="cmpdetail-item-chinese">最新产品</p>
+					<p class="cmpdetail-item-english-white">Latest Products</p>
+				</div>
+				<a href="/companyInfo/{{cmpId}}/product" class="cmpdetail-item-more"></a>
+			</div>
+			<div class="cmpdetail-item-products">
+				<div class="cmpdetail-item-products-menu">
+					<label class="cmpdetail-item-products-title">
+						产品目录
+					</label>
+					<p class="cmpdetail-item-products-catlog" ng-repeat="product in cmpProducts.list">
+						{{product.name}}
+					</p>
+				</div>
+				<div class="cmpdetail-item-products-images">
+					<div class="cmpdetail-item-products-image"  ng-repeat="product in cmpProducts.list" ng-init="pichover=false" ng-mouseenter="pichover = true" ng-mouseleave="pichover = false" >
+						<img src="{{product.images[0]}}" class="cmpdetail-item-products-thumb">
+						<div ng-show="pichover" class="cmpdetail-item-products-hover">
+							<!-- <label class="cmpdetail-item-products-hover-name">
+								{{product.name}}
+							</label> -->
+							<div class="cmpdetail-item-products-hover-name-block">
+								<label class="cmpdetail-item-products-hover-name">
+									{{product.name}}
+								</label>
+							</div>
+							<a href="/companyProduct/{{product._id}}" class="cmpdetail-item-products-hover-detail"> >>> </a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="cmpdetail-item-container-white" id="tests">
+		<div class="cmpdetail-item-block">
+			<div class="cmpdetail-item-firrow"> 
+				<label class="cmpdetail-item-num">
+					4
+				</label>
+				<div class="cmpdetail-item-name-gray">
+					<p class="cmpdetail-item-chinese">热门测评</p>
+					<p class="cmpdetail-item-english-gray">Popular Reviews</p>
+				</div>
+				<a href="/companyInfo/{{cmpId}}/test" class="cmpdetail-item-more"></a>
+			</div>
+			<div class="cmpdetail-item-test">
+				<div class="cmpdetail-item-test-block" ng-repeat="test in cmpTests.list">
+					<div class="cmpdetail-item-test-thumb" ng-init="imghover = false" ng-mouseenter="imghover = true" ng-mouseleave="imghover = false">
+						<img src="{{test.images[0]}}" class="cmpdetail-item-test-img">
+						<div class="cmpdetail-item-test-hover" ng-show="imghover">
+							<a href="/companyProduct/{{test.productId._id}}" class="cmpdetail-item-test-more">
+							 MORE
+							</a>
+						</div>
+					</div>
+					<p class="cmpdetail-item-test-title" >
+						{{test.title}}
+					</p>
+					<p class="cmpdetail-item-test-content">
+						{{test.testDesc}}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="cmpdetail-item-container-white" id="products">
+		<div class="cmpdetail-item-block">
+			<div class="cmpdetail-item-firrow"> 
+				<label class="cmpdetail-item-num">
+					5
+				</label>
+				<div class="cmpdetail-item-name-gray">
+					<p class="cmpdetail-item-chinese">联系我们</p>
+					<p class="cmpdetail-item-english-gray">Contact Us</p>
+				</div>
+			</div>
+			<div class="cmpdetail-item-contact">
+				<p class="cmpdetail-item-contact-web">汽车财经网</p>
+				<hr class="cmpdetail-item-contact-hr">
+				<p class="cmpdetail-item-contact-phone">Telphone</p>
+				<p class="cmpdetail-item-contact-phonenum">+8621 39007315-8015</p>
+				<hr class="cmpdetail-item-contact-hr">
+				<p class="cmpdetail-item-contact-email">Email</p>
+				<p class="cmpdetail-item-contact-emailaddress">abclub@xuanzhichuanmei.com</p>
+			</div>
+		</div>
+	</div>
 </div>

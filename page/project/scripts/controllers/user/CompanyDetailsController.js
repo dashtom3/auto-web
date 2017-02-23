@@ -16,17 +16,32 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
         totalPage:-1,
         list:null
     };
+     $scope.cmpProducts = {
+        currentPage:1,
+        pagePerNum:6,
+        totalNum:-1,
+        totalPage:-1,
+        list:null
+    };
+    $scope.cmpTests = {
+        currentPage:1,
+        pagePerNum:6,
+        totalNum:-1,
+        totalPage:-1,
+        list:null
+    };
+    
     initOutlinePage();
     function initOutlinePage(){
         //获取新闻数据
         getCompanyNewsData(6,1);
         //获取产品数据
-        // getCompanyProductsData(3,1);
+        getCompanyProductsData(6,1);
         //获取测评数据
-        // getCompanyTestsData(3,1);
-        //获取财务数据
-        // getCompanyFinancesData(1,1);
+        getCompanyTestsData(3,1);
     }
+
+    //获取企业资讯
     function getCompanyNewsData(pagePerNum,currentPage){
         CompanyNewsService.getCompanyNewsList("","","","","",$scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
            
@@ -41,6 +56,35 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
         });
     }
 
+    //获取企业产品
+    function getCompanyProductsData(pagePerNum,currentPage){
+        CompanyProductsService.getCompanyProductsList("","","","","",$scope.cmpId,"","",pagePerNum,currentPage).then(function(result){
+            if($scope.cmpProducts.list){
+                $scope.cmpProducts.list = $scope.cmpProducts.list.concat(result.list);
+            }else{
+                $scope.cmpProducts.list= result.list;
+            }
+            $scope.cmpProducts.currentPage = result.currentPage;
+            $scope.cmpProducts.totalNum = result.totalNum;
+            $scope.cmpProducts.totalPage = result.totalPageNum;
+        });
+    }
+
+    //获取企业测评
+    function getCompanyTestsData(pagePerNum,currentPage){
+        
+        CompanyPriReportService.getCompanyPriReportList("","","","","","","","","","","","","","","","",$scope.cmpId,pagePerNum,currentPage).then(function(result){
+            $scope.timeNow = new Date().getTime();
+            if($scope.cmpTests.list){
+                $scope.cmpTests.list = $scope.cmpTests.list.concat(result.list);
+            }else{
+                $scope.cmpTests.list= result.list;
+            }
+            $scope.cmpTests.currentPage = result.currentPage;
+            $scope.cmpTests.totalNum = result.totalNum;
+            $scope.cmpTests.totalPage = result.totalPageNum;
+        });
+    }
 }
 
 
