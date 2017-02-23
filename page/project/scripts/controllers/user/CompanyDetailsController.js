@@ -2,8 +2,8 @@ angular.module("auto-biz-user").controller("CompanyDetailsController",["$scope",
 function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeParams,CompanyService,CompanyProductsService,CompanyPriReportService,CompanyFinanceService,AuthService,LocationService) {
 
     //初始化company基本数据
-    // $scope.cmpId = $routeParams.id;
-    $scope.cmpId = "58746628a25f1810ad295a6a";
+    $scope.cmpId = $routeParams.id;
+    // $scope.cmpId = "58746628a25f1810ad295a6a";
     CompanyService.getComppanyById($scope.cmpId).then(function(result){
         $scope.companyDetail = result;
         

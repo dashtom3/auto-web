@@ -13,7 +13,7 @@
 				<tr ng-repeat="company in cmpCompanys.list">
 					<td class="discover-cmp-td">
 						<img class="discover-cmp-logo" src="{{company.logo}}">
-						<a class="cmp-discover-href" href="/companyInfo/{{company._id}}" target="_blank">{{company.longName}}</a>
+						<a class="cmp-discover-href" href="/companyInfos/{{company._id}}" target="_blank">{{company.longName}}</a>
 					</td>
 					<td>
 						<label> {{company.type | companyTypeFilter}}</label>

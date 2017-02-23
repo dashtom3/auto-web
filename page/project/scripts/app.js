@@ -51,6 +51,11 @@ app.config(["$locationProvider","$httpProvider","$routeProvider",function ($loca
         // controller: 'CompanyDetailController'
         //redirectTo: '/error'
       })
+      .when('/companyInfos/:id', {
+        templateUrl: '/page/project/html/views/user/companyDetails.html',
+        // controller: 'CompanyDetailController'
+        //redirectTo: '/error'
+      })
       .when('/companyNews/:id', {
         templateUrl: '/page/project/html/views/user/companyNewsDetail.html',
         // controller: 'CompanyDetailController'

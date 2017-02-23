@@ -1184,6 +1184,7 @@
 .cmpdetail-item-products{
     width: 1020px;
     margin: 2px 0 0 113px;
+    min-height: 100px;
 }
 .cmpdetail-item-products-menu{
     float: left;
