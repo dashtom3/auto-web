@@ -901,7 +901,7 @@
         margin-top: 30px;
         height: 55px;
         line-height: 55px;
-        font-size: 35px;
+        font-size: 30px;
         color: rgb(124,124,124);
         background-color: white;
         width:fit-content;
@@ -916,7 +916,7 @@
         margin-top: 50px;
         height: 25px;
         line-height: 25px;
-        font-size: 16px;
+        font-size: 14px;
         color: rgb(191,191,191);
         background-color: white;
         width:fit-content;
@@ -931,7 +931,7 @@
         margin-top: 20px;
         height: 25px;
         line-height: 25px;
-        font-size: 16px;
+        font-size: 14px;
         color: rgb(191,191,191);
         background-color: white;
         width:fit-content;
@@ -983,19 +983,19 @@
         margin-right: 0px;
     }
     .cmpdetail-catlog-img{
-        height: 65px;
-        width: 65px;
+        height: 50px;
+        width: 50px;
     }
     .cmpdetail-catlog-chinese{
         margin-top: 15px;
-        font-size: 24px;
+        font-size: 20px;
         color: white;
         margin-bottom: 0px;
         text-decoration : none;
     }
     .cmpdetail-catlog-english{
         margin-bottom: 0px;
-        font-size: 18px;
+        font-size: 16px;
         color: white;
         text-decoration : none;
     }
@@ -1082,7 +1082,7 @@
         padding-bottom: 10px;    
         text-align: left;
         vertical-align: top;
-        font-size: 24px;
+        font-size: 20px;
         color: #f33;
         border-bottom: 2px solid #f33;
     }
@@ -1097,8 +1097,8 @@
         padding: 20px 10px;
     }
     .cmpdetail-item-more{
-        height: 50px;
-        width: 205px;
+        height: 40px;
+        width: 195px;
         float: right;
         margin-top: 40px;
         background-image: url(/page/project/images/more.png);
@@ -1106,8 +1106,8 @@
         background-repeat: no-repeat;
     }
     .cmpdetail-item-more:hover{
-        height: 50px;
-        width: 205px;
+        height: 40px;
+        width: 195px;
         float: right;
         margin-top: 40px;
         background-image: url(/page/project/images/more_hover.png);
@@ -1195,7 +1195,7 @@
         width: 100px;
         height: 26px;
         line-height: 26px;
-        font-size: 24px;
+        font-size: 20px;
         color: black;
     }
     .cmpdetail-item-products-catlog{
@@ -1345,7 +1345,7 @@
  margin: auto;
  height: 36px;
  line-height: 36px;
- font-size: 24px;
+ font-size: 20px;
  color: white;
  background-color: rgb(67,67,67);
  text-align: center;
@@ -1362,7 +1362,7 @@
 .cmpdetail-item-contact-phone{
     height: 36px;
     line-height: 36px;
-    font-size: 24px;
+    font-size: 20px;
     color: black;
     text-align: center;
     margin-top: 30px;
@@ -1371,7 +1371,7 @@
     margin: auto;
     height: 36px;
     line-height: 36px;
-    font-size: 24px;
+    font-size: 20px;
     color: white;
     background-color: rgb(67,67,67);
     text-align: center;
@@ -1380,7 +1380,7 @@
 .cmpdetail-item-contact-email{
     height: 36px;
     line-height: 36px;
-    font-size: 24px;
+    font-size: 20px;
     color: black;
     text-align: center;
     margin-top: 30px;
@@ -1389,7 +1389,7 @@
     margin: auto;
     height: 36px;
     line-height: 36px;
-    font-size: 24px;
+    font-size: 20px;
     color: white;
     background-color: rgb(67,67,67);
     text-align: center;
@@ -1427,87 +1427,91 @@
     cursor: pointer;
 }
 .ino-index-item-img{
-    width: 65px;
-    height: 65px;
+    width: 55px;
+    height: 55px;
     margin-bottom: 25px;
 }
 .ino-index-item-name{
-    width: 150px;
-    height: 45px;
-    line-height: 45px;
-    font-size: 24px;
+    width: 105px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
     color: white;
+    margin: auto;
 }
 .ino-index-item-name-black{
-    width: 150px;
-    height: 45px;
-    line-height: 45px;
-    font-size: 24px;
+    width: 105px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
     color: black;
+    margin: auto;
 }
 .ino-index-item  .active{
-    border-radius: 22px;
+    border-radius: 20px;
     background-color: red;
+    color: white;
+
 }
 
 .ino-index-content{
-    width: 1110px;
-    height: 636px;
-    margin: 100px auto;
+    width: 826px;
+    height: 473px;
+    margin: 60px auto;
     background-image: url(/page/project/images/index_bg.png);
-    background-size: cover;
+    background-size: 826px 473px;
 }
 .ino-content-item{
-    height: 205px;
-    width: 364px;
+    height: 150px;
+    width: 269px;
     display: inline-block;
     margin: 2px 3px;
     position: relative;
 }
 .ino-content-item-block{
-    height: 205px;
-    width: 366px;
+    height: 150px;
+    width: 269px;
     text-align: center;
     position: absolute;
 }
 .ino-content-item-img{
-    margin-top: 50px;
-    height: 60px;
+    margin-top: 38px;
+    height: 35px;
     width: auto;
 }
 .ino-content-item-name{
     text-align: center;
-    font-size: 22px;
+    font-size: 16px;
     color: black;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 .ino-content-item-block-hover{
-    width: 326px;
-    height: 165px;
-    margin: 20px;
+    width: 229px;
+    height: 125px;
+    margin: 18px;
     background-color:rgba(255,0,0,0.65);
     position: absolute;
     text-align: center;
 }
 .ino-content-item-img-hover{
     width: auto;
-    height: 50px;
-    margin-top: 15px;
+    height: 40px;
+    margin-top: 13px;
 }
 .ino-content-item-name-hover{
-    margin-top: 15px;
-    font-size: 22px;
-    height: 30px;
-    line-height: 30px;
+    margin-top: 12px;
+    font-size: 16px;
+    height: 21px;
+    line-height: 21px;
     width: auto;
     border-bottom: 1px solid white;
     color: white;
 }
 .ino-content-item-more{
-    margin-top: 10px;
+     margin-top: 5px;
     width: 108px;
-    height: 33px;
-    line-height: 33px;
+    height: 21px;
+    line-height: 21px;
     border-radius: 15px;
     color: red;
     font-size: 14px;
@@ -1528,7 +1532,7 @@
     line-height: 40px;
 }
 .ino-index-cmp-header-content{
-    font-size: 38px;
+    font-size: 34px;
     color: black;
     text-align: left;
     margin: 0;
@@ -1557,12 +1561,12 @@
 
 }
 .ino-index-cmp-menu-name{
-    text-align: center;
+        text-align: center;
     vertical-align: middle;
-    font-size: 26px;
-    height: 42px;
-    line-height: 42px;
-    padding: 0 10px;
+    font-size: 18px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 13px;
     color: black;
     font-weight: normal;
 }
@@ -1572,6 +1576,7 @@
 .ino-index-cmp-menu .active{
     border-radius: 21px;
     background-color: red;
+    color: white;
 }
 .ino-index-cmp-cmps{
     width: 1200px;
@@ -1592,8 +1597,8 @@
     cursor: pointer;
 }
 .ino-index-cmp-img{
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     margin: auto;
     margin-top: 30px;
 }
@@ -1612,34 +1617,34 @@
 
 }
 .ino-index-cmp-footer-more{
-    width: 180px;
-    height: 50px;
+    width: 133px;
+    height: 35px;
     float: right;
     margin-top: 10px;
     margin-right: 15px;
     background-image: url(/page/project/images/more.png);
-    background-size: 180px 50px;
+    background-size: 133px 35px;
 }
 .ino-index-cmp-footer-more:hover{
-    width: 180px;
-    height: 50px;
+    width: 133px;
+    height: 35px;
     float: right;
     margin-top: 10px;
     margin-right: 15px;
     background-image: url(/page/project/images/more_hover.png);
-    background-size: 180px 50px;
+    background-size: 133px 35px;
     cursor:pointer;
 }
 .ino-index-cmp-footer-nomore{
-    width: 180px;
-    height: 50px;
-    line-height: 50px;
+    width: 133px;
+    height: 35px;
+    line-height: 35px;
     text-align: center;
     float: right;
     margin-top: 10px;
     margin-right: 15px;
     background-color: rgb(191,191,191);
     color: white;
-    font-size: 22px;
-    border-radius: 26px;
+    font-size: 18px;
+    border-radius: 20px;
 }
