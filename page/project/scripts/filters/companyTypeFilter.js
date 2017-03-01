@@ -1,16 +1,16 @@
 angular.module('auto-biz-user')
 .filter('companyTypeFilter', function() {
   return function(input) {
-    //CM汽车制作，CG汽车零部件，CS汽车销售与服务，NEC新能源汽车，NOC车联网，CC车用化工品，CE汽车金融，PT公共交通，MOC汽车媒体
-    if(input=="CM") return "汽车制造";
-    else if(input=="CG") return "汽车零部件";
-    else if(input=="CS") return "汽车销售与服务";
-    else if(input=="NEC") return "新能源汽车";
-    else if(input=="NOC") return "车联网";
-    else if(input=="CC") return "车用化工品";
-    else if(input=="CE") return "汽车金融";
-    else if(input=="PT") return "公共交通";
-    else if(input=="MOC") return "汽车媒体";
+    //CM初创企业，CG互联网汽车，CS人工智能，NEC自动驾驶，NOC智慧交通，CC汽车金融，CE清洁新能源，PT汽车轻量化，MOC其它
+    if(input=="CM") return "初创企业";
+    else if(input=="CG") return "互联网汽车";
+    else if(input=="CS") return "人工智能";
+    else if(input=="NEC") return "自动驾驶";
+    else if(input=="NOC") return "智慧交通";
+    else if(input=="CC") return "汽车金融";
+    else if(input=="CE") return "清洁新能源";
+    else if(input=="PT") return "汽车轻量化";
+    else if(input=="MOC") return "其它";
     else return "未知";
 };
 });

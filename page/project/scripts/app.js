@@ -5,15 +5,23 @@ var app = angular.module('auto-biz-user', ['ngRoute','bw.paging','ngFileUpload',
 app.config(["$locationProvider","$httpProvider","$routeProvider",function ($locationProvider,$httpProvider,$routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: '/page/project/html/views/user/innovation.html',
+        templateUrl: '/page/project/html/views/user/innovationIndex.html',
         // controller: 'MainController'
       })
       .when('/innovation', {
         templateUrl: '/page/project/html/views/user/innovation.html',
         //redirectTo: '/error'
       })
+      .when('/innovationIndex', {
+        templateUrl: '/page/project/html/views/user/innovationIndex.html',
+        //redirectTo: '/error'
+      })
       .when('/innovation/:name', {
         templateUrl: '/page/project/html/views/user/innovation.html',
+        //redirectTo: '/error'
+      })
+      .when('/innovationIndex/:name', {
+        templateUrl: '/page/project/html/views/user/innovationIndex.html',
         //redirectTo: '/error'
       })
       .when('/registerCompany', {
