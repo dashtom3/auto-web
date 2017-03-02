@@ -1427,9 +1427,9 @@
     cursor: pointer;
 }
 .ino-index-item-img{
-    width: 55px;
-    height: 55px;
-    margin-bottom: 25px;
+    width: 47px;
+    height: 47px;
+    margin-bottom: 22px;
 }
 .ino-index-item-name{
     width: 105px;
@@ -1475,7 +1475,7 @@
     position: absolute;
 }
 .ino-content-item-img{
-    margin-top: 38px;
+    margin-top: 40px;
     height: 35px;
     width: auto;
 }
@@ -1495,7 +1495,7 @@
 }
 .ino-content-item-img-hover{
     width: auto;
-    height: 40px;
+    height: 35px;
     margin-top: 13px;
 }
 .ino-content-item-name-hover{
@@ -1552,8 +1552,8 @@
 }
 .ino-index-cmp-menu-item{
     width: 230px;
-    height: 70px;
-    line-height: 70px;
+    height: 50px;
+    line-height: 50px;
     margin: 0;
     text-align: center;
     vertical-align: middle;
