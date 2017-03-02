@@ -879,7 +879,7 @@
     .cmpdetail-container-menu{
         width: 100%;
         height: 1266px;
-        background-image: url(/page/project/images/cmp_bg.png);
+        background-image: url(/page/project/images/cmp_bg.jpg);
         background-size: cover;
         padding-top: 115px;
     }
@@ -1458,7 +1458,7 @@
     width: 826px;
     height: 473px;
     margin: 60px auto;
-    background-image: url(/page/project/images/index_bg.png);
+    background-image: url(/page/project/images/index_bg.jpg);
     background-size: 826px 473px;
 }
 .ino-content-item{
@@ -1476,7 +1476,7 @@
 }
 .ino-content-item-img{
     margin-top: 40px;
-    height: 35px;
+    height: 40px;
     width: auto;
 }
 .ino-content-item-name{
@@ -1495,7 +1495,7 @@
 }
 .ino-content-item-img-hover{
     width: auto;
-    height: 35px;
+    height: 40px;
     margin-top: 13px;
 }
 .ino-content-item-name-hover{
