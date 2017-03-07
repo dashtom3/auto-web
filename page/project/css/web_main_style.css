@@ -6,6 +6,12 @@ body{
 	overflow: auto;
 }
 *,:after,:before{ box-sizing:border-box; }
+.carousel-control.right{
+    background: transparent;
+}
+.carousel-control.left{
+    background: transparent;
+}
 .navbar{
 	border-radius: 0px;
 	border: 0px;

@@ -1651,3 +1651,9 @@
     font-size: 18px;
     border-radius: 20px;
 }
+.carousel-control.right{
+    background: transparent;
+}
+.carousel-control.left{
+    background: transparent;
+}
