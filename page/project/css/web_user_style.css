@@ -1179,7 +1179,7 @@
         line-height: 16px;
         color: black;
         overflow: hidden;
-        max-height: 48px;
+        max-height: 32px;
     }
     .cmpdetail-item-products{
         width: 1020px;
@@ -1588,6 +1588,7 @@
     height: 220px;
     display: inline-block;
     text-align: center;
+    position: relative;
 }
 .ino-index-cmp-block:hover{
      width: 200px;
@@ -1599,8 +1600,9 @@
 .ino-index-cmp-img{
     width: 90px;
     height: 90px;
-    margin: auto;
-    margin-top: 30px;
+    position: absolute;
+    left: 65px;
+    top: 30px;
 }
 .ino-index-cmp-name{
     line-height: 16px;
@@ -1608,9 +1610,10 @@
     font-size: 14px;
     color: black;
     text-align: center;
-    margin-top: 20px;
-    margin-left: 40px;
     margin-bottom: 30px;
+    position: absolute;
+    top: 140px;
+    left: 50px;
 }
 .ino-index-cmp-footer{
     width: 100%;
