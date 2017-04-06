@@ -1,4 +1,78 @@
-<div class="ino-index-container"  ng-controller="InnovationIndexController" >
+<div class="inv-index-container" ng-controller="InnovationIndexController">
+	<div ng-show="homePage == true">
+		<div class="inv-index-head">
+			<img src="/page/project/images/index_head.png" class="inv-index-img">
+		</div>
+		<div class="inv-index-content">
+			<div class="inv-content-menu">
+				<div ng-repeat="inoItem in inoIndexList2" class="inv-content-item " style="background-image: url(/page/project/images/{{inoItem[1]}});">
+					<div class="inv-contetn-look-left" ng-if="inoItem[2] == 'left'" ng-click="setCurrentPage(inoItem[0],inoItem[3])">
+						点击查看
+					</div>
+					<div class="inv-contetn-look-right" ng-if="inoItem[2] == 'right'" ng-click="setCurrentPage(inoItem[0],inoItem[3])">
+						点击查看
+					</div>
+				</div>
+			</div>
+			<div class="inv-index-type">
+				<div class="inv-type-item" ng-repeat="inotype in inoTypeList" ng-init="pichover=false" ng-mouseenter="pichover = true" ng-mouseleave="pichover = false">
+					<div ng-show="pichover == false" class="inv-type-unhover" style="background-image: url(/page/project/images/{{inotype.imgblack}});">
+						<div class="inv-type-img-container">
+							<img src="/page/project/images/{{inotype.imgwhite}}" class="inv-type-img">
+						</div>
+						<div class="inv-type-name">
+							{{inotype.name}}
+						</div>
+					</div>
+					<div ng-show="pichover  == true" class="inv-type-hover" ng-click="setCurrentCmpType(inotype.id)">
+						<div class="inv-type-img-container">
+							<img src="/page/project/images/{{inotype.imgwhite}}" class="inv-type-img">
+						</div>
+						<div class="inv-type-name">
+							{{inotype.name}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="ino-index-second" ng-show="homePage == false">
+		<div class="ino-index-menu">
+			<div ng-repeat="inoItem in inoIndexList" class="ino-index-item" ng-click="setCurrentPage(inoItem[0],inoItem[3])" >
+				<img src="/page/project/images/{{inoItem[2]}}" class="ino-index-item-img">
+				<p class="ino-index-item-name-black" ng-class="{'active' : currentPage == inoItem[0]}" >{{inoItem[0]}}</p>
+			</div>
+		</div>
+		<div class="ino-index-cmp">
+			<div class="ino-index-cmp-header">
+				<p class="ino-index-cmp-header-content">企业  Enterprises</p>
+			</div>
+			<hr class="ino-index-cmp-hr">
+			<div class="ino-index-cmp-menu">
+				<div class="ino-index-cmp-menu-item" ng-repeat="inotype in inoTypeSecondList" ng-click="setCurrentCmpType(inotype.id)">
+					<label class="ino-index-cmp-menu-name"  ng-class="{'active' : cmpCompanys.currentType == inotype.id}">
+					{{inotype.name}}
+					</label>
+				</div>
+			</div>
+			<div class="ino-index-cmp-cmps">
+				<a class="ino-index-cmp-block" ng-repeat="cmp in cmpCompanys.list" href="/companyInfos/{{cmp._id}}">
+					<img class="ino-index-cmp-img" src="{{cmp.logo}}">
+					<p class="ino-index-cmp-name">{{cmp.longName}} </p>
+				</a>
+			</div>
+			<hr class="ino-index-cmp-hr">
+			<div class="ino-index-cmp-footer">
+				<label class="ino-index-cmp-footer-more" ng-show="cmpCompanys.currentPage != cmpCompanys.totalPage" ng-click="loadMoreCompanys()">
+				</label>
+				<label class="ino-index-cmp-footer-nomore" ng-if="cmpCompanys.currentPage == cmpCompanys.totalPage"> NOMORE</label>
+			</div>
+		</div>
+	</div>	
+
+</div>
+
+<!-- <div class="ino-index-container"  ng-controller="InnovationIndexController" >
 	<div class="ino-index-home" ng-show="homePage == true">
 		<div class="ino-index-menu">
 			<div ng-repeat="inoItem in inoIndexList" class="ino-index-item" ng-click="setCurrentPage(inoItem[0],inoItem[3])" >
@@ -56,4 +130,4 @@
 		</div>
 	</div>
 	
-</div>
+</div> -->

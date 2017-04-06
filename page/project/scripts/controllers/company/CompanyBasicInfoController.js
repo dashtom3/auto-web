@@ -26,7 +26,7 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 	function getData() {
 		CompanyService.getComppanyById($scope.cmpId).then(function(result){
 			$scope.infoList = result;
-			$scope.ctype = getCtypeById($scope.infoList.type);
+			$scope.cmptype = getCtypeById($scope.infoList.type);
 			LocationService.getCityByNum($scope.infoList.address).then(function(result){
 				$scope.cityName = result.shi;
 				$scope.cityNum = result.no;
@@ -93,7 +93,7 @@ function CompanyBasicInfoController($scope,CompanyService,GlobalService,FileServ
 	}
 	//保存编辑
 	$scope.saveEdit = function(){
-		$scope.infoList.type = $scope.ctype.id;
+		$scope.infoList.type = $scope.cmptype.id;
 		$scope.infoList.regTime=document.getElementById("form_datetime").value;
 		$scope.infoList.address = $scope.city.no;
 		CompanyService.modifyCompany($scope.infoList).then(function(result){

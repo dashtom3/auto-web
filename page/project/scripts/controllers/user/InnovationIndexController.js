@@ -1,6 +1,7 @@
 angular.module("auto-biz-user").controller("InnovationIndexController",["$scope","GlobalService","$filter","AuthService","$location","$routeParams","CompanyService",
   function HeaderController($scope,GlobalService,$filter,AuthService,$location,$routeParams,CompanyService) {
     $scope.inoIndexList = GlobalService.innovationIndexList;
+    $scope.inoIndexList2 = GlobalService.innovationIndexList2;
     $scope.inoTypeList = GlobalService.companyTypeIndex;
     $scope.inoTypeSecondList = [{name:"全部",id:""}].concat(GlobalService.companyType);
     $scope.currentPage = "发现企业";
@@ -20,6 +21,11 @@ angular.module("auto-biz-user").controller("InnovationIndexController",["$scope"
 
       if (name != "发现企业"){
         $location.path("/innovation/"+link);
+      }else{
+        $scope.homePage=false;
+        $scope.cmpCompanys.currentType = "";
+       $scope.cmpCompanys.list = null;
+       getCompanyCompanysData("",$scope.cmpCompanys.pagePerNum,1);
       }
     }
     $scope.setCurrentCmpType = function(typeId){
