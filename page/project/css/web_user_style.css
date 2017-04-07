@@ -874,7 +874,7 @@
     }
     .cmp-detail-page{
         width: 100%;
-
+        background-color: white;
     }
     .cmpdetail-container-menu{
         width: 100%;
@@ -1748,9 +1748,446 @@
     width: 140px;
     height: 25px;
     margin: auto;
-    margin-top: 15px;
+    margin-top: 23px;
     line-height: 25px;
     font-size: 18px;
     text-align: center;
     color: white;
+}
+.cmp-detail-aboutus{
+    background-image: url(/page/project/images/detail_aboutus.png);
+    width: 1200px;
+    height: 656px;
+    margin: auto;
+    padding-top: 25px;
+}
+.cmp-aboutus-title{
+    margin-left: 670px;
+    color: black;
+    font-size: 17px;
+    font-weight: bolder;
+}
+.cmp-aboutus-cmpname{
+    margin-top: 110px;
+    margin-left: 750px;
+    color: white;
+    font-size: 24px;
+    /*font-weight: bolder;*/
+}
+.cmp-aboutus-tel{
+    margin-top: 55px;
+    margin-left: 750px;
+    color: white;
+    font-size: 14px;
+}
+.cmp-aboutus-address{
+    margin-top: 15px;
+    margin-left: 750px;
+    color: white;
+    font-size: 14px;
+}
+.cmp-aboutus-cmp{
+    margin-top: 175px;
+    margin-left: 50px;
+    width: 185px;
+    height: 85px;
+}
+.cmp-aboutus-cmp-big{
+    color: white;
+    font-size: 84px;
+    font-family: Arial;
+}
+.cmp-aboutus-cmp-small{
+    color: white;
+    font-size: 24px;
+}
+.cmp-detail-outlines{
+    width: 1200px;
+    height: 589px;
+    margin:auto;
+    background-color: white;
+    padding-top: 20px;
+    
+}
+.cmp-outline-left{
+    width: 590px;
+    height: 500px;
+    display: inline-block;
+    position: relative;
+}
+.cmp-outline-right{
+    width: 610px;
+    height: 515px;
+    float: right;
+    position: relative;
+    background-color: white;
+}
+.cmp-outline-left-block1{
+    width: 12px;
+    height: 24px;
+    background-color: black;
+    float: left;
+    margin-top: 5px;
+}
+.cmp-outline-title{
+    width: 125px;
+    height: 60px;
+    margin-left: 25px;
+    float: left;
+}
+.cmp-detail-cntitle{
+    width: 110px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 26px;
+    color: black;
+
+}
+.cmp-detail-titlehr{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 75px;
+    height: 3px;
+    background-color: black;
+}
+.cmp-detail-entitle{
+    width: 125px;
+    height: 16px;
+    line-height: 16px;
+    font-size: 12px;
+    text-align: left;
+    color: black;
+}
+.cmp-outline-cmpintro{
+    margin-top: 140px;
+    margin-left: 35px;
+    width: 335px;
+    font-size: 12px;
+    color: black;
+    height: 120px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-indent: 2em;
+}
+.cmp-outline-hr{
+    top: 300px;
+    position: absolute;
+    width: 140px;
+    height: 3px;
+    background-color: black;
+    right: 10px;
+}
+.cmp-outline-lookmore{
+    width: 568px;
+    height: 96px;
+    margin-top: 130px;
+    position: relative;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.cmp-outline-lookmore-button{
+     width: 260px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin: auto;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+    position: absolute;
+    top: -20px;
+    left: 130px;
+}
+.cmp-outline-lookmore-button:hover{
+    background-color: rgb(213,3,19);
+    color: white;
+}
+.cmp-outline-right-red{
+    width: 610px;
+    height: 184px;
+    background-color: rgb(213,3,19);
+    position: absolute;
+    z-index: 2;
+    top:170px;
+    left: 0px;
+}
+.cmp-outline-right-black{
+    width: 420px;
+    height: 400px;
+    background-color: black;
+    position: absolute;
+    z-index: 1;
+    top:50px;
+    left: 35px;
+}
+.cmp-outline-right-img{
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    z-index: 3;
+    top: 0px;
+    left: 85px;
+}
+.cmp-outline-right-block{
+    width: 8px;
+    height: 177px;
+    background-color: black;
+    position: absolute;
+    z-index: 4;
+    bottom:0px;
+    left: 463px;
+}
+.cmp-detail-news{
+    width: 1200px;
+    height: 481px;
+    margin: auto;
+}
+.cmp-news-left{
+    width: 500px;
+    height: 481px;
+    padding: 40px 38px;
+    float: left;
+}
+.cmp-news-left-img{
+    width: 424px;
+    height: 400px;
+}
+.cmp-news-right{
+    width: 700px;
+    height: 481px;
+    padding: 40px 0;
+    float: left;
+}
+.cmp-news-content{
+     display: block;
+     margin-top: 90px;
+     margin-left: 35px;
+     text-indent: 2em;
+     width: 500px;
+     height: 94px;
+     font-size: 12px;
+     text-overflow: ellipsis;
+     overflow: hidden;
+     color: black
+}
+.cmp-news-lookmore{
+    display: block;
+    height: 50px;
+    width: 260px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    background-color: black;
+    margin: auto;
+    margin-top: 40px;
+    cursor: pointer;
+}
+.cmp-news-lookmore:hover{
+    color: white;
+    background-color: rgb(213,3,19);
+    cursor: pointer;
+}
+.cmp-detail-product{
+    width: 1200px;
+    height: 430px;
+    margin: auto;
+    background-image: url(/page/project/images/detail_product.png);
+    padding-top: 165px;
+}
+.cmp-product-content{
+    width: 170px;
+    height: 62px;
+    margin: auto;
+}
+.cmp-product-lookmore{
+    display: block;
+    height: 50px;
+    width: 260px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    background-color: rgb(213,3,19);
+    margin: auto;
+    margin-top: 40px;
+    cursor: pointer;
+}
+.cmp-product-lookmore:hover{
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+.cmp-product-block1{
+    width: 12px;
+    height: 24px;
+    background-color: rgb(213,3,19);
+    float: left;
+    margin-top: 5px;
+}
+.cmp-product-title{
+    width: 125px;
+    height: 60px;
+    margin-left: 25px;
+    float: left;
+}
+.cmp-product-cntitle{
+    width: 110px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 26px;
+    color: white;
+
+}
+.cmp-product-titlehr{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 75px;
+    height: 3px;
+    background-color: rgb(213,3,19);
+}
+.cmp-product-entitle{
+    width: 125px;
+    height: 16px;
+    line-height: 16px;
+    font-size: 12px;
+    text-align: left;
+    color: white;
+}
+.cmp-detail-test{
+    width: 1200px;
+    height: 735px;
+    margin: auto;
+    position: relative;
+}
+.cmp-test-block{
+    position: absolute;
+    width: 153px;
+    height: 278px;
+    background-color: black;
+    left: 0;
+    top:218px;
+    z-index: 1;
+}
+.cmp-test-content{
+    position: absolute;
+    left: 153px;
+    top:125px;
+    width: 500px;
+    height: 500px;
+    padding: 30px;
+    z-index: 2;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .15);
+}
+.cmp-test-title{
+    width: 400px;
+    height: 144px;
+    margin: auto;
+    margin-top: 25px;
+    font-size: 12px;
+    text-indent: 2em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    color: black;
+}
+.cmp-test-lookmore{
+    display: block;
+    height: 50px;
+    width: 260px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    background-color: black;
+    margin: auto;
+    margin-top: 40px;
+    cursor: pointer;
+}
+.cmp-test-lookmore:hover{
+    color: white;
+    background-color: rgb(213,3,19);
+    cursor: pointer;
+}
+.cmp-test-img{
+    position: absolute;
+    height: 600px;
+    width: 690px;
+    z-index: 1;
+    left: 510px;
+    top: 80px;
+}
+.cmp-deail-contactus{
+    height: 600px;
+    width: 1200px;
+    margin: auto;
+    padding: 50px  0;
+    position: relative;
+}
+.cmp-contactus-img{
+    position: absolute;
+    width: 574px;
+    height: 490px;
+    left: 185px;
+    top:50px;
+    z-index: 1;
+}
+.cmp-contactus-content{
+    position: absolute;
+    width:270px;
+    height: 434px;
+    top:77px;
+    left: 720px;
+    z-index: 2;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .15);
+    padding-top: 30px;
+}
+.cmp-contactus-content-logo{
+    width: 63px;
+    height: 60px;
+    display: block;
+    margin: auto;
+}
+.cmp-contactus-content-telimg{
+    height: 21px;
+    width: 22px;
+    margin: auto;
+    margin-top: 60px;
+    display: block;
+}
+.cmp-contactus-content-tel{
+    width: 162px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 12px;
+    color: black;
+    text-align: center;
+    margin: auto;
+}
+.cmp-contactus-content-mailimg{
+    display: block;
+    height: 16px;
+    width: 24px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.cmp-contactus-content-mail{
+    width: 212px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 12px;
+    color: black;
+    text-align: center;
+    margin: auto;
+}
+.cmp-contactus-block{
+    position: absolute;
+    width:211px;
+    height: 95px;
+    top:274px;
+    right: 0px;
+    z-index: 2;
+    background-color: black;
 }

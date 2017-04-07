@@ -34,11 +34,11 @@ function CompanyDetailController($scope,GlobalService,CompanyNewsService,$routeP
     initOutlinePage();
     function initOutlinePage(){
         //获取新闻数据
-        getCompanyNewsData(6,1);
+        getCompanyNewsData(1,1);
         //获取产品数据
-        getCompanyProductsData(6,1);
+        //getCompanyProductsData(1,1);
         //获取测评数据
-        getCompanyTestsData(3,1);
+        getCompanyTestsData(1,1);
     }
 
     //获取企业资讯
