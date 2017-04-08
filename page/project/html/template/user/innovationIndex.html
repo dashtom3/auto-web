@@ -57,7 +57,9 @@
 			</div>
 			<div class="ino-index-cmp-cmps">
 				<a class="ino-index-cmp-block" ng-repeat="cmp in cmpCompanys.list" href="/companyInfos/{{cmp._id}}">
-					<img class="ino-index-cmp-img" src="{{cmp.logo}}">
+					<div class="ino-index-cmp-imgcontainer">
+						<img class="ino-index-cmp-img" src="{{cmp.logo}}">
+					</div>
 					<p class="ino-index-cmp-name">{{cmp.longName}} </p>
 				</a>
 			</div>
