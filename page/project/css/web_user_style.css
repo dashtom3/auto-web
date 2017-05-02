@@ -186,6 +186,9 @@
 }
 .innews-intro{
     height: 70px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 23px;
 }
 .innnews-commit{
 	text-align: center;
