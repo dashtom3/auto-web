@@ -37,7 +37,7 @@ function InnovationController($scope,GlobalService,CompanyNewsService,$routePara
 	},{
 		current:{name:"全部",id:""},
 		name:"分类：",
-		list:[{name:"全部",id:""}].concat(GlobalService.companyType)
+		list:[{name:"全部",id:""}].concat(GlobalService.companyTypeForProduct)
 	}];
 
 	$scope.cmpCompanyType = [{

@@ -445,7 +445,7 @@
 
     .cmp-reg-cardTitle{
         margin: 10px 0;
-        height: 50px0
+        height: 40px;
         overflow: hidden;
         text-overflow:ellipsis;
         cursor: pointer;

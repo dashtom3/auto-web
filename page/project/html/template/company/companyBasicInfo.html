@@ -77,6 +77,17 @@
 						</div>
 						<div class="row cmp-input-row">
 							<label  class="control-label col-xs-2 cmp-clear-padding">
+								联系方式：
+							</label>
+							<label  class="control-label col-xs-4 cmp-show-label" ng-show="isEdit == false" >
+								{{infoList.phone}}
+							</label>
+							<div class="col-xs-4" ng-show="isEdit == true">
+								<input type="text" class="form-control" ng-model="infoList.phone" >
+							</div>
+						</div>
+						<div class="row cmp-input-row">
+							<label  class="control-label col-xs-2 cmp-clear-padding">
 								所属领域：
 							</label>
 							<label  class="control-label col-xs-4 cmp-show-label" ng-show="isEdit == false" >
@@ -137,6 +148,14 @@
 									无
 								</label>
 							</div>
+						</div>
+						<div class="row cmp-input-row">
+							<label  class="control-label col-xs-2 cmp-clear-padding">
+								审核状态：
+							</label>
+							<label  class="control-label col-xs-4 cmp-show-label" >
+								{{infoList.isPassed | isPassedFilter}}
+							</label>
 						</div>
 					</form>
 				</div>

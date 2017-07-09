@@ -5,7 +5,7 @@ angular.module("auto-biz-user").controller("InnovationIndexController",["$scope"
     $scope.inoTypeList = GlobalService.companyTypeIndex;
     $scope.inoTypeSecondList = [{name:"全部",id:""}].concat(GlobalService.companyType);
     $scope.currentPage = "发现企业";
-    $scope.homePage = true;
+    $scope.homePage = false;
     $scope.cmpCompanys = {
       currentPage:1,
       pagePerNum:18,
@@ -36,21 +36,35 @@ angular.module("auto-biz-user").controller("InnovationIndexController",["$scope"
     }
 
     init($routeParams.name);
-  //初始化加载页面
-  function init(routeParams){
-    if(routeParams == "hotProducts"){
-      $location.path("/innovation/"+routeParams);
-    }else if(routeParams == "hotTest"){
-      $location.path("/innovation/"+routeParams);
-    }else if(routeParams == "innovationNews"){
-      $location.path("/innovation/"+routeParams);
-    }else if(routeParams == "companyDiscover"){
-      $scope.homePage = false;
-      $scope.currentPage = GlobalService.innovationIndexList[0][0];
-      getCompanyCompanysData($scope.cmpCompanys.currentType,$scope.cmpCompanys.pagePerNum,$scope.cmpCompanys.currentPage);
-    }else{
-      $scope.homePage = true;
-    }
+    //初始化加载页面   非九宫格版本
+    function init(routeParams){
+      if(routeParams == "hotProducts"){
+        $location.path("/innovation/"+routeParams);
+      }else if(routeParams == "hotTest"){
+        $location.path("/innovation/"+routeParams);
+      }else if(routeParams == "innovationNews"){
+        $location.path("/innovation/"+routeParams);
+      }else{
+        $scope.homePage = false;
+        $scope.currentPage = GlobalService.innovationIndexList[0][0];
+        getCompanyCompanysData($scope.cmpCompanys.currentType,$scope.cmpCompanys.pagePerNum,$scope.cmpCompanys.currentPage);
+      }
+
+  //初始化加载页面   九宫格版本
+  // function init(routeParams){
+  //   if(routeParams == "hotProducts"){
+  //     $location.path("/innovation/"+routeParams);
+  //   }else if(routeParams == "hotTest"){
+  //     $location.path("/innovation/"+routeParams);
+  //   }else if(routeParams == "innovationNews"){
+  //     $location.path("/innovation/"+routeParams);
+  //   }else if(routeParams == "companyDiscover"){
+  //     $scope.homePage = false;
+  //     $scope.currentPage = GlobalService.innovationIndexList[0][0];
+  //     getCompanyCompanysData($scope.cmpCompanys.currentType,$scope.cmpCompanys.pagePerNum,$scope.cmpCompanys.currentPage);
+  //   }else{
+  //     $scope.homePage = false;
+  //   }
     
   }
   //获取企业列表

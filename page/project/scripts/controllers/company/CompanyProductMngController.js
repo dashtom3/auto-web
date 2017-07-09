@@ -5,7 +5,7 @@ function CompanyProductMngController($scope,FileService,CompanyProductsService,G
 	$scope.tmpProduct={};
 	$scope.companyName="小软酱有限公司";
 	$scope.deleteID ="";
-	$scope.ctypeList = GlobalService.companyType;
+	$scope.ctypeList = GlobalService.companyTypeForProduct;
 
 	//数据初始化
 	$scope.searchStr="";
