@@ -28,7 +28,7 @@
 								{{infoList.shortName}}
 							</label>
 							<div class="col-xs-10" ng-show="isEdit == true">
-								<input type="text" class="form-control" ng-model="infoList.shortName" >
+								<input type="text" class="form-control" maxlength="30" placeholder="不超过30字" ng-model="infoList.shortName" >
 							</div>
 						</div>
 						<div class="row cmp-input-row">
@@ -127,7 +127,7 @@
 								{{infoList.regCapital}}
 							</label>
 							<div class="col-xs-4" ng-show="isEdit == true">
-								<input type="text" class="form-control" ng-model="infoList.regCapital" >
+								<input type="text" class="form-control" onkeyup="value=value.replace(/[^\d\.]/g,'')" onblur="value=value.replace(/[^\d\.]/g,'')" ng-model="infoList.regCapital" >
 							</div>
 							<label  class="control-label cmp-after-label col-xs-1">
 								万
@@ -225,7 +225,7 @@
 					<label class="col-xs-2 control-label col-xs-offset-1 cmp-clear-padding" >公司简介:</label>
 					<label  ng-if="isEdit==false" class="col-xs-7" > {{infoList.companyDesc}}</label>
 					<div ng-if="isEdit==true" class="col-xs-7" >
-						<textarea class="form-control" rows="3" ng-model="infoList.companyDesc"> </textarea>
+						<textarea class="form-control" rows="3" maxlength="100" placeholder="不超过100字" ng-model="infoList.companyDesc"> </textarea>
 					</div>
 				</div>
 			</div>		
