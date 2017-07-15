@@ -1450,6 +1450,12 @@
     color: black;
     margin: auto;
 }
+.ino-index-item-name-black:hover{
+    border-radius: 20px;
+    background-color: red;
+    color: white;
+
+}
 .ino-index-item  .active{
     border-radius: 20px;
     background-color: red;
@@ -1575,6 +1581,9 @@
 }
 .ino-index-cmp-menu-name:hover{
     cursor: pointer;
+    border-radius: 21px;
+    background-color: red;
+    color: white;
 }
 .ino-index-cmp-menu .active{
     border-radius: 21px;
@@ -1763,11 +1772,154 @@
     color: white;
 }
 .cmp-detail-aboutus{
-    background-image: url(/page/project/images/detail_aboutus.png);
+    /*background-image: url(/page/project/images/detail_aboutus.png);*/
     width: 1200px;
     height: 656px;
     margin: auto;
     padding-top: 25px;
+    background-color: white;
+}
+.cmp-aboutus-header{
+    width: 100%;
+    height: 40px;
+    background-color: white;
+}
+.cmp-aboutus-header-black{
+    float: left;
+    width: 14px;
+    height: 40px;
+    margin-left: 640px;
+    background-color: black;
+}
+.cmp-aboutus-header-title{
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 16px;
+    color: black;
+    font-size: 17px;
+    font-weight: bolder;
+}
+.cmp-aboutus-content{
+    height: 500px;
+    width: 100%;
+    background-color: white;
+    position: relative;
+    margin-top: 10px;
+}
+.cmp-aboutus-content-white{
+    position: absolute;
+    z-index: 4;
+    width: 683px;
+    height: 400px;
+    top:40px;
+    background-color: white;
+}
+.cmp-aboutus-content-redup{
+    position: absolute;
+    z-index: 3;
+    width: 180px;
+    height: 10px;
+    left: 475px;
+    top:30px;
+    background-color: rgb(213,3,19);
+}
+.cmp-aboutus-content-reddown{
+    position: absolute;
+    z-index: 3;
+    width: 180px;
+    height: 10px;
+    left: 290px;
+    top:440px;
+    background-color: rgb(213,3,19);
+}
+.cmp-aboutus-content-black{
+    position: absolute;
+    z-index: 2;
+    width: 576px;
+    height: 497px;
+    right: 0px;
+    top: 0px;
+    background-image: url(/page/project/images/detail_aboutus_black.png);
+}
+.cmp-aboutus-content-overview{
+    height: 130px;
+    width: 100%;
+    margin-top: 125px;
+    background-color: rgb(213,3,19);
+    position: relative;
+}
+.cmp-aboutus-content-overview-bigen{
+    position: absolute;
+    width: 60px;
+    left: 360px;
+    top: 40px;
+    height: 69px;
+    line-height: 69px;
+    font-size: 69px;
+    color: white;
+}
+.cmp-aboutus-content-overview-cn{
+    position: absolute;
+    width: 160px;
+    height: 40px;
+    left: 465px;
+    top:40px;
+    line-height:40px;
+    font-size: 36px;
+    color: white;
+}
+.cmp-aboutus-content-overview-smallen{
+    position: absolute;
+    width: 240px;
+    height: 25px;
+    left: 413px;
+    top: 80px;
+    line-height: 25px;
+    font-size: 24px;
+    font-weight: 300;
+    color: white;
+}
+.cmp-aboutus-content-info{
+    width: 373px;
+    height: 342px;
+    margin-left: 130px;
+    margin-top: 80px;
+    border-radius: 5px;
+    background-color: rgb(210,210,210);
+}
+.cmp-aboutus-content-info-cmpname{
+    height: 55px;
+    max-width: 330px;
+    margin-top: 50px;
+    margin-left: 30px;
+    padding: 0 5px;
+    border-bottom: rgb(219,3,19) solid 8px;
+    color: black;
+    line-height: 55px;
+    font-size: 24px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.cmp-aboutus-content-info-tel{
+    height: 30px;
+    line-height: 30px;
+    max-width: 300px;
+    margin-top: 15px;
+    margin-left: 45px;
+    color: black;
+    font-size: 18px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.cmp-aboutus-content-info-address{
+    height: 30px;
+    line-height: 30px;
+    max-width: 300px;
+    margin-top: 5px;
+    margin-left: 45px;
+    color: black;
+    font-size: 18px;
 }
 .cmp-aboutus-title{
     margin-left: 670px;
@@ -1910,12 +2062,21 @@
     background-color: rgb(213,3,19);
     color: white;
 }
+.cmp-outline-right-gray{
+    background-color: rgb(229,229,229);
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    left: 85px;
+}
 .cmp-outline-right-red{
     width: 610px;
     height: 184px;
     background-color: rgb(213,3,19);
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     top:170px;
     left: 0px;
 }
@@ -1941,7 +2102,7 @@
     height: 177px;
     background-color: black;
     position: absolute;
-    z-index: 4;
+    z-index: 1;
     bottom:0px;
     left: 463px;
 }
@@ -2000,7 +2161,7 @@
     width: 1200px;
     height: 430px;
     margin: auto;
-    background-image: url(/page/project/images/detail_product.png);
+    /*background-image: url(/page/project/images/detail_product.png);*/
     padding-top: 165px;
 }
 .cmp-product-content{
@@ -2044,7 +2205,8 @@
     height: 28px;
     line-height: 28px;
     font-size: 26px;
-    color: white;
+    font-weight: 500;
+    color: black;
 
 }
 .cmp-product-titlehr{
@@ -2059,8 +2221,9 @@
     height: 16px;
     line-height: 16px;
     font-size: 12px;
+    font-weight: 500;
     text-align: left;
-    color: white;
+    color: black;
 }
 .cmp-detail-test{
     width: 1200px;
